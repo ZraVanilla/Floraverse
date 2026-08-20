@@ -1,0 +1,47 @@
+/* FloraVerse global flora theme — overrides style.css. Load after style.css + responsive.css, before page css. */
+:root{
+  --forest:#17482c;--moss:#2f6b42;--leaf:#5f9c52;--lime:#cbe089;--sky:#4a86b4;
+  --wood:#5f4328;--wood-light:#8a6a42;--soil:#3a2818;--clay:#d98a5f;--sun:#f0c05a;
+  --ink:#12301f;--cream:#f1ecdc;--paper:#fffdf3;--muted:#687768;--line:#d8e2c4;
+  --shadow:0 16px 40px #14301f26
+}
+html,body{overflow-x:hidden}
+body{background:#efe9d6;color:var(--ink)}
+body:before{opacity:.5;background-image:radial-gradient(#2f6b4214 1.5px,transparent 1.5px),radial-gradient(#6a4a2f10 1px,transparent 1px);background-size:34px 34px,58px 58px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif}
+.nav{background:linear-gradient(#fbf7e8,#f0ead6);border-bottom:2px solid #9ab26b;box-shadow:0 6px 18px #14301f14}
+.brand{color:var(--forest)}
+.brand i{color:var(--leaf)}
+.nav-links a{color:#2f4a33;font-weight:700;position:relative}
+.nav-links a:after{content:"";position:absolute;left:50%;bottom:-6px;width:0;height:2px;background:linear-gradient(90deg,var(--leaf),var(--lime));border-radius:2px;transform:translateX(-50%);transition:width .25s}
+.nav-links a:hover:after,.nav-links a.active:after{width:100%}
+.nav-links a.active{color:var(--forest)}
+.nav-cta,.button-primary{background:linear-gradient(120deg,#1d4a2e,#3c7a48 55%,#e0a34b);box-shadow:0 8px 18px #17402a33}
+.nav-cta:hover,.button-primary:hover{box-shadow:0 11px 22px #17402a40}
+.button,.nav-cta{border-radius:99px}
+.button:hover,.nav-cta:hover{transform:translateY(-2px)}
+.button:active,.nav-cta:active{transform:translateY(1px) scale(.97)}
+.button-secondary{background:rgba(255,253,240,.4);border-color:#8fa581;color:var(--forest)}
+.footer{background:linear-gradient(#3a2a1c,#2c1e12);color:#cdbf9f;border-top:4px solid #7a5b38}
+.page-head h1{color:var(--forest)}
+.page-head p{color:var(--muted)}
+::selection{background:#b8cf8a;color:#12301f}
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:#e8e0c8}
+::-webkit-scrollbar-thumb{background:linear-gradient(#6f8f57,#47633a);border-radius:99px;border:2px solid #e8e0c8}
+body{animation:pageIn .5s ease both}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.float{animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.sway{animation:sway 6s ease-in-out infinite;transform-origin:bottom center}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+.grow-in{animation:growIn .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes growIn{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.leaf-object{pointer-events:none}
+@media(max-width:760px){
+  .nav-links a:after{display:none}
+  .nav-links a.active{opacity:1;color:var(--forest)}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
