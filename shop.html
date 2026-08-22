@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FloraShop — Belanja Kebutuhan Berkebun</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{blue:'#6FA8FF', pink:'#FF718D', yellow:'#FFD45C', orange:'#FF9B70', green:'#8BCB8A', charcoal:'#252525'}}}}</script>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<!--
+  Image source: Custom illustration created for FloraVerse — Open License
+  Shop illustration: Custom FloraVerse — Open License
+-->
+</head>
+<body class="bg-[#FCFCFC]">
+<nav class="navbar">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between">
+    <a href="index.html" class="wordmark text-[22px]">Flora<span>Verse</span></a>
+    <div class="hidden lg:flex items-center gap-1">
+      <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link active">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
+    </div>
+    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
+  </div>
+  <div id="mobileNav" class="hidden lg:hidden border-t bg-white px-4 py-3"><div class="flex flex-wrap gap-2"><a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link active">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a></div></div>
+</nav>
+
+<header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+  <div class="fv-card orange p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden">
+    <div class="flex-1 relative z-10">
+      <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop • 28 Produk</span>
+      <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Semua kebutuhan<br>berkebun, satu tempat.</h1>
+      <p class="text-white/90 text-sm mt-2 max-w-[520px]">Benih, pot, media, pupuk, alat, hidroponik — kurasi untuk pemula & hobbyist. Dummy checkout, tapi terasa nyata.</p>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <span class="pill bg-white text-charcoal font-bold">✓ Dummy data</span>
+        <span class="pill bg-white/20 text-white">Gratis ongkir simulasi</span>
+      </div>
+    </div>
+    <div class="lg:w-[380px] bg-white rounded-[24px] p-5 relative z-10">
+      <p class="font-black">🔍 Cari Produk</p>
+      <div class="relative mt-2"><input id="searchProd" type="search" placeholder="Cari benih cabai, pot, AB Mix..." class="w-full pl-10 pr-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#FF9B70] outline-none font-medium"><span class="absolute left-3.5 top-3.5">⌕</span></div>
+      <div class="grid grid-cols-2 gap-2 mt-3">
+        <select id="filterProdKat" class="min-w-0 w-full py-2.5 px-3 rounded-full border bg-white font-bold text-sm truncate"><option value="">Semua Kategori</option><option>Benih</option><option>Bibit</option><option>Pot</option><option>Media Tanam</option><option>Pupuk</option><option>Tools</option><option>Hydroponics</option><option>Plant care</option><option>Bundling</option></select>
+        <select id="sortProd" class="min-w-0 w-full py-2.5 px-3 rounded-full border bg-white font-bold text-sm truncate"><option value="popular">Paling Populer</option><option value="murah">Harga Terendah</option><option value="mahal">Harga Tertinggi</option><option value="rating">Rating Tertinggi</option></select>
+      </div>
+      <p id="prodCount" class="text-xs text-muted mt-3 font-bold"></p>
+    </div>
+  </div>
+</header>
+
+<!-- Smart Garden Basket -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+  <div class="fv-card white p-6 sm:p-7 relative overflow-hidden">
+    <div class="flex flex-col lg:flex-row gap-6">
+      <div class="flex-1">
+        <span class="pill pill-orange font-black">🎁 Smart Garden Basket — Killer Feature</span>
+        <h2 class="text-xl sm:text-2xl font-black mt-2 leading-tight">Pilih tanaman, kami<br>racikkan keranjangnya.</h2>
+        <p class="text-sm text-muted mt-1">Contoh: “Saya ingin menanam cabai.” FloraVerse otomatis menyarankan kit hemat.</p>
+        <div class="flex flex-wrap gap-2 mt-4" id="smartChoices">
+          <button data-plant="cabai-rawit" class="smartBtn active px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm">🌶️ Cabai</button>
+          <button data-plant="tomat" class="smartBtn px-4 py-2 rounded-full bg-white border font-bold text-sm">🍅 Tomat</button>
+          <button data-plant="selada" class="smartBtn px-4 py-2 rounded-full bg-white border font-bold text-sm">🥬 Selada</button>
+          <button data-plant="basil" class="smartBtn px-4 py-2 rounded-full bg-white border font-bold text-sm">🌿 Basil</button>
+          <button data-plant="stroberi" class="smartBtn px-4 py-2 rounded-full bg-white border font-bold text-sm">🍓 Stroberi</button>
+        </div>
+      </div>
+      <div id="smartBasketCard" class="lg:w-[520px] bg-[#FFF7ED] border-2 border-[#FFD5BF] rounded-[24px] p-5">
+        <!-- injected -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Category pills -->
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+  <div class="flex gap-2 overflow-auto no-scrollbar pb-2" id="prodCats">
+    <button data-cat="" class="pcat active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm">Semua</button>
+    <button data-cat="Benih" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🌱 Benih</button>
+    <button data-cat="Bibit" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🌿 Bibit</button>
+    <button data-cat="Pot" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🪴 Pot</button>
+    <button data-cat="Media Tanam" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🌿 Media</button>
+    <button data-cat="Pupuk" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🧪 Pupuk</button>
+    <button data-cat="Tools" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🪓 Tools</button>
+    <button data-cat="Hydroponics" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">💧 Hydro</button>
+    <button data-cat="Plant care" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🩺 Care</button>
+    <button data-cat="Bundling" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🎁 Bundling</button>
+  </div>
+  <div class="flex gap-2 mt-3 flex-wrap">
+    <label class="flex items-center gap-1.5 text-sm font-bold bg-white border px-3 py-1.5 rounded-full cursor-pointer"><input type="checkbox" id="filterBest"> Best Seller saja</label>
+    <label class="flex items-center gap-1.5 text-sm font-bold bg-white border px-3 py-1.5 rounded-full cursor-pointer"><input type="checkbox" id="filterBeginner"> Beginner Pick</label>
+  </div>
+</div>
+
+<main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-5 pb-10">
+  <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+  <div id="prodEmpty" class="hidden text-center py-16"><div class="text-5xl">🛒</div><p class="font-black mt-2">Produk tidak ditemukan</p></div>
+</main>
+
+<!-- Product Modal -->
+<div id="productModal" class="modal-backdrop"><div class="modal max-w-[720px]"><div id="productModalContent" class="p-6 sm:p-7"></div></div></div>
+
+<div id="drawerBackdrop" class="drawer-backdrop"></div>
+<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="checkoutSim()" class="btn btn-dark w-full mt-3">Checkout (Simulasi) →</button><button onclick="closeDrawer()" class="btn btn-ghost w-full mt-2">Lanjut Belanja</button></div></div>
+<div id="toastBox"></div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/plants.js"></script>
+<script src="js/products.js"></script>
+<script src="js/journey.js"></script>
+<script src="js/app.js"></script>
+<script>
+let activePcat="";
+const bundles={
+  "cabai-rawit":{nama:"Chili Starter Kit", harga:65000, items:[{id:"p01",qty:1},{id:"p04",qty:1},{id:"p06",qty:1},{id:"p10",qty:1}], desc:"Benih Cabai 50 biji + Pot 20cm + Media 5kg + Pupuk Organik Cair"},
+  "tomat":{nama:"Tomato Starter Kit", harga:72000, items:[{id:"p02",qty:1},{id:"p04",qty:1},{id:"p06",qty:1},{id:"p21",qty:1}], desc:"Benih Tomat + Pot + Media + Kalsium Boron anti blossom end rot"},
+  "selada":{nama:"Hidroponik Pemula Kit", harga:145000, items:[{id:"p15",qty:1},{id:"p17",qty:1},{id:"p03",qty:1}], desc:"6 lubang NFT + AB Mix + Benih Selada"},
+  "basil":{nama:"Herb Starter Kit", harga:58000, items:[{id:"p19",qty:1},{id:"p05",qty:1},{id:"p06",qty:1}], desc:"Benih Basil + Polybag + Media Premium"},
+  "stroberi":{nama:"Stroberi Pot Gantung Kit", harga:68000, items:[{id:"p20",qty:1},{id:"p06",qty:1},{id:"p10",qty:1}], desc:"Pot Gantung 18cm + Media + Pupuk Organik"}
+};
+function renderSmartBasket(plantId){
+  const b=bundles[plantId] || bundles["cabai-rawit"];
+  const plant=PLANTS.find(p=>p.id===plantId);
+  let total=0; let rows=b.items.map(it=>{
+    const pr=PRODUCTS.find(p=>p.id===it.id);
+    total+=pr.harga*it.qty;
+    return `<div class="flex items-center gap-3 bg-white rounded-2xl p-3 border"><div class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center">${pr.img}</div><div class="flex-1 min-w-0"><p class="font-bold text-sm leading-none truncate">${pr.nama}</p><p class="text-xs text-muted">Rp${pr.harga.toLocaleString('id-ID')} • x${it.qty}</p></div><span class="font-black text-sm">Rp${(pr.harga*it.qty).toLocaleString('id-ID')}</span></div>`;
+  }).join('');
+  const saving = total - b.harga;
+  $('#smartBasketCard').html(`
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-2xl border">${plant?plant.emoji:'🎁'}</div>
+      <div class="flex-1"><p class="font-black">${b.nama}</p><p class="text-xs text-muted">${b.desc}</p></div>
+      <span class="pill bg-[#FF9B70] text-white font-black">Hemat Rp${saving.toLocaleString('id-ID')}</span>
+    </div>
+    <div class="space-y-2 mt-4">${rows}</div>
+    <div class="flex items-center justify-between mt-4">
+      <div><p class="text-xs text-muted line-through">Rp${total.toLocaleString('id-ID')}</p><p class="text-xl font-black">Rp${b.harga.toLocaleString('id-ID')}</p></div>
+      <button onclick="addBundle('${plantId}')" class="btn btn-orange px-6 py-3">Tambahkan Semua →</button>
+    </div>
+    <p class="text-xs text-muted mt-2">* Simulasi — stok dummy, checkout tanpa pembayaran</p>
+  `);
+}
+window.addBundle=function(plantId){
+  const b=bundles[plantId];
+  b.items.forEach(it=> addToCart(it.id, it.qty));
+  toast(`${b.nama} ditambahkan!`, '🎁');
+}
+
+let currentFilterBest=false, currentFilterBeginner=false;
+function renderProducts(){
+  const q=($('#searchProd').val()||'').toLowerCase();
+  const kat=$('#filterProdKat').val() || activePcat;
+  const sort=$('#sortProd').val();
+  let list=PRODUCTS.filter(p=>{
+    const mq=!q || p.nama.toLowerCase().includes(q) || p.kategori.toLowerCase().includes(q);
+    const mk=!kat || p.kategori===kat;
+    const mb=!currentFilterBest || p.badge==="Best Seller";
+    const mbegin=!currentFilterBeginner || p.badge==="Beginner Pick";
+    return mq && mk && mb && mbegin;
+  });
+  if(sort==='murah') list.sort((a,b)=> a.harga - b.harga);
+  else if(sort==='mahal') list.sort((a,b)=> b.harga - a.harga);
+  else if(sort==='rating') list.sort((a,b)=> b.rating - a.rating);
+  else list.sort((a,b)=> b.ulas - a.ulas);
+
+  $('#prodCount').text(`${list.length} produk`);
+  if(list.length===0){ $('#productsGrid').empty(); $('#prodEmpty').removeClass('hidden'); return; }
+  $('#prodEmpty').addClass('hidden');
+  $('#productsGrid').html(list.map(p=> `
+    <div class="fv-card white overflow-hidden hover-lift">
+      <div class="h-36 bg-gray-50 flex items-center justify-center text-5xl relative cursor-pointer" onclick="openProduct('${p.id}')">
+        <span>${p.img}</span>
+        ${p.badge?`<span class="absolute top-3 left-3 pill text-[11px] font-black ${p.badge==='Best Seller'?'bg-[#FF9B70] text-white':p.badge==='Beginner Pick'?'bg-[#FFD45C] text-charcoal':p.badge==='Popular'?'bg-[#FF718D] text-white':'bg-charcoal text-white'}">${p.badge}</span>`:''}
+        <button onclick="event.stopPropagation(); toggleWish('${p.id}'); $(this).toggleClass('bg-[#FF718D] text-white')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border flex items-center justify-center text-sm">♡</button>
+        <span class="absolute bottom-3 right-3 pill pill-white text-xs">★ ${p.rating} • ${p.ulas}</span>
+      </div>
+      <div class="p-4">
+        <p class="font-black text-sm leading-tight line-clamp-2 min-h-[38px] cursor-pointer" onclick="openProduct('${p.id}')">${p.nama}</p>
+        <p class="text-xs text-muted">${p.kategori} • Stok ${p.stok}</p>
+        <div class="flex items-end justify-between mt-2">
+          <div><p class="text-lg font-black text-[#FF9B70] leading-none">Rp${p.harga.toLocaleString('id-ID')}</p><p class="text-[11px] text-muted">${p.related?`Untuk ${PLANTS.find(x=>x.id===p.related)?.nama||''}`:''}</p></div>
+          <button onclick="addToCart('${p.id}')" class="btn btn-dark text-xs px-4 py-2.5">+ Keranjang</button>
+        </div>
+      </div>
+    </div>
+  `).join(''));
+}
+window.openProduct=function(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  const plant=PLANTS.find(x=>x.id===p.related);
+  $('#productModalContent').html(`
+    <div class="flex items-start justify-between">
+      <span class="pill ${p.badge==='Best Seller'?'bg-[#FF9B70] text-white':p.badge==='Beginner Pick'?'bg-[#FFD45C] text-charcoal':'bg-charcoal text-white'} font-black">${p.badge||p.kategori}</span>
+      <button onclick="$('#productModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-6 mt-4">
+      <div class="h-64 bg-gray-50 rounded-[24px] flex items-center justify-center text-8xl">${p.img}</div>
+      <div>
+        <h2 class="text-xl font-black leading-tight">${p.nama}</h2>
+        <p class="text-sm text-muted">${p.kategori} • ★ ${p.rating} (${p.ulas} ulasan) • Stok ${p.stok}</p>
+        <p class="text-2xl font-black text-[#FF9B70] mt-2">Rp${p.harga.toLocaleString('id-ID')}</p>
+        <div class="flex gap-2 mt-3">
+          <button onclick="addToCart('${p.id}')" class="btn btn-dark flex-1">+ Keranjang</button>
+          <button onclick="toggleWish('${p.id}')" class="btn btn-ghost">♡ Wishlist</button>
+        </div>
+        <div class="bg-[#FFF7ED] border border-[#FFD5BF] rounded-2xl p-3 mt-4">
+          <p class="font-bold text-sm">🌱 Cocok untuk</p>
+          ${plant?`<div class="flex items-center gap-2 mt-1"><span class="text-xl">${plant.emoji}</span><div><p class="font-bold text-sm">${plant.nama}</p><p class="text-xs text-muted">${plant.ilmiah}</p></div><a href="plants.html" class="ml-auto text-xs font-bold text-[#FF9B70]">Lihat tanaman →</a></div>`:'<p class="text-sm text-muted">Semua tanaman</p>'}
+        </div>
+        <ul class="text-sm text-muted mt-3 space-y-1 list-disc pl-5">
+          <li>Pengiriman simulasi 1–2 hari</li>
+          <li>Gratis ongkir dummy untuk bundling</li>
+          <li>Rating ${p.rating} dari ${p.ulas} pembeli dummy (Izra, Fairuz, Tafayad)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex gap-2 mt-6"><button onclick="$('#productModal').removeClass('open')" class="btn btn-ghost flex-1">Tutup</button><button onclick="addToCart('${p.id}'); $('#productModal').removeClass('open'); openDrawer()" class="btn btn-primary flex-1">Beli Sekarang →</button></div>
+  `);
+  $('#productModal').addClass('open');
+}
+
+$(function(){
+  renderSmartBasket('cabai-rawit');
+  renderProducts();
+  $('.smartBtn').on('click', function(){
+    $('.smartBtn').removeClass('active bg-charcoal text-white').addClass('bg-white border');
+    $(this).addClass('active bg-charcoal text-white').removeClass('bg-white border');
+    renderSmartBasket($(this).data('plant'));
+  });
+  $('#searchProd').on('input', renderProducts);
+  $('#filterProdKat, #sortProd').on('change', renderProducts);
+  $('.pcat').on('click', function(){
+    $('.pcat').removeClass('active bg-charcoal text-white').addClass('bg-white border');
+    $(this).addClass('active bg-charcoal text-white').removeClass('bg-white border');
+    activePcat=$(this).data('cat');
+    $('#filterProdKat').val(activePcat);
+    renderProducts();
+  });
+  $('#filterBest').on('change', function(){ currentFilterBest=this.checked; renderProducts(); });
+  $('#filterBeginner').on('change', function(){ currentFilterBeginner=this.checked; renderProducts(); });
+  $('#productModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
+});
+</script>
+</body>
+</html>

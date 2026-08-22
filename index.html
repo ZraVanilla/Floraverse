@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FloraVerse — Satu Dunia, Berjuta Cara untuk Tumbuh.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      colors:{
+        blue:'#6FA8FF', pink:'#FF718D', yellow:'#FFD45C', orange:'#FF9B70', green:'#8BCB8A', charcoal:'#252525'
+      },
+      fontFamily:{ outfit:['Outfit','sans-serif'], nunito:['Nunito','sans-serif'] }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<!--
+  Image source: Custom illustration created for FloraVerse (playful digital garden)
+  Icon source: Emoji / CSS shapes — Open License
+  Living World assets: Custom FloraVerse illustration — Open License
+-->
+</head>
+<body class="bg-white text-charcoal">
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between gap-4">
+    <a href="index.html" class="wordmark text-[22px] sm:text-[24px] tracking-tight">Flora<span>Verse</span></a>
+    <div class="hidden lg:flex items-center gap-1">
+      <a href="index.html" class="nav-link active">Beranda</a>
+      <a href="plants.html" class="nav-link">Tanaman</a>
+      <a href="learn.html" class="nav-link">Belajar</a>
+      <a href="community.html" class="nav-link">Komunitas</a>
+      <a href="shop.html" class="nav-link">Belanja</a>
+      <a href="garden.html" class="nav-link">Kebunku</a>
+      <a href="profile.html" class="nav-link">Profil</a>
+    </div>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition" aria-label="Keranjang">
+        <span class="text-lg">🛒</span>
+        <span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span>
+      </button>
+      <a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border border-gray-200 bg-white hover:bg-gray-50 transition">
+        <span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span>
+        <span class="text-sm font-bold">Izra</span>
+        <span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span>
+      </a>
+      <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button>
+    </div>
+  </div>
+  <div id="mobileNav" class="hidden lg:hidden border-t bg-white px-4 py-3">
+    <div class="flex flex-wrap gap-2">
+      <a href="index.html" class="nav-link active">Beranda</a>
+      <a href="plants.html" class="nav-link">Tanaman</a>
+      <a href="learn.html" class="nav-link">Belajar</a>
+      <a href="community.html" class="nav-link">Komunitas</a>
+      <a href="shop.html" class="nav-link">Belanja</a>
+      <a href="garden.html" class="nav-link">Kebunku</a>
+      <a href="profile.html" class="nav-link">Profil</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-6">
+  <div class="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+    <!-- Left copy -->
+    <div class="lg:col-span-6 reveal in">
+      <h1 class="display text-[36px] sm:text-[48px] lg:text-[56px] font-extrabold leading-[0.95] mt-2">
+        Satu Dunia,<br>
+        <span class="text-[#6FA8FF]">Berjuta Cara</span><br>
+        untuk Tumbuh.
+      </h1>
+      <p class="text-[15px] sm:text-[17px] leading-relaxed text-[#6B7280] mt-4 max-w-[560px]">
+        FloraVerse menggabungkan <b class="text-charcoal">ensiklopedia tanaman, edukasi, komunitas, marketplace, dan jurnal kebun</b> dalam satu pengalaman playful. Temukan tanaman yang cocok, belajar, belanja, dan pantau pertumbuhan — semua di satu tempat.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button onclick="openPlantMatch()" class="btn btn-primary text-[15px] px-7 py-3.5">🌱 Mulai Berkebun — Plant Match</button>
+        <a href="plants.html" class="btn btn-ghost px-7 py-3.5">Jelajahi Tanaman →</a>
+      </div>
+      <div class="flex items-center gap-6 mt-7">
+        <div class="flex -space-x-2">
+          <span class="w-9 h-9 rounded-full bg-[#FFD45C] border-2 border-white flex items-center justify-center text-sm font-black">IZ</span>
+          <span class="w-9 h-9 rounded-full bg-[#FF718D] border-2 border-white flex items-center justify-center text-sm font-black text-white">FA</span>
+          <span class="w-9 h-9 rounded-full bg-[#8BCB8A] border-2 border-white flex items-center justify-center text-sm font-black text-white">TA</span>
+          <span class="w-9 h-9 rounded-full bg-charcoal border-2 border-white flex items-center justify-center text-xs font-bold text-white">+2k</span>
+        </div>
+        <div class="text-sm leading-tight">
+          <p class="font-bold">12,400+ Gardener</p>
+          <p class="text-muted text-xs">Telah menemukan plant match</p>
+        </div>
+        <div class="hidden sm:flex items-center gap-1.5 text-sm font-bold">
+          <span class="text-yellow-500">★★★★★</span> 4.9/5 (1.2k ulasan)
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mt-8 max-w-[520px]">
+        <div class="fv-card white p-3 text-center">
+          <p class="text-2xl font-black text-[#6FA8FF]">24</p><p class="text-xs font-bold text-muted">Tanaman</p>
+        </div>
+        <div class="fv-card white p-3 text-center">
+          <p class="text-2xl font-black text-[#FF718D]">12</p><p class="text-xs font-bold text-muted">Komunitas</p>
+        </div>
+        <div class="fv-card white p-3 text-center">
+          <p class="text-2xl font-black text-[#FF9B70]">28</p><p class="text-xs font-bold text-muted">Produk</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right visual — Living World (#10) -->
+    <div class="lg:col-span-6 relative reveal in" style="transition-delay:.1s">
+      <div class="relative bg-[#6FA8FF] rounded-[32px] p-6 sm:p-8 overflow-hidden min-h-[520px] flex flex-col">
+        <!-- Living World: matahari tetap, awan/lebah/kupu-kupu dihilangkan sesuai instruksi -->
+        <div class="absolute top-4 right-6 w-14 h-14 rounded-full bg-[#FFD45C] border-4 border-white/40 flex items-center justify-center text-xl sun-pulse z-10">☀️</div>
+        <!-- blobs -->
+        <div class="blob blob-yellow w-32 h-32 -top-6 -right-6 opacity-60"></div>
+        <div class="blob blob-pink w-20 h-20 top-28 right-10 opacity-50"></div>
+        <div class="blob bg-white w-24 h-24 bottom-20 -left-6 opacity-20"></div>
+
+        <div class="relative z-10 flex items-center justify-between">
+          <span class="pill bg-white text-charcoal font-black text-xs">✨ Playful Digital Garden</span>
+          <span class="pill bg-[#252525] text-white text-xs">Discover → Grow</span>
+        </div>
+
+        <!-- cartoon garden grid -->
+        <div class="relative z-10 grid grid-cols-3 gap-3 mt-6">
+          <div class="bg-white rounded-[20px] p-3 text-center sway" style="animation-delay:.2s">
+            <div class="text-4xl">🌶️</div><p class="font-black text-xs mt-1">Cabai</p><p class="text-[10px] text-muted">70 hari</p>
+          </div>
+          <div class="bg-[#FFD45C] rounded-[20px] p-3 text-center float">
+            <div class="text-4xl">🌻</div><p class="font-black text-xs mt-1">Matahari</p><p class="text-[10px] opacity-70">Mudah</p>
+          </div>
+          <div class="bg-white rounded-[20px] p-3 text-center sway" style="animation-delay:.4s">
+            <div class="text-4xl">🍅</div><p class="font-black text-xs mt-1">Tomat</p><p class="text-[10px] text-muted">84% match</p>
+          </div>
+          <div class="bg-[#FF718D] rounded-[20px] p-3 text-center text-white">
+            <div class="text-4xl">🌵</div><p class="font-black text-xs mt-1">Kaktus</p><p class="text-[10px] opacity-90">Jarang siram</p>
+          </div>
+          <div class="bg-white rounded-[20px] p-3 text-center">
+            <div class="text-4xl">🥬</div><p class="font-black text-xs mt-1">Selada</p><p class="text-[10px] text-muted">Hidroponik</p>
+          </div>
+          <div class="bg-[#8BCB8A] rounded-[20px] p-3 text-center text-white">
+            <div class="text-4xl">🌿</div><p class="font-black text-xs mt-1">Basil</p><p class="text-[10px] opacity-90">Harum</p>
+          </div>
+        </div>
+
+        <!-- Garden Pulse mini -->
+        <div class="relative z-10 mt-auto bg-white rounded-[24px] p-4 flex items-center gap-3 shadow-xl">
+          <div class="w-12 h-12 rounded-full bg-[#EFF6FF] flex items-center justify-center text-xl">💧</div>
+          <div class="flex-1">
+            <p class="font-extrabold text-sm leading-none">Garden Pulse</p>
+            <p class="text-xs text-muted">3 tanaman butuh perhatian hari ini</p>
+            <div class="flex gap-1.5 mt-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#6FA8FF]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#FF9B70]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#8BCB8A]"></span>
+            </div>
+          </div>
+          <a href="garden.html" class="btn btn-dark text-xs px-4 py-2.5">Lihat →</a>
+        </div>
+
+        <!-- floating badge -->
+        <div class="absolute -bottom-2 -right-2 sm:bottom-4 sm:right-4 bg-[#FFD45C] text-charcoal px-4 py-3 rounded-2xl shadow-xl rotate-[-2deg] hidden sm:flex items-center gap-2">
+          <span class="text-xl">🎯</span>
+          <div class="leading-tight">
+            <p class="font-black text-xs">Plant Match</p>
+            <p class="text-[11px] font-semibold">Cari tanaman idealmu</p>
+          </div>
+        </div>
+      </div>
+      <!-- small stat cards under -->
+      <div class="grid grid-cols-2 gap-3 mt-3">
+        <div class="fv-card yellow p-4 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">📚</div>
+          <div><p class="font-black text-sm">16 Panduan</p><p class="text-xs opacity-70">Belajar step-by-step</p></div>
+        </div>
+        <div class="fv-card pink p-4 flex items-center gap-3 text-white">
+          <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">👥</div>
+          <div><p class="font-black text-sm">12 Komunitas</p><p class="text-xs opacity-90">Sesuai hobi</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANT MATCH teaser -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-4 reveal">
+  <div class="fv-card blue p-6 sm:p-8 flex flex-col lg:flex-row items-center gap-6 relative overflow-hidden">
+    <div class="blob bg-white w-64 h-64 -right-16 -top-16 opacity-10"></div>
+    <div class="flex-1 relative z-10">
+      <span class="pill bg-white text-[#3B82F6] font-black">✨ Killer Feature #1</span>
+      <h2 class="text-[28px] sm:text-[32px] font-black leading-tight mt-3 text-white">Bingung mau tanam apa?<br>Coba <span class="underline decoration-white/40 decoration-4 underline-offset-4">Plant Match</span></h2>
+      <p class="text-white/90 mt-2 max-w-[560px]">Jawab 4 pertanyaan singkat — kami rekomendasikan tanaman dengan skor kecocokan personal. Seperti quiz, tapi untuk kebun.</p>
+      <div class="flex flex-wrap gap-2 mt-4 text-xs font-bold">
+        <span class="bg-white/20 text-white px-3 py-1.5 rounded-full">☀️ Cahaya</span>
+        <span class="bg-white/20 text-white px-3 py-1.5 rounded-full">🏠 Lokasi</span>
+        <span class="bg-white/20 text-white px-3 py-1.5 rounded-full">⏱️ Waktu rawat</span>
+        <span class="bg-white/20 text-white px-3 py-1.5 rounded-full">🎯 Tujuan</span>
+      </div>
+    </div>
+    <div class="relative z-10 w-full lg:w-[420px] bg-white rounded-[24px] p-5 text-charcoal">
+      <p class="font-black">Preview Hasil</p>
+      <p class="text-xs text-muted -mt-0.5 mb-3">Contoh jawaban: Banyak cahaya • Balkon • Kadang • Sayuran</p>
+      <div class="space-y-2">
+        <div class="flex items-center gap-3 p-3 rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE]">
+          <div class="w-12 h-12 rounded-xl bg-[#FF718D]/15 flex items-center justify-center text-2xl">🌶️</div>
+          <div class="flex-1"><p class="font-black text-sm">Cabai Rawit</p><p class="text-xs text-muted">Capsicum frutescens • Mudah</p></div>
+          <span class="text-lg font-black text-[#6FA8FF]">93%</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-2xl bg-gray-50 border">
+          <div class="w-12 h-12 rounded-xl bg-[#8BCB8A]/15 flex items-center justify-center text-2xl">🌿</div>
+          <div class="flex-1"><p class="font-black text-sm">Basil</p><p class="text-xs text-muted">Ocimum basilicum • Mudah</p></div>
+          <span class="text-lg font-black text-[#6FA8FF]">89%</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-2xl bg-gray-50 border">
+          <div class="w-12 h-12 rounded-xl bg-[#FF9B70]/15 flex items-center justify-center text-2xl">🍅</div>
+          <div class="flex-1"><p class="font-black text-sm">Tomat Cherry</p><p class="text-xs text-muted">Solanum lycopersicum • Sedang</p></div>
+          <span class="text-lg font-black text-[#6FA8FF]">84%</span>
+        </div>
+      </div>
+      <button onclick="openPlantMatch()" class="btn btn-primary w-full mt-4">Mulai Plant Match →</button>
+    </div>
+  </div>
+</section>
+
+<!-- POPULAR PLANTS -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 reveal">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <span class="pill pill-blue">🌱 Ensiklopedia</span>
+      <h2 class="text-[24px] sm:text-[28px] font-black mt-2">Tanaman Populer</h2>
+      <p class="text-muted text-sm">20+ tanaman dengan panduan lengkap dari semai hingga panen.</p>
+    </div>
+    <a href="plants.html" class="hidden sm:inline-flex btn btn-ghost">Lihat semua →</a>
+  </div>
+  <div id="popularPlants" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
+    <!-- injected via JS -->
+  </div>
+  <a href="plants.html" class="sm:hidden btn btn-ghost w-full mt-4">Lihat semua tanaman →</a>
+</section>
+
+<!-- GARDEN PULSE preview -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 reveal">
+  <div class="grid lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-5 fv-card white p-6">
+      <span class="pill pill-green">💓 Garden Pulse</span>
+      <h3 class="text-xl font-black mt-2">Kebunmu butuh perhatian?</h3>
+      <p class="text-sm text-muted mt-1">Ringkasan kondisi tanaman — simulasi personal garden Izra.</p>
+      <div class="space-y-3 mt-4">
+        <div class="flex items-center gap-3 p-3 rounded-2xl border bg-[#EFF6FF] border-[#BFDBFE]">
+          <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">🌶️</div>
+          <div class="flex-1"><p class="font-bold text-sm">Cabai Rawit</p><p class="text-xs text-muted">Hari 28 • Growing</p></div>
+          <span class="pill bg-[#6FA8FF] text-white text-xs">💧 Siram</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-2xl border bg-[#FFF7ED] border-orange-200">
+          <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">🍅</div>
+          <div class="flex-1"><p class="font-bold text-sm">Tomat Cherry</p><p class="text-xs text-muted">Hari 42 • Flowering</p></div>
+          <span class="pill bg-[#FF9B70] text-white text-xs">🧪 Pupuk</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-2xl border bg-[#F0FDF4] border-green-200">
+          <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">🌿</div>
+          <div class="flex-1"><p class="font-bold text-sm">Basil</p><p class="text-xs text-muted">Sehat • Siap panen pucuk</p></div>
+          <span class="pill bg-[#8BCB8A] text-white text-xs">🟢 Sehat</span>
+        </div>
+      </div>
+      <a href="garden.html" class="btn btn-dark w-full mt-4">Buka Kebunku →</a>
+    </div>
+
+    <!-- Plant Journey teaser -->
+    <div class="lg:col-span-7 fv-card yellow p-6 sm:p-8 relative overflow-hidden">
+      <span class="pill bg-white text-charcoal font-black">🌱 Plant Journey</span>
+      <h3 class="text-xl sm:text-2xl font-black mt-2 leading-tight">Ubah proses berkebun jadi<br>perjalanan yang menyenangkan</h3>
+      <p class="text-sm opacity-70 mt-1">Setiap tanaman punya timeline: Seed → Harvest dengan task harian.</p>
+
+      <div class="bg-white rounded-[20px] p-4 sm:p-5 mt-5">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-[#FF718D]/15 flex items-center justify-center text-2xl">🌶️</div>
+          <div>
+            <p class="font-black">Cabai Rawit — Day 28</p>
+            <p class="text-xs text-muted">Growing • 45% progress</p>
+          </div>
+          <span class="ml-auto pill pill-green">Healthy</span>
+        </div>
+        <div class="grid grid-cols-3 gap-2 mt-4 text-center">
+          <div class="bg-gray-50 rounded-xl p-2"><p class="text-[10px] font-bold tracking-widest text-muted">AIR</p><p class="font-black text-sm">Sedang</p></div>
+          <div class="bg-gray-50 rounded-xl p-2"><p class="text-[10px] font-bold tracking-widest text-muted">CAHAYA</p><p class="font-black text-sm">Full Sun</p></div>
+          <div class="bg-gray-50 rounded-xl p-2"><p class="text-[10px] font-bold tracking-widest text-muted">PUPUK</p><p class="font-black text-sm">2 minggu</p></div>
+        </div>
+        <div class="flex gap-2 mt-4">
+          <div class="flex-1 progress-track"><div class="progress-fill bg-[#6FA8FF]" style="width:45%"></div></div>
+          <span class="text-xs font-black">45%</span>
+        </div>
+        <div class="flex gap-2 mt-3 text-[11px] font-bold">
+          <span class="flex-1 text-center py-2 rounded-full bg-[#8BCB8A] text-white">✓ Seed</span>
+          <span class="flex-1 text-center py-2 rounded-full bg-[#8BCB8A] text-white">✓ Seedling</span>
+          <span class="flex-1 text-center py-2 rounded-full bg-[#6FA8FF] text-white">● Growing</span>
+          <span class="flex-1 text-center py-2 rounded-full bg-gray-100 text-muted">Flowering</span>
+        </div>
+      </div>
+
+      <div class="flex gap-3 mt-4">
+        <a href="garden.html" class="btn btn-dark flex-1">Lihat Journey →</a>
+        <button onclick="toast('Task diselesaikan! +10 XP','✨')" class="btn bg-white border border-gray-200 flex-1">✓ Complete Task</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY preview -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 reveal">
+  <div class="flex items-end justify-between">
+    <div>
+      <span class="pill pill-pink">👥 Komunitas</span>
+      <h2 class="text-[24px] sm:text-[28px] font-black mt-2">Temukan Tribemu</h2>
+      <p class="text-muted text-sm">Berdasarkan tanaman, metode, dan hobi.</p>
+    </div>
+    <a href="community.html" class="hidden sm:inline-flex btn btn-ghost">Jelajahi komunitas →</a>
+  </div>
+  <div id="homeCommunities" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
+    <!-- injected -->
+  </div>
+</section>
+
+<!-- ACTIVE COMMUNITY CHALLENGE (#27) -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 reveal">
+  <div class="fv-card white p-6 sm:p-7 relative overflow-hidden">
+    <div class="absolute -right-10 -top-10 w-40 h-40 bg-[#FFD45C]/15 rounded-full"></div>
+    <div class="flex flex-col lg:flex-row gap-6 relative z-10">
+      <div class="flex-1">
+        <span class="pill pill-pink font-black">🔥 Active Community Challenge</span>
+        <h2 class="text-[22px] sm:text-[26px] font-black leading-tight mt-2">30 Hari Menanam Cabai</h2>
+        <p class="text-sm text-muted mt-1">Tantangan komunitas paling aktif — gabung, update progress harian, dapat XP & unlock Chili Champion.</p>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="pill pill-white text-xs">🌶️ Pecinta Cabai</span>
+          <span class="pill pill-white text-xs">124 gardeners joined</span>
+          <span class="pill pill-yellow text-xs">🏆 +40 XP</span>
+        </div>
+        <div class="mt-4">
+          <div class="flex justify-between text-xs font-black"><span>Progress komunitas</span><span>18 / 30 Hari</span></div>
+          <div class="progress-track mt-1.5"><div class="progress-fill bg-[#FF718D] shimmer" style="width:60%"></div></div>
+          <div class="flex justify-between text-xs text-muted mt-1"><span>Dimulai 5 hari lalu</span><span>60% selesai</span></div>
+        </div>
+        <div class="flex gap-2 mt-4">
+          <button onclick="toast('Berhasil join challenge! +40 XP segera','🎉')" class="btn btn-pink flex-1 text-sm">🔥 Join Challenge</button>
+          <a href="community.html" class="btn btn-ghost flex-1 text-sm text-center">Lihat Challenge →</a>
+        </div>
+      </div>
+      <div class="lg:w-[380px] bg-[#FFF7ED] border-2 border-[#FFD5BF] rounded-[24px] p-5">
+        <p class="font-black flex items-center gap-2">👥 Peserta Terbaru</p>
+        <div class="space-y-2 mt-3">
+          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#FFD45C] flex items-center justify-center font-black text-xs">IZ</span><div class="flex-1"><p class="font-bold text-sm">Izra — Day 18</p><p class="text-xs text-muted">Cabai Rawit • Healthy</p></div><span class="text-xs font-black text-[#8BCB8A]">✓</span></div>
+          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#FF718D] flex items-center justify-center font-black text-xs text-white">FA</span><div class="flex-1"><p class="font-bold text-sm">Fairuz — Day 22</p><p class="text-xs text-muted">Tomat Cherry • Flowering</p></div><span class="text-xs font-black text-[#8BCB8A]">✓</span></div>
+          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] flex items-center justify-center font-black text-xs text-white">TA</span><div class="flex-1"><p class="font-bold text-sm">Tafayad — Day 15</p><p class="text-xs text-muted">Kangkung • Growing</p></div><span class="text-xs font-black text-[#6FA8FF]">●</span></div>
+        </div>
+        <button onclick="toast('Journal dibagikan ke challenge','↗')" class="btn btn-dark w-full mt-3 text-sm">↗ Bagikan Journal ke Challenge</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING preview -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 reveal">
+  <div class="flex items-end justify-between">
+    <div>
+      <span class="pill pill-yellow">📚 Ruang Belajar</span>
+      <h2 class="text-[24px] sm:text-[28px] font-black mt-2">Belajar Tanpa Ribet</h2>
+      <p class="text-muted text-sm">16 panduan terkurasi, dari pemula hingga menengah.</p>
+    </div>
+    <a href="learn.html" class="hidden sm:inline-flex btn btn-ghost">Lihat semua →</a>
+  </div>
+  <div id="homeGuides" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5"></div>
+</section>
+
+<!-- SHOP preview -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 reveal">
+  <div class="fv-card orange p-6 sm:p-8 relative overflow-hidden">
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 relative z-10">
+      <div>
+        <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop</span>
+        <h2 class="text-[24px] sm:text-[28px] font-black mt-2 text-white">Semua kebutuhan berkebun, satu keranjang.</h2>
+        <p class="text-white/90 text-sm mt-1">Benih, pot, media, pupuk, alat — plus Smart Garden Basket yang merekomendasikan kit sesuai tanamanmu.</p>
+      </div>
+      <a href="shop.html" class="btn bg-white text-charcoal px-6 py-3">Belanja sekarang →</a>
+    </div>
+    <div id="homeProducts" class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6 relative z-10"></div>
+
+    <!-- Smart Basket teaser -->
+    <div class="bg-white rounded-[24px] p-5 mt-6 flex flex-col lg:flex-row items-center gap-4 relative z-10">
+      <div class="flex-1">
+        <p class="font-black flex items-center gap-2">🎁 Chili Starter Kit <span class="pill pill-orange text-xs">Hemat 15%</span></p>
+        <p class="text-sm text-muted">Rekomendasi otomatis jika kamu memilih menanam cabai.</p>
+        <ul class="text-sm mt-2 space-y-1">
+          <li class="flex justify-between"><span>Benih Cabai • Pot 20cm • Media Tanam • Pupuk Organik</span><span class="font-black">Rp65.000</span></li>
+        </ul>
+      </div>
+      <button onclick="addToCart('p25')" class="btn btn-orange whitespace-nowrap">Tambahkan Semua →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-10 reveal">
+  <div class="fv-card white p-8 sm:p-10 text-center relative overflow-hidden">
+    <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#6FA8FF]/10 rounded-full"></div>
+    <div class="absolute -bottom-10 -right-10 w-56 h-56 bg-[#FFD45C]/20 rounded-full"></div>
+    <div class="relative z-10 max-w-[720px] mx-auto">
+      <span class="pill pill-blue">🌿 Mulai hari ini</span>
+      <h2 class="text-[28px] sm:text-[36px] font-black leading-tight mt-3">Bikin kebun pertamamu<br><span class="text-[#6FA8FF]">dalam 5 menit</span></h2>
+      <p class="text-muted mt-2">Plant Match → Pelajari → Beli Starter Kit → Pantau di Kebunku → Bagikan ke komunitas. Satu alur, semua terhubung.</p>
+      <div class="flex flex-wrap justify-center gap-3 mt-6">
+        <button onclick="openPlantMatch()" class="btn btn-primary px-8 py-3.5 text-base">🌱 Mulai Plant Match</button>
+        <a href="garden.html" class="btn btn-ghost px-8 py-3.5">Lihat Kebunku</a>
+      </div>
+      <p class="text-xs text-muted mt-3">Gratis • Tanpa daftar panjang • Dummy data siap pakai</p>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t bg-[#FCFCFC]">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col lg:flex-row justify-between gap-6">
+      <div>
+        <p class="wordmark text-xl">Flora<span>Verse</span></p>
+        <p class="text-sm text-muted mt-1 max-w-[420px]">Satu Dunia, Berjuta Cara untuk Tumbuh. Ekosistem digital untuk berkebun dan bertani — Discover → Learn → Connect → Shop → Grow.</p>
+        <p class="text-xs text-muted mt-3">© 2026 FloraVerse • Dibuat untuk lomba Web Design — Tema: Innovative Web Solutions for a Smarter Digital Society</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 text-sm">
+        <div>
+          <p class="font-black">Eksplor</p>
+          <ul class="mt-2 space-y-1 text-muted">
+            <li><a href="plants.html" class="hover:text-charcoal">Tanaman</a></li>
+            <li><a href="learn.html" class="hover:text-charcoal">Belajar</a></li>
+            <li><a href="community.html" class="hover:text-charcoal">Komunitas</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-black">Bantuan</p>
+          <ul class="mt-2 space-y-1 text-muted">
+            <li><a href="shop.html" class="hover:text-charcoal">Belanja</a></li>
+            <li><a href="garden.html" class="hover:text-charcoal">Kebunku</a></li>
+            <li><a href="profile.html" class="hover:text-charcoal">Profil</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-black">Aset</p>
+          <p class="text-xs text-muted mt-2 leading-relaxed">Ilustrasi: Custom for FloraVerse<br>Emoji & shapes: Open License<br>Sumber dicantumkan di source code</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Plant Match Modal -->
+<div id="plantMatchModal" class="modal-backdrop">
+  <div class="modal p-6 sm:p-7 relative">
+    <button onclick="closePlantMatch()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200">✕</button>
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black">🌱</div>
+      <div>
+        <p class="font-black leading-none">Plant Match</p>
+        <p class="text-xs text-muted">Temukan tanaman idealmu dalam 30 detik</p>
+      </div>
+      <span id="pmStepNum" class="ml-auto pill pill-blue font-black">1/4</span>
+    </div>
+    <div class="progress-track mt-4"><div id="pmBar" class="progress-fill bg-[#6FA8FF]" style="width:25%"></div></div>
+
+    <div id="pmQuiz" class="mt-6">
+      <h3 id="pmQuestion" class="text-xl font-black leading-tight"></h3>
+      <div id="pmOptions" class="grid gap-2.5 mt-4"></div>
+      <button id="pmPrev" onclick="prevPM()" class="btn btn-ghost w-full mt-3 hidden">← Kembali</button>
+    </div>
+
+    <div id="pmResult" class="hidden mt-6">
+      <h3 class="font-black text-lg">✨ Your Plant Match</h3>
+      <p class="text-sm text-muted">Berdasarkan jawabanmu, ini 3 tanaman paling cocok:</p>
+      <div id="pmResultList" class="space-y-3 mt-4"></div>
+      <div class="flex gap-2 mt-5">
+        <button onclick="closePlantMatch()" class="btn btn-ghost flex-1">Tutup</button>
+        <a href="plants.html" class="btn btn-primary flex-1 text-center">Lihat Ensiklopedia →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Drawer -->
+<div id="drawerBackdrop" class="drawer-backdrop"></div>
+<div id="cartDrawer" class="drawer">
+  <div class="p-5 border-b flex items-center justify-between">
+    <div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div>
+    <button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button>
+  </div>
+  <div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div>
+  <div class="p-4 border-t bg-gray-50">
+    <div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div>
+    <button onclick="checkoutSim()" class="btn btn-dark w-full mt-3">Checkout (Simulasi) →</button>
+    <a href="shop.html" class="btn btn-ghost w-full mt-2">Lihat Toko</a>
+  </div>
+</div>
+
+<div id="toastBox"></div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/plants.js"></script>
+<script src="js/products.js"></script>
+<script src="js/communities.js"></script>
+<script src="js/guides.js"></script>
+<script src="js/users.js"></script>
+<script src="js/garden.js"></script>
+<script src="js/journey.js"></script>
+<script src="js/plant-lab.js"></script>
+<script src="js/plant-match.js"></script>
+<script src="js/app.js"></script>
+<script>
+$(function(){
+  // Popular plants (4)
+  const popular = PLANTS.slice(0,4);
+  $('#popularPlants').html(popular.map(p=> `
+    <div class="fv-card white overflow-hidden hover-lift">
+      <div class="h-36 flex items-center justify-center text-6xl relative overflow-hidden" style="background:${p.color}12">
+        <span class="relative z-10">${p.emoji}</span>
+        <div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full opacity-15" style="background:${p.color}"></div>
+        <span class="absolute top-3 left-3 pill pill-white text-[11px]">${p.kategori}</span>
+        <span class="absolute top-3 right-3 pill text-xs font-black" style="background:${p.color};color:#fff">★ ${p.rating}</span>
+      </div>
+      <div class="p-4">
+        <p class="font-black leading-none">${p.nama}</p>
+        <p class="text-xs italic text-muted">${p.ilmiah}</p>
+        <div class="flex gap-1.5 mt-2">
+          <span class="pill pill-green text-[11px]">${p.kesulitan}</span>
+          <span class="pill pill-blue text-[11px]">${p.cahaya}</span>
+          <span class="pill pill-yellow text-[11px]">${p.panen}</span>
+        </div>
+        <p class="text-sm text-muted mt-2 leading-snug line-clamp-2">${p.desc}</p>
+        <div class="flex gap-2 mt-3">
+          <a href="plants.html" class="btn btn-primary flex-1 text-xs py-2.5">Lihat →</a>
+          <button onclick="toast('Disimpan ke Kebunku','🌱')" class="btn btn-ghost text-xs px-3 py-2.5">+ Kebunku</button>
+        </div>
+      </div>
+    </div>
+  `).join(''));
+
+  // Communities 4
+  const comm4 = COMMUNITIES.slice(0,4);
+  $('#homeCommunities').html(comm4.map(c=> `
+    <div class="fv-card white p-5 hover-lift">
+      <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style="background:${c.color}18">${c.emoji}</div>
+      <p class="font-black mt-3">${c.nama}</p>
+      <p class="text-xs text-muted -mt-0.5">${c.members.toLocaleString('id-ID')} members • ${c.posts} posts</p>
+      <p class="text-sm text-muted mt-2 leading-snug line-clamp-2">${c.desc}</p>
+      <div class="flex flex-wrap gap-1.5 mt-3">
+        ${c.tags.map(t=>`<span class="pill pill-white text-[11px]">${t}</span>`).join('')}
+      </div>
+      <button onclick="toggleJoin(this)" class="btn btn-dark w-full mt-4 text-sm py-2.5">Bergabung</button>
+    </div>
+  `).join(''));
+
+  // Guides 3
+  const g3 = GUIDES.filter(g=>g.populer).slice(0,3);
+  $('#homeGuides').html(g3.map(g=> `
+    <div class="fv-card white overflow-hidden hover-lift">
+      <div class="h-28 flex items-center justify-center text-5xl" style="background:${g.color}15">${g.emoji}</div>
+      <div class="p-4">
+        <span class="pill text-[11px]" style="background:${g.color}18; color:${g.color===' #FFD45C'?'#9A7400':g.color}; border-color:${g.color}30">${g.kategori}</span>
+        <p class="font-black mt-2 leading-tight line-clamp-2">${g.judul}</p>
+        <p class="text-xs text-muted mt-1">${g.waktu} • ${g.level}</p>
+        <p class="text-sm text-muted mt-2 line-clamp-2">${g.desc}</p>
+        <a href="learn.html" class="btn btn-ghost w-full mt-3 text-sm py-2.5">Baca panduan →</a>
+      </div>
+    </div>
+  `).join(''));
+
+  // Products 4
+  const pr4 = PRODUCTS.slice(0,4);
+  $('#homeProducts').html(pr4.map(p=> `
+    <div class="bg-white rounded-2xl p-4 flex gap-3 items-center">
+      <div class="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center text-2xl flex-shrink-0">${p.img}</div>
+      <div class="flex-1 min-w-0">
+        <p class="font-bold text-sm leading-tight truncate">${p.nama}</p>
+        <p class="text-xs text-muted">${p.kategori} • ★ ${p.rating}</p>
+        <p class="font-black text-sm text-[#FF9B70]">Rp${p.harga.toLocaleString('id-ID')}</p>
+      </div>
+      <button onclick="addToCart('${p.id}')" class="w-9 h-9 rounded-full bg-charcoal text-white flex items-center justify-center flex-shrink-0">+</button>
+    </div>
+  `).join(''));
+});
+</script>
+</body>
+</html>

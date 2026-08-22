@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kebunku — FloraVerse Plant Journey</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{blue:'#6FA8FF', pink:'#FF718D', yellow:'#FFD45C', orange:'#FF9B70', green:'#8BCB8A', charcoal:'#252525'}}}}</script>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<!--
+  Image source: Custom illustration created for FloraVerse — Open License
+  Storytelling illustration: Custom FloraVerse — Open License
+-->
+</head>
+<body class="bg-[#FCFCFC]">
+<nav class="navbar">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between">
+    <a href="index.html" class="wordmark text-[22px]">Flora<span>Verse</span></a>
+    <div class="hidden lg:flex items-center gap-1">
+      <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link active">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
+    </div>
+    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
+  </div>
+  <div id="mobileNav" class="hidden lg:hidden border-t bg-white px-4 py-3"><div class="flex flex-wrap gap-2"><a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link active">Kebunku</a><a href="profile.html" class="nav-link">Profil</a></div></div>
+</nav>
+
+<header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+  <div class="fv-card green p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden">
+    <div class="flex-1 relative z-10">
+      <span class="pill bg-white text-[#2F7A2E] font-black">🌿 Kebunku • 6 Tanaman</span>
+      <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Kebun digitalmu,<br>terpantau setiap hari.</h1>
+      <p class="text-white/90 text-sm mt-2 max-w-[520px]">Plant Journey mengubah proses berkebun jadi perjalanan visual: task harian, progress, dan jurnal.</p>
+      <div class="flex gap-2 mt-4">
+        <button onclick="$('#addPlantModal').addClass('open')" class="btn bg-white text-charcoal font-black px-5">+ Tambah Tanaman</button>
+        <span class="pill bg-white/20 text-white">Izra • Lv 8 • 340 XP</span>
+      </div>
+    </div>
+    <div class="lg:w-[420px] bg-white rounded-[24px] p-5 relative z-10">
+      <div class="flex items-center justify-between">
+        <p class="font-black">💓 Garden Pulse</p><span class="pill pill-green text-xs">Hari ini</span>
+      </div>
+      <p class="text-sm text-muted mt-1">3 tanaman butuh perhatian</p>
+      <div id="pulseList" class="space-y-2 mt-3"></div>
+      <div class="grid grid-cols-3 gap-2 mt-4 text-center">
+        <div class="bg-[#EFF6FF] rounded-xl p-2"><p class="font-black text-[#6FA8FF]">6</p><p class="text-[11px] font-bold">Tanaman</p></div>
+        <div class="bg-[#FFF7ED] rounded-xl p-2"><p class="font-black text-[#FF9B70]">2</p><p class="text-[11px] font-bold">Butuh Aksi</p></div>
+        <div class="bg-[#F0FDF4] rounded-xl p-2"><p class="font-black text-[#8BCB8A]">4</p><p class="text-[11px] font-bold">Sehat</p></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- My Plants grid -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <h2 class="text-xl font-black">🌱 Tanaman Ku</h2>
+    <div class="flex gap-2 min-w-0 w-full sm:w-auto">
+      <select id="filterGarden" class="flex-1 min-w-0 py-2 px-3 rounded-full border bg-white font-bold text-sm truncate"><option value="">Semua Status</option><option>Healthy</option><option>Needs Water</option><option>Needs Fertilizer</option></select>
+      <button onclick="$('#addPlantModal').addClass('open')" class="btn btn-dark text-sm px-4 py-2 hidden sm:flex whitespace-nowrap">+ Tambah</button>
+    </div>
+  </div>
+  <div id="myPlantsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+</section>
+
+<!-- Journey detail -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid lg:grid-cols-12 gap-6 pb-10">
+  <div class="lg:col-span-7 fv-card white p-6 sm:p-7">
+    <div class="flex items-center gap-3">
+      <div id="detailEmoji" class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl">🌶️</div>
+      <div>
+        <h3 id="detailName" class="font-black text-lg leading-none">Cabai Rawit — Day 28</h3>
+        <p id="detailSub" class="text-xs text-muted">Capsicum frutescens • Growing • 45%</p>
+      </div>
+      <span id="detailHealth" class="ml-auto pill pill-green">Healthy</span>
+    </div>
+
+    <!-- progress -->
+    <div class="flex gap-2 mt-4 items-center">
+      <div class="flex-1 progress-track"><div id="detailProgress" class="progress-fill bg-[#6FA8FF]" style="width:45%"></div></div>
+      <span id="detailProgressText" class="font-black text-sm">45%</span>
+    </div>
+
+    <!-- stage pills -->
+    <div id="stagePills" class="flex gap-1.5 mt-3 overflow-auto no-scrollbar pb-1"></div>
+
+    <!-- Journey vertical -->
+    <div class="relative mt-6 pl-2">
+      <div class="journey-line"></div>
+      <div id="journeySteps" class="space-y-4 relative"></div>
+    </div>
+
+    <!-- Tasks -->
+    <div class="mt-6">
+      <p class="font-black">✅ Task Hari Ini</p>
+      <div id="taskList" class="space-y-2 mt-2"></div>
+      <div class="flex gap-2 mt-3">
+        <input id="newTaskInput" placeholder="Tambah task custom..." class="flex-1 px-4 py-2.5 rounded-full border bg-gray-50 focus:bg-white outline-none text-sm">
+        <button onclick="addTask()" class="btn btn-dark text-sm px-5">+ Tambah</button>
+      </div>
+    </div>
+
+    <!-- Info boxes -->
+    <div class="grid grid-cols-3 gap-2 mt-6 text-center">
+      <div class="bg-gray-50 rounded-xl p-3"><p class="text-[10px] font-black tracking-widest text-muted">AIR</p><p id="detailWater" class="font-black text-sm">Sedang</p></div>
+      <div class="bg-gray-50 rounded-xl p-3"><p class="text-[10px] font-black tracking-widest text-muted">CAHAYA</p><p id="detailLight" class="font-black text-sm">Full Sun</p></div>
+      <div class="bg-gray-50 rounded-xl p-3"><p class="text-[10px] font-black tracking-widest text-muted">PUPUK</p><p id="detailFert" class="font-black text-sm">Recommended</p></div>
+    </div>
+
+    <div class="flex gap-2 mt-4">
+      <button onclick="shareJourney()" class="btn btn-primary flex-1">↗ Bagikan ke Komunitas</button>
+      <button onclick="toast('Jurnal disimpan','📝')" class="btn btn-ghost flex-1">📝 Tulis Jurnal</button>
+    </div>
+
+    <!-- Plant Storytelling (#21) -->
+    <div class="fv-card yellow p-4 mt-6 relative overflow-hidden">
+      <span class="pill bg-white text-charcoal font-black">📖 Plant Storytelling</span>
+      <h4 id="storyTitle" class="font-black mt-2">Day 28 — Cabai tumbuh semakin kuat.</h4>
+      <p id="storyDesc" class="text-sm opacity-80 mt-1">Daun rimbun, akar kuat. Cek hama bawah daun tiap minggu.</p>
+      <div class="flex gap-1.5 mt-3 text-[11px] font-bold overflow-auto no-scrollbar pb-1">
+        <span class="pill bg-white">🌰 Seed</span><span class="pill bg-white">🌱 Seedling</span><span class="pill bg-charcoal text-white">🌿 Growing</span><span class="pill bg-gray-100">🌼 Flowering</span><span class="pill bg-gray-100">🌶️ Harvest</span>
+      </div>
+      <p class="text-xs text-muted mt-2">*Cerita menciptakan emotional connection — bukan game penuh.</p>
+    </div>
+
+    <!-- Plant Lab shortcut -->
+    <div class="fv-card white p-4 mt-4 border-2 border-dashed border-[#6FA8FF]/30">
+      <p class="font-black flex items-center gap-2">🔬 Plant Lab Shortcut <span class="pill pill-blue text-xs">Coba simulasi</span></p>
+      <p class="text-sm text-muted">Eksperimen air & cahaya untuk tanaman ini tanpa risiko.</p>
+      <button onclick="$('#plantLabModal').addClass('open'); renderPlantLab('labInGarden', MY_GARDEN.find(x=>x.id===selectedGardenId).plantId)" class="btn btn-primary w-full mt-3 text-sm">Buka Plant Lab →</button>
+    </div>
+  </div>
+
+  <!-- Journal & tips -->
+  <div class="lg:col-span-5 space-y-4">
+    <div class="fv-card white p-5">
+      <p class="font-black">📝 Plant Journal</p>
+      <p class="text-xs text-muted">Dokumentasikan perkembangan — seperti story kebun.</p>
+      <div id="journalList" class="space-y-3 mt-3 max-h-[320px] overflow-auto pr-1"></div>
+      <div class="flex gap-2 mt-3">
+        <input id="journalInput" placeholder="Hari 29: ..." class="flex-1 px-4 py-2.5 rounded-full border bg-gray-50 focus:bg-white outline-none text-sm">
+        <button onclick="addJournal()" class="btn btn-dark text-sm px-5">Tambah</button>
+      </div>
+    </div>
+
+    <div class="fv-card yellow p-5">
+      <p class="font-black">💡 Tips untuk <span id="tipsPlantName">Cabai Rawit</span></p>
+      <ul id="tipsList" class="text-sm mt-2 space-y-1.5 list-disc pl-5 opacity-80"></ul>
+      <a href="learn.html" class="btn bg-white border w-full mt-4 text-sm">Baca Panduan Lengkap →</a>
+    </div>
+
+    <div class="fv-card white p-5">
+      <p class="font-black">🛒 Butuh sesuatu?</p>
+      <p class="text-sm text-muted">Smart Basket untuk tanaman ini:</p>
+      <div id="gardenShop" class="space-y-2 mt-3"></div>
+      <button onclick="addToCart('p25')" class="btn btn-orange w-full mt-3 text-sm">Tambahkan Starter Kit →</button>
+    </div>
+  </div>
+</section>
+
+<!-- Plant Lab full section (#24) -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-6">
+  <div class="fv-card white p-6 sm:p-7">
+    <div class="flex flex-wrap items-start justify-between gap-3">
+      <div>
+        <span class="pill pill-yellow font-black">🔬 Plant Lab — Simulasi Edukasi</span>
+        <h2 class="text-xl font-black mt-2">Uji coba sebelum tanam beneran.</h2>
+        <p class="text-sm text-muted">Atur parameter, lihat tanaman bereaksi dummy. Hubungkan ke Garden Pulse & Journal.</p>
+      </div>
+      <select id="labGardenSelect" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm"></select>
+    </div>
+    <div id="plantLabRoot" class="mt-6"></div>
+  </div>
+</section>
+
+<!-- Ecosystem cross-link (#32) -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-6">
+  <div class="fv-card blue p-6 flex flex-col sm:flex-row gap-4 items-center justify-between text-white">
+    <div><p class="font-black">🔗 Ekosistem Garden</p><p class="text-sm opacity-90">Cabai Journey → Garden Pulse → Daily Task → Journal → Plant Lab → FloraShop → Share Community</p></div>
+    <div class="flex gap-2"><a href="plants.html" class="btn bg-white text-charcoal text-sm">Lab Tanaman →</a><a href="community.html" class="btn bg-white/20 text-white border border-white/30 text-sm">Share →</a></div>
+  </div>
+</section>
+
+<!-- Add Plant Modal -->
+<div id="addPlantModal" class="modal-backdrop">
+  <div class="modal p-6">
+    <div class="flex items-center justify-between"><p class="font-black text-lg">+ Tambah Tanaman</p><button onclick="$('#addPlantModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div>
+    <p class="text-sm text-muted mt-1">Pilih dari ensiklopedia (24 tanaman dummy)</p>
+    <input id="searchAddPlant" type="search" placeholder="Cari cabai, tomat..." class="w-full mt-3 px-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#6FA8FF] outline-none">
+    <div id="addPlantList" class="grid grid-cols-2 gap-2 mt-3 max-h-[40vh] overflow-auto pr-1"></div>
+  </div>
+</div>
+
+<!-- Plant Lab Modal (shortcut) -->
+<div id="plantLabModal" class="modal-backdrop"><div class="modal max-w-[820px]"><div class="p-6"><div class="flex items-center justify-between"><p class="font-black text-lg">🔬 Plant Lab</p><button onclick="$('#plantLabModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="labInGarden" class="mt-4"></div></div></div></div>
+
+<div id="drawerBackdrop" class="drawer-backdrop"></div>
+<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="checkoutSim()" class="btn btn-dark w-full mt-3">Checkout (Simulasi) →</button></div></div>
+<div id="toastBox"></div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/plants.js"></script>
+<script src="js/products.js"></script>
+<script src="js/garden.js"></script>
+<script src="js/journey.js"></script>
+<script src="js/plant-lab.js"></script>
+<script src="js/plant-match.js"></script>
+<script src="js/app.js"></script>
+<script>
+let selectedGardenId = MY_GARDEN[0].id;
+
+function renderPulse(){
+  $('#pulseList').html(GARDEN_PULSE.map(p=> `
+    <div class="flex items-center gap-3 p-2.5 rounded-2xl border" style="background:${p.color}12; border-color:${p.color}30">
+      <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center">${p.emoji}</div>
+      <div class="flex-1"><p class="font-bold text-sm leading-none">${p.plant}</p><p class="text-xs text-muted">${p.status}</p></div>
+      <span class="pill text-xs font-black" style="background:${p.color};color:#fff">${p.icon} ${p.action}</span>
+    </div>
+  `).join(''));
+}
+function renderMyPlants(){
+  const filter=$('#filterGarden').val();
+  let list=MY_GARDEN.filter(g=> !filter || g.health===filter);
+  $('#myPlantsGrid').html(list.map(g=> `
+    <div onclick="selectGarden('${g.id}')" class="fv-card white p-4 cursor-pointer hover-lift ${g.id===selectedGardenId?'!border-[#6FA8FF] !shadow-lg':''}">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style="background:${g.color}18">${g.emoji}</div>
+        <div class="flex-1">
+          <p class="font-black leading-none">${g.nama}</p>
+          <p class="text-xs text-muted">Day ${g.day} • ${g.stage}</p>
+        </div>
+        <span class="pill text-xs font-black ${g.health==='Healthy'?'pill-green':g.health==='Needs Water'?'bg-[#6FA8FF] text-white':g.health==='Needs Fertilizer'?'bg-[#FF9B70] text-white':'pill-yellow'}">${g.health}</span>
+      </div>
+      <div class="flex gap-2 mt-3 items-center">
+        <div class="flex-1 progress-track"><div class="progress-fill" style="width:${g.progress}%; background:${g.color}"></div></div>
+        <span class="text-xs font-black">${g.progress}%</span>
+      </div>
+      <div class="flex gap-1.5 mt-2 flex-wrap">
+        ${g.stages.map((s,i)=> `<span class="text-[10px] font-black px-2 py-1 rounded-full ${i<g.stageIndex?'bg-[#8BCB8A] text-white':i===g.stageIndex?'bg-[#6FA8FF] text-white':'bg-gray-100 text-muted'}">${s}</span>`).join('')}
+      </div>
+    </div>
+  `).join(''));
+}
+function selectGarden(id){
+  selectedGardenId=id;
+  renderMyPlants();
+  renderDetail();
+}
+function renderDetail(){
+  const g=MY_GARDEN.find(x=>x.id===selectedGardenId);
+  $('#detailEmoji').css('background', g.color+'18').text(g.emoji);
+  $('#detailName').text(`${g.nama} — Day ${g.day}`);
+  const plant=PLANTS.find(p=>p.id===g.plantId);
+  $('#detailSub').text(`${plant?plant.ilmiah:''} • ${g.stage} • ${g.progress}%`);
+  $('#detailHealth').text(g.health).attr('class', 'ml-auto pill text-xs font-black ' + (g.health==='Healthy'?'pill-green':g.health==='Needs Water'?'bg-[#6FA8FF] text-white':'bg-[#FF9B70] text-white'));
+  $('#detailProgress').css('width', g.progress+'%').css('background', g.color);
+  $('#detailProgressText').text(g.progress+'%');
+  $('#detailWater').text(g.water);
+  $('#detailLight').text(g.light);
+  $('#detailFert').text(g.fert);
+  $('#tipsPlantName').text(g.nama);
+  // stage pills
+  $('#stagePills').html(g.stages.map((s,i)=> `<span class="pill text-xs font-black whitespace-nowrap ${i<g.stageIndex?'bg-[#8BCB8A] text-white':i===g.stageIndex?'bg-[#6FA8FF] text-white':'bg-gray-100 text-muted border'}">${i<g.stageIndex?'✓':i===g.stageIndex?'●':''} ${s}</span>`).join(''));
+  // journey steps
+  $('#journeySteps').html(g.stages.map((s,i)=>{
+    const state = i<g.stageIndex?'done':i===g.stageIndex?'active':'todo';
+    const dotClass = state==='done'?'done':state==='active'?'active':'todo';
+    const desc = {
+      'Seed':'Benih disemai, jaga kelembapan.',
+      'Seedling':'Kecambah muncul, butuh cahaya lembut.',
+      'Growing':'Daun bertambah, siram & pupuk rutin.',
+      'Flowering':'Bunga muncul, kurangi nitrogen.',
+      'Fruiting':'Buah terbentuk, jaga hama.',
+      'Harvest':'Panen! Petik dan nikmati.'
+    }[s]||'';
+    return `
+      <div class="flex gap-3">
+        <div class="journey-dot ${dotClass}">${i<g.stageIndex?'✓':i+1}</div>
+        <div class="flex-1 pb-2">
+          <p class="font-black text-sm">${s} ${i===g.stageIndex?'<span class="pill pill-blue text-[10px] ml-1">Saat ini</span>':''}</p>
+          <p class="text-xs text-muted">${desc}</p>
+          ${i===g.stageIndex?`<button onclick="completeStage()" class="btn btn-primary text-xs px-3 py-1.5 mt-1">✓ Complete Stage</button>`:''}
+        </div>
+      </div>
+    `;
+  }).join(''));
+  // tasks
+  $('#taskList').html(g.tasks.map(t=> `
+    <label class="flex items-center gap-3 p-3 rounded-2xl border bg-white cursor-pointer hover:bg-gray-50">
+      <input type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id}', this.checked)" class="w-5 h-5 rounded-full">
+      <span class="flex-1 text-sm font-medium ${t.done?'line-through text-muted':''}">${t.text}</span>
+      <span class="text-xs font-black ${t.done?'text-[#8BCB8A]':'text-muted'}">${t.done?'✓':''}</span>
+    </label>
+  `).join(''));
+  // journal
+  $('#journalList').html(g.journal.map(j=> `
+    <div class="flex gap-3">
+      <div class="w-2 h-2 rounded-full bg-[#6FA8FF] mt-2 flex-shrink-0"></div>
+      <div><p class="font-bold text-sm">${j.date}</p><p class="text-sm text-muted">${j.note}</p></div>
+    </div>
+  `).join(''));
+  // tips
+  const tips = plant? [plant.tips, plant.perawat, `Suhu ${plant.suhu}, pH ${plant.ph}`] : ['Siram pagi','Beri pupuk 2 minggu sekali'];
+  $('#tipsList').html(tips.map(t=> `<li>${t}</li>`).join(''));
+  // storytelling
+  const story = getStory(g.plantId, g.day);
+  $('#storyTitle').text(`Day ${story.day} — ${story.title}`);
+  $('#storyDesc').text(story.desc);
+  // shop
+  const relatedProds = PRODUCTS.filter(p=> p.related===g.plantId).slice(0,2);
+  $('#gardenShop').html(relatedProds.map(p=> `
+    <div class="flex items-center gap-3 bg-gray-50 rounded-2xl p-3">
+      <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center">${p.img}</div>
+      <div class="flex-1"><p class="font-bold text-sm leading-none">${p.nama}</p><p class="text-xs text-muted">Rp${p.harga.toLocaleString('id-ID')}</p></div>
+      <button onclick="addToCart('${p.id}')" class="w-8 h-8 rounded-full bg-charcoal text-white flex items-center justify-center">+</button>
+    </div>
+  `).join('') || '<p class="text-sm text-muted">Lihat FloraShop untuk kebutuhan.</p>');
+}
+window.toggleTask=function(tid, checked){
+  const g=MY_GARDEN.find(x=>x.id===selectedGardenId);
+  const t=g.tasks.find(x=>x.id===tid);
+  t.done=checked;
+  if(checked) toast('Task selesai! +10 XP','✨');
+  // update progress lightly
+  const done=g.tasks.filter(x=>x.done).length;
+  g.progress = Math.min(95, 45 + done*5 + g.stageIndex*10);
+  renderMyPlants();
+  renderDetail();
+}
+window.addTask=function(){
+  const v=$('#newTaskInput').val().trim();
+  if(!v) return;
+  const g=MY_GARDEN.find(x=>x.id===selectedGardenId);
+  g.tasks.push({id:'t'+Date.now(), text:v, done:false});
+  $('#newTaskInput').val('');
+  renderDetail();
+  toast('Task ditambahkan','✅');
+}
+window.addJournal=function(){
+  const v=$('#journalInput').val().trim();
+  if(!v) return;
+  const g=MY_GARDEN.find(x=>x.id===selectedGardenId);
+  g.journal.push({date:'Hari '+g.day, note:v});
+  $('#journalInput').val('');
+  renderDetail();
+  toast('Jurnal ditambahkan','📝');
+}
+window.completeStage=function(){
+  const g=MY_GARDEN.find(x=>x.id===selectedGardenId);
+  if(g.stageIndex < g.stages.length-1){
+    g.stageIndex++;
+    g.stage=g.stages[g.stageIndex];
+    g.day+=7;
+    g.progress=Math.min(100, g.progress+15);
+    g.journal.push({date:'Hari '+g.day, note:`Masuk fase ${g.stage} 🌱`});
+    toast(`Selamat! Masuk fase ${g.stage} 🎉`,'🌱');
+    renderMyPlants(); renderDetail();
+  } else {
+    toast('Sudah panen! 🎉','🥳');
+  }
+}
+window.shareJourney=function(){
+  toast('Plant Journey dibagikan ke komunitas Pecinta Cabai','🎉');
+}
+function renderAddPlantList(filter=""){
+  const list=PLANTS.filter(p=> !filter || p.nama.toLowerCase().includes(filter.toLowerCase()));
+  $('#addPlantList').html(list.slice(0,12).map(p=> `
+    <div onclick="addPlantToGarden('${p.id}')" class="fv-card white p-3 flex gap-3 items-center cursor-pointer hover:border-[#6FA8FF]">
+      <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background:${p.color}14">${p.emoji}</div>
+      <div class="flex-1 min-w-0"><p class="font-bold text-sm leading-none truncate">${p.nama}</p><p class="text-xs text-muted truncate">${p.kategori} • ${p.kesulitan}</p></div>
+      <span class="pill pill-blue text-xs">+ Tambah</span>
+    </div>
+  `).join(''));
+}
+window.addPlantToGarden=function(plantId){
+  const p=PLANTS.find(x=>x.id===plantId);
+  const newId='g'+Date.now();
+  MY_GARDEN.push({id:newId, plantId:p.id, nama:p.nama, emoji:p.emoji, color:p.color, day:1, stage:"Seed", stageIndex:0, stages:["Seed","Seedling","Growing","Flowering","Fruiting","Harvest"], health:"Healthy", water:p.air, light:p.cahaya, fert:"Belum", progress:5, tasks:[{id:'t'+Date.now(), text:'Siram pertama', done:false}], journal:[{date:'Hari 1', note:`Mulai menanam ${p.nama} 🌱`}]});
+  $('#addPlantModal').removeClass('open');
+  selectGarden(newId);
+  toast(`${p.nama} ditambahkan ke Kebunku!`,'🌱');
+}
+
+$(function(){
+  renderPulse();
+  renderMyPlants();
+  renderDetail();
+  renderAddPlantList();
+  $('#filterGarden').on('change', renderMyPlants);
+  $('#searchAddPlant').on('input', function(){ renderAddPlantList(this.value); });
+  $('#addPlantModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
+  $('#plantLabModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
+  // Plant Lab init for garden page
+  $('#labGardenSelect').html(MY_GARDEN.map(g=>`<option value="${g.plantId}">${g.emoji} ${g.nama}</option>`).join(''));
+  renderPlantLab('plantLabRoot', MY_GARDEN[0].plantId);
+  $('#labGardenSelect').on('change', function(){ const id=$(this).val(); $('#plantLabRoot').data('setPlant')(id); });
+});
+</script>
+</body>
+</html>

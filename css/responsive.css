@@ -1,0 +1,52 @@
+/*
+  FloraVerse — responsive.css
+  Ensures optimal across Desktop (priority for jury), Laptop, Tablet, Mobile
+  Custom for FloraVerse
+*/
+
+/* Touch targets */
+@media (max-width: 640px){
+  .btn{padding:.9rem 1.2rem}
+  .nav-link{padding:.6rem .9rem}
+}
+
+/* Critical mobile overflow fixes */
+html, body{overflow-x:hidden; max-width:100%;}
+* { box-sizing:border-box; }
+.flex > *, .grid > * { min-width:0; }
+select, input, textarea{max-width:100%; min-width:0; }
+.fv-card{overflow:hidden; }
+.overflow-auto, .no-scrollbar{max-width:100%; -webkit-overflow-scrolling:touch; }
+
+/* Grid refinements */
+@media (max-width: 768px){
+  .fv-card{border-radius:20px}
+  .modal{border-radius:20px; margin: .75rem; max-width: calc(100vw - 1.5rem);}
+  #cartDrawer{width:100vw; max-width:100vw}
+  /* Header filter stacks on mobile */
+  header .flex.gap-2.flex-1, header .flex.gap-2.mt-3, header .flex.gap-2.mt-2{flex-wrap:wrap;}
+  /* Prevent fixed widths from breaking */
+  [class*="w-["]{max-width:100%;}
+}
+
+/* Living World adjustments */
+@media (max-width: 1024px){
+  .sun-pulse{width:56px; height:56px}
+  .bee, .butterfly{display:none}
+}
+
+/* Focus states */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
+  outline:2px solid #6FA8FF;
+  outline-offset:2px;
+}
+
+/* High contrast text safeguard */
+@media (prefers-contrast: more){
+  .text-muted{color:#4B5563}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{animation-duration:.01ms !important; transition-duration:.01ms !important}
+}
