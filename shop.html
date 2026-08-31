@@ -191,7 +191,7 @@ window.openProduct=function(id){
       <button onclick="$('#productModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button>
     </div>
     <div class="grid sm:grid-cols-2 gap-6 mt-4">
-      <div class="h-64 bg-gray-50 rounded-[24px] flex items-center justify-center text-8xl">${p.img}</div>
+      <div class="h-64 bg-gray-50 rounded-[24px] flex items-center justify-center overflow-hidden">${fvImg(p,'h-full w-full object-cover')}</div>
       <div>
         <h2 class="text-xl font-black leading-tight">${p.nama}</h2>
         <p class="text-sm text-muted">${p.kategori} • ★ ${p.rating} (${p.ulas} ulasan) • Stok ${p.stok}</p>

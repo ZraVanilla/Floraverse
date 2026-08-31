@@ -100,10 +100,10 @@ tailwind.config={
       </div>
       <div class="grid grid-cols-3 gap-3 mt-8 max-w-[520px]">
         <div class="fv-card white p-3 text-center">
-          <p class="text-2xl font-black text-[#6FA8FF]">24</p><p class="text-xs font-bold text-muted">Tanaman</p>
+          <p class="text-2xl font-black text-[#6FA8FF]">240+</p><p class="text-xs font-bold text-muted">Tanaman</p>
         </div>
         <div class="fv-card white p-3 text-center">
-          <p class="text-2xl font-black text-[#FF718D]">12</p><p class="text-xs font-bold text-muted">Komunitas</p>
+          <p class="text-2xl font-black text-[#FF718D]">100+</p><p class="text-xs font-bold text-muted">Komunitas</p>
         </div>
         <div class="fv-card white p-3 text-center">
           <p class="text-2xl font-black text-[#FF9B70]">28</p><p class="text-xs font-bold text-muted">Produk</p>
@@ -116,13 +116,12 @@ tailwind.config={
       <div class="relative bg-[#6FA8FF] rounded-[32px] p-6 sm:p-8 min-h-[520px] flex flex-col hero-visual-shell">
         <!-- Living World: matahari dihilangkan agar layout lebih rapi -->
         <!-- blobs -->
-        <div class="blob blob-yellow w-32 h-32 -top-6 -right-6 opacity-60"></div>
         <div class="blob blob-pink w-20 h-20 top-28 right-10 opacity-50"></div>
         <div class="blob bg-white w-24 h-24 bottom-20 -left-6 opacity-20"></div>
 
         <div class="relative z-10 flex items-center justify-between">
-          <span class="pill bg-white text-charcoal font-black text-xs">✨ Playful Digital Garden</span>
-          <span class="pill bg-[#252525] text-white text-xs">Discover → Grow</span>
+          <span class="pill bg-white text-charcoal font-black text-xs">Where Every Leaf Tells a Story</span>
+          <span class="pill bg-[#252525] text-white text-xs">Plant & Bloom</span>
         </div>
 
         <!-- cartoon garden grid -->
@@ -171,7 +170,7 @@ tailwind.config={
         </div>
         <div class="fv-card pink p-4 flex items-center gap-3 text-white">
           <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">👥</div>
-          <div><p class="font-black text-sm">12 Komunitas</p><p class="text-xs opacity-90">Sesuai hobi</p></div>
+          <div><p class="font-black text-sm">100+ Komunitas</p><p class="text-xs opacity-90">Sesuai hobi</p></div>
         </div>
       </div>
     </div>
@@ -512,7 +511,7 @@ $(function(){
   $('#popularPlants').html(popular.map(p=> `
     <div class="fv-card white overflow-hidden hover-lift">
       <div class="h-36 flex items-center justify-center text-6xl relative overflow-hidden" style="background:${p.color}12">
-        <span class="relative z-10">${p.emoji}</span>
+        ${fvImg(p,'relative z-10')}
         <div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full opacity-15" style="background:${p.color}"></div>
         <span class="absolute top-3 left-3 pill pill-white text-[11px]">${p.kategori}</span>
         <span class="absolute top-3 right-3 pill text-xs font-black" style="background:${p.color};color:#fff">★ ${p.rating}</span>

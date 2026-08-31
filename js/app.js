@@ -1,4 +1,10 @@
 ﻿/* FloraVerse App - shared interactions (jQuery) */
+/* Photo support: tampilkan foto asli jika file ada, otomatis fallback ke emoji jika belum ada */
+window.fvImg = function(obj, cls){
+  if(!obj || !obj.img) return `<span>${obj.emoji||''}</span>`;
+  const fb = `<span>${obj.emoji||''}</span>`.replace(/"/g,'&quot;');
+  return `<img src="${obj.img}" alt="${(obj.nama||'').replace(/"/g,'')}" loading="lazy" class="${cls||''}" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(fb)}')">`;
+};
 $(function(){
   // Active nav
   const path = location.pathname.split('/').pop() || 'index.html';
