@@ -1,4 +1,4 @@
-/* FloraShop dummy products — FloraVerse */
+﻿/* FloraShop dummy products - FloraVerse */
 const PRODUCTS = [
   {id:"p01", nama:"Benih Cabai Rawit 50 Biji", kategori:"Benih", harga:15000, rating:4.8, ulas:342, badge:"Best Seller", img:"🌶️", related:"cabai-rawit", stok:120},
   {id:"p02", nama:"Benih Tomat Cherry 30 Biji", kategori:"Benih", harga:18000, rating:4.7, ulas:210, badge:"Popular", img:"🍅", related:"tomat", stok:80},
@@ -29,7 +29,8 @@ const PRODUCTS = [
   {id:"p27", nama:"Herb Starter Kit (Basil+Mint)", kategori:"Bundling", harga:58000, rating:4.7, ulas:210, badge:"Beginner Pick", img:"🎁", related:"basil", stok:45},
   {id:"p28", nama:"Hidroponik Pemula Kit", kategori:"Bundling", harga:145000, rating:4.8, ulas:187, badge:"New", img:"🎁", related:"selada", stok:25},
   {id:"p29", nama:"Bibit Cabai Rawit Siap Tanam 3 Batang", kategori:"Bibit", harga:12000, rating:4.7, ulas:156, badge:"New", img:"🌱", related:"cabai-rawit", stok:70},
-  {id:"p30", nama:"Neem Oil 100ml — Obat Hama Organik", kategori:"Plant care", harga:25000, rating:4.8, ulas:201, badge:"Recommended", img:"🧴", related:"tomat", stok:60},
+  {id:"p30", nama:"Neem Oil 100ml - Obat Hama Organik", kategori:"Plant care", harga:25000, rating:4.8, ulas:201, badge:"Recommended", img:"🧴", related:"tomat", stok:60},
   {id:"p31", nama:"Bibit Tomat Cherry Siap Tanam", kategori:"Bibit", harga:15000, rating:4.7, ulas:132, badge:"Beginner Pick", img:"🌱", related:"tomat", stok:55},
   {id:"p32", nama:"Pupuk Daun Plant Care Spray", kategori:"Plant care", harga:18000, rating:4.6, ulas:98, badge:"Popular", img:"💦", related:"mawar", stok:80}
 ];
+

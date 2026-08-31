@@ -1,4 +1,4 @@
-/* Garden dummy — FloraVerse Kebunku */
+﻿/* Garden dummy - FloraVerse Kebunku */
 const MY_GARDEN = [
   {
     id:"g1", plantId:"cabai-rawit", nama:"Cabai Rawit", emoji:"🌶️", color:"#FF718D",
@@ -99,3 +99,4 @@ const GARDEN_PULSE = [
   {plant:"Tomat Cherry", emoji:"🍅", status:"Waktunya pemupukan", icon:"🧪", color:"#FF9B70", action:"Beri pupuk"},
   {plant:"Kemangi", emoji:"🌿", status:"Sehat", icon:"🟢", color:"#8BCB8A", action:"Lihat"},
 ];
+

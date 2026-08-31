@@ -1,4 +1,4 @@
-/* FloraVerse App — shared interactions (jQuery) */
+﻿/* FloraVerse App - shared interactions (jQuery) */
 $(function(){
   // Active nav
   const path = location.pathname.split('/').pop() || 'index.html';
@@ -8,11 +8,34 @@ $(function(){
   });
 
   // Mobile menu
-  $('#menuBtn').on('click', function(){ $('#mobileNav').toggleClass('hidden'); });
+  $('#menuBtn').each(function(){
+    const $btn = $(this);
+    $btn.addClass('menu-toggle').html('<span></span><span></span><span></span>');
+    $btn.attr('aria-label', 'Toggle menu');
+    $btn.attr('aria-expanded', 'false');
+  });
 
-  // Toast
+  $('#menuBtn').on('click', function(){
+    const $btn = $(this);
+    const isOpen = $btn.hasClass('is-open');
+    $btn.toggleClass('is-open', !isOpen);
+    $btn.attr('aria-expanded', String(!isOpen));
+    $('#mobileNav').toggleClass('hidden', isOpen);
+  });
+
+  // Plain emoji mode: keep the original Unicode emoji rendering instead of sprite conversion.
+  const FV_EMOJI_CLASSES = {};
+
+  function fvEmojiMarkup(icon='✨'){
+    return icon;
+  }
+
+  function replaceEmojiTextNodes(){
+    return;
+  }
+
   window.toast = function(msg, icon="✨"){
-    const $t = $(`<div class="toast"><span>${icon}</span><span>${msg}</span></div>`);
+    const $t = $(`<div class="toast">${fvEmojiMarkup(icon)}<span>${msg}</span></div>`);
     $('#toastBox').append($t);
     setTimeout(()=> $t.fadeOut(300, ()=> $t.remove()), 2600);
   };
@@ -128,7 +151,7 @@ $(function(){
     // hitung skor
     let scored = PLANTS.map(p=> ({...p, score: scorePlant(p, pmAnswers)})).sort((a,b)=> b.score-a.score).slice(0,3);
     // pastikan cabai/basil/tomat muncul jika relevan (sesuai spec contoh 93/89/84)
-    // tapi biarkan algoritma — fallback contoh
+    // tapi biarkan algoritma - fallback contoh
     $('#pmResultList').html(scored.map((p,i)=> `
       <div class="fv-card p-4 flex gap-4 items-center ${i===0?'!border-[#6FA8FF] !bg-[#EFF6FF]':''}">
         <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0" style="background:${p.color}18">${p.emoji}</div>
@@ -171,3 +194,4 @@ $(function(){
   // Close modals on backdrop
   $('.modal-backdrop').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
 });
+

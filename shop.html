@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FloraShop — Belanja Kebutuhan Berkebun</title>
+<title>FloraShop - Belanja Kebutuhan Berkebun</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{blue:'#6FA8FF', pink:'#FF718D', yellow:'#FFD45C', orange:'#FF9B70', green:'#8BCB8A', charcoal:'#252525'}}}}</script>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/animations.css">
 <link rel="stylesheet" href="css/responsive.css">
 <!--
-  Image source: Custom illustration created for FloraVerse — Open License
-  Shop illustration: Custom FloraVerse — Open License
+  Image source: Custom illustration created for FloraVerse - Open License
+  Shop illustration: Custom FloraVerse - Open License
 -->
 </head>
 <body class="bg-[#FCFCFC]">
@@ -30,18 +30,15 @@
     <div class="flex-1 relative z-10">
       <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop • 28 Produk</span>
       <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Semua kebutuhan<br>berkebun, satu tempat.</h1>
-      <p class="text-white/90 text-sm mt-2 max-w-[520px]">Benih, pot, media, pupuk, alat, hidroponik — kurasi untuk pemula & hobbyist. Dummy checkout, tapi terasa nyata.</p>
-      <div class="flex flex-wrap gap-2 mt-4">
-        <span class="pill bg-white text-charcoal font-bold">✓ Dummy data</span>
-        <span class="pill bg-white/20 text-white">Gratis ongkir simulasi</span>
-      </div>
+      <p class="text-white/90 text-sm mt-2 max-w-[520px]">Benih, pot, media, pupuk, alat, hidroponik - kurasi untuk pemula & hobbyist. Dummy checkout, tapi terasa nyata.</p>
+      <div class="flex flex-wrap gap-2 mt-4"></div>
     </div>
     <div class="lg:w-[380px] bg-white rounded-[24px] p-5 relative z-10">
       <p class="font-black">🔍 Cari Produk</p>
       <div class="relative mt-2"><input id="searchProd" type="search" placeholder="Cari benih cabai, pot, AB Mix..." class="w-full pl-10 pr-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#FF9B70] outline-none font-medium"><span class="absolute left-3.5 top-3.5">⌕</span></div>
       <div class="grid grid-cols-2 gap-2 mt-3">
-        <select id="filterProdKat" class="min-w-0 w-full py-2.5 px-3 rounded-full border bg-white font-bold text-sm truncate"><option value="">Semua Kategori</option><option>Benih</option><option>Bibit</option><option>Pot</option><option>Media Tanam</option><option>Pupuk</option><option>Tools</option><option>Hydroponics</option><option>Plant care</option><option>Bundling</option></select>
-        <select id="sortProd" class="min-w-0 w-full py-2.5 px-3 rounded-full border bg-white font-bold text-sm truncate"><option value="popular">Paling Populer</option><option value="murah">Harga Terendah</option><option value="mahal">Harga Tertinggi</option><option value="rating">Rating Tertinggi</option></select>
+        <select id="filterProdKat" class="min-w-0 w-full py-2.5 px-3 rounded-full border bg-white text-charcoal font-bold text-sm truncate"><option value="" class="text-charcoal">Semua Kategori</option><option class="text-charcoal">Benih</option><option class="text-charcoal">Bibit</option><option class="text-charcoal">Pot</option><option class="text-charcoal">Media Tanam</option><option class="text-charcoal">Pupuk</option><option class="text-charcoal">Tools</option><option class="text-charcoal">Hydroponics</option><option class="text-charcoal">Plant care</option><option class="text-charcoal">Bundling</option></select>
+        <select id="sortProd" class="min-w-0 w-full py-2.5 px-3 rounded-full border bg-white text-charcoal font-bold text-sm truncate"><option value="popular" class="text-charcoal">Paling Populer</option><option value="murah" class="text-charcoal">Harga Terendah</option><option value="mahal" class="text-charcoal">Harga Tertinggi</option><option value="rating" class="text-charcoal">Rating Tertinggi</option></select>
       </div>
       <p id="prodCount" class="text-xs text-muted mt-3 font-bold"></p>
     </div>
@@ -53,7 +50,7 @@
   <div class="fv-card white p-6 sm:p-7 relative overflow-hidden">
     <div class="flex flex-col lg:flex-row gap-6">
       <div class="flex-1">
-        <span class="pill pill-orange font-black">🎁 Smart Garden Basket — Killer Feature</span>
+        <span class="pill pill-orange font-black">🎁 Smart Garden Basket - Killer Feature</span>
         <h2 class="text-xl sm:text-2xl font-black mt-2 leading-tight">Pilih tanaman, kami<br>racikkan keranjangnya.</h2>
         <p class="text-sm text-muted mt-1">Contoh: “Saya ingin menanam cabai.” FloraVerse otomatis menyarankan kit hemat.</p>
         <div class="flex flex-wrap gap-2 mt-4" id="smartChoices">
@@ -75,15 +72,15 @@
 <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
   <div class="flex gap-2 overflow-auto no-scrollbar pb-2" id="prodCats">
     <button data-cat="" class="pcat active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm">Semua</button>
-    <button data-cat="Benih" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🌱 Benih</button>
-    <button data-cat="Bibit" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🌿 Bibit</button>
-    <button data-cat="Pot" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🪴 Pot</button>
-    <button data-cat="Media Tanam" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🌿 Media</button>
-    <button data-cat="Pupuk" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🧪 Pupuk</button>
-    <button data-cat="Tools" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🪓 Tools</button>
-    <button data-cat="Hydroponics" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">💧 Hydro</button>
-    <button data-cat="Plant care" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🩺 Care</button>
-    <button data-cat="Bundling" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🎁 Bundling</button>
+    <button data-cat="Benih" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm">🌱 Benih</button>
+    <button data-cat="Bibit" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm">🌿 Bibit</button>
+    <button data-cat="Pot" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm">🪴 Pot</button>
+    <button data-cat="Media Tanam" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm">🌿 Media</button>
+    <button data-cat="Pupuk" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm">🧪 Pupuk</button>
+    <button data-cat="Tools" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm">🪓 Tools</button>
+    <button data-cat="Hydroponics" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm">💧 Hydro</button>
+    <button data-cat="Plant care" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm">🩺 Care</button>
+    <button data-cat="Bundling" class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm">🎁 Bundling</button>
   </div>
   <div class="flex gap-2 mt-3 flex-wrap">
     <label class="flex items-center gap-1.5 text-sm font-bold bg-white border px-3 py-1.5 rounded-full cursor-pointer"><input type="checkbox" id="filterBest"> Best Seller saja</label>
@@ -137,7 +134,7 @@ function renderSmartBasket(plantId){
       <div><p class="text-xs text-muted line-through">Rp${total.toLocaleString('id-ID')}</p><p class="text-xl font-black">Rp${b.harga.toLocaleString('id-ID')}</p></div>
       <button onclick="addBundle('${plantId}')" class="btn btn-orange px-6 py-3">Tambahkan Semua →</button>
     </div>
-    <p class="text-xs text-muted mt-2">* Simulasi — stok dummy, checkout tanpa pembayaran</p>
+    <p class="text-xs text-muted mt-2">* Simulasi - stok dummy, checkout tanpa pembayaran</p>
   `);
 }
 window.addBundle=function(plantId){
@@ -243,3 +240,4 @@ $(function(){
 </script>
 </body>
 </html>
+

@@ -1,20 +1,20 @@
-/* Communities dummy — FloraVerse */
+﻿/* Communities dummy - FloraVerse */
 const COMMUNITIES = [
   {id:"c01", nama:"Pecinta Cabai", slug:"pecinta-cabai", kategori:"Tanaman", members:1240, posts:342, color:"#FF718D", emoji:"🌶️", desc:"Berbagi tips menanam cabai dari semai hingga panen. Cocok untuk pemula dan kolektor pedas.", tags:["#cabai","#sayuran","#rumahan"], cover:"🌶️"},
   {id:"c02", nama:"Tomat Lovers Indonesia", slug:"tomat-lovers", kategori:"Tanaman", members:980, posts:210, color:"#FF9B70", emoji:"🍅", desc:"Komunitas penggemar tomat cherry & beef. Diskusi hama, ajir, dan panen.", tags:["#tomat","#buah","#pot"], cover:"🍅"},
-  {id:"c03", nama:"Hidroponik Indonesia", slug:"hidroponik", kategori:"Metode", members:2100, posts:567, color:"#6FA8FF", emoji:"💧", desc:"Urban farming tanpa tanah. AB Mix, NFT, wick system — semua dibahas.", tags:["#hidroponik","#urban","#ABMix"], cover:"💧"},
+  {id:"c03", nama:"Hidroponik Indonesia", slug:"hidroponik", kategori:"Metode", members:2100, posts:567, color:"#6FA8FF", emoji:"💧", desc:"Urban farming tanpa tanah. AB Mix, NFT, wick system - semua dibahas.", tags:["#hidroponik","#urban","#ABMix"], cover:"💧"},
   {id:"c04", nama:"Urban Gardening Jakarta", slug:"urban-gardening", kategori:"Metode", members:1850, posts:423, color:"#FFD45C", emoji:"🏙️", desc:"Berkebun di balkon, rooftop, dan gang sempit. Kota tetap hijau.", tags:["#urban","#balkon","#kota"], cover:"🏙️"},
   {id:"c05", nama:"Cactus & Succulent ID", slug:"cactus-succulent", kategori:"Hobi", members:3200, posts:812, color:"#8BCB8A", emoji:"🌵", desc:"Kolektor kaktus dan sukulen. Show off roset, tips propagasi.", tags:["#kaktus","#sukulen","#hias"], cover:"🌵"},
-  {id:"c06", nama:"Bonsai Nusantara", slug:"bonsai", kategori:"Hobi", members:870, posts:198, color:"#8BCB8A", emoji:"🌳", desc:"Seni bonsai — dari bakalan hingga kontes. Sabar, presisi, indah.", tags:["#bonsai","#seni","#pohon"], cover:"🌳"},
-  {id:"c07", nama:"Kebun Buah Rumahan", slug:"kebun-buah", kategori:"Tanaman", members:640, posts:156, color:"#FFD45C", emoji:"🍓", desc:"Stroberi, mangga tabulampot, jeruk kalamansi — buah di rumah.", tags:["#buah","#tabulampot","#panen"], cover:"🍓"},
+  {id:"c06", nama:"Bonsai Nusantara", slug:"bonsai", kategori:"Hobi", members:870, posts:198, color:"#8BCB8A", emoji:"🌳", desc:"Seni bonsai - dari bakalan hingga kontes. Sabar, presisi, indah.", tags:["#bonsai","#seni","#pohon"], cover:"🌳"},
+  {id:"c07", nama:"Kebun Buah Rumahan", slug:"kebun-buah", kategori:"Tanaman", members:640, posts:156, color:"#FFD45C", emoji:"🍓", desc:"Stroberi, mangga tabulampot, jeruk kalamansi - buah di rumah.", tags:["#buah","#tabulampot","#panen"], cover:"🍓"},
   {id:"c08", nama:"Organic Gardening", slug:"organic", kategori:"Metode", members:1120, posts:298, color:"#8BCB8A", emoji:"♻️", desc:"Berkebun organik, kompos, tanpa pestisida sintetis.", tags:["#organik","#kompos","#sehat"], cover:"♻️"},
   {id:"c09", nama:"Home Gardening Pemula", slug:"home-gardening", kategori:"Hobi", members:2650, posts:734, color:"#6FA8FF", emoji:"🏡", desc:"Ruang aman untuk pemula bertanya tanpa takut di-judge.", tags:["#pemula","#belajar","#sharing"], cover:"🏡"},
-  {id:"c10", nama:"Flower Garden", slug:"flower-garden", kategori:"Hobi", members:920, posts:210, color:"#FF718D", emoji:"🌸", desc:"Mawar, matahari, anggrek — taman bunga untuk healing.", tags:["#bunga","#mawar","#anggrek"], cover:"🌸"},
+  {id:"c10", nama:"Flower Garden", slug:"flower-garden", kategori:"Hobi", members:920, posts:210, color:"#FF718D", emoji:"🌸", desc:"Mawar, matahari, anggrek - taman bunga untuk healing.", tags:["#bunga","#mawar","#anggrek"], cover:"🌸"},
   {id:"c11", nama:"Composting Crew", slug:"composting", kategori:"Metode", members:540, posts:112, color:"#8BCB8A", emoji:"🍂", desc:"Olah sampah dapur jadi emas hitam. Kompos, kascing, eco-enzyme.", tags:["#kompos","#zerowaste","#lingkungan"], cover:"🍂"},
-  {id:"c12", nama:"Herb & Rempah", slug:"herb-rempah", kategori:"Tanaman", members:760, posts:178, color:"#8BCB8A", emoji:"🌿", desc:"Basil, mint, kemangi, lavender — herbal untuk dapur & relaksasi.", tags:["#herbal","#rempah","#dapur"], cover:"🌿"}
+  {id:"c12", nama:"Herb & Rempah", slug:"herb-rempah", kategori:"Tanaman", members:760, posts:178, color:"#8BCB8A", emoji:"🌿", desc:"Basil, mint, kemangi, lavender - herbal untuk dapur & relaksasi.", tags:["#herbal","#rempah","#dapur"], cover:"🌿"}
 ];
 
-/* Dummy posts — digunakan di community.html */
+/* Dummy posts - digunakan di community.html */
 const POSTS = [
   {id:"p01", community:"c01", user:"Izra", avatar:"IZ", time:"2 jam lalu", content:"Cabai rawit ku hari ke-28 udah mulai berbunga! Siram tiap pagi + pupuk organik 2 minggu sekali. Ada tips biar buah lebat?", likes:42, comments:12, image:"🌶️", liked:false, saved:false, tags:["#cabai","#berbunga"]},
   {id:"p02", community:"c03", user:"Fairuz", avatar:"FA", time:"5 jam lalu", content:"Panen selada romaine hidroponik 35 hari! AB Mix 800ppm, pH 6.0. Rasanya renyah banget. Siapa mau resep nutrisi?", likes:89, comments:24, image:"🥬", liked:true, saved:false, tags:["#hidroponik","#panen"]},
@@ -27,3 +27,4 @@ const POSTS = [
   {id:"p09", community:"c04", user:"Tafayad", avatar:"TA", time:"4 hari lalu", content:"Urban gardening itu terapi. Pagi siram, sore panen kangkung 25 hari. Kota tetap hijau!", likes:61, comments:13, image:"🏙️", liked:false, saved:false, tags:["#urban","#kangkung"]},
   {id:"p10", community:"c12", user:"Izra", avatar:"IZ", time:"5 hari lalu", content:"Mint ku invasi pot lain 😅 Pelajaran: jangan tanam mint campur! Pisahkan pot.", likes:39, comments:10, image:"🌿", liked:false, saved:false, tags:["#mint","#herbal"]},
 ];
+

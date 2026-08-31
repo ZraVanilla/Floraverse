@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tanaman — FloraVerse Ensiklopedia</title>
+<title>Tanaman - FloraVerse Ensiklopedia</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{blue:'#6FA8FF', pink:'#FF718D', yellow:'#FFD45C', orange:'#FF9B70', green:'#8BCB8A', charcoal:'#252525'}}}}</script>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/animations.css">
 <link rel="stylesheet" href="css/responsive.css">
 <!--
-  Image source: Custom illustration created for FloraVerse — Open License
-  Plant Lab illustration: Custom FloraVerse — Open License
+  Image source: Custom illustration created for FloraVerse - Open License
+  Plant Lab illustration: Custom FloraVerse - Open License
 -->
 </head>
 <body class="bg-[#FCFCFC]">
@@ -45,7 +45,7 @@
       <p class="text-white/90 text-sm mt-2 max-w-[560px]">Filter berdasarkan kategori, cahaya, dan tingkat kesulitan. Klik kartu untuk detail lengkap + cara menanam.</p>
       <div class="flex flex-wrap gap-2 mt-4">
         <button onclick="openPlantMatch()" class="btn bg-white text-charcoal font-black px-5">✨ Plant Match</button>
-        <span class="pill bg-white/20 text-white">20–30 tanaman dummy</span>
+        <span class="pill bg-white/20 text-charcoal">20–30 tanaman dummy</span>
       </div>
     </div>
     <div class="relative z-10 bg-white rounded-3xl p-5 w-full lg:w-[380px]">
@@ -84,15 +84,15 @@
 <!-- Category pills -->
 <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
   <div class="flex gap-2 overflow-auto no-scrollbar pb-2" id="catPills">
-    <button data-cat="" class="cat-pill active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm">Semua</button>
-    <button data-cat="Sayuran" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50">🥬 Sayuran</button>
-    <button data-cat="Buah" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50">🍓 Buah</button>
-    <button data-cat="Bunga" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50">🌸 Bunga</button>
-    <button data-cat="Herbal" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50">🌿 Herbal</button>
-    <button data-cat="Hias" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50">🪴 Hias</button>
-    <button data-cat="Pohon" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50">🌳 Pohon buah</button>
-    <button data-cat="Sukulen" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50">🪴 Sukulen</button>
-    <button data-cat="Kaktus" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50">🌵 Kaktus</button>
+    <button data-cat="" class="cat-pill active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm flex items-center justify-center">Semua</button>
+    <button data-cat="Sayuran" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🥬<span class="hidden sm:inline"> Sayuran</span></button>
+    <button data-cat="Buah" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🍓<span class="hidden sm:inline"> Buah</span></button>
+    <button data-cat="Bunga" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🌸<span class="hidden sm:inline"> Bunga</span></button>
+    <button data-cat="Herbal" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🌿<span class="hidden sm:inline"> Herbal</span></button>
+    <button data-cat="Hias" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🪴<span class="hidden sm:inline"> Hias</span></button>
+    <button data-cat="Pohon" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🌳<span class="hidden sm:inline"> Pohon buah</span></button>
+    <button data-cat="Sukulen" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🪴<span class="hidden sm:inline"> Sukulen</span></button>
+    <button data-cat="Kaktus" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🌵<span class="hidden sm:inline"> Kaktus</span></button>
   </div>
 </div>
 
@@ -101,14 +101,14 @@
   <div id="emptyState" class="hidden text-center py-16"><div class="text-5xl">🔍</div><p class="font-black mt-3">Tidak ada tanaman ditemukan</p><p class="text-sm text-muted">Coba ubah filter atau kata kunci.</p></div>
 </main>
 
-<!-- PLANT LAB (#24) — Interactive simulation -->
+<!-- PLANT LAB (#24) - Interactive simulation -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 pb-10">
   <div class="fv-card white p-6 sm:p-7">
     <div class="flex flex-wrap items-start justify-between gap-3">
       <div>
-        <span class="pill pill-yellow font-black">🔬 Plant Lab — Simulasi Edukasi</span>
+        <span class="pill pill-yellow font-black">🔬 Plant Lab - Simulasi Edukasi</span>
         <h2 class="text-xl sm:text-2xl font-black leading-tight mt-2">Coba eksperimen tanpa takut gagal.</h2>
-        <p class="text-sm text-muted mt-1 max-w-[560px]">Atur air, cahaya, pupuk & media. Tanaman bereaksi dummy — edukasi, bukan diagnosis ilmiah.</p>
+        <p class="text-sm text-muted mt-1 max-w-[560px]">Atur air, cahaya, pupuk & media. Tanaman bereaksi dummy - edukasi, bukan diagnosis ilmiah.</p>
       </div>
       <div class="flex gap-2">
         <select id="labPlantSelect" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm"></select>
@@ -258,7 +258,7 @@ function openPlant(id){
             <p class="font-black text-sm mt-3">🌡️ Suhu Ideal</p><p class="text-sm text-muted">${p.suhu} • pH ${p.ph}</p>
           </div>
           <div class="fv-card white p-4">
-            <p class="font-black text-sm">💧 Kebutuhan Air</p><p class="text-sm text-muted">${p.air} — siram ${p.air==='Jarang'?'7–10 hari sekali':p.air==='Banyak'?'1–2x sehari':'1x sehari pagi'}</p>
+            <p class="font-black text-sm">💧 Kebutuhan Air</p><p class="text-sm text-muted">${p.air} - siram ${p.air==='Jarang'?'7–10 hari sekali':p.air==='Banyak'?'1–2x sehari':'1x sehari pagi'}</p>
             <p class="font-black text-sm mt-3">☀️ Cahaya</p><p class="text-sm text-muted">${p.cahaya}</p>
           </div>
         </div>
@@ -270,12 +270,12 @@ function openPlant(id){
         </div>
 
         <div class="fv-card white p-4 mt-3 border-l-4" style="border-left-color:${p.color}">
-          <p class="font-black text-sm">🐛 Hama & Penyakit</p><p class="text-sm text-muted mt-1">${p.hama} — cek daun bawah tiap minggu, semprot neem oil jika perlu.</p>
+          <p class="font-black text-sm">🐛 Hama & Penyakit</p><p class="text-sm text-muted mt-1">${p.hama} - cek daun bawah tiap minggu, semprot neem oil jika perlu.</p>
           <p class="font-black text-sm mt-2">🧪 Pemupukan</p><p class="text-sm text-muted">${p.kategori==='Hias'?'Pupuk seimbang 2 minggu sekali':p.kategori==='Sayuran'?'Kompos + NPK saat vegetatif':'Pupuk buah tinggi K saat generatif'}</p>
         </div>
 
         ${relatedProducts.length?`
-        <h3 class="font-black mt-6">🛒 Produk Terkait — Smart Garden Basket</h3>
+        <h3 class="font-black mt-6">🛒 Produk Terkait - Smart Garden Basket</h3>
         <div class="grid sm:grid-cols-3 gap-3 mt-3">
           ${relatedProducts.map(pr=>`
             <div class="fv-card white p-3 flex gap-3 items-center">
@@ -301,7 +301,7 @@ function openPlant(id){
 
         <!-- Ecosystem cross-link (#32) -->
         <div class="fv-card white p-4 mt-4">
-          <p class="font-black text-sm">🔗 Ekosistem FloraVerse — Lanjutkan Perjalanan</p>
+          <p class="font-black text-sm">🔗 Ekosistem FloraVerse - Lanjutkan Perjalanan</p>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-3">
             <a href="learn.html" class="btn btn-ghost text-xs py-2.5 text-center">📚 Pelajari</a>
             <a href="garden.html" class="btn btn-primary text-xs py-2.5 text-center">🌱 Mulai Journey</a>
@@ -341,3 +341,4 @@ $(function(){
 </script>
 </body>
 </html>
+

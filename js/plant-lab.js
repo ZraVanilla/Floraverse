@@ -1,4 +1,4 @@
-/* FloraVerse — Plant Lab (simulation) — dummy educational simulation, not scientific diagnosis */
+﻿/* FloraVerse - Plant Lab (simulation) - dummy educational simulation, not scientific diagnosis */
 const PLANT_LAB_DEFAULT = { water:50, sun:60, fert:40, soil:70 };
 
 function plantLabEvaluate(params){
@@ -49,7 +49,7 @@ function renderPlantLab(containerId, initialPlantId){
           <p class="font-black mt-3">${plant.nama}</p><p class="text-xs italic text-muted -mt-1">${plant.ilmiah}</p>
           <div class="flex justify-between text-xs font-bold mt-3"><span>Kesehatan Simulasi</span><span>${res.health}%</span></div>
           <div class="progress-track mt-1"><div class="progress-fill shimmer" style="width:${res.health}%; background:${res.color}"></div></div>
-          <p class="text-xs text-muted mt-2">*Bukan diagnosis ilmiah — hanya simulasi untuk belajar.</p>
+          <p class="text-xs text-muted mt-2">*Bukan diagnosis ilmiah - hanya simulasi untuk belajar.</p>
           <div class="flex gap-2 mt-3 justify-center">
             <button onclick="$('#plantLabModal').removeClass('open')" class="btn btn-ghost text-xs px-3 py-2 hidden lg:flex">Tutup</button>
             <button class="btn btn-primary text-xs px-3 py-2 lab-reset">↺ Reset Ideal</button>
@@ -91,10 +91,11 @@ function renderPlantLab(containerId, initialPlantId){
       window._labTimer=setTimeout(draw, 250);
     });
     $c.find('.lab-reset').on('click', ()=>{ params={...PLANT_LAB_DEFAULT}; draw(); toast('Reset ke kondisi ideal','🔬'); });
-    $c.find('.lab-apply').on('click', ()=> toast('Simulasi diterapkan — cek Garden Pulse','✨'));
+    $c.find('.lab-apply').on('click', ()=> toast('Simulasi diterapkan - cek Garden Pulse','✨'));
   }
   draw();
 
   // expose for external plant switch
   $c.data('setPlant', (newId)=>{ plant=PLANTS.find(p=>p.id===newId)||plant; draw(); });
 }
+

@@ -1,10 +1,10 @@
-/* Guides dummy — FloraVerse Ruang Belajar */
+﻿/* Guides dummy - FloraVerse Ruang Belajar */
 const GUIDES = [
   {id:"g01", judul:"Dasar Berkebun untuk Pemula", kategori:"Dasar berkebun", waktu:"8 menit", level:"Pemula", color:"#6FA8FF", emoji:"🌱", desc:"Mulai dari nol: alat, media, dan mindset berkebun.", konten:"Pilih wadah, media porous, sinar 6 jam, siram konsisten.", populer:true},
   {id:"g02", judul:"Mengenal Media Tanam: Tanah, Sekam, Cocopeat", kategori:"Media tanam", waktu:"6 menit", level:"Pemula", color:"#FFD45C", emoji:"🌿", desc:"Perbandingan media tanam dan kapan menggunakannya.", populer:true},
   {id:"g03", judul:"Cara Menyiram yang Benar (Jangan Overwater!)", kategori:"Penyiraman", waktu:"5 menit", level:"Pemula", color:"#8BCB8A", emoji:"💧", desc:"Kenali tanda overwater vs underwater dari daun.", populer:true},
   {id:"g04", judul:"Panduan Pupuk: Kompos, NPK, dan AB Mix", kategori:"Pemupukan", waktu:"7 menit", level:"Menengah", color:"#FF9B70", emoji:"🧪", desc:"Kapan pakai organik vs sintetis, dosis aman.", populer:false},
-  {id:"g05", judul:"Hama & Penyakit: Kenali dan Atasi", kategori:"Hama & penyakit", waktu:"9 menit", level:"Menengah", color:"#FF718D", emoji:"🐛", desc:"Kutu daun, thrips, embun tepung — solusi organik.", populer:true},
+  {id:"g05", judul:"Hama & Penyakit: Kenali dan Atasi", kategori:"Hama & penyakit", waktu:"9 menit", level:"Menengah", color:"#FF718D", emoji:"🐛", desc:"Kutu daun, thrips, embun tepung - solusi organik.", populer:true},
   {id:"g06", judul:"Hidroponik Wick System untuk Balkon", kategori:"Hidroponik", waktu:"10 menit", level:"Pemula", color:"#6FA8FF", emoji:"💧", desc:"Hidroponik tanpa pompa, modal <100rb.", populer:true},
   {id:"g07", judul:"Urban Farming di Lahan 2x1 Meter", kategori:"Urban farming", waktu:"8 menit", level:"Pemula", color:"#FFD45C", emoji:"🏙️", desc:"Vertikal garden, rak susun, pot gantung.", populer:false},
   {id:"g08", judul:"Cara Membuat Kompos dari Sampah Dapur", kategori:"Composting", waktu:"12 menit", level:"Pemula", color:"#8BCB8A", emoji:"♻️", desc:"30 hari jadi kompos, tanpa bau.", populer:true},
@@ -19,3 +19,4 @@ const GUIDES = [
   {id:"g17", judul:"Cahaya untuk Tanaman: Full Sun vs Partial Sun vs Indirect", kategori:"Cahaya", waktu:"6 menit", level:"Pemula", color:"#FFD45C", emoji:"☀️", desc:"Kenali kebutuhan cahaya tiap tanaman, dari cabai yang butuh terik hingga monstera yang suka teduh.", konten:"Full Sun 6-8 jam, Partial 3-6 jam, Indirect untuk hias indoor.", populer:true},
   {id:"g18", judul:"Plant Journey: Memahami Fase Seed → Harvest", kategori:"Dasar berkebun", waktu:"7 menit", level:"Pemula", color:"#8BCB8A", emoji:"🌱", desc:"Belajar fase pertumbuhan dan task harian di Kebunku.", konten:"Seed → Seedling → Growing → Flowering → Fruiting → Harvest.", populer:true},
 ];
+

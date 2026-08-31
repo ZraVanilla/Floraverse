@@ -1,4 +1,4 @@
-/* FloraVerse — journey.js — Plant Journey storytelling & progress helpers */
+﻿/* FloraVerse - journey.js - Plant Journey storytelling & progress helpers */
 const JOURNEY_STORY = {
   "cabai-rawit":[
     {day:1, title:"Benih kecil memulai perjalanannya.", desc:"Semai 6 benih Cabai Rawit di rockwool. Jaga lembap."},
@@ -14,7 +14,7 @@ const JOURNEY_STORY = {
     {day:14, title:"Pindah tanam & ajir.", desc:"Beri ajir bambu, ikat longgar."},
     {day:35, title:"Bunga pertama mekar.", desc:"Tambah kalsium boron cegah blossom end rot."},
     {day:60, title:"Buah hijau menggantung.", desc:"Pangkas tunas air tiap minggu."},
-    {day:80, title:"Merah mengkilap — panen!", desc:"Panen pagi, simpan suhu ruang."}
+    {day:80, title:"Merah mengkilap - panen!", desc:"Panen pagi, simpan suhu ruang."}
   ]
 };
 
@@ -30,3 +30,4 @@ function xpForAction(action){
   const map={ "addPlant":10, "guide":20, "journal":10, "help":15, "journey":50, "challenge":40, "task":10 };
   return map[action]||5;
 }
+

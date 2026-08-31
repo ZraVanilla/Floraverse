@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FloraVerse — Satu Dunia, Berjuta Cara untuk Tumbuh.</title>
+<title>FloraVerse - Satu Dunia, Berjuta Cara untuk Tumbuh.</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config={
@@ -22,8 +22,8 @@ tailwind.config={
 <link rel="stylesheet" href="css/responsive.css">
 <!--
   Image source: Custom illustration created for FloraVerse (playful digital garden)
-  Icon source: Emoji / CSS shapes — Open License
-  Living World assets: Custom FloraVerse illustration — Open License
+  Icon source: Emoji / CSS shapes - Open License
+  Living World assets: Custom FloraVerse illustration - Open License
 -->
 </head>
 <body class="bg-white text-charcoal">
@@ -77,10 +77,10 @@ tailwind.config={
         untuk Tumbuh.
       </h1>
       <p class="text-[15px] sm:text-[17px] leading-relaxed text-[#6B7280] mt-4 max-w-[560px]">
-        FloraVerse menggabungkan <b class="text-charcoal">ensiklopedia tanaman, edukasi, komunitas, marketplace, dan jurnal kebun</b> dalam satu pengalaman playful. Temukan tanaman yang cocok, belajar, belanja, dan pantau pertumbuhan — semua di satu tempat.
+        FloraVerse menggabungkan <b class="text-charcoal">ensiklopedia tanaman, edukasi, komunitas, marketplace, dan jurnal kebun</b> dalam satu pengalaman. Temukan tanaman yang cocok, belajar, belanja, dan pantau pertumbuhan - semua di satu tempat.
       </p>
       <div class="flex flex-wrap gap-3 mt-6">
-        <button onclick="openPlantMatch()" class="btn btn-primary text-[15px] px-7 py-3.5">🌱 Mulai Berkebun — Plant Match</button>
+        <button onclick="openPlantMatch()" class="btn btn-primary text-[15px] px-7 py-3.5">🌱 Mulai Berkebun - Plant Match</button>
         <a href="plants.html" class="btn btn-ghost px-7 py-3.5">Jelajahi Tanaman →</a>
       </div>
       <div class="flex items-center gap-6 mt-7">
@@ -111,11 +111,10 @@ tailwind.config={
       </div>
     </div>
 
-    <!-- Right visual — Living World (#10) -->
+    <!-- Right visual - Living World (#10) -->
     <div class="lg:col-span-6 relative reveal in" style="transition-delay:.1s">
-      <div class="relative bg-[#6FA8FF] rounded-[32px] p-6 sm:p-8 overflow-hidden min-h-[520px] flex flex-col">
-        <!-- Living World: matahari tetap, awan/lebah/kupu-kupu dihilangkan sesuai instruksi -->
-        <div class="absolute top-4 right-6 w-14 h-14 rounded-full bg-[#FFD45C] border-4 border-white/40 flex items-center justify-center text-xl sun-pulse z-10">☀️</div>
+      <div class="relative bg-[#6FA8FF] rounded-[32px] p-6 sm:p-8 min-h-[520px] flex flex-col hero-visual-shell">
+        <!-- Living World: matahari dihilangkan agar layout lebih rapi -->
         <!-- blobs -->
         <div class="blob blob-yellow w-32 h-32 -top-6 -right-6 opacity-60"></div>
         <div class="blob blob-pink w-20 h-20 top-28 right-10 opacity-50"></div>
@@ -149,7 +148,7 @@ tailwind.config={
         </div>
 
         <!-- Garden Pulse mini -->
-        <div class="relative z-10 mt-auto bg-white rounded-[24px] p-4 flex items-center gap-3 shadow-xl">
+        <div class="garden-pulse-card relative z-20 mt-auto bg-white rounded-[24px] p-4 flex items-center gap-3 shadow-xl">
           <div class="w-12 h-12 rounded-full bg-[#EFF6FF] flex items-center justify-center text-xl">💧</div>
           <div class="flex-1">
             <p class="font-extrabold text-sm leading-none">Garden Pulse</p>
@@ -163,14 +162,6 @@ tailwind.config={
           <a href="garden.html" class="btn btn-dark text-xs px-4 py-2.5">Lihat →</a>
         </div>
 
-        <!-- floating badge -->
-        <div class="absolute -bottom-2 -right-2 sm:bottom-4 sm:right-4 bg-[#FFD45C] text-charcoal px-4 py-3 rounded-2xl shadow-xl rotate-[-2deg] hidden sm:flex items-center gap-2">
-          <span class="text-xl">🎯</span>
-          <div class="leading-tight">
-            <p class="font-black text-xs">Plant Match</p>
-            <p class="text-[11px] font-semibold">Cari tanaman idealmu</p>
-          </div>
-        </div>
       </div>
       <!-- small stat cards under -->
       <div class="grid grid-cols-2 gap-3 mt-3">
@@ -194,7 +185,7 @@ tailwind.config={
     <div class="flex-1 relative z-10">
       <span class="pill bg-white text-[#3B82F6] font-black">✨ Killer Feature #1</span>
       <h2 class="text-[28px] sm:text-[32px] font-black leading-tight mt-3 text-white">Bingung mau tanam apa?<br>Coba <span class="underline decoration-white/40 decoration-4 underline-offset-4">Plant Match</span></h2>
-      <p class="text-white/90 mt-2 max-w-[560px]">Jawab 4 pertanyaan singkat — kami rekomendasikan tanaman dengan skor kecocokan personal. Seperti quiz, tapi untuk kebun.</p>
+      <p class="text-white/90 mt-2 max-w-[560px]">Jawab 4 pertanyaan singkat - kami rekomendasikan tanaman dengan skor kecocokan personal. Seperti quiz, tapi untuk kebun.</p>
       <div class="flex flex-wrap gap-2 mt-4 text-xs font-bold">
         <span class="bg-white/20 text-white px-3 py-1.5 rounded-full">☀️ Cahaya</span>
         <span class="bg-white/20 text-white px-3 py-1.5 rounded-full">🏠 Lokasi</span>
@@ -249,7 +240,7 @@ tailwind.config={
     <div class="lg:col-span-5 fv-card white p-6">
       <span class="pill pill-green">💓 Garden Pulse</span>
       <h3 class="text-xl font-black mt-2">Kebunmu butuh perhatian?</h3>
-      <p class="text-sm text-muted mt-1">Ringkasan kondisi tanaman — simulasi personal garden Izra.</p>
+      <p class="text-sm text-muted mt-1">Ringkasan kondisi tanaman - simulasi personal garden Izra.</p>
       <div class="space-y-3 mt-4">
         <div class="flex items-center gap-3 p-3 rounded-2xl border bg-[#EFF6FF] border-[#BFDBFE]">
           <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">🌶️</div>
@@ -280,7 +271,7 @@ tailwind.config={
         <div class="flex items-center gap-3">
           <div class="w-12 h-12 rounded-2xl bg-[#FF718D]/15 flex items-center justify-center text-2xl">🌶️</div>
           <div>
-            <p class="font-black">Cabai Rawit — Day 28</p>
+            <p class="font-black">Cabai Rawit - Day 28</p>
             <p class="text-xs text-muted">Growing • 45% progress</p>
           </div>
           <span class="ml-auto pill pill-green">Healthy</span>
@@ -333,7 +324,7 @@ tailwind.config={
       <div class="flex-1">
         <span class="pill pill-pink font-black">🔥 Active Community Challenge</span>
         <h2 class="text-[22px] sm:text-[26px] font-black leading-tight mt-2">30 Hari Menanam Cabai</h2>
-        <p class="text-sm text-muted mt-1">Tantangan komunitas paling aktif — gabung, update progress harian, dapat XP & unlock Chili Champion.</p>
+        <p class="text-sm text-muted mt-1">Tantangan komunitas paling aktif - gabung, update progress harian, dapat XP & unlock Chili Champion.</p>
         <div class="flex flex-wrap gap-2 mt-3">
           <span class="pill pill-white text-xs">🌶️ Pecinta Cabai</span>
           <span class="pill pill-white text-xs">124 gardeners joined</span>
@@ -352,9 +343,9 @@ tailwind.config={
       <div class="lg:w-[380px] bg-[#FFF7ED] border-2 border-[#FFD5BF] rounded-[24px] p-5">
         <p class="font-black flex items-center gap-2">👥 Peserta Terbaru</p>
         <div class="space-y-2 mt-3">
-          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#FFD45C] flex items-center justify-center font-black text-xs">IZ</span><div class="flex-1"><p class="font-bold text-sm">Izra — Day 18</p><p class="text-xs text-muted">Cabai Rawit • Healthy</p></div><span class="text-xs font-black text-[#8BCB8A]">✓</span></div>
-          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#FF718D] flex items-center justify-center font-black text-xs text-white">FA</span><div class="flex-1"><p class="font-bold text-sm">Fairuz — Day 22</p><p class="text-xs text-muted">Tomat Cherry • Flowering</p></div><span class="text-xs font-black text-[#8BCB8A]">✓</span></div>
-          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] flex items-center justify-center font-black text-xs text-white">TA</span><div class="flex-1"><p class="font-bold text-sm">Tafayad — Day 15</p><p class="text-xs text-muted">Kangkung • Growing</p></div><span class="text-xs font-black text-[#6FA8FF]">●</span></div>
+          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#FFD45C] flex items-center justify-center font-black text-xs">IZ</span><div class="flex-1"><p class="font-bold text-sm">Izra - Day 18</p><p class="text-xs text-muted">Cabai Rawit • Healthy</p></div><span class="text-xs font-black text-[#8BCB8A]">✓</span></div>
+          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#FF718D] flex items-center justify-center font-black text-xs text-white">FA</span><div class="flex-1"><p class="font-bold text-sm">Fairuz - Day 22</p><p class="text-xs text-muted">Tomat Cherry • Flowering</p></div><span class="text-xs font-black text-[#8BCB8A]">✓</span></div>
+          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] flex items-center justify-center font-black text-xs text-white">TA</span><div class="flex-1"><p class="font-bold text-sm">Tafayad - Day 15</p><p class="text-xs text-muted">Kangkung • Growing</p></div><span class="text-xs font-black text-[#6FA8FF]">●</span></div>
         </div>
         <button onclick="toast('Journal dibagikan ke challenge','↗')" class="btn btn-dark w-full mt-3 text-sm">↗ Bagikan Journal ke Challenge</button>
       </div>
@@ -382,7 +373,7 @@ tailwind.config={
       <div>
         <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop</span>
         <h2 class="text-[24px] sm:text-[28px] font-black mt-2 text-white">Semua kebutuhan berkebun, satu keranjang.</h2>
-        <p class="text-white/90 text-sm mt-1">Benih, pot, media, pupuk, alat — plus Smart Garden Basket yang merekomendasikan kit sesuai tanamanmu.</p>
+        <p class="text-white/90 text-sm mt-1">Benih, pot, media, pupuk, alat - plus Smart Garden Basket yang merekomendasikan kit sesuai tanamanmu.</p>
       </div>
       <a href="shop.html" class="btn bg-white text-charcoal px-6 py-3">Belanja sekarang →</a>
     </div>
@@ -425,8 +416,8 @@ tailwind.config={
     <div class="flex flex-col lg:flex-row justify-between gap-6">
       <div>
         <p class="wordmark text-xl">Flora<span>Verse</span></p>
-        <p class="text-sm text-muted mt-1 max-w-[420px]">Satu Dunia, Berjuta Cara untuk Tumbuh. Ekosistem digital untuk berkebun dan bertani — Discover → Learn → Connect → Shop → Grow.</p>
-        <p class="text-xs text-muted mt-3">© 2026 FloraVerse • Dibuat untuk lomba Web Design — Tema: Innovative Web Solutions for a Smarter Digital Society</p>
+        <p class="text-sm text-muted mt-1 max-w-[420px]">Satu Dunia, Berjuta Cara untuk Tumbuh. Ekosistem digital untuk berkebun dan bertani - Discover → Learn → Connect → Shop → Grow.</p>
+        <p class="text-xs text-muted mt-3">© 2026 FloraVerse • Dibuat untuk lomba Web Design - Tema: Innovative Web Solutions for a Smarter Digital Society</p>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 text-sm">
         <div>
@@ -590,3 +581,4 @@ $(function(){
 </script>
 </body>
 </html>
+

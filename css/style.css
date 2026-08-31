@@ -1,9 +1,9 @@
-/* 
-  FloraVerse — Playful Digital Garden Design System
+﻿/* 
+  FloraVerse - Playful Digital Garden Design System
   Custom CSS complementing Tailwind CDN
   Palette: #6FA8FF (Blue) #FF718D (Pink) #FFD45C (Yellow) #FF9B70 (Orange) #8BCB8A (Green) #FFFFFF #252525
   Purple is NOT used.
-  Custom illustration created for FloraVerse — Open License
+  Custom illustration created for FloraVerse - Open License
 */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap');
 
@@ -46,6 +46,41 @@ body{background:#FFFFFF; color:var(--charcoal); -webkit-font-smoothing:antialias
 .fv-card.green{background:var(--green); color:#fff;}
 .fv-card.white{background:#fff;}
 
+.commFilter,
+.feedTab,
+.gcat,
+.levelBtn,
+.cat-pill,
+.pcat,
+.smartBtn,
+.ptab{
+  transition:all .2s ease;
+}
+.commFilter:not(.active),
+.feedTab:not(.active),
+.gcat:not(.active),
+.levelBtn:not(.active),
+.cat-pill:not(.active),
+.pcat:not(.active),
+.smartBtn:not(.active),
+.ptab:not(.active){
+  background:#fff;
+  color:var(--charcoal);
+  border-color:#E5E7EB;
+}
+.commFilter.active,
+.feedTab.active,
+.gcat.active,
+.levelBtn.active,
+.cat-pill.active,
+.pcat.active,
+.smartBtn.active,
+.ptab.active{
+  background:var(--charcoal);
+  color:#fff;
+  border-color:var(--charcoal);
+}
+
 /* Buttons */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
@@ -63,6 +98,64 @@ body{background:#FFFFFF; color:var(--charcoal); -webkit-font-smoothing:antialias
 .btn-orange{background:var(--orange); color:#fff;}
 .btn-yellow{background:var(--yellow); color:var(--charcoal);}
 .btn-green{background:var(--green); color:#fff;}
+
+.bg-white.text-white,
+.bg-white\/20.text-white,
+.bg-white\/15.text-white,
+.bg-white\/10.text-white{
+  color:var(--charcoal) !important;
+}
+
+.fv-card.orange .bg-white,
+.fv-card.orange .bg-white *,
+.fv-card.orange .bg-white input,
+.fv-card.orange .bg-white select,
+.fv-card.orange .bg-white textarea,
+.fv-card.orange .bg-white button{
+  color:var(--charcoal) !important;
+}
+
+.fv-card.blue .bg-white\/20.text-white,
+.fv-card.blue .bg-white.text-white,
+.fv-card.pink .bg-white\/20.text-white,
+.fv-card.pink .bg-white.text-white,
+.fv-card.orange .bg-white\/20.text-white,
+.fv-card.orange .bg-white.text-white,
+.fv-card.green .bg-white\/20.text-white,
+.fv-card.green .bg-white.text-white,
+.fv-card.yellow .bg-white\/20.text-white,
+.fv-card.yellow .bg-white.text-white{
+  color:#fff !important;
+}
+
+select,
+select option,
+select:focus,
+input,
+textarea{
+  color:var(--charcoal) !important;
+}
+
+select,
+select option{
+  background:#fff !important;
+  color:var(--charcoal) !important;
+}
+
+select {
+  appearance:auto;
+  -webkit-appearance:menulist;
+  color-scheme: light;
+}
+
+/* Native emoji fallback */
+.fv-emoji{
+  display:inline-block; width:auto; height:auto; font-size:1.15em; line-height:1;
+  vertical-align:-0.18em; background:none; flex-shrink:0;
+}
+.fv-emoji-plant,.fv-emoji-leaf,.fv-emoji-water,.fv-emoji-sun,.fv-emoji-flower,
+.fv-emoji-chat,.fv-emoji-shop,.fv-emoji-community,.fv-emoji-fire,.fv-emoji-book,
+.fv-emoji-check,.fv-emoji-map,.fv-emoji-spark{background:none}
 
 /* Pills / Tags */
 .pill{
@@ -89,6 +182,33 @@ body{background:#FFFFFF; color:var(--charcoal); -webkit-font-smoothing:antialias
 }
 .nav-link:hover{color:var(--charcoal); background:#F3F4F6}
 .nav-link.active{background:var(--charcoal); color:#fff;}
+
+.menu-toggle{
+  position:relative; display:inline-flex; align-items:center; justify-content:center;
+  width:2.75rem; height:2.75rem; border-radius:999px; background:var(--charcoal); color:#fff;
+  border:none; box-shadow:0 8px 18px rgba(37,37,37,.12); transition:all .2s ease;
+}
+.menu-toggle span{
+  position:absolute; left:.7rem; right:.7rem; height:2px; border-radius:999px; background:#fff;
+  transition:transform .25s ease, opacity .2s ease, top .25s ease, bottom .25s ease;
+}
+.menu-toggle span:nth-child(1){top:0.9rem}
+.menu-toggle span:nth-child(2){top:1.33rem}
+.menu-toggle span:nth-child(3){top:1.76rem}
+.menu-toggle.is-open span:nth-child(1){top:1.33rem; transform:rotate(45deg)}
+.menu-toggle.is-open span:nth-child(2){opacity:0}
+.menu-toggle.is-open span:nth-child(3){top:1.33rem; transform:rotate(-45deg)}
+.menu-toggle:hover{background:#1a1a1a}
+
+.hero-visual-shell{
+  overflow:visible !important;
+  padding-bottom:1.5rem;
+}
+
+.garden-pulse-card{
+  position:relative; z-index:20;
+  margin-top:auto; margin-bottom:1rem;
+}
 
 /* Illustrative blobs */
 .blob{
@@ -171,3 +291,4 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
   border-radius:24px; position:relative; overflow:hidden; display:flex; align-items:flex-end; justify-content:center;
 }
 </style>
+

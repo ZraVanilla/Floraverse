@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kebunku — FloraVerse Plant Journey</title>
+<title>Kebunku - FloraVerse Plant Journey</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{blue:'#6FA8FF', pink:'#FF718D', yellow:'#FFD45C', orange:'#FF9B70', green:'#8BCB8A', charcoal:'#252525'}}}}</script>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/animations.css">
 <link rel="stylesheet" href="css/responsive.css">
 <!--
-  Image source: Custom illustration created for FloraVerse — Open License
-  Storytelling illustration: Custom FloraVerse — Open License
+  Image source: Custom illustration created for FloraVerse - Open License
+  Storytelling illustration: Custom FloraVerse - Open License
 -->
 </head>
 <body class="bg-[#FCFCFC]">
@@ -69,7 +69,7 @@
     <div class="flex items-center gap-3">
       <div id="detailEmoji" class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl">🌶️</div>
       <div>
-        <h3 id="detailName" class="font-black text-lg leading-none">Cabai Rawit — Day 28</h3>
+        <h3 id="detailName" class="font-black text-lg leading-none">Cabai Rawit - Day 28</h3>
         <p id="detailSub" class="text-xs text-muted">Capsicum frutescens • Growing • 45%</p>
       </div>
       <span id="detailHealth" class="ml-auto pill pill-green">Healthy</span>
@@ -115,12 +115,12 @@
     <!-- Plant Storytelling (#21) -->
     <div class="fv-card yellow p-4 mt-6 relative overflow-hidden">
       <span class="pill bg-white text-charcoal font-black">📖 Plant Storytelling</span>
-      <h4 id="storyTitle" class="font-black mt-2">Day 28 — Cabai tumbuh semakin kuat.</h4>
+      <h4 id="storyTitle" class="font-black mt-2">Day 28 - Cabai tumbuh semakin kuat.</h4>
       <p id="storyDesc" class="text-sm opacity-80 mt-1">Daun rimbun, akar kuat. Cek hama bawah daun tiap minggu.</p>
       <div class="flex gap-1.5 mt-3 text-[11px] font-bold overflow-auto no-scrollbar pb-1">
         <span class="pill bg-white">🌰 Seed</span><span class="pill bg-white">🌱 Seedling</span><span class="pill bg-charcoal text-white">🌿 Growing</span><span class="pill bg-gray-100">🌼 Flowering</span><span class="pill bg-gray-100">🌶️ Harvest</span>
       </div>
-      <p class="text-xs text-muted mt-2">*Cerita menciptakan emotional connection — bukan game penuh.</p>
+      <p class="text-xs text-muted mt-2">*Cerita menciptakan emotional connection - bukan game penuh.</p>
     </div>
 
     <!-- Plant Lab shortcut -->
@@ -135,7 +135,7 @@
   <div class="lg:col-span-5 space-y-4">
     <div class="fv-card white p-5">
       <p class="font-black">📝 Plant Journal</p>
-      <p class="text-xs text-muted">Dokumentasikan perkembangan — seperti story kebun.</p>
+      <p class="text-xs text-muted">Dokumentasikan perkembangan - seperti story kebun.</p>
       <div id="journalList" class="space-y-3 mt-3 max-h-[320px] overflow-auto pr-1"></div>
       <div class="flex gap-2 mt-3">
         <input id="journalInput" placeholder="Hari 29: ..." class="flex-1 px-4 py-2.5 rounded-full border bg-gray-50 focus:bg-white outline-none text-sm">
@@ -163,7 +163,7 @@
   <div class="fv-card white p-6 sm:p-7">
     <div class="flex flex-wrap items-start justify-between gap-3">
       <div>
-        <span class="pill pill-yellow font-black">🔬 Plant Lab — Simulasi Edukasi</span>
+        <span class="pill pill-yellow font-black">🔬 Plant Lab - Simulasi Edukasi</span>
         <h2 class="text-xl font-black mt-2">Uji coba sebelum tanam beneran.</h2>
         <p class="text-sm text-muted">Atur parameter, lihat tanaman bereaksi dummy. Hubungkan ke Garden Pulse & Journal.</p>
       </div>
@@ -249,7 +249,7 @@ function selectGarden(id){
 function renderDetail(){
   const g=MY_GARDEN.find(x=>x.id===selectedGardenId);
   $('#detailEmoji').css('background', g.color+'18').text(g.emoji);
-  $('#detailName').text(`${g.nama} — Day ${g.day}`);
+  $('#detailName').text(`${g.nama} - Day ${g.day}`);
   const plant=PLANTS.find(p=>p.id===g.plantId);
   $('#detailSub').text(`${plant?plant.ilmiah:''} • ${g.stage} • ${g.progress}%`);
   $('#detailHealth').text(g.health).attr('class', 'ml-auto pill text-xs font-black ' + (g.health==='Healthy'?'pill-green':g.health==='Needs Water'?'bg-[#6FA8FF] text-white':'bg-[#FF9B70] text-white'));
@@ -304,7 +304,7 @@ function renderDetail(){
   $('#tipsList').html(tips.map(t=> `<li>${t}</li>`).join(''));
   // storytelling
   const story = getStory(g.plantId, g.day);
-  $('#storyTitle').text(`Day ${story.day} — ${story.title}`);
+  $('#storyTitle').text(`Day ${story.day} - ${story.title}`);
   $('#storyDesc').text(story.desc);
   // shop
   const relatedProds = PRODUCTS.filter(p=> p.related===g.plantId).slice(0,2);
@@ -398,3 +398,4 @@ $(function(){
 </script>
 </body>
 </html>
+

@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Komunitas — FloraVerse</title>
+<title>Komunitas - FloraVerse</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{blue:'#6FA8FF', pink:'#FF718D', yellow:'#FFD45C', orange:'#FF9B70', green:'#8BCB8A', charcoal:'#252525'}}}}</script>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/animations.css">
 <link rel="stylesheet" href="css/responsive.css">
 <!--
-  Image source: Custom illustration created for FloraVerse — Open License
-  FloraMap illustration: Custom FloraVerse — Open License
+  Image source: Custom illustration created for FloraVerse - Open License
+  FloraMap illustration: Custom FloraVerse - Open License
 -->
 </head>
 <body class="bg-[#FCFCFC]">
@@ -25,25 +25,25 @@
   <div id="mobileNav" class="hidden lg:hidden border-t bg-white px-4 py-3"><div class="flex flex-wrap gap-2"><a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link active">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a></div></div>
 </nav>
 
-<header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-  <div class="fv-card pink p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden">
+<header class="community-header max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+  <div class="community-hero fv-card pink p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden">
     <div class="flex-1 relative z-10">
       <span class="pill bg-white text-[#FF4D6D] font-black">👥 Komunitas • 12 Grup</span>
       <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Bertumbuh bareng<br>yang sepemikiran.</h1>
       <p class="text-white/90 text-sm mt-2 max-w-[520px]">Pilih komunitas berdasarkan tanaman, metode, atau hobi. Berbagi progress Kebunku, tanya jawab, dan panen bareng.</p>
       <div class="flex gap-2 mt-4">
         <button onclick="$('#createPostModal').addClass('open')" class="btn bg-white text-charcoal font-black px-5">✏️ Buat Postingan</button>
-        <span class="pill bg-white/20 text-white">Aktif harian • Moderasi ramah</span>
+        <span class="pill bg-white/20 text-charcoal">Aktif harian • Moderasi ramah</span>
       </div>
     </div>
-    <div class="lg:w-[360px] bg-white rounded-[24px] p-5 relative z-10">
+    <div class="community-search-panel lg:w-[360px] bg-white rounded-[24px] p-5 relative z-10">
       <p class="font-black">🔍 Cari Komunitas</p>
       <div class="relative mt-2"><input id="searchComm" type="search" placeholder="Cari pecinta cabai, hidroponik..." class="w-full pl-10 pr-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#FF718D] outline-none font-medium"><span class="absolute left-3.5 top-3.5">⌕</span></div>
       <div class="flex gap-1.5 mt-3 flex-wrap">
         <button data-f="all" class="commFilter active px-3 py-1.5 rounded-full bg-charcoal text-white font-bold text-xs">Semua</button>
-        <button data-f="Tanaman" class="commFilter px-3 py-1.5 rounded-full bg-white border font-bold text-xs">🌱 Tanaman</button>
-        <button data-f="Metode" class="commFilter px-3 py-1.5 rounded-full bg-white border font-bold text-xs">🧪 Metode</button>
-        <button data-f="Hobi" class="commFilter px-3 py-1.5 rounded-full bg-white border font-bold text-xs">🎨 Hobi</button>
+        <button data-f="Tanaman" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🌱 Tanaman</button>
+        <button data-f="Metode" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🧪 Metode</button>
+        <button data-f="Hobi" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🎨 Hobi</button>
       </div>
       <p class="text-xs text-muted mt-3">Bergabung sebagai <b>Izra</b> • 4 komunitas diikuti</p>
     </div>
@@ -56,17 +56,17 @@
 </section>
 
 <!-- Community Challenge + FloraMap (#27, #30) -->
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 grid lg:grid-cols-12 gap-6">
+<section class="community-panel max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 grid lg:grid-cols-12 gap-6">
   <!-- Challenge -->
-  <div class="lg:col-span-7 fv-card white p-6 relative overflow-hidden">
+  <div class="community-challenge lg:col-span-7 fv-card white p-6 relative overflow-hidden">
     <span class="pill pill-pink font-black">🏆 Community Challenge</span>
     <h3 class="text-xl font-black mt-2 leading-tight">30 Hari Menanam Cabai</h3>
-    <p class="text-sm text-muted">Challenge komunitas Pecinta Cabai — 124 gardeners joined, 18 / 30 Days. Selesaikan journey, share journal, dapat +40 XP & unlock Chili Champion.</p>
+    <p class="text-sm text-muted">Challenge komunitas Pecinta Cabai - 124 gardeners joined, 18 / 30 Days. Selesaikan journey, share journal, dapat +40 XP & unlock Chili Champion.</p>
     <div class="progress-track mt-4"><div class="progress-fill bg-[#FF718D] shimmer" style="width:60%"></div></div>
     <div class="flex justify-between text-xs font-bold mt-1.5"><span>18/30 hari</span><span>60%</span></div>
     <div class="grid sm:grid-cols-2 gap-3 mt-4">
-      <div class="bg-[#FFF7ED] border border-[#FFD5BF] rounded-2xl p-3 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-[#FFD45C] flex items-center justify-center font-black text-xs">IZ</span><div><p class="font-bold text-sm">Izra — Day 18</p><p class="text-xs text-muted">Progress 60%</p></div><span class="ml-auto pill pill-green text-xs">● Aktif</span></div>
-      <div class="bg-gray-50 rounded-2xl p-3 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-[#FF718D] flex items-center justify-center font-black text-xs text-white">FA</span><div><p class="font-bold text-sm">Fairuz — Day 22</p><p class="text-xs text-muted">Tomat juga!</p></div><span class="ml-auto pill pill-yellow text-xs">🔥 73%</span></div>
+      <div class="bg-[#FFF7ED] border border-[#FFD5BF] rounded-2xl p-3 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-[#FFD45C] flex items-center justify-center font-black text-xs">IZ</span><div><p class="font-bold text-sm">Izra - Day 18</p><p class="text-xs text-muted">Progress 60%</p></div><span class="ml-auto pill pill-green text-xs">● Aktif</span></div>
+      <div class="bg-gray-50 rounded-2xl p-3 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-[#FF718D] flex items-center justify-center font-black text-xs text-white">FA</span><div><p class="font-bold text-sm">Fairuz - Day 22</p><p class="text-xs text-muted">Tomat juga!</p></div><span class="ml-auto pill pill-yellow text-xs">🔥 73%</span></div>
     </div>
     <div class="flex gap-2 mt-4">
       <button onclick="joinChallenge()" class="btn btn-pink flex-1">🔥 Join Challenge</button>
@@ -75,10 +75,10 @@
     <p class="text-xs text-muted mt-2">Hadiah: 40 XP + badge Chili Champion + starter kit diskon</p>
   </div>
   <!-- FloraMap -->
-  <div class="lg:col-span-5 fv-card yellow p-6 relative overflow-hidden">
-    <span class="pill bg-white text-charcoal font-black">🗺️ FloraMap — Illustrated Community Map</span>
+  <div class="community-map lg:col-span-5 fv-card yellow p-6 relative overflow-hidden">
+    <span class="pill bg-white text-charcoal font-black">🗺️ FloraMap - Illustrated Community Map</span>
     <h3 class="text-xl font-black mt-2">Verse gardeners di Nusantara</h3>
-    <p class="text-sm opacity-70">Bukan GPS sungguhan — peta ilustrasi dummy untuk discovery.</p>
+    <p class="text-sm opacity-70">Bukan GPS sungguhan - peta ilustrasi dummy untuk discovery.</p>
     <div class="grid grid-cols-3 gap-2 mt-4">
       <button onclick="openFloraMap('pekanbaru')" class="bg-white rounded-2xl p-3 text-center hover:shadow border-2 border-transparent hover:border-charcoal transition">
         <div class="text-2xl">🏙️</div><p class="font-black text-xs mt-1">Pekanbaru</p><p class="text-xs font-bold">324</p><p class="text-[10px] text-muted">6 komunitas</p>
@@ -99,7 +99,7 @@
 </section>
 
 <!-- Trending Discussion -->
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+<section class="community-trending max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
   <div class="fv-card white p-6">
     <div class="flex items-center justify-between">
       <h3 class="font-black">🔥 Trending Discussion</h3>
@@ -114,7 +114,7 @@
 </section>
 
 <!-- Feed area -->
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid lg:grid-cols-12 gap-6 pb-10">
+<section class="community-feed-shell max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid lg:grid-cols-12 gap-6 pb-10">
   <!-- Feed -->
   <div class="lg:col-span-8">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -138,13 +138,13 @@
   </div>
 
   <!-- Right sidebar -->
-  <div class="lg:col-span-4 space-y-4">
+  <div class="community-sidebar lg:col-span-4 space-y-4">
     <div class="fv-card white p-5">
       <p class="font-black">🌱 Bagikan Plant Journey</p>
       <p class="text-sm text-muted mt-1">Progress Kebunku bisa langsung dibagikan ke komunitas.</p>
       <div class="bg-[#EFF6FF] border border-[#BFDBFE] rounded-2xl p-3 mt-3 flex gap-3 items-center">
         <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center">🌶️</div>
-        <div class="flex-1"><p class="font-bold text-sm">Cabai Rawit — Day 28</p><p class="text-xs text-muted">Growing • 45%</p></div>
+        <div class="flex-1"><p class="font-bold text-sm">Cabai Rawit - Day 28</p><p class="text-xs text-muted">Growing • 45%</p></div>
         <span class="pill bg-[#6FA8FF] text-white text-xs">Share</span>
       </div>
       <button onclick="toast('Plant Journey dibagikan ke Pecinta Cabai','🎉')" class="btn btn-primary w-full mt-3 text-sm">Bagikan ke Komunitas →</button>
@@ -318,9 +318,9 @@ window.submitComment=function(id){
 }
 window.openFloraMap=function(city){
   const data={
-    pekanbaru:{title:"Pekanbaru — 324 gardeners", desc:"6 komunitas aktif, tanaman populer: Cabai, Kangkung", comms:["Pecinta Cabai","Urban Gardening"], plants:["Cabai Rawit","Kangkung"]},
-    jakarta:{title:"Jakarta — 1.2K gardeners", desc:"14 komunitas, urban farming paling aktif", comms:["Hidroponik Indonesia","Urban Gardening Jakarta"], plants:["Selada","Tomat"]},
-    bandung:{title:"Bandung — 840 gardeners", desc:"10 komunitas, sejuk cocok herbal & bunga", comms:["Flower Garden","Herb & Rempah"], plants:["Lavender","Mawar"]}
+    pekanbaru:{title:"Pekanbaru - 324 gardeners", desc:"6 komunitas aktif, tanaman populer: Cabai, Kangkung", comms:["Pecinta Cabai","Urban Gardening"], plants:["Cabai Rawit","Kangkung"]},
+    jakarta:{title:"Jakarta - 1.2K gardeners", desc:"14 komunitas, urban farming paling aktif", comms:["Hidroponik Indonesia","Urban Gardening Jakarta"], plants:["Selada","Tomat"]},
+    bandung:{title:"Bandung - 840 gardeners", desc:"10 komunitas, sejuk cocok herbal & bunga", comms:["Flower Garden","Herb & Rempah"], plants:["Lavender","Mawar"]}
   };
   const d=data[city];
   $('#floraMapTitle').text("🗺️ "+d.title);
@@ -343,8 +343,8 @@ $(function(){
   $('#newPostComm').html(COMMUNITIES.map(c=>`<option value="${c.id}">${c.emoji} ${c.nama}</option>`).join(''));
   $('#searchComm').on('input', renderComms);
   $('.commFilter').on('click', function(){
-    $('.commFilter').removeClass('active bg-charcoal text-white').addClass('bg-white border');
-    $(this).addClass('active bg-charcoal text-white').removeClass('bg-white border');
+    $('.commFilter').removeClass('active bg-charcoal text-white').addClass('bg-white border text-charcoal');
+    $(this).addClass('active bg-charcoal text-white').removeClass('bg-white border text-charcoal');
     activeCommFilter=$(this).data('f');
     renderComms();
   });
@@ -370,3 +370,4 @@ $(function(){
 </script>
 </body>
 </html>
+

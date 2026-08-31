@@ -1,5 +1,5 @@
-/*
-  FloraVerse — responsive.css
+﻿/*
+  FloraVerse - responsive.css
   Ensures optimal across Desktop (priority for jury), Laptop, Tablet, Mobile
   Custom for FloraVerse
 */
@@ -8,6 +8,172 @@
 @media (max-width: 640px){
   .btn{padding:.9rem 1.2rem}
   .nav-link{padding:.6rem .9rem}
+  .menu-toggle{width:2.5rem; height:2.5rem}
+  .menu-toggle span:nth-child(1){top:.8rem}
+  .menu-toggle span:nth-child(2){top:1.18rem}
+  .menu-toggle span:nth-child(3){top:1.56rem}
+  .menu-toggle.is-open span:nth-child(1),
+  .menu-toggle.is-open span:nth-child(3){top:1.18rem}
+}
+
+@media (max-width: 767px){
+  .navbar > div{
+    min-height:68px; padding-top:.5rem; padding-bottom:.5rem; gap:.75rem;
+  }
+
+  .navbar .wordmark{
+    font-size:1.35rem !important;
+    letter-spacing:-.03em;
+  }
+
+  .nav-link{
+    width:100%; justify-content:center; text-align:center;
+  }
+
+  #mobileNav{
+    padding:.5rem .75rem 1rem;
+  }
+
+  #mobileNav .flex,
+  #mobileNav .flex-wrap{
+    display:flex; flex-direction:column; gap:.5rem;
+  }
+
+  .display,
+  h1,
+  h2,
+  h3{
+    letter-spacing:-.03em;
+  }
+
+  .display{
+    font-size:clamp(2.2rem, 12vw, 3.4rem) !important;
+    line-height:.95 !important;
+  }
+
+  .btn,
+  .btn-primary,
+  .btn-ghost,
+  .btn-dark,
+  .btn-pink,
+  .btn-orange,
+  .btn-yellow,
+  .btn-green{
+    width:100%;
+  }
+
+  .flex-wrap.gap-3 > .btn,
+  .flex-wrap.gap-3 > a,
+  .flex-wrap.gap-3 > button,
+  .community-hero .flex.gap-2 > *{
+    flex:1 1 100%;
+  }
+
+  .hero .flex-wrap.gap-3,
+  .flex.items-center.gap-6,
+  .flex-wrap.gap-2,
+  .community-panel,
+  .community-feed-shell{
+    gap:.75rem;
+  }
+
+  .hero .flex.items-center.gap-6{
+    flex-wrap:wrap;
+    align-items:flex-start;
+  }
+
+  .community-hero,
+  .community-search-panel,
+  .community-challenge,
+  .community-map,
+  .community-sidebar > .fv-card,
+  .community-trending .fv-card,
+  .community-feed-shell > div,
+  .fv-card{border-radius:18px}
+
+  section,
+  .px-4,
+  .sm\:px-6,
+  .lg\:px-8{
+    padding-left:1rem !important;
+    padding-right:1rem !important;
+  }
+
+  .community-hero {
+    padding:1.25rem !important;
+  }
+
+  .community-hero h1 {
+    font-size:2rem !important;
+    line-height:1.05 !important;
+  }
+
+  .community-search-panel {
+    width:100% !important;
+    margin-top:.25rem;
+  }
+
+  .community-panel {
+    grid-template-columns:1fr !important;
+  }
+
+  .community-challenge,
+  .community-map {
+    padding:1.25rem !important;
+  }
+
+  .community-map .grid,
+  .community-trending .grid,
+  .community-feed-shell .grid,
+  .community-sidebar .space-y-2,
+  .community-feed-shell .space-y-4 {
+    gap:.75rem !important;
+  }
+
+  .community-feed-shell {
+    grid-template-columns:1fr !important;
+  }
+
+  .community-feed-shell > div:first-child,
+  .community-feed-shell > div:last-child {
+    width:100% !important;
+    max-width:100% !important;
+  }
+
+  .community-sidebar {
+    display:grid; gap:.75rem; margin-top:0;
+  }
+
+  .community-trending .flex.items-center.justify-between,
+  .community-feed-shell .flex.flex-col.sm\:flex-row,
+  .community-feed-shell .flex.items-center.justify-between {
+    display:flex; flex-direction:column; align-items:flex-start; gap:.75rem;
+  }
+
+  .community-feed-shell .flex.gap-2.mt-3,
+  .community-feed-shell .flex.gap-2.mt-4,
+  .community-hero .flex.gap-2.mt-4,
+  .community-challenge .flex.gap-2.mt-4 {
+    display:flex; flex-direction:column; gap:.75rem;
+  }
+
+  .community-feed-shell .flex.gap-2.mt-3 button,
+  .community-feed-shell .flex.gap-2.mt-4 button,
+  .community-hero .flex.gap-2.mt-4 button,
+  .community-challenge .flex.gap-2.mt-4 button {
+    width:100%;
+  }
+
+  .community-trending .grid.sm\:grid-cols-3 {
+    grid-template-columns:1fr !important;
+  }
+
+  .text-5xl,
+  .text-6xl,
+  .text-7xl,
+  .text-8xl{
+    font-size:clamp(2.25rem, 10vw, 3.25rem) !important;
+  }
 }
 
 /* Critical mobile overflow fixes */
@@ -50,3 +216,4 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce){
   *, *::before, *::after{animation-duration:.01ms !important; transition-duration:.01ms !important}
 }
+

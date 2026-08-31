@@ -1,4 +1,4 @@
-/* Custom dummy data for FloraVerse — Plant Encyclopedia */
+﻿/* Custom dummy data for FloraVerse - Plant Encyclopedia */
 const PLANTS = [
   {
     id: "cabai-rawit", nama:"Cabai Rawit", ilmiah:"Capsicum frutescens", kategori:"Sayuran", kesulitan:"Mudah", panen:"70–90 hari", cahaya:"Full Sun", air:"Sedang", ph:"6.0–7.0", suhu:"24–32°C", media:"Tanah gembur + kompos",
@@ -92,7 +92,7 @@ const PLANTS = [
   },
   {
     id:"mint", nama:"Mint / Peppermint", ilmiah:"Mentha piperita", kategori:"Herbal", kesulitan:"Sangat Mudah", panen:"30 hari", cahaya:"Partial Sun", air:"Banyak", ph:"6.0–7.0", suhu:"15–25°C", media:"Tanah lembab",
-    color:"#8BCB8A", emoji:"🌿", desc:"Mint menyegarkan, invasif — tanam di pot sendiri.", cara:"Stek batang, tancap.", perawat:"Siram rutin, panen sering.", hama:"Whitefly", tips:"Jangan tanam campur, mint akan dominan.", rating:4.8, buyers:740
+    color:"#8BCB8A", emoji:"🌿", desc:"Mint menyegarkan, invasif - tanam di pot sendiri.", cara:"Stek batang, tancap.", perawat:"Siram rutin, panen sering.", hama:"Whitefly", tips:"Jangan tanam campur, mint akan dominan.", rating:4.8, buyers:740
   },
   {
     id:"lidah-buaya", nama:"Lidah Buaya", ilmiah:"Aloe vera", kategori:"Hias", kesulitan:"Sangat Mudah", panen:"-", cahaya:"Bright Indirect", air:"Jarang", ph:"7.0–8.5", suhu:"20–30°C", media:"Pasir",
@@ -103,3 +103,4 @@ const PLANTS = [
     color:"#FF718D", emoji:"🌸", desc:"Anggrek bulan elegan, berbunga tahan lama.", cara:"Bibit kultur jaringan.", perawat:"Siram 2x seminggu, pupuk anggrek.", hama:"Bekicot", tips:"Jangan pindah pot saat berbunga.", rating:4.9, buyers:510
   }
 ];
+
