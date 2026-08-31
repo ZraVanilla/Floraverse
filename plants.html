@@ -220,7 +220,7 @@ function openPlant(id){
   $('#modalContent').html(`
     <div class="relative">
       <div class="h-56 flex items-center justify-center text-[96px] relative overflow-hidden" style="background:${p.color}14">
-        <span class="relative z-10 sway">${p.emoji}</span>
+        ${fvImg(p,'relative z-10 sway')}
         <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full opacity-10" style="background:${p.color}"></div>
         <button onclick="$('#plantModal').removeClass('open')" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white shadow flex items-center justify-center">✕</button>
         <div class="absolute bottom-4 left-4 flex gap-2">
