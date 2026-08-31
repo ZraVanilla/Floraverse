@@ -26,19 +26,6 @@
     letter-spacing:-.03em;
   }
 
-  .nav-link{
-    width:100%; justify-content:center; text-align:center;
-  }
-
-  #mobileNav{
-    padding:.5rem .75rem 1rem;
-  }
-
-  #mobileNav .flex,
-  #mobileNav .flex-wrap{
-    display:flex; flex-direction:column; gap:.5rem;
-  }
-
   .display,
   h1,
   h2,
@@ -188,7 +175,6 @@ select, input, textarea{max-width:100%; min-width:0; }
 @media (max-width: 768px){
   .fv-card{border-radius:20px}
   .modal{border-radius:20px; margin: .75rem; max-width: calc(100vw - 1.5rem);}
-  #cartDrawer{width:100vw; max-width:100vw}
   /* Header filter stacks on mobile */
   header .flex.gap-2.flex-1, header .flex.gap-2.mt-3, header .flex.gap-2.mt-2{flex-wrap:wrap;}
   /* Prevent fixed widths from breaking */
