@@ -13,7 +13,7 @@ $(function(){
     if(href === path || (path==='' && href==='index.html')) $(this).addClass('active');
   });
 
-  // Mobile menu
+  // Mobile menu - slide from left
   $('#menuBtn').each(function(){
     const $btn = $(this);
     $btn.addClass('menu-toggle').html('<span></span><span></span><span></span>');
@@ -21,13 +21,57 @@ $(function(){
     $btn.attr('aria-expanded', 'false');
   });
 
-  $('#menuBtn').on('click', function(){
-    const $btn = $(this);
-    const isOpen = $btn.hasClass('is-open');
-    $btn.toggleClass('is-open', !isOpen);
-    $btn.attr('aria-expanded', String(!isOpen));
-    $('#mobileNav').toggleClass('hidden', isOpen);
+  // Build mobile nav panel from desktop nav links
+  const navLinks = [];
+  $('nav .hidden.lg\\:flex a.nav-link, nav .hidden.lg\\>flex a.nav-link').each(function(){
+    navLinks.push({ href: $(this).attr('href'), text: $(this).text() });
   });
+  // Fallback: if selector didn't match, hardcode the links
+  if(navLinks.length === 0){
+    navLinks.push(
+      {href:'index.html', text:'Beranda'},
+      {href:'plants.html', text:'Tanaman'},
+      {href:'learn.html', text:'Belajar'},
+      {href:'community.html', text:'Komunitas'},
+      {href:'shop.html', text:'Belanja'},
+      {href:'garden.html', text:'Kebunku'},
+      {href:'profile.html', text:'Profil'}
+    );
+  }
+  const $mobilePanel = $(`
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-panel" id="mobileNavPanel">
+      <div class="mobile-nav-header">
+        <a href="index.html" class="wordmark text-xl">Flora<span>Verse</span></a>
+        <button id="closeMobileNav" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-sm font-bold hover:bg-gray-200 transition">✕</button>
+      </div>
+      <div class="mobile-nav-links">
+        ${navLinks.map(l => {
+          const isActive = l.href === path || (path === '' && l.href === 'index.html');
+          return `<a href="${l.href}" class="nav-link ${isActive ? 'active' : ''}">${l.text}</a>`;
+        }).join('')}
+      </div>
+    </div>
+  `);
+  $('body').append($mobilePanel);
+
+  function openMobileNav(){
+    $('#mobileNavPanel').addClass('open');
+    $('#mobileNavBackdrop').addClass('open');
+    $('#menuBtn').addClass('is-open').attr('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileNav(){
+    $('#mobileNavPanel').removeClass('open');
+    $('#mobileNavBackdrop').removeClass('open');
+    $('#menuBtn').removeClass('is-open').attr('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  $('#menuBtn').on('click', function(){
+    if($('#mobileNavPanel').hasClass('open')) closeMobileNav();
+    else openMobileNav();
+  });
+  $('#closeMobileNav, #mobileNavBackdrop').on('click', closeMobileNav);
 
   // Plain emoji mode: keep the original Unicode emoji rendering instead of sprite conversion.
   const FV_EMOJI_CLASSES = {};
@@ -72,12 +116,21 @@ $(function(){
     setWish(w); toast(w.includes(id)?'Disimpan ke wishlist':'Dihapus dari wishlist', w.includes(id)?'💖':'🤍');
   };
 
-  // Drawer cart
-  window.openDrawer = function(){ $('#drawerBackdrop').addClass('open'); $('#cartDrawer').addClass('open'); renderDrawerCart(); }
-  window.closeDrawer = function(){ $('#drawerBackdrop').removeClass('open'); $('#cartDrawer').removeClass('open'); }
-  $('#drawerBackdrop').on('click', closeDrawer);
-  $('#closeDrawer').on('click', closeDrawer);
-  $('#cartBtn').on('click', openDrawer);
+  // Drawer cart (safe fallback if drawer elements don't exist)
+  window.openDrawer = function(){
+    if($('#cartDrawer').length){
+      $('#drawerBackdrop').addClass('open');
+      $('#cartDrawer').addClass('open');
+      renderDrawerCart();
+    }
+  };
+  window.closeDrawer = function(){
+    $('#drawerBackdrop').removeClass('open');
+    $('#cartDrawer').removeClass('open');
+  };
+  if($('#drawerBackdrop').length) $('#drawerBackdrop').on('click', closeDrawer);
+  if($('#closeDrawer').length) $('#closeDrawer').on('click', closeDrawer);
+  $('#cartBtn').on('click', function(){ openDrawer(); });
 
   window.renderDrawerCart = function(){
     const cart=getCart();
@@ -86,6 +139,7 @@ $(function(){
     let total=0;
     $list.html(cart.map(item=>{
       const p=PRODUCTS.find(x=>x.id===item.id);
+      if(!p) return '';
       total+= p.harga*item.qty;
       return `<div class="flex gap-3 items-center p-3 fv-card">
         <div class="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-2xl">${p.img}</div>
@@ -160,7 +214,9 @@ $(function(){
     // tapi biarkan algoritma - fallback contoh
     $('#pmResultList').html(scored.map((p,i)=> `
       <div class="fv-card p-4 flex gap-4 items-center ${i===0?'!border-[#6FA8FF] !bg-[#EFF6FF]':''}">
-        <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0" style="background:${p.color}18">${p.emoji}</div>
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 overflow-hidden" style="background:${p.color}18">
+          ${fvImg(p,'w-full h-full object-cover')}
+        </div>
         <div class="flex-1 min-w-0">
           <p class="font-extrabold leading-none">${p.nama}</p>
           <p class="text-xs text-muted italic">${p.ilmiah}</p>
