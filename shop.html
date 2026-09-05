@@ -100,7 +100,7 @@
   <div class="modal max-w-[520px] max-h-[85vh] flex flex-col">
     <div class="p-5 border-b flex items-center justify-between flex-shrink-0">
       <div><p class="font-black text-lg">🛒 Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div>
-      <button onclick="closeCartModal()" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">✕</button>
+       <button type="button" onclick="closeCartModal()" aria-label="Tutup keranjang" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">✕</button>
     </div>
     <div id="cartModalList" class="flex-1 overflow-auto p-4 space-y-3"></div>
     <div class="p-4 border-t bg-gray-50 flex-shrink-0">
@@ -165,8 +165,9 @@ window.openDrawer = function(){
     $('#cartModalTotal').text('Rp' + total.toLocaleString('id-ID'));
   }
   $('#cartModal').addClass('open');
+  document.body.style.overflow = 'hidden';
 };
-window.closeCartModal = function(){ $('#cartModal').removeClass('open'); };
+window.closeCartModal = function(){ $('#cartModal').removeClass('open'); document.body.style.overflow = ''; };
 window.updateCartQty = function(id, delta){
   let cart = getCart();
   const item = cart.find(x => x.id === id);
