@@ -14,6 +14,9 @@ const COMMUNITIES = [
   {id:"c12", nama:"Herb & Rempah", slug:"herb-rempah", kategori:"Tanaman", members:760, posts:178, color:"#8BCB8A", emoji:"🌿", desc:"Basil, mint, kemangi, lavender - herbal untuk dapur & relaksasi.", tags:["#herbal","#rempah","#dapur"], cover:"🌿"}
 ];
 
+const COMMUNITY_PLANTS = {c01:"cabai-rawit", c02:"tomat", c05:"kaktus", c07:"stroberi", c10:"mawar", c12:"basil"};
+COMMUNITIES.forEach(community => { if(COMMUNITY_PLANTS[community.id]) community.plantId = COMMUNITY_PLANTS[community.id]; });
+
 /* Dummy posts - digunakan di community.html */
 const POSTS = [
   {id:"p01", community:"c01", user:"Izra", avatar:"IZ", time:"2 jam lalu", content:"Cabai rawit ku hari ke-28 udah mulai berbunga! Siram tiap pagi + pupuk organik 2 minggu sekali. Ada tips biar buah lebat?", likes:42, comments:12, image:"🌶️", liked:false, saved:false, tags:["#cabai","#berbunga"]},
@@ -27,4 +30,3 @@ const POSTS = [
   {id:"p09", community:"c04", user:"Tafayad", avatar:"TA", time:"4 hari lalu", content:"Urban gardening itu terapi. Pagi siram, sore panen kangkung 25 hari. Kota tetap hijau!", likes:61, comments:13, image:"🏙️", liked:false, saved:false, tags:["#urban","#kangkung"]},
   {id:"p10", community:"c12", user:"Izra", avatar:"IZ", time:"5 hari lalu", content:"Mint ku invasi pot lain 😅 Pelajaran: jangan tanam mint campur! Pisahkan pot.", likes:39, comments:10, image:"🌿", liked:false, saved:false, tags:["#mint","#herbal"]},
 ];
-

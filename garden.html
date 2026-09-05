@@ -20,7 +20,7 @@
     <div class="hidden lg:flex items-center gap-1">
       <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
     </div>
-    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
+    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
   </div>
 </nav>
 
@@ -66,7 +66,7 @@
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid lg:grid-cols-12 gap-6 pb-10">
   <div class="lg:col-span-7 fv-card white p-6 sm:p-7">
     <div class="flex items-center gap-3">
-      <div id="detailEmoji" class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl">🌶️</div>
+       <div id="detailEmoji" class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden"></div>
       <div>
         <h3 id="detailName" class="font-black text-lg leading-none">Cabai Rawit - Day 28</h3>
         <p id="detailSub" class="text-xs text-muted">Capsicum frutescens • Growing • 45%</p>
@@ -194,7 +194,7 @@
 <div id="plantLabModal" class="modal-backdrop"><div class="modal max-w-[820px]"><div class="p-6"><div class="flex items-center justify-between"><p class="font-black text-lg">🔬 Plant Lab</p><button onclick="$('#plantLabModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="labInGarden" class="mt-4"></div></div></div></div>
 
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
-<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="checkoutSim()" class="btn btn-dark w-full mt-3">Checkout (Simulasi) →</button></div></div>
+<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran →</button></div></div>
 <div id="toastBox"></div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -211,7 +211,7 @@ let selectedGardenId = MY_GARDEN[0].id;
 function renderPulse(){
   $('#pulseList').html(GARDEN_PULSE.map(p=> `
     <div class="flex items-center gap-3 p-2.5 rounded-2xl border" style="background:${p.color}12; border-color:${p.color}30">
-      <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center">${p.emoji}</div>
+      <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center overflow-hidden">${fvImg(PLANTS.find(x=>x.id===p.plantId),'w-full h-full object-cover')}</div>
       <div class="flex-1"><p class="font-bold text-sm leading-none">${p.plant}</p><p class="text-xs text-muted">${p.status}</p></div>
       <span class="pill text-xs font-black" style="background:${p.color};color:#fff">${p.icon} ${p.action}</span>
     </div>
@@ -223,7 +223,7 @@ function renderMyPlants(){
   $('#myPlantsGrid').html(list.map(g=> `
     <div onclick="selectGarden('${g.id}')" class="fv-card white p-4 cursor-pointer hover-lift ${g.id===selectedGardenId?'!border-[#6FA8FF] !shadow-lg':''}">
       <div class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style="background:${g.color}18">${g.emoji}</div>
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden" style="background:${g.color}18">${fvImg(PLANTS.find(x=>x.id===g.plantId),'w-full h-full object-cover')}</div>
         <div class="flex-1">
           <p class="font-black leading-none">${g.nama}</p>
           <p class="text-xs text-muted">Day ${g.day} • ${g.stage}</p>
@@ -247,7 +247,7 @@ function selectGarden(id){
 }
 function renderDetail(){
   const g=MY_GARDEN.find(x=>x.id===selectedGardenId);
-  $('#detailEmoji').css('background', g.color+'18').text(g.emoji);
+   $('#detailEmoji').css('background', g.color+'18').html(fvImg(PLANTS.find(x=>x.id===g.plantId),'w-full h-full object-cover'));
   $('#detailName').text(`${g.nama} - Day ${g.day}`);
   const plant=PLANTS.find(p=>p.id===g.plantId);
   $('#detailSub').text(`${plant?plant.ilmiah:''} • ${g.stage} • ${g.progress}%`);
@@ -309,7 +309,7 @@ function renderDetail(){
   const relatedProds = PRODUCTS.filter(p=> p.related===g.plantId).slice(0,2);
   $('#gardenShop').html(relatedProds.map(p=> `
     <div class="flex items-center gap-3 bg-gray-50 rounded-2xl p-3">
-      <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center">${p.img}</div>
+       <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">${fvImg(p,'w-full h-full object-cover')}</div>
       <div class="flex-1"><p class="font-bold text-sm leading-none">${p.nama}</p><p class="text-xs text-muted">Rp${p.harga.toLocaleString('id-ID')}</p></div>
       <button onclick="addToCart('${p.id}')" class="w-8 h-8 rounded-full bg-charcoal text-white flex items-center justify-center">+</button>
     </div>
@@ -365,7 +365,7 @@ function renderAddPlantList(filter=""){
   const list=PLANTS.filter(p=> !filter || p.nama.toLowerCase().includes(filter.toLowerCase()));
   $('#addPlantList').html(list.slice(0,12).map(p=> `
     <div onclick="addPlantToGarden('${p.id}')" class="fv-card white p-3 flex gap-3 items-center cursor-pointer hover:border-[#6FA8FF]">
-      <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background:${p.color}14">${p.emoji}</div>
+       <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden" style="background:${p.color}14">${fvImg(p,'w-full h-full object-cover')}</div>
       <div class="flex-1 min-w-0"><p class="font-bold text-sm leading-none truncate">${p.nama}</p><p class="text-xs text-muted truncate">${p.kategori} • ${p.kesulitan}</p></div>
       <span class="pill pill-blue text-xs">+ Tambah</span>
     </div>
@@ -397,4 +397,3 @@ $(function(){
 </script>
 </body>
 </html>
-

@@ -34,3 +34,19 @@ const PRODUCTS = [
   {id:"p32", nama:"Pupuk Daun Plant Care Spray", kategori:"Plant care", harga:18000, rating:4.6, ulas:98, badge:"Popular", emoji:"💦", img:"assets/photos/products/p32.jpg", related:"mawar", stok:80}
 ];
 
+/*
+ * Photo source: Unsplash direct image URLs, used under the Unsplash License.
+ * These replace unavailable local files while keeping product imagery consistent.
+ */
+const PRODUCT_PHOTOS = {
+  "Benih":"https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=85",
+  "Bibit":"https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=900&q=85",
+  "Pot":"https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=900&q=85",
+  "Media Tanam":"https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=900&q=85",
+  "Pupuk":"https://images.unsplash.com/photo-1628352081506-83c43123ed6d?auto=format&fit=crop&w=900&q=85",
+  "Tools":"https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=85",
+  "Hydroponics":"https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=900&q=85",
+  "Bundling":"https://images.unsplash.com/photo-1599685315640-1e4e8f7d3b5f?auto=format&fit=crop&w=900&q=85",
+  "Plant care":"https://images.unsplash.com/photo-1598880940080-ff9a29891b85?auto=format&fit=crop&w=900&q=85"
+};
+PRODUCTS.forEach(product => { product.img = PRODUCT_PHOTOS[product.kategori] || product.img; });

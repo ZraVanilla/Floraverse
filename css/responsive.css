@@ -6,7 +6,8 @@
 
 /* Touch targets */
 @media (max-width: 640px){
-  .btn{padding:.9rem 1.2rem}
+  .btn{padding:.72rem 1rem}
+  .btn:not(.w-full){width:auto}
   .nav-link{padding:.6rem .9rem}
   .menu-toggle{width:2.5rem; height:2.5rem}
   .menu-toggle span:nth-child(1){top:.8rem}
@@ -51,10 +52,9 @@
 
   .flex-wrap.gap-3 > .btn,
   .flex-wrap.gap-3 > a,
-  .flex-wrap.gap-3 > button,
-  .community-hero .flex.gap-2 > *{
-    flex:1 1 100%;
-  }
+  .flex-wrap.gap-3 > button{flex:0 1 auto;}
+
+  .community-hero .flex.gap-2 > *{flex:1 1 100%;}
 
   .hero .flex-wrap.gap-3,
   .flex.items-center.gap-6,
@@ -164,7 +164,7 @@
 }
 
 /* Critical mobile overflow fixes */
-html, body{overflow-x:hidden; max-width:100%;}
+html, body{max-width:100%;}
 * { box-sizing:border-box; }
 .flex > *, .grid > * { min-width:0; }
 select, input, textarea{max-width:100%; min-width:0; }
@@ -203,3 +203,81 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   *, *::before, *::after{animation-duration:.01ms !important; transition-duration:.01ms !important}
 }
 
+/* Mobile-first density pass: reduce scrolling without removing any feature. */
+@media (max-width:767px){
+  .navbar > div{height:56px !important; min-height:56px;}
+  body > header,
+  body > section,
+  body > main,
+  body > .max-w-\[1280px\]{margin-top:.75rem !important;}
+  body > header:first-of-type{margin-top:.75rem !important;}
+  body > section + section,
+  body > header + section{margin-top:.75rem !important;}
+
+  h1{font-size:clamp(1.8rem,8vw,2.35rem) !important; line-height:1.04 !important;}
+  h2{font-size:clamp(1.2rem,5.5vw,1.65rem) !important; line-height:1.1 !important;}
+  h3{font-size:1.05rem !important;}
+  p{line-height:1.4;}
+
+  .fv-card{border-radius:16px;}
+  .fv-card.p-8,.fv-card.p-7,.fv-card.p-6,.fv-card.p-5{padding:.9rem !important;}
+  .fv-card .fv-card{border-radius:12px;}
+  .blob{display:none;}
+  .hero-visual-shell{min-height:0 !important;}
+
+  /* Keep catalogue browsing compact and scannable. */
+  #plantsGrid,#productsGrid,#guidesGrid,#myPlantsGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:.65rem !important;}
+  #plantsGrid .p-4,#productsGrid .p-4,#guidesGrid .p-4,#myPlantsGrid .p-4{padding:.7rem !important;}
+  #plantsGrid .h-40{height:8rem !important;}
+  #productsGrid .h-36{height:7.5rem !important;}
+  #guidesGrid .h-32{height:6.5rem !important;}
+  #plantsGrid .flex.gap-2.mt-3,#productsGrid .flex.items-end.justify-between.mt-2{gap:.35rem; flex-wrap:wrap;}
+  #plantsGrid .btn,#productsGrid .btn{font-size:.7rem; padding:.55rem .65rem;}
+  #plantsGrid .pill,#productsGrid .pill,#guidesGrid .pill{font-size:.6rem; padding:.22rem .42rem;}
+  #plantsGrid .text-sm,#productsGrid .text-sm,#guidesGrid .text-sm{font-size:.75rem;}
+  #productsGrid > .fv-card > .p-4{display:flex; flex-direction:column;}
+
+  /* Hero controls remain accessible but no longer create long vertical stacks. */
+  header .flex-wrap.gap-3{gap:.5rem !important;}
+  header .flex-wrap.gap-3 > .btn,
+  header .flex-wrap.gap-3 > a,
+  header .flex-wrap.gap-3 > button{flex:1 1 auto; min-width:0;}
+  header .grid.grid-cols-3{gap:.4rem !important;}
+  header .grid.grid-cols-3 .p-3{padding:.55rem !important;}
+  header .grid.grid-cols-3 .text-2xl{font-size:1.35rem !important;}
+
+  /* Keep action rows compact while preserving full-width explicit CTAs. */
+  .flex.gap-2 > .btn:not(.w-full),
+  .flex.gap-3 > .btn:not(.w-full){flex:1 1 0; min-width:0;}
+  .btn{min-height:2.5rem; white-space:normal; line-height:1.2; text-align:center;}
+  .pill{max-width:100%;}
+
+  /* Dense detail pages use less vertical whitespace between utility panels. */
+  .space-y-4 > :not([hidden]) ~ :not([hidden]),
+  .space-y-3 > :not([hidden]) ~ :not([hidden]){margin-top:.6rem !important;}
+  .mt-6{margin-top:1rem !important;}
+  .mt-8{margin-top:1.25rem !important;}
+  .mb-6{margin-bottom:1rem !important;}
+
+  /* Keep important data panels side by side where the content is short. */
+  #profileGarden{grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:.5rem !important;}
+  #profileComms{grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:.6rem !important;}
+  #achieveList{gap:.5rem !important;}
+  .grid.grid-cols-3{gap:.5rem !important;}
+  .grid.grid-cols-3 > *{min-width:0;}
+
+  /* Filter rows scroll horizontally instead of pushing the page downward. */
+  #catPills,#prodCats{padding-bottom:.35rem;}
+  #catPills > *,#prodCats > *{flex-shrink:0;}
+  #smartChoices{flex-wrap:nowrap; overflow-x:auto; padding-bottom:.25rem;}
+  #smartChoices > *{flex-shrink:0;}
+  .smart-kit-items{grid-template-columns:1fr;}
+  .smart-kit-summary{align-items:flex-start; flex-wrap:wrap;}
+  .smart-kit-summary .btn{width:100%;}
+  #smartBasketSection .smart-basket-intro{padding:1rem;}
+}
+
+@media (max-width:380px){
+  #plantsGrid,#productsGrid,#guidesGrid,#myPlantsGrid{grid-template-columns:1fr !important;}
+  #profileComms{grid-template-columns:1fr !important;}
+}

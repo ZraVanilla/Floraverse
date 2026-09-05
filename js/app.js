@@ -1,11 +1,25 @@
 ﻿/* FloraVerse App - shared interactions (jQuery) */
-/* Photo support: tampilkan foto asli jika file ada, otomatis fallback ke emoji jika belum ada */
+/* Shared photo renderer for plants and products. */
 window.fvImg = function(obj, cls){
-  if(!obj || !obj.img) return `<span>${obj.emoji||''}</span>`;
-  const fb = `<span>${obj.emoji||''}</span>`.replace(/"/g,'&quot;');
-  return `<img src="${obj.img}" alt="${(obj.nama||'').replace(/"/g,'')}" loading="lazy" class="${cls||''}" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(fb)}')">`;
+  if(!obj || !obj.img) return `<span class="image-fallback" aria-hidden="true">${(obj?.nama||'?').slice(0,1)}</span>`;
+  const fallback = `<span class="image-fallback" aria-label="${(obj.nama||'Tanaman').replace(/"/g,'')}">${(obj.nama||'?').slice(0,1)}</span>`.replace(/"/g,'&quot;');
+  return `<img src="${obj.img}" alt="${(obj.nama||'').replace(/"/g,'')}" loading="lazy" class="${cls||''}" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')">`;
 };
 $(function(){
+  $('#cartBtn').attr({'aria-label':'Buka keranjang','title':'Buka keranjang'});
+  // Smoothly transition only between internal document pages.
+  $(document).on('click', 'a[href]', function(event){
+    const link=this;
+    const href=link.getAttribute('href');
+    if(event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !href || href[0]==='#' || href.startsWith('javascript:') || link.target==='_blank' || link.hasAttribute('download')) return;
+    let destination;
+    try { destination=new URL(href, window.location.href); } catch { return; }
+    if(destination.origin!==window.location.origin || destination.pathname===window.location.pathname && destination.search===window.location.search) return;
+    event.preventDefault();
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ window.location.href=destination.href; return; }
+    document.body.classList.add('is-leaving');
+    window.setTimeout(()=>{ window.location.href=destination.href; }, 190);
+  });
   // Active nav
   const path = location.pathname.split('/').pop() || 'index.html';
   $('.nav-link').each(function(){
@@ -93,7 +107,10 @@ $(function(){
   // Cart (localStorage)
   const CART_KEY='fv_cart';
   const WISH_KEY='fv_wish';
-  window.getCart = ()=> JSON.parse(localStorage.getItem(CART_KEY)||'[]');
+  window.getCart = ()=> {
+    try { return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); }
+    catch { localStorage.removeItem(CART_KEY); return []; }
+  };
   window.setCart = (c)=> localStorage.setItem(CART_KEY, JSON.stringify(c));
   window.getWish = ()=> JSON.parse(localStorage.getItem(WISH_KEY)||'[]');
   window.setWish = (w)=> localStorage.setItem(WISH_KEY, JSON.stringify(w));
@@ -104,9 +121,10 @@ $(function(){
   updateCartBadge();
   window.addToCart = function(id, qty=1){
     const prod = PRODUCTS.find(p=>p.id===id);
+    if(!prod || qty<=0) return;
     let cart=getCart();
     const f=cart.find(x=>x.id===id);
-    if(f) f.qty+=qty; else cart.push({id, qty, harga:prod.harga, nama:prod.nama});
+    if(f) f.qty+=qty; else cart.push({id, qty, harga:prod.harga, nama:prod.nama, image:prod.img});
     setCart(cart); updateCartBadge(); toast(`${prod.nama} ditambahkan ke keranjang`,'🛒');
     renderDrawerCart();
   };
@@ -117,14 +135,14 @@ $(function(){
   };
 
   // Drawer cart (safe fallback if drawer elements don't exist)
-  window.openDrawer = function(){
+  window.openDrawer = window.openDrawer || function(){
     if($('#cartDrawer').length){
       $('#drawerBackdrop').addClass('open');
       $('#cartDrawer').addClass('open');
       renderDrawerCart();
     }
   };
-  window.closeDrawer = function(){
+  window.closeDrawer = window.closeDrawer || function(){
     $('#drawerBackdrop').removeClass('open');
     $('#cartDrawer').removeClass('open');
   };
@@ -142,21 +160,46 @@ $(function(){
       if(!p) return '';
       total+= p.harga*item.qty;
       return `<div class="flex gap-3 items-center p-3 fv-card">
-        <div class="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-2xl">${p.img}</div>
+        <div class="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center overflow-hidden">${fvImg(p,'w-full h-full object-cover')}</div>
         <div class="flex-1 min-w-0"><p class="font-bold text-sm leading-tight truncate">${p.nama}</p><p class="text-sm text-muted">Rp${p.harga.toLocaleString('id-ID')} • x${item.qty}</p></div>
         <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-red-50 hover:text-red-500 flex items-center justify-center" onclick="removeFromCart('${item.id}')">✕</button>
       </div>`;
     }).join(''));
     $('#drawerTotal').text('Rp'+total.toLocaleString('id-ID'));
   };
-  window.removeFromCart = function(id){
+  window.removeFromCart = window.removeFromCart || function(id){
     let c=getCart().filter(x=>x.id!==id); setCart(c); updateCartBadge(); renderDrawerCart(); toast('Dihapus dari keranjang','🗑️');
   };
-  window.checkoutSim = function(){
-    if(getCart().length===0) return toast('Keranjang kosong','🛒');
-    toast('Checkout berhasil! (simulasi)','🎉');
-    setCart([]); updateCartBadge(); renderDrawerCart();
+  window.clearCart = window.clearCart || function(){
+    setCart([]); updateCartBadge(); renderDrawerCart(); toast('Keranjang dikosongkan','🧹');
   };
+  window.checkoutSim = window.checkoutSim || function(){
+    window.openCheckout();
+  };
+  window.openCheckout = window.openCheckout || function(){
+    if(getCart().length===0) return toast('Keranjang kosong','🛒');
+    if(!$('#checkoutModal').length) return window.location.href='shop.html?checkout=1';
+    updateCheckoutSummary(); $('#checkoutModal').addClass('open'); closeDrawer();
+  };
+  window.closeCheckout = function(){ $('#checkoutModal').removeClass('open'); };
+  window.updateCheckoutSummary = function(){
+    const cart=getCart(); let subtotal=0;
+    $('#checkoutSummary').html(cart.map(item=>{
+      const p=PRODUCTS.find(x=>x.id===item.id); if(!p) return '';
+      subtotal+=p.harga*item.qty;
+      return `<div class="flex items-center gap-2 text-sm"><div class="w-9 h-9 rounded-lg overflow-hidden bg-white flex-shrink-0">${fvImg(p,'w-full h-full object-cover')}</div><span class="flex-1 min-w-0 truncate">${p.nama} × ${item.qty}</span><b>Rp${(p.harga*item.qty).toLocaleString('id-ID')}</b></div>`;
+    }).join(''));
+    const fee=parseInt($('input[name="delivery"]:checked').data('fee')||0,10);
+    $('#checkoutSubtotal').text('Rp'+subtotal.toLocaleString('id-ID')); $('#checkoutDelivery').text(fee?'Rp'+fee.toLocaleString('id-ID'):'Gratis'); $('#checkoutTotal').text('Rp'+(subtotal+fee).toLocaleString('id-ID'));
+  };
+  window.placeOrder = function(event){
+    event.preventDefault();
+    const form=event.currentTarget;
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    const order={id:'FV-'+Date.now().toString().slice(-6), createdAt:new Date().toISOString(), items:getCart(), recipient:new FormData(form).get('recipient'), payment:new FormData(form).get('payment'), delivery:new FormData(form).get('delivery')};
+    localStorage.setItem('fv_last_order',JSON.stringify(order)); setCart([]); updateCartBadge(); closeCheckout(); if(typeof closeCartModal==='function') closeCartModal(); toast(`Pesanan ${order.id} berhasil dibuat`,'✅');
+  };
+  $(document).on('change','input[name="delivery"]', updateCheckoutSummary);
 
   // Plant Match
   let pmStep=1; const pmAnswers={};
@@ -256,4 +299,3 @@ $(function(){
   // Close modals on backdrop
   $('.modal-backdrop').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
 });
-

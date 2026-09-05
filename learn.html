@@ -20,7 +20,7 @@
     <div class="hidden lg:flex items-center gap-1">
       <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
     </div>
-    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
+    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
   </div>
 </nav>
 
@@ -150,7 +150,7 @@
 <!-- Guide Modal -->
 <div id="guideModal" class="modal-backdrop"><div class="modal max-w-[720px]"><div id="guideModalContent" class="p-6 sm:p-7"></div></div></div>
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
-<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="checkoutSim()" class="btn btn-dark w-full mt-3">Checkout (Simulasi) →</button></div></div>
+<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran →</button></div></div>
 <div id="toastBox"></div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -176,7 +176,7 @@ function renderGuides(){
   $('#guidesGrid').html(list.map(g=> `
     <div onclick="openGuide('${g.id}')" class="fv-card white overflow-hidden cursor-pointer hover-lift">
       <div class="h-32 flex items-center justify-center text-5xl relative" style="background:${g.color}14">
-        <span>${g.emoji}</span>
+        ${PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())) ? fvImg(PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())),'w-full h-full object-cover') : g.emoji}
         <span class="absolute top-3 left-3 pill text-[11px] font-black" style="background:${g.color};color:${g.color==='#FFD45C'?'#252525':'#fff'}">${g.kategori}</span>
         <span class="absolute top-3 right-3 pill pill-white text-[11px]">${g.level}</span>
         ${g.populer?'<span class="absolute bottom-3 right-3 pill pill-yellow text-[11px] font-black">🔥 Populer</span>':''}
@@ -198,7 +198,7 @@ function openGuide(id){
   const related = PLANTS.filter(p=> g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())).slice(0,3);
   $('#guideModalContent').html(`
     <div class="flex items-start justify-between gap-3">
-      <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style="background:${g.color}18">${g.emoji}</div>
+       <div class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden" style="background:${g.color}18">${PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())) ? fvImg(PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())),'w-full h-full object-cover') : g.emoji}</div>
       <button onclick="$('#guideModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button>
     </div>
     <span class="pill mt-3 inline-flex" style="background:${g.color}18; border-color:${g.color}30; color:${g.color==='#FFD45C'?'#9A7400':g.color}">${g.kategori}</span>
@@ -236,7 +236,7 @@ $(function(){
   // popular side
   $('#popularGuidesSide').html(GUIDES.filter(g=>g.populer).slice(0,3).map(g=>`
     <div onclick="openGuide('${g.id}')" class="flex gap-3 p-2.5 rounded-2xl hover:bg-gray-50 cursor-pointer border border-transparent hover:border-gray-100">
-      <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:${g.color}18">${g.emoji}</div>
+       <div class="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0" style="background:${g.color}18">${PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())) ? fvImg(PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())),'w-full h-full object-cover') : g.emoji}</div>
       <div class="min-w-0"><p class="font-bold text-sm leading-tight truncate">${g.judul}</p><p class="text-xs text-muted">${g.waktu} • ${g.kategori}</p></div>
     </div>
   `).join(''));
@@ -260,4 +260,3 @@ $(function(){
 </script>
 </body>
 </html>
-

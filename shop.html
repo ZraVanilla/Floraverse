@@ -20,7 +20,7 @@
     <div class="hidden lg:flex items-center gap-1">
       <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
     </div>
-    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
+    <div class="flex items-center gap-2"><button type="button" id="cartBtn" onclick="openDrawer()" aria-label="Buka keranjang" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
   </div>
 </nav>
 
@@ -46,9 +46,9 @@
 
 <!-- Smart Garden Basket -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-  <div class="fv-card white p-6 sm:p-7 relative overflow-hidden">
-    <div class="flex flex-col lg:flex-row gap-6">
-      <div class="flex-1">
+  <div id="smartBasketSection" class="fv-card white p-6 sm:p-7 relative overflow-hidden">
+    <div id="smartBasketLayout" class="flex flex-col lg:flex-row gap-6">
+      <div class="smart-basket-intro flex-1">
         <span class="pill pill-orange font-black">🎁 Smart Garden Basket - Killer Feature</span>
         <h2 class="text-xl sm:text-2xl font-black mt-2 leading-tight">Pilih tanaman, kami<br>racikkan keranjangnya.</h2>
         <p class="text-sm text-muted mt-1">Contoh: “Saya ingin menanam cabai.” FloraVerse otomatis menyarankan kit hemat.</p>
@@ -104,10 +104,29 @@
     </div>
     <div id="cartModalList" class="flex-1 overflow-auto p-4 space-y-3"></div>
     <div class="p-4 border-t bg-gray-50 flex-shrink-0">
-      <div class="flex justify-between font-black text-lg"><span>Total</span><span id="cartModalTotal">Rp0</span></div>
-      <button onclick="checkoutSim(); closeCartModal()" class="btn btn-dark w-full mt-3">Checkout (Simulasi) →</button>
-      <button onclick="closeCartModal()" class="btn btn-ghost w-full mt-2">Lanjut Belanja</button>
+       <div class="flex justify-between font-black text-lg"><span>Total</span><span id="cartModalTotal">Rp0</span></div>
+       <button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran →</button>
+       <button onclick="clearCart(); openDrawer()" class="btn btn-ghost w-full mt-2 text-sm">Kosongkan Keranjang</button>
+       <button onclick="closeCartModal()" class="btn btn-ghost w-full mt-2">Lanjut Belanja</button>
     </div>
+  </div>
+</div>
+<div id="checkoutModal" class="modal-backdrop">
+  <div class="modal max-w-[860px] max-h-[92vh] overflow-auto">
+    <form id="checkoutForm" class="p-5 sm:p-7" onsubmit="placeOrder(event)">
+      <div class="flex items-start justify-between gap-4">
+        <div><p class="pill pill-orange font-black">🛍️ Checkout</p><h2 class="text-2xl font-black mt-2">Selesaikan pesananmu</h2><p class="text-sm text-muted mt-1">Lengkapi alamat dan pilih cara pembayaran.</p></div>
+        <button type="button" onclick="closeCheckout()" aria-label="Tutup checkout" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button>
+      </div>
+      <div class="grid lg:grid-cols-5 gap-5 mt-5">
+        <div class="lg:col-span-3 space-y-4">
+          <div class="checkout-panel"><p class="font-black">Alamat pengiriman</p><div class="grid sm:grid-cols-2 gap-3 mt-3"><label class="text-sm font-bold">Nama penerima<input name="recipient" required autocomplete="name" class="checkout-input" placeholder="Nama lengkap"></label><label class="text-sm font-bold">Nomor WhatsApp<input name="phone" required inputmode="tel" autocomplete="tel" class="checkout-input" placeholder="08xxxxxxxxxx"></label></div><label class="text-sm font-bold block mt-3">Alamat lengkap<textarea name="address" required autocomplete="street-address" class="checkout-input min-h-[76px]" placeholder="Nama jalan, nomor rumah, RT/RW"></textarea></label><div class="grid sm:grid-cols-2 gap-3 mt-3"><label class="text-sm font-bold">Kota / Kabupaten<input name="city" required autocomplete="address-level2" class="checkout-input" placeholder="Jakarta Selatan"></label><label class="text-sm font-bold">Kode pos<input name="postal" required inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}" class="checkout-input" placeholder="12345"></label></div></div>
+          <div class="checkout-panel"><p class="font-black">Cara pengantaran</p><div class="grid sm:grid-cols-3 gap-2 mt-3"><label class="checkout-option"><input type="radio" name="delivery" value="reguler" data-fee="12000" checked><span><b>Reguler</b><small>2–4 hari<br>Rp12.000</small></span></label><label class="checkout-option"><input type="radio" name="delivery" value="same-day" data-fee="25000"><span><b>Same day</b><small>Hari ini<br>Rp25.000</small></span></label><label class="checkout-option"><input type="radio" name="delivery" value="pickup" data-fee="0"><span><b>Ambil sendiri</b><small>Gratis<br>FloraVerse</small></span></label></div></div>
+          <div class="checkout-panel"><p class="font-black">Metode pembayaran</p><div class="grid sm:grid-cols-2 gap-2 mt-3"><label class="checkout-option"><input type="radio" name="payment" value="Transfer Bank" checked><span><b>Transfer Bank</b><small>BCA, BNI, BRI, Mandiri</small></span></label><label class="checkout-option"><input type="radio" name="payment" value="QRIS"><span><b>QRIS</b><small>Scan dari aplikasi bank/e-wallet</small></span></label><label class="checkout-option"><input type="radio" name="payment" value="E-Wallet"><span><b>E-Wallet</b><small>GoPay, DANA, OVO, ShopeePay</small></span></label><label class="checkout-option"><input type="radio" name="payment" value="COD"><span><b>COD</b><small>Bayar saat pesanan tiba</small></span></label></div></div>
+        </div>
+        <aside class="checkout-summary lg:col-span-2"><p class="font-black">Ringkasan pesanan</p><div id="checkoutSummary" class="space-y-2 mt-3"></div><div class="divider my-3"></div><div class="flex justify-between text-sm"><span>Subtotal</span><b id="checkoutSubtotal">Rp0</b></div><div class="flex justify-between text-sm mt-2"><span>Pengantaran</span><b id="checkoutDelivery">Rp0</b></div><div class="flex justify-between text-lg font-black mt-3"><span>Total</span><b id="checkoutTotal">Rp0</b></div><button type="submit" class="btn btn-orange w-full mt-4">Buat Pesanan →</button><p class="text-xs text-muted mt-2 text-center">Pesanan akan diproses setelah data dikonfirmasi.</p></aside>
+      </div>
+    </form>
   </div>
 </div>
 <div id="toastBox"></div>
@@ -133,7 +152,7 @@ window.openDrawer = function(){
       if(!p) return '';
       total += p.harga * item.qty;
       return `<div class="flex gap-3 items-center p-3 rounded-2xl border bg-white">
-        <div class="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-xl flex-shrink-0">${p.img}</div>
+        <div class="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden flex-shrink-0">${fvImg(p,'w-full h-full object-cover')}</div>
         <div class="flex-1 min-w-0"><p class="font-bold text-sm leading-tight truncate">${p.nama}</p><p class="text-xs text-muted">Rp${p.harga.toLocaleString('id-ID')} × ${item.qty}</p></div>
         <div class="flex items-center gap-1.5">
           <button onclick="updateCartQty('${item.id}', -1)" class="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-xs font-bold hover:bg-gray-200">−</button>
@@ -166,13 +185,10 @@ window.removeFromCart = function(id){
   toast('Dihapus dari keranjang', '🗑️');
 };
 window.checkoutSim = function(){
-  if(getCart().length === 0) return toast('Keranjang kosong', '🛒');
-  toast('Checkout berhasil! (simulasi)', '🎉');
-  setCart([]);
-  updateCartBadge();
-  openDrawer();
+  openCheckout();
 };
 $('#cartModal').on('click', function(e){ if(e.target === this) closeCartModal(); });
+</script>
 <script>
 let activePcat="";
 const bundles={
@@ -188,18 +204,18 @@ function renderSmartBasket(plantId){
   let total=0; let rows=b.items.map(it=>{
     const pr=PRODUCTS.find(p=>p.id===it.id);
     total+=pr.harga*it.qty;
-    return `<div class="flex items-center gap-3 bg-white rounded-2xl p-3 border"><div class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center">${pr.img}</div><div class="flex-1 min-w-0"><p class="font-bold text-sm leading-none truncate">${pr.nama}</p><p class="text-xs text-muted">Rp${pr.harga.toLocaleString('id-ID')} • x${it.qty}</p></div><span class="font-black text-sm">Rp${(pr.harga*it.qty).toLocaleString('id-ID')}</span></div>`;
+     return `<div class="smart-kit-item flex items-center gap-3 bg-white rounded-2xl p-3 border"><div class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden flex-shrink-0">${fvImg(pr,'w-full h-full object-cover')}</div><div class="flex-1 min-w-0"><p class="font-bold text-sm leading-none truncate">${pr.nama}</p><p class="text-xs text-muted">x${it.qty}</p></div><span class="font-black text-sm whitespace-nowrap">Rp${(pr.harga*it.qty).toLocaleString('id-ID')}</span></div>`;
   }).join('');
   const saving = total - b.harga;
   $('#smartBasketCard').html(`
     <div class="flex items-center gap-3">
-      <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-2xl border">${plant?plant.emoji:'🎁'}</div>
+       <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center overflow-hidden border">${plant?fvImg(plant,'w-full h-full object-cover'):'🎁'}</div>
       <div class="flex-1"><p class="font-black">${b.nama}</p><p class="text-xs text-muted">${b.desc}</p></div>
       <span class="pill bg-[#FF9B70] text-white font-black">Hemat Rp${saving.toLocaleString('id-ID')}</span>
     </div>
-    <div class="space-y-2 mt-4">${rows}</div>
-    <div class="flex items-center justify-between mt-4">
-      <div><p class="text-xs text-muted line-through">Rp${total.toLocaleString('id-ID')}</p><p class="text-xl font-black">Rp${b.harga.toLocaleString('id-ID')}</p></div>
+     <div class="smart-kit-items space-y-2 mt-4">${rows}</div>
+     <div class="smart-kit-summary flex items-center justify-between gap-3 mt-4">
+       <div><p class="text-xs text-muted">Harga normal <span class="line-through">Rp${total.toLocaleString('id-ID')}</span></p><p class="text-xl font-black">Harga kit Rp${b.harga.toLocaleString('id-ID')}</p></div>
       <button onclick="addBundle('${plantId}')" class="btn btn-orange px-6 py-3">Tambahkan Semua →</button>
     </div>
     <p class="text-xs text-muted mt-2">* Simulasi - stok dummy, checkout tanpa pembayaran</p>
@@ -234,7 +250,7 @@ function renderProducts(){
   $('#productsGrid').html(list.map(p=> `
     <div class="fv-card white overflow-hidden hover-lift">
       <div class="h-36 bg-gray-50 flex items-center justify-center text-5xl relative cursor-pointer" onclick="openProduct('${p.id}')">
-        <span>${p.img}</span>
+        ${fvImg(p,'w-full h-full object-cover')}
         ${p.badge?`<span class="absolute top-3 left-3 pill text-[11px] font-black ${p.badge==='Best Seller'?'bg-[#FF9B70] text-white':p.badge==='Beginner Pick'?'bg-[#FFD45C] text-charcoal':p.badge==='Popular'?'bg-[#FF718D] text-white':'bg-charcoal text-white'}">${p.badge}</span>`:''}
         <button onclick="event.stopPropagation(); toggleWish('${p.id}'); $(this).toggleClass('bg-[#FF718D] text-white')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border flex items-center justify-center text-sm">♡</button>
         <span class="absolute bottom-3 right-3 pill pill-white text-xs">★ ${p.rating} • ${p.ulas}</span>
@@ -285,6 +301,7 @@ window.openProduct=function(id){
 }
 
 $(function(){
+  if(new URLSearchParams(location.search).get('checkout')==='1') openCheckout();
   renderSmartBasket('cabai-rawit');
   renderProducts();
   $('.smartBtn').on('click', function(){
@@ -308,4 +325,3 @@ $(function(){
 </script>
 </body>
 </html>
-
