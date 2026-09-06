@@ -1,3 +1,0 @@
-Letakkan foto asli di folder ini.
-Nama file WAJIB sesuai daftar di Panduan Ganti Foto.md di root proyek.
-Contoh: p01.jpg

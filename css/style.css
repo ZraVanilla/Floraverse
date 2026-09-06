@@ -84,7 +84,7 @@ body{background:#FFFFFF; color:var(--charcoal); -webkit-font-smoothing:antialias
 /* Buttons */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
-  padding:.85rem 1.35rem; border-radius:999px; font-weight:700; font-size:.95rem;
+  padding:.85rem 1.35rem; border-radius:14px; font-weight:700; font-size:.95rem;
   line-height:1; transition:all .2s ease; cursor:pointer; white-space:nowrap;
 }
 .btn:active{transform:scale(.98)}
@@ -127,6 +127,10 @@ body{background:#FFFFFF; color:var(--charcoal); -webkit-font-smoothing:antialias
 .fv-card.yellow .bg-white.text-white{
   color:#fff !important;
 }
+.fv-card.blue .bg-white:not(.text-white),
+.fv-card.pink .bg-white:not(.text-white),
+.fv-card.orange .bg-white:not(.text-white),
+.fv-card.green .bg-white:not(.text-white){color:var(--charcoal);}
 
 select,
 select option,
@@ -185,14 +189,14 @@ select {
   border-bottom:1.5px solid #F0F0F0;
 }
 .nav-link{
-  font-weight:600; font-size:.92rem; color:#6B7280; padding:.5rem .85rem; border-radius:999px; transition:.2s;
+  font-weight:600; font-size:.92rem; color:#6B7280; padding:.5rem .85rem; border-radius:12px; transition:.2s;
 }
 .nav-link:hover{color:var(--charcoal); background:#F3F4F6}
 .nav-link.active{background:var(--charcoal); color:#fff;}
 
 .menu-toggle{
   position:relative; display:inline-flex; align-items:center; justify-content:center;
-  width:2.75rem; height:2.75rem; border-radius:999px; background:var(--charcoal); color:#fff;
+  width:2.75rem; height:2.75rem; border-radius:12px; background:var(--charcoal); color:#fff;
   border:none; box-shadow:0 8px 18px rgba(37,37,37,.12); transition:all .2s ease;
 }
 .menu-toggle span{
@@ -219,9 +223,18 @@ select {
 .mobile-nav-backdrop.open{display:block}
 .mobile-nav-panel .mobile-nav-header{padding:1.25rem 1.5rem; border-bottom:1px solid #F0F0F0; display:flex; align-items:center; justify-content:space-between}
 .mobile-nav-panel .mobile-nav-links{padding:1rem; display:flex; flex-direction:column; gap:.5rem}
-.mobile-nav-panel .nav-link{padding:.75rem 1rem; border-radius:16px; font-size:1rem; font-weight:600; color:#6B7280; transition:.2s}
+.mobile-nav-panel .nav-link{padding:.75rem 1rem; border-radius:12px; font-size:1rem; font-weight:600; color:#6B7280; transition:.2s}
 .mobile-nav-panel .nav-link:hover{background:#F3F4F6; color:var(--charcoal)}
 .mobile-nav-panel .nav-link.active{background:var(--charcoal); color:#fff}
+.mobile-nav-panel .mobile-nav-links{flex:1}
+.mobile-nav-footer{margin-top:auto; padding:14px 16px 16px; border-top:1px solid #F0F0F0}
+.mobile-profile-chip{display:flex; align-items:center; gap:.75rem; padding:.7rem .75rem; border:1.5px solid #EFEFEF; border-radius:14px; background:#FAFAFA; transition:.2s}
+.mobile-profile-chip:hover{background:#F3F4F6}
+.mpc-avatar{width:38px; height:38px; border-radius:12px; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.72rem; flex-shrink:0}
+.mpc-info{display:flex; flex-direction:column; line-height:1.2; min-width:0}
+.mpc-info b{font-size:.9rem}
+.mpc-info small{color:var(--muted); font-size:.72rem; font-weight:600}
+.mpc-xp{margin-left:auto; background:rgba(255,212,92,.4); color:#9A7400; font-size:.7rem; font-weight:800; padding:.28rem .55rem; border-radius:999px; flex-shrink:0}
 
 .hero-visual-shell{
   overflow:visible !important;
@@ -232,6 +245,13 @@ select {
   position:relative; z-index:20;
   margin-top:auto; margin-bottom:1rem;
 }
+/* Guarantee breathing room between the plant tiles and the Garden Pulse card. */
+.hero-visual-shell .grid.grid-cols-3{margin-bottom:1.25rem;}
+
+/* Garden hero: the pulse panel is taller than the intro copy - center the copy so the
+   colored card does not read as one big empty block. */
+header .fv-card.green > .flex-1{display:flex; flex-direction:column; justify-content:center;}
+header .fv-card.green > .flex-1 > .pill{align-self:flex-start;}
 
 /* Illustrative blobs */
 .blob{
@@ -295,7 +315,7 @@ body.is-leaving{animation:pageLeave .2s ease-in forwards; pointer-events:none;}
 /* Toast */
 #toastBox{position:fixed; bottom:20px; left:50%; transform:translateX(-50%); z-index:70; display:flex; flex-direction:column; gap:.6rem; pointer-events:none}
 .toast{
-  background:var(--charcoal); color:#fff; padding:.9rem 1.15rem; border-radius:999px; font-weight:600; font-size:.88rem;
+  background:var(--charcoal); color:#fff; padding:.9rem 1.15rem; border-radius:12px; font-weight:600; font-size:.88rem;
   box-shadow:0 12px 32px rgba(0,0,0,.18); display:flex; align-items:center; gap:.6rem;
   animation: fadeUp .3s ease; pointer-events:auto; white-space:nowrap; max-width:92vw;
 }
@@ -383,7 +403,53 @@ body > header + section{margin-top:1.25rem !important;}
 /* Make dense controls read as one toolbar. */
 input,select,textarea{border-color:#E5E7EB;}
 .cat-pill,.pcat,.commFilter,.feedTab,.gcat,.levelBtn,.smartBtn,.ptab{font-size:.8rem !important;}
+.cat-pill,.pcat,.commFilter,.feedTab,.gcat,.levelBtn,.smartBtn,.ptab{border-radius:11px !important;}
 .cat-pill,.pcat{padding-top:.55rem !important; padding-bottom:.55rem !important;}
+
+/* Soften fully-round controls so the radius system stays consistent: cards 18px, controls 12-14px. */
+#cartBtn,#menuBtn{border-radius:12px;}
+.navbar > div > div a[href="profile.html"]{border-radius:12px;}
+input[type="search"]{border-radius:12px;}
+#newTaskInput,#journalInput{border-radius:12px;}
+
+/* Styled dropdown: the native <select> stays hidden as the source of truth.
+   Sizing classes (w-full, flex-1, sm:w-auto...) are copied onto the wrapper, so
+   Tailwind utilities keep controlling width exactly like on the original select. */
+.fv-select{position:relative; min-width:0; width:max-content; max-width:100%;}
+.fv-native-select{position:absolute !important; top:0; left:0; width:1px !important; height:1px !important; min-height:0 !important; opacity:0 !important; pointer-events:none !important; border:0 !important; padding:0 !important; margin:0 !important;}
+.fv-select-btn{
+  display:flex; align-items:center; justify-content:space-between; gap:.5rem;
+  width:100%; min-height:44px; padding:.55rem .8rem;
+  background:#fff; border:1.5px solid #E5E7EB; border-radius:12px;
+  font-family:inherit; font-weight:700; font-size:.85rem; color:var(--charcoal);
+  cursor:pointer; text-align:left; line-height:1.25;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.fv-select-btn:hover{border-color:#C9D2E0}
+.fv-select.open .fv-select-btn{border-color:var(--blue); box-shadow:0 0 0 3px rgba(111,168,255,.16)}
+.fv-select-label{flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.fv-select-chevron{flex-shrink:0; display:flex; align-items:center; color:#6B7280; transition:transform .2s ease;}
+.fv-select.open .fv-select-chevron{transform:rotate(180deg)}
+.fv-select-panel{
+  position:fixed; z-index:65; display:none;
+  background:#fff; border:1px solid #EFEFEF; border-radius:14px;
+  box-shadow:0 16px 44px rgba(37,37,37,.16);
+  padding:.35rem; max-height:268px; overflow:auto; overscroll-behavior:contain;
+}
+.fv-select-panel.open{display:block}
+.fv-select-option{
+  display:flex; align-items:center; justify-content:space-between; gap:.5rem;
+  width:100%; padding:.62rem .7rem; border:0; background:none; border-radius:9px;
+  font-family:inherit; font-weight:600; font-size:.85rem; color:var(--charcoal);
+  cursor:pointer; text-align:left; line-height:1.3;
+}
+.fv-select-option:hover{background:#F3F4F6}
+.fv-select-option:focus{outline:none}
+.fv-select-option:focus-visible{outline:none; background:#F3F4F6}
+.fv-select-option.selected:focus-visible{background:rgba(111,168,255,.14)}
+.fv-select-option.selected{background:rgba(111,168,255,.14); color:#3B82F6; font-weight:800}
+.fv-select-option .fv-opt-check{visibility:hidden; color:#3B82F6; font-weight:800; flex-shrink:0}
+.fv-select-option.selected .fv-opt-check{visibility:visible}
 
 @media (min-width:768px){
   /* Use the available desktop canvas without letting content become unreadably wide. */
@@ -392,4 +458,3 @@ input,select,textarea{border-color:#E5E7EB;}
   .profile-page > section{margin-top:1.5rem !important;}
   .profile-page > section:first-of-type{margin-top:1.5rem !important;}
 }
-</style>

@@ -5,6 +5,114 @@ window.fvImg = function(obj, cls){
   const fallback = `<span class="image-fallback" aria-label="${(obj.nama||'Tanaman').replace(/"/g,'')}">${(obj.nama||'?').slice(0,1)}</span>`.replace(/"/g,'&quot;');
   return `<img src="${obj.img}" alt="${(obj.nama||'').replace(/"/g,'')}" loading="lazy" class="${cls||''}" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')">`;
 };
+
+/* ===== Styled dropdown: native <select> stays hidden as the single source of truth ===== */
+window.fvSyncSelect = function(select){
+  const wrap = select.closest ? select.closest('.fv-select') : null;
+  if(!wrap) return;
+  const label = wrap.querySelector('.fv-select-label');
+  const opt = select.options[select.selectedIndex];
+  if(label && opt) label.textContent = opt.textContent;
+};
+window.closeAllFvSelects = function(){
+  document.querySelectorAll('.fv-select.open').forEach(w => w.classList.remove('open'));
+  document.querySelectorAll('.fv-select-panel.open').forEach(p => p.classList.remove('open'));
+  document.querySelectorAll('.fv-select-btn[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded','false'));
+};
+// Keep dropdown labels in sync when page scripts set values via .val().
+if(typeof window.jQuery === 'function'){
+  (function(){
+    const origVal = jQuery.fn.val;
+    jQuery.fn.val = function(value){
+      const ret = origVal.apply(this, arguments);
+      if(arguments.length > 0){
+        this.each(function(){
+          if(this.tagName === 'SELECT') window.fvSyncSelect(this);
+        });
+      }
+      return ret;
+    };
+  })();
+}
+function fvEnhanceSelects(){
+  document.querySelectorAll('select').forEach(function(select){
+    if(select.multiple || select.dataset.fvSelect) return;
+    select.dataset.fvSelect = '1';
+    const wrap = document.createElement('div');
+    wrap.className = 'fv-select';
+    ['w-full','flex-1','min-w-0','sm:w-auto','md:w-auto','lg:w-auto'].forEach(c=>{
+      if(select.classList.contains(c)) wrap.classList.add(c);
+    });
+    select.parentNode.insertBefore(wrap, select);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'fv-select-btn';
+    btn.setAttribute('aria-haspopup','listbox');
+    btn.setAttribute('aria-expanded','false');
+    const label = document.createElement('span');
+    label.className = 'fv-select-label';
+    const chev = document.createElement('span');
+    chev.className = 'fv-select-chevron';
+    chev.setAttribute('aria-hidden','true');
+    chev.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+    btn.append(label, chev);
+    select.classList.add('fv-native-select');
+    wrap.append(btn, select);
+    const panel = document.createElement('div');
+    panel.className = 'fv-select-panel';
+    panel.setAttribute('role','listbox');
+    document.body.appendChild(panel);
+
+    function renderOptions(){
+      panel.innerHTML = '';
+      Array.prototype.forEach.call(select.options, function(opt, i){
+        const o = document.createElement('button');
+        o.type = 'button';
+        o.className = 'fv-select-option' + (i === select.selectedIndex ? ' selected' : '');
+        o.setAttribute('role','option');
+        o.setAttribute('aria-selected', i === select.selectedIndex ? 'true' : 'false');
+        o.innerHTML = `<span class="fv-opt-text">${opt.textContent}</span><span class="fv-opt-check">✓</span>`;
+        o.addEventListener('click', function(){
+          select.selectedIndex = i;
+          select.dispatchEvent(new Event('change', {bubbles:true}));
+          window.fvSyncSelect(select);
+          window.closeAllFvSelects();
+          btn.focus({preventScroll:true});
+        });
+        panel.appendChild(o);
+      });
+    }
+    function openPanel(){
+      if(wrap.classList.contains('open')){ window.closeAllFvSelects(); return; }
+      window.closeAllFvSelects();
+      window.fvSyncSelect(select);
+      renderOptions();
+      const r = btn.getBoundingClientRect();
+      const vw = document.documentElement.clientWidth;
+      const width = Math.max(r.width, 190);
+      panel.style.width = width + 'px';
+      panel.style.left = Math.max(8, Math.min(r.left, vw - width - 8)) + 'px';
+      panel.style.top = (r.bottom + 6) + 'px';
+      wrap.classList.add('open');
+      panel.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+      const h = panel.offsetHeight;
+      if(window.innerHeight - r.bottom < h + 10 && r.top > h + 10){
+        panel.style.top = (r.top - h - 6) + 'px';
+      }
+      const firstSel = panel.querySelector('.fv-select-option.selected') || panel.firstElementChild;
+      if(firstSel) firstSel.focus({preventScroll:true});
+    }
+    btn.addEventListener('click', function(e){ e.stopPropagation(); openPanel(); });
+    panel.addEventListener('click', function(e){ e.stopPropagation(); });
+    select.addEventListener('change', function(){ window.fvSyncSelect(select); });
+    window.fvSyncSelect(select);
+  });
+}
+document.addEventListener('click', function(){ window.closeAllFvSelects(); });
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') window.closeAllFvSelects(); });
+window.addEventListener('resize', window.closeAllFvSelects);
+window.addEventListener('scroll', window.closeAllFvSelects, true);
 $(function(){
   $('#cartBtn').attr({'aria-label':'Buka keranjang','title':'Buka keranjang'});
   // Smoothly transition only between internal document pages.
@@ -65,6 +173,13 @@ $(function(){
           return `<a href="${l.href}" class="nav-link ${isActive ? 'active' : ''}">${l.text}</a>`;
         }).join('')}
       </div>
+      <div class="mobile-nav-footer">
+        <a href="profile.html" class="mobile-profile-chip">
+          <span class="mpc-avatar">IZ</span>
+          <span class="mpc-info"><b>Izra</b><small>Gardener • Level 8</small></span>
+          <span class="mpc-xp">340 XP</span>
+        </a>
+      </div>
     </div>
   `);
   $('body').append($mobilePanel);
@@ -99,8 +214,10 @@ $(function(){
   }
 
   window.toast = function(msg, icon="✨"){
+    const $box = $('#toastBox');
+    if($box.children().length >= 3) $box.children().first().remove();
     const $t = $(`<div class="toast">${fvEmojiMarkup(icon)}<span>${msg}</span></div>`);
-    $('#toastBox').append($t);
+    $box.append($t);
     setTimeout(()=> $t.fadeOut(300, ()=> $t.remove()), 2600);
   };
 
@@ -355,4 +472,11 @@ $(function(){
     else if($('#cartModal').hasClass('open') && typeof window.closeCartModal==='function') closeCartModal();
     else if($('#cartDrawer').hasClass('open')) closeDrawer();
   });
+
+  // Upgrade native selects into styled dropdowns. Deferred so page-ready scripts
+  // fill the options first, then the labels render with real values.
+  if(!window.__fvSelectsInit){
+    window.__fvSelectsInit = true;
+    window.setTimeout(fvEnhanceSelects, 0);
+  }
 });

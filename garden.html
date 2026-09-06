@@ -5,9 +5,9 @@
 <title>Kebunku - FloraVerse Plant Journey</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{blue:'#6FA8FF', pink:'#FF718D', yellow:'#FFD45C', orange:'#FF9B70', green:'#8BCB8A', charcoal:'#252525'}}}}</script>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animations.css">
-<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/style.css?v=3">
+<link rel="stylesheet" href="css/animations.css?v=3">
+<link rel="stylesheet" href="css/responsive.css?v=3">
 <!--
   Image source: Custom illustration created for FloraVerse - Open License
   Storytelling illustration: Custom FloraVerse - Open License
@@ -164,7 +164,7 @@
       <div>
         <span class="pill pill-yellow font-black">🔬 Plant Lab - Simulasi Edukasi</span>
         <h2 class="text-xl font-black mt-2">Uji coba sebelum tanam beneran.</h2>
-        <p class="text-sm text-muted">Atur parameter, lihat tanaman bereaksi dummy. Hubungkan ke Garden Pulse & Journal.</p>
+        <p class="text-sm text-muted">Atur parameter, lihat tanaman bereaksi secara simulasi. Hubungkan ke Garden Pulse & Journal.</p>
       </div>
       <select id="labGardenSelect" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm"></select>
     </div>
@@ -184,7 +184,7 @@
 <div id="addPlantModal" class="modal-backdrop">
   <div class="modal p-6">
     <div class="flex items-center justify-between"><p class="font-black text-lg">+ Tambah Tanaman</p><button onclick="$('#addPlantModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div>
-    <p class="text-sm text-muted mt-1">Pilih dari ensiklopedia (24 tanaman dummy)</p>
+    <p class="text-sm text-muted mt-1">Pilih dari ensiklopedia (24 tanaman)</p>
     <input id="searchAddPlant" type="search" placeholder="Cari cabai, tomat..." class="w-full mt-3 px-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#6FA8FF] outline-none">
     <div id="addPlantList" class="grid grid-cols-2 gap-2 mt-3 max-h-[40vh] overflow-auto pr-1"></div>
   </div>
@@ -204,7 +204,7 @@
 <script src="js/journey.js"></script>
 <script src="js/plant-lab.js"></script>
 <script src="js/plant-match.js"></script>
-<script src="js/app.js"></script>
+<script src="js/app.js?v=3"></script>
 <script>
 let selectedGardenId = MY_GARDEN[0].id;
 

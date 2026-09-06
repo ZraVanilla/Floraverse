@@ -5,9 +5,9 @@
 <title>FloraShop - Belanja Kebutuhan Berkebun</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{blue:'#6FA8FF', pink:'#FF718D', yellow:'#FFD45C', orange:'#FF9B70', green:'#8BCB8A', charcoal:'#252525'}}}}</script>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/animations.css">
-<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/style.css?v=3">
+<link rel="stylesheet" href="css/animations.css?v=3">
+<link rel="stylesheet" href="css/responsive.css?v=3">
 <!--
   Image source: Custom illustration created for FloraVerse - Open License
   Shop illustration: Custom FloraVerse - Open License
@@ -27,15 +27,15 @@
 <header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
   <div class="fv-card orange p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden">
     <div class="flex-1 relative z-10">
-      <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop • 28 Produk</span>
+      <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop • 32 Produk</span>
       <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Semua kebutuhan<br>berkebun, satu tempat.</h1>
-      <p class="text-white/90 text-sm mt-2 max-w-[520px]">Benih, pot, media, pupuk, alat, hidroponik - kurasi untuk pemula & hobbyist. Dummy checkout, tapi terasa nyata.</p>
+      <p class="text-white/90 text-sm mt-2 max-w-[520px]">Benih, pot, media, pupuk, alat, hidroponik - kurasi untuk pemula & hobbyist. Alur checkout lengkap - simulasi, tanpa pembayaran nyata.</p>
       <div class="flex flex-wrap gap-2 mt-4"></div>
     </div>
     <div class="lg:w-[380px] bg-white rounded-[24px] p-5 relative z-10">
       <p class="font-black">🔍 Cari Produk</p>
       <div class="relative mt-2"><input id="searchProd" type="search" placeholder="Cari benih cabai, pot, AB Mix..." class="w-full pl-10 pr-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#FF9B70] outline-none font-medium"><span class="absolute left-3.5 top-3.5">⌕</span></div>
-      <div class="grid grid-cols-2 gap-2 mt-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3">
         <select id="filterProdKat" class="min-w-0 w-full py-2.5 px-3 rounded-full border bg-white text-charcoal font-bold text-sm truncate"><option value="" class="text-charcoal">Semua Kategori</option><option class="text-charcoal">Benih</option><option class="text-charcoal">Bibit</option><option class="text-charcoal">Pot</option><option class="text-charcoal">Media Tanam</option><option class="text-charcoal">Pupuk</option><option class="text-charcoal">Tools</option><option class="text-charcoal">Hydroponics</option><option class="text-charcoal">Plant care</option><option class="text-charcoal">Bundling</option></select>
         <select id="sortProd" class="min-w-0 w-full py-2.5 px-3 rounded-full border bg-white text-charcoal font-bold text-sm truncate"><option value="popular" class="text-charcoal">Paling Populer</option><option value="murah" class="text-charcoal">Harga Terendah</option><option value="mahal" class="text-charcoal">Harga Tertinggi</option><option value="rating" class="text-charcoal">Rating Tertinggi</option></select>
       </div>
@@ -135,7 +135,7 @@
 <script src="js/plants.js"></script>
 <script src="js/products.js"></script>
 <script src="js/journey.js"></script>
-<script src="js/app.js"></script>
+<script src="js/app.js?v=3"></script>
 <script>
 // Override cart functions for shop.html - use modal instead of drawer
 window.openDrawer = function(){
@@ -219,7 +219,7 @@ function renderSmartBasket(plantId){
        <div><p class="text-xs text-muted">Harga normal <span class="line-through">Rp${total.toLocaleString('id-ID')}</span></p><p class="text-xl font-black">Harga kit Rp${b.harga.toLocaleString('id-ID')}</p></div>
       <button onclick="addBundle('${plantId}')" class="btn btn-orange px-6 py-3">Tambahkan Semua →</button>
     </div>
-    <p class="text-xs text-muted mt-2">* Simulasi - stok dummy, checkout tanpa pembayaran</p>
+    <p class="text-xs text-muted mt-2">* Simulasi - checkout tanpa pembayaran nyata</p>
   `);
 }
 window.addBundle=function(plantId){
@@ -291,8 +291,8 @@ window.openProduct=function(id){
         </div>
         <ul class="text-sm text-muted mt-3 space-y-1 list-disc pl-5">
           <li>Pengiriman simulasi 1–2 hari</li>
-          <li>Gratis ongkir dummy untuk bundling</li>
-          <li>Rating ${p.rating} dari ${p.ulas} pembeli dummy (Izra, Fairuz, Tafayad)</li>
+          <li>Gratis ongkir untuk bundling</li>
+          <li>Rating ${p.rating} dari ${p.ulas} pembeli (Izra, Fairuz, Tafayad)</li>
         </ul>
       </div>
     </div>

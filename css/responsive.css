@@ -1,283 +1,189 @@
-﻿/*
-  FloraVerse - responsive.css
-  Ensures optimal across Desktop (priority for jury), Laptop, Tablet, Mobile
-  Custom for FloraVerse
-*/
+/* FloraVerse responsive layout
+   Breakpoints follow content needs: phone < 768px, tablet 768-1023px. */
 
-/* Touch targets */
-@media (max-width: 640px){
-  .btn{padding:.72rem 1rem}
-  .btn:not(.w-full){width:auto}
-  .nav-link{padding:.6rem .9rem}
-  .menu-toggle{width:2.5rem; height:2.5rem}
-  .menu-toggle span:nth-child(1){top:.8rem}
-  .menu-toggle span:nth-child(2){top:1.18rem}
-  .menu-toggle span:nth-child(3){top:1.56rem}
-  .menu-toggle.is-open span:nth-child(1),
-  .menu-toggle.is-open span:nth-child(3){top:1.18rem}
-}
+*,*::before,*::after{box-sizing:border-box}
+img,video,canvas,svg{max-width:100%}
+.flex > *,.grid > *{min-width:0}
+input,select,textarea{max-width:100%}
+.overflow-auto,.no-scrollbar{-webkit-overflow-scrolling:touch}
 
-@media (max-width: 767px){
-  .navbar > div{
-    min-height:68px; padding-top:.5rem; padding-bottom:.5rem; gap:.75rem;
-  }
-
-  .navbar .wordmark{
-    font-size:1.35rem !important;
-    letter-spacing:-.03em;
-  }
-
-  .display,
-  h1,
-  h2,
-  h3{
-    letter-spacing:-.03em;
-  }
-
-  .display{
-    font-size:clamp(2.2rem, 12vw, 3.4rem) !important;
-    line-height:.95 !important;
-  }
-
-  .btn,
-  .btn-primary,
-  .btn-ghost,
-  .btn-dark,
-  .btn-pink,
-  .btn-orange,
-  .btn-yellow,
-  .btn-green{
-    width:100%;
-  }
-
-  .flex-wrap.gap-3 > .btn,
-  .flex-wrap.gap-3 > a,
-  .flex-wrap.gap-3 > button{flex:0 1 auto;}
-
-  .community-hero .flex.gap-2 > *{flex:1 1 100%;}
-
-  .hero .flex-wrap.gap-3,
-  .flex.items-center.gap-6,
-  .flex-wrap.gap-2,
-  .community-panel,
-  .community-feed-shell{
-    gap:.75rem;
-  }
-
-  .hero .flex.items-center.gap-6{
-    flex-wrap:wrap;
-    align-items:flex-start;
-  }
-
-  .community-hero,
-  .community-search-panel,
-  .community-challenge,
-  .community-map,
-  .community-sidebar > .fv-card,
-  .community-trending .fv-card,
-  .community-feed-shell > div,
-  .fv-card{border-radius:18px}
-
-  section,
-  .px-4,
-  .sm\:px-6,
-  .lg\:px-8{
-    padding-left:1rem !important;
-    padding-right:1rem !important;
-  }
-
-  .community-hero {
-    padding:1.25rem !important;
-  }
-
-  .community-hero h1 {
-    font-size:2rem !important;
-    line-height:1.05 !important;
-  }
-
-  .community-search-panel {
-    width:100% !important;
-    margin-top:.25rem;
-  }
-
-  .community-panel {
-    grid-template-columns:1fr !important;
-  }
-
-  .community-challenge,
-  .community-map {
-    padding:1.25rem !important;
-  }
-
-  .community-map .grid,
-  .community-trending .grid,
-  .community-feed-shell .grid,
-  .community-sidebar .space-y-2,
-  .community-feed-shell .space-y-4 {
-    gap:.75rem !important;
-  }
-
-  .community-feed-shell {
-    grid-template-columns:1fr !important;
-  }
-
-  .community-feed-shell > div:first-child,
-  .community-feed-shell > div:last-child {
-    width:100% !important;
-    max-width:100% !important;
-  }
-
-  .community-sidebar {
-    display:grid; gap:.75rem; margin-top:0;
-  }
-
-  .community-trending .flex.items-center.justify-between,
-  .community-feed-shell .flex.flex-col.sm\:flex-row,
-  .community-feed-shell .flex.items-center.justify-between {
-    display:flex; flex-direction:column; align-items:flex-start; gap:.75rem;
-  }
-
-  .community-feed-shell .flex.gap-2.mt-3,
-  .community-feed-shell .flex.gap-2.mt-4,
-  .community-hero .flex.gap-2.mt-4,
-  .community-challenge .flex.gap-2.mt-4 {
-    display:flex; flex-direction:column; gap:.75rem;
-  }
-
-  .community-feed-shell .flex.gap-2.mt-3 button,
-  .community-feed-shell .flex.gap-2.mt-4 button,
-  .community-hero .flex.gap-2.mt-4 button,
-  .community-challenge .flex.gap-2.mt-4 button {
-    width:100%;
-  }
-
-  .community-trending .grid.sm\:grid-cols-3 {
-    grid-template-columns:1fr !important;
-  }
-
-  .text-5xl,
-  .text-6xl,
-  .text-7xl,
-  .text-8xl{
-    font-size:clamp(2.25rem, 10vw, 3.25rem) !important;
-  }
-}
-
-/* Critical mobile overflow fixes */
-html, body{max-width:100%;}
-* { box-sizing:border-box; }
-.flex > *, .grid > * { min-width:0; }
-select, input, textarea{max-width:100%; min-width:0; }
-.fv-card{overflow:hidden; }
-.overflow-auto, .no-scrollbar{max-width:100%; -webkit-overflow-scrolling:touch; }
-
-/* Grid refinements */
-@media (max-width: 768px){
-  .fv-card{border-radius:20px}
-  .modal{border-radius:20px; margin: .75rem; max-width: calc(100vw - 1.5rem);}
-  /* Header filter stacks on mobile */
-  header .flex.gap-2.flex-1, header .flex.gap-2.mt-3, header .flex.gap-2.mt-2{flex-wrap:wrap;}
-  /* Prevent fixed widths from breaking */
-  [class*="w-["]{max-width:100%;}
-}
-
-/* Living World adjustments */
-@media (max-width: 1024px){
-  .sun-pulse{width:56px; height:56px}
-  .bee, .butterfly{display:none}
-}
-
-/* Focus states */
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
-  outline:2px solid #6FA8FF;
-  outline-offset:2px;
-}
-
-/* High contrast text safeguard */
-@media (prefers-contrast: more){
-  .text-muted{color:#4B5563}
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  *, *::before, *::after{animation-duration:.01ms !important; transition-duration:.01ms !important}
-}
-
-/* Mobile-first density pass: reduce scrolling without removing any feature. */
 @media (max-width:767px){
-  .navbar > div{height:56px !important; min-height:56px;}
-  body > header,
-  body > section,
-  body > main,
-  body > .max-w-\[1280px\]{margin-top:.75rem !important;}
-  body > header:first-of-type{margin-top:.75rem !important;}
-  body > section + section,
-  body > header + section{margin-top:.75rem !important;}
+  body{font-size:15px}
 
-  h1{font-size:clamp(1.8rem,8vw,2.35rem) !important; line-height:1.04 !important;}
-  h2{font-size:clamp(1.2rem,5.5vw,1.65rem) !important; line-height:1.1 !important;}
-  h3{font-size:1.05rem !important;}
-  p{line-height:1.4;}
+  /* One shared, predictable page container. */
+  .max-w-\[1280px\]{
+    width:calc(100% - 32px) !important;
+    max-width:none !important;
+    margin-inline:auto !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
 
-  .fv-card{border-radius:16px;}
-  .fv-card.p-8,.fv-card.p-7,.fv-card.p-6,.fv-card.p-5{padding:.9rem !important;}
-  .fv-card .fv-card{border-radius:12px;}
-  .blob{display:none;}
-  .hero-visual-shell{min-height:0 !important;}
+  .navbar > div{height:60px !important; min-height:60px; gap:12px}
+  .navbar .wordmark{font-size:1.35rem !important; flex-shrink:0}
+  .navbar .w-10.h-10,.menu-toggle{width:44px !important; height:44px !important; flex-shrink:0}
+  .menu-toggle span:nth-child(1){top:.95rem}
+  .menu-toggle span:nth-child(2){top:1.33rem}
+  .menu-toggle span:nth-child(3){top:1.71rem}
+  .menu-toggle.is-open span:nth-child(1),.menu-toggle.is-open span:nth-child(3){top:1.33rem}
+  .mobile-nav-panel{width:min(86vw,320px)}
+  .mobile-nav-panel .mobile-nav-header{padding:16px}
+  .mobile-nav-panel .mobile-nav-links{padding:12px; gap:6px}
+  .mobile-nav-panel .nav-link{min-height:44px; display:flex; align-items:center; padding:10px 14px}
 
-  /* Keep catalogue browsing compact and scannable. */
-  #plantsGrid,#productsGrid,#guidesGrid,#myPlantsGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:.65rem !important;}
-  #plantsGrid .p-4,#productsGrid .p-4,#guidesGrid .p-4,#myPlantsGrid .p-4{padding:.7rem !important;}
-  #plantsGrid .h-40{height:8rem !important;}
-  #productsGrid .h-36{height:7.5rem !important;}
-  #guidesGrid .h-32{height:6.5rem !important;}
-  #plantsGrid .flex.gap-2.mt-3,#productsGrid .flex.items-end.justify-between.mt-2{gap:.35rem; flex-wrap:wrap;}
-  #plantsGrid .btn,#productsGrid .btn{font-size:.7rem; padding:.55rem .65rem;}
-  #plantsGrid .pill,#productsGrid .pill,#guidesGrid .pill{font-size:.6rem; padding:.22rem .42rem;}
-  #plantsGrid .text-sm,#productsGrid .text-sm,#guidesGrid .text-sm{font-size:.75rem;}
-  #productsGrid > .fv-card > .p-4{display:flex; flex-direction:column;}
+  body > header,body > section,body > main,body > div.max-w-\[1280px\]{margin-top:16px !important}
+  body > header:first-of-type,body > section:first-of-type{margin-top:20px !important}
+  body > section + section{margin-top:20px !important}
+  body > nav + header,body > nav + section{padding-top:0 !important; margin-top:20px !important}
 
-  /* Hero controls remain accessible but no longer create long vertical stacks. */
-  header .flex-wrap.gap-3{gap:.5rem !important;}
-  header .flex-wrap.gap-3 > .btn,
-  header .flex-wrap.gap-3 > a,
-  header .flex-wrap.gap-3 > button{flex:1 1 auto; min-width:0;}
-  header .grid.grid-cols-3{gap:.4rem !important;}
-  header .grid.grid-cols-3 .p-3{padding:.55rem !important;}
-  header .grid.grid-cols-3 .text-2xl{font-size:1.35rem !important;}
+  h1{font-size:clamp(1.85rem,8vw,2.35rem) !important; line-height:1.06 !important; letter-spacing:-.03em}
+  h2{font-size:clamp(1.3rem,6vw,1.7rem) !important; line-height:1.12 !important}
+  h3{font-size:1.1rem !important; line-height:1.2}
+  .display{font-size:clamp(2.35rem,12vw,3.25rem) !important; line-height:.96 !important}
+  p{overflow-wrap:anywhere}
 
-  /* Keep action rows compact while preserving full-width explicit CTAs. */
-  .flex.gap-2 > .btn:not(.w-full),
-  .flex.gap-3 > .btn:not(.w-full){flex:1 1 0; min-width:0;}
-  .btn{min-height:2.5rem; white-space:normal; line-height:1.2; text-align:center;}
-  .pill{max-width:100%;}
+  .fv-card{width:100%; max-width:100%; border-radius:18px; overflow:hidden}
+  .fv-card.p-8,.fv-card.p-7,.fv-card.p-6{padding:18px !important}
+  .fv-card.p-5{padding:16px !important}
+  .fv-card .fv-card{border-radius:14px}
+  .blob{opacity:.2; transform:scale(.7)}
 
-  /* Dense detail pages use less vertical whitespace between utility panels. */
-  .space-y-4 > :not([hidden]) ~ :not([hidden]),
-  .space-y-3 > :not([hidden]) ~ :not([hidden]){margin-top:.6rem !important;}
-  .mt-6{margin-top:1rem !important;}
-  .mt-8{margin-top:1.25rem !important;}
-  .mb-6{margin-bottom:1rem !important;}
+  .btn{min-width:44px; min-height:44px; width:auto; max-width:100%; padding:10px 16px; white-space:normal; line-height:1.2; text-align:center}
+  .btn.w-full{width:100%}
+  button:not(.btn){min-height:44px}
+  button:not(.btn),a[role="button"]{touch-action:manipulation}
+  button.w-8.h-8,button.w-9.h-9{width:44px !important; height:44px !important; min-width:44px; min-height:44px}
+  input,select,textarea{font-size:16px !important; min-height:44px}
+  input[type="checkbox"],input[type="radio"]{min-height:0}
 
-  /* Keep important data panels side by side where the content is short. */
-  #profileGarden{grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:.5rem !important;}
-  #profileComms{grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:.6rem !important;}
-  #achieveList{gap:.5rem !important;}
-  .grid.grid-cols-3{gap:.5rem !important;}
-  .grid.grid-cols-3 > *{min-width:0;}
+  /* Hero content must reflow instead of shrinking horizontally. */
+  header > .fv-card,header .fv-card > .flex-col,body > section:first-of-type > .grid{gap:18px !important}
+  header .lg\:w-\[420px\],header .lg\:w-\[380px\],header .community-search-panel{width:100% !important}
+  header .bg-white.rounded-\[24px\],header .bg-white.rounded-3xl{padding:16px !important; border-radius:16px}
+  header .flex-wrap{gap:8px !important}
+  header .flex-wrap > .btn{flex:1 1 140px}
 
-  /* Filter rows scroll horizontally instead of pushing the page downward. */
-  #catPills,#prodCats{padding-bottom:.35rem;}
-  #catPills > *,#prodCats > *{flex-shrink:0;}
-  #smartChoices{flex-wrap:nowrap; overflow-x:auto; padding-bottom:.25rem;}
-  #smartChoices > *{flex-shrink:0;}
-  .smart-kit-items{grid-template-columns:1fr;}
-  .smart-kit-summary{align-items:flex-start; flex-wrap:wrap;}
-  .smart-kit-summary .btn{width:100%;}
-  #smartBasketSection .smart-basket-intro{padding:1rem;}
+  /* Home hero actions are stacked to keep full labels readable. */
+  .display ~ .flex.flex-wrap.gap-3{display:grid; grid-template-columns:1fr; width:100%}
+  .display ~ .flex.flex-wrap.gap-3 > *{width:100%}
+  .display ~ .flex.items-center.gap-6{gap:12px; flex-wrap:wrap}
+  .display ~ .grid.grid-cols-3{gap:8px; margin-top:20px}
+  .display ~ .grid.grid-cols-3 .p-3{padding:10px !important}
+  .hero-visual-shell{min-height:0 !important; padding:16px !important; border-radius:22px !important}
+  .hero-visual-shell .grid.grid-cols-3{gap:8px}
+  .hero-visual-shell .grid.grid-cols-3 > div{padding:8px !important; border-radius:14px}
+  .garden-pulse-card{margin-top:14px; margin-bottom:0}
+
+  /* Search and filter controls stack naturally. */
+  header select,header input[type="search"]{width:100%}
+  header .grid.grid-cols-2{gap:8px}
+  #catPills,#prodCats,#smartChoices,#guideCats,#stagePills{flex-wrap:nowrap; overflow-x:auto; max-width:100%; padding-bottom:6px; scrollbar-width:none}
+  #catPills::-webkit-scrollbar,#prodCats::-webkit-scrollbar,#smartChoices::-webkit-scrollbar,#guideCats::-webkit-scrollbar,#stagePills::-webkit-scrollbar{display:none}
+  #catPills > *,#prodCats > *,#smartChoices > *,#guideCats > *,#stagePills > *{flex:0 0 auto}
+  .cat-pill,.pcat,.smartBtn,.gcat,.commFilter,.feedTab,.levelBtn,.ptab{min-height:42px}
+
+  /* Product and content catalogues prioritize readability over density. */
+  #plantsGrid,#productsGrid,#guidesGrid,#myPlantsGrid{grid-template-columns:1fr !important; gap:14px !important}
+  #plantsGrid .h-40,#productsGrid .h-36{height:180px !important}
+  #guidesGrid .h-32{height:150px !important}
+  #plantsGrid .p-4,#productsGrid .p-4,#guidesGrid .p-4,#myPlantsGrid .p-4{padding:16px !important}
+  #productsGrid .items-end.justify-between{align-items:center; gap:12px}
+
+  /* Shop and checkout. */
+  #homeProducts{grid-template-columns:1fr !important; gap:10px !important;}
+  #smartBasketLayout{gap:14px !important; align-items:stretch}
+  #smartBasketSection .smart-basket-intro{padding:16px}
+  #smartBasketCard{width:100% !important; padding:16px !important}
+  .smart-kit-items{grid-template-columns:1fr}
+  .smart-kit-item{padding:10px !important}
+  .smart-kit-summary{align-items:flex-start; flex-wrap:wrap}
+  .smart-kit-summary .btn{width:100%}
+  .checkout-panel,.checkout-summary{padding:14px}
+  .checkout-option{min-height:56px}
+  #cartModalList > .flex{display:grid; grid-template-columns:48px minmax(0,1fr) 44px; gap:8px 10px; align-items:center}
+  #cartModalList > .flex > :first-child{grid-column:1; grid-row:1 / span 2}
+  #cartModalList > .flex > :nth-child(2){grid-column:2; grid-row:1}
+  #cartModalList > .flex > :nth-child(3){grid-column:2 / 4; grid-row:2; justify-self:start}
+  #cartModalList > .flex > :nth-child(4){grid-column:3; grid-row:1; width:44px !important; height:44px !important}
+  #cartModalList > .flex > :nth-child(3) button{width:40px !important; height:40px !important}
+
+  /* Community actions use a stable two-column action grid. */
+  .community-panel,.community-feed-shell{grid-template-columns:1fr !important; gap:16px !important}
+  .community-hero,.community-challenge,.community-map{padding:18px !important}
+  .community-search-panel{padding:16px !important}
+  .community-trending .grid.sm\:grid-cols-3{grid-template-columns:1fr !important}
+  #commGrid{grid-template-columns:1fr !important}
+  #feedList .fv-card > .flex.gap-2.mt-3{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px}
+  #feedList .fv-card > .flex.gap-2.mt-3 > button{width:100%; min-height:44px; padding:8px}
+  #feedList .pill{white-space:normal}
+
+  /* Garden detail controls and summaries. */
+  #pulseList > div{display:grid !important; grid-template-columns:40px minmax(0,1fr); gap:8px 10px; align-items:center}
+  #pulseList > div > div:first-child{width:40px !important; height:40px !important}
+  #pulseList > div > .pill{grid-column:1 / -1; width:100%; min-height:40px; display:flex; align-items:center; justify-content:center; white-space:normal; text-align:center}
+  #myPlantsGrid > .fv-card > .flex.items-center.gap-3{display:grid; grid-template-columns:48px minmax(0,1fr); align-items:start}
+  #myPlantsGrid > .fv-card > .flex.items-center.gap-3 > div:first-child{width:48px !important; height:48px !important}
+  #myPlantsGrid > .fv-card > .flex.items-center.gap-3 > .pill{grid-column:2; justify-self:start; white-space:normal}
+  #taskList label{min-height:48px}
+  #newTaskInput + .btn,#journalInput + .btn{flex:0 0 auto}
+  #stagePills{padding-bottom:6px}
+
+  /* Profile: clear summary first, secondary data below. */
+  .profile-page header .fv-card > .flex.gap-5{display:grid; grid-template-columns:72px minmax(0,1fr); gap:14px}
+  .profile-page header .w-24.h-24{width:72px !important; height:72px !important; border-radius:20px; font-size:1.75rem}
+  .profile-page header .flex.gap-2.mt-4{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px}
+  .profile-page header .flex.gap-2.mt-4 .btn{width:100%; padding-inline:10px}
+  .profile-stat-grid{width:100% !important; gap:8px !important}
+  .profile-stat-grid > div{padding:12px 6px !important}
+  .profile-page > section.grid{grid-template-columns:1fr !important; gap:16px !important}
+  #profileGarden{grid-template-columns:1fr !important}
+  #profileComms{grid-template-columns:1fr !important}
+  #achieveList{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+  /* Dialogs and cart always remain attached to the viewport. */
+  .modal-backdrop{padding:12px; align-items:center; width:100%; height:100dvh}
+  .modal{width:100%; max-width:calc(100vw - 24px) !important; max-height:calc(100dvh - 24px); margin:0; border-radius:18px}
+  .modal > .p-6,.modal > .p-7,.modal form.p-5{padding:16px !important}
+  .drawer{width:min(100%,420px); max-width:100%; height:100dvh}
+  #toastBox{bottom:12px; width:calc(100% - 24px)}
+  .toast{width:fit-content; max-width:100%; margin-inline:auto; white-space:normal; border-radius:14px}
+
+  .space-y-6 > :not([hidden]) ~ :not([hidden]){margin-top:16px !important}
+  .space-y-4 > :not([hidden]) ~ :not([hidden]){margin-top:12px !important}
+  .mt-8{margin-top:24px !important}
+  .pb-10{padding-bottom:24px !important}
 }
 
-@media (max-width:380px){
-  #plantsGrid,#productsGrid,#guidesGrid,#myPlantsGrid{grid-template-columns:1fr !important;}
-  #profileComms{grid-template-columns:1fr !important;}
+@media (max-width:359px){
+  .max-w-\[1280px\]{width:calc(100% - 24px) !important}
+  .navbar .wordmark{font-size:1.22rem !important}
+  .display{font-size:2.2rem !important}
+  header .grid.grid-cols-2{grid-template-columns:1fr}
+  .profile-page header .fv-card > .flex.gap-5{grid-template-columns:1fr}
+  .profile-page header .w-24.h-24{width:64px !important; height:64px !important}
+  #feedList .fv-card > .flex.gap-2.mt-3{grid-template-columns:1fr}
 }
+
+@media (min-width:768px) and (max-width:1023px){
+  .max-w-\[1280px\]{width:calc(100% - 40px) !important; max-width:none !important; padding-left:0 !important; padding-right:0 !important}
+  .navbar > div{height:64px !important}
+  .navbar .w-10.h-10,.menu-toggle{width:44px !important; height:44px !important}
+  .btn{min-width:44px; min-height:44px}
+  button:not(.btn){min-height:44px; touch-action:manipulation}
+  button.w-8.h-8,button.w-9.h-9{width:44px !important; height:44px !important; min-width:44px; min-height:44px}
+  .cat-pill,.pcat,.commFilter,.feedTab,.gcat,.levelBtn,.smartBtn,.ptab{min-height:42px}
+  body > header,body > section,body > main,body > div.max-w-\[1280px\]{margin-top:24px !important}
+  header .lg\:w-\[420px\],header .lg\:w-\[380px\],header .community-search-panel{width:100% !important}
+  #plantsGrid,#productsGrid,#guidesGrid,#myPlantsGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .community-panel,.community-feed-shell,.profile-page > section.grid{grid-template-columns:1fr !important}
+  .smart-kit-items{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .modal{max-width:calc(100vw - 40px) !important; max-height:calc(100dvh - 40px)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important}
+}
+
+@media (prefers-contrast:more){.text-muted{color:#4B5563}}
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(111,168,255,.65); outline-offset:2px}
