@@ -32,7 +32,7 @@
       <p class="text-sm opacity-70 mt-2 max-w-[520px]">Dari dasar hingga hidroponik - semua dibuat ramah pemula dengan bahasa sederhana, visual, dan checklist praktik.</p>
       <div class="flex flex-wrap gap-2 mt-4">
         <span class="pill bg-white font-bold">⏱️ 4–12 menit / panduan</span>
-        <span class="pill bg-charcoal text-white">Pemula → Menengah</span>
+        <span class="pill bg-charcoal text-white">Pemula  Menengah</span>
       </div>
       <div class="flex flex-col sm:flex-row gap-2 mt-5">
         <div class="relative flex-1 min-w-0 w-full"><input id="searchGuide" type="search" placeholder="Cari kompos, hidroponik, hama..." class="w-full pl-10 pr-4 py-3 rounded-full border-2 border-black/10 bg-white focus:border-charcoal outline-none font-medium"><span class="absolute left-3.5 top-3.5">⌕</span></div>
@@ -42,7 +42,7 @@
     <div class="lg:w-[380px] bg-white rounded-[24px] p-5 relative z-10">
       <p class="font-black flex items-center gap-2">🔥 Paling Populer</p>
       <div id="popularGuidesSide" class="space-y-2 mt-3"></div>
-      <a href="#guidesGrid" class="btn btn-dark w-full mt-4 text-sm">Mulai Belajar →</a>
+      <a href="#guidesGrid" class="btn btn-dark w-full mt-4 text-sm">Mulai Belajar </a>
     </div>
   </div>
 </header>
@@ -111,11 +111,11 @@
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
   <div class="fv-card green p-6 text-white">
     <p class="font-black">🌱 Plant Journey Education</p>
-    <p class="text-sm opacity-90">Belajar → Praktik di Kebunku. Setiap guide punya tombol “Mulai di Kebunku”.</p>
+    <p class="text-sm opacity-90">Belajar  Praktik di Kebunku. Setiap guide punya tombol “Mulai di Kebunku”.</p>
     <div class="bg-white rounded-2xl p-4 mt-3 text-charcoal flex items-center gap-3">
       <div class="w-10 h-10 rounded-xl bg-[#FFD45C] flex items-center justify-center">🌶️</div>
       <div class="flex-1"><p class="font-bold text-sm">Menanam Cabai hingga Panen - 10 menit</p><p class="text-xs text-muted">Setelah baca, langsung mulai Day 1 di Kebunku</p></div>
-      <a href="garden.html" class="btn btn-dark text-xs px-4 py-2">Mulai Day 1 →</a>
+      <a href="garden.html" class="btn btn-dark text-xs px-4 py-2">Mulai Day 1 </a>
     </div>
   </div>
 </section>
@@ -142,7 +142,7 @@
         <div class="bg-gray-50 rounded-2xl p-4 text-center"><div class="text-3xl">📖</div><p class="font-black text-sm mt-1">Baca Panduan</p><p class="text-xs text-muted">Step-by-step</p></div>
         <div class="bg-gray-50 rounded-2xl p-4 text-center"><div class="text-3xl">🌿</div><p class="font-black text-sm mt-1">Praktik & Panen</p><p class="text-xs text-muted">Di Kebunku</p></div>
       </div>
-      <div class="flex gap-2 mt-4"><a href="plants.html" class="btn btn-primary flex-1 text-center">Pilih Tanaman →</a><a href="garden.html" class="btn btn-ghost flex-1 text-center">Lihat Kebunku</a></div>
+      <div class="flex gap-2 mt-4"><a href="plants.html" class="btn btn-primary flex-1 text-center">Pilih Tanaman </a><a href="garden.html" class="btn btn-ghost flex-1 text-center">Lihat Kebunku</a></div>
     </div>
   </div>
 </section>
@@ -150,7 +150,7 @@
 <!-- Guide Modal -->
 <div id="guideModal" class="modal-backdrop"><div class="modal max-w-[720px]"><div id="guideModalContent" class="p-6 sm:p-7"></div></div></div>
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
-<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran →</button></div></div>
+<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran </button></div></div>
 <div id="toastBox"></div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -186,7 +186,7 @@ function renderGuides(){
         <p class="text-xs text-muted mt-1">${g.waktu} • ${g.level}</p>
         <p class="text-sm text-muted mt-2 line-clamp-2 leading-snug">${g.desc}</p>
         <div class="flex gap-2 mt-3">
-          <span class="flex-1 btn btn-primary text-xs py-2.5 justify-center">Baca →</span>
+          <span class="flex-1 btn btn-primary text-xs py-2.5 justify-center">Baca </span>
           <button onclick="event.stopPropagation(); toast('Disimpan','🔖')" class="btn btn-ghost text-xs px-3">🔖</button>
         </div>
       </div>
@@ -206,7 +206,7 @@ function openGuide(id){
           <p class="font-black leading-tight">${gPlant.nama}</p>
           <p class="text-xs italic text-muted">${gPlant.ilmiah}</p>
         </div>
-        <a href="plants.html" class="btn btn-ghost text-xs px-3 py-2 flex-shrink-0">Lihat →</a>
+        <a href="plants.html" class="btn btn-ghost text-xs px-3 py-2 flex-shrink-0">Lihat </a>
       </div>
       <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 mt-3 text-center">
         <div class="bg-[#EFF6FF] rounded-xl p-2"><p class="text-[9px] font-bold tracking-widest text-muted">CAHAYA</p><p class="font-black text-[11px]">${gPlant.cahaya}</p></div>
@@ -252,7 +252,7 @@ function openGuide(id){
     </div>
     <div class="flex gap-2 mt-6">
       <button onclick="$('#guideModal').removeClass('open')" class="btn btn-ghost flex-1">Tutup</button>
-      <a href="plants.html" class="btn btn-primary flex-1 text-center">Coba Tanam Sekarang →</a>
+      <a href="plants.html" class="btn btn-primary flex-1 text-center">Coba Tanam Sekarang </a>
     </div>
   `);
   $('#guideModal').addClass('open');

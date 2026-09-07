@@ -9,16 +9,16 @@ function plantLabEvaluate(params){
   let status = "Sehat";
   let color = "#8BCB8A";
 
-  if(params.water < 20){ health -= 30; messages.push("Air terlalu sedikit → tanaman layu, daun menguning."); status="Layu"; color="#FF9B70"; emoji="🥀"; }
-  else if(params.water > 85){ health -= 25; messages.push("Air terlalu banyak → risiko busuk akar. Kurangi penyiraman."); status="Overwater"; color="#6FA8FF"; emoji="💧"; }
+  if(params.water < 20){ health -= 30; messages.push("Air terlalu sedikit  tanaman layu, daun menguning."); status="Layu"; color="#FF9B70"; emoji="🥀"; }
+  else if(params.water > 85){ health -= 25; messages.push("Air terlalu banyak  risiko busuk akar. Kurangi penyiraman."); status="Overwater"; color="#6FA8FF"; emoji="💧"; }
 
-  if(params.sun < 15){ health -= 30; messages.push("Cahaya terlalu rendah → pertumbuhan melambat."); status="Kurang Cahaya"; color="#FFD45C"; emoji="🌑"; }
-  else if(params.sun > 90){ health -= 15; messages.push("Cahaya sangat terik → daun bisa terbakar."); }
+  if(params.sun < 15){ health -= 30; messages.push("Cahaya terlalu rendah  pertumbuhan melambat."); status="Kurang Cahaya"; color="#FFD45C"; emoji="🌑"; }
+  else if(params.sun > 90){ health -= 15; messages.push("Cahaya sangat terik  daun bisa terbakar."); }
 
-  if(params.fert < 15){ health -= 10; messages.push("Pupuk rendah → pertumbuhan tidak optimal, tapi masih aman."); }
-  else if(params.fert > 85){ health -= 20; messages.push("Pupuk berlebih → risiko burn. Siram untuk bilas."); status="Over Fertilized"; color="#FF718D"; emoji="🧪"; }
+  if(params.fert < 15){ health -= 10; messages.push("Pupuk rendah  pertumbuhan tidak optimal, tapi masih aman."); }
+  else if(params.fert > 85){ health -= 20; messages.push("Pupuk berlebih  risiko burn. Siram untuk bilas."); status="Over Fertilized"; color="#FF718D"; emoji="🧪"; }
 
-  if(params.soil < 25){ health -= 25; messages.push("Media buruk → drainase buruk, akar sesak."); }
+  if(params.soil < 25){ health -= 25; messages.push("Media buruk  drainase buruk, akar sesak."); }
 
   if(health >= 85){ status="Sehat"; color="#8BCB8A"; emoji="🌿"; }
   else if(health >= 60){ status="Perlu Perhatian"; color="#FFD45C"; emoji="🌱"; }
@@ -75,7 +75,7 @@ function renderPlantLab(containerId, initialPlantId){
             </ul>
             <div class="flex gap-2 mt-3">
               <button class="btn btn-dark text-xs lab-apply flex-1">Terapkan ke Kebunku (simulasi)</button>
-              <a href="learn.html" class="btn bg-white border text-xs flex-1 text-center">Baca Panduan →</a>
+              <a href="learn.html" class="btn bg-white border text-xs flex-1 text-center">Baca Panduan </a>
             </div>
           </div>
         </div>

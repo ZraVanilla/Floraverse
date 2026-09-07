@@ -134,11 +134,62 @@ input,select,textarea{max-width:100%}
   .profile-page header .flex.gap-2.mt-4{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px}
   .profile-page header .flex.gap-2.mt-4 .btn{width:100%; padding-inline:10px}
   .profile-stat-grid{width:100% !important; gap:8px !important}
-  .profile-stat-grid > div{padding:12px 6px !important}
+  .profile-page header .fv-card > .flex.gap-5{grid-template-columns:72px minmax(0,1fr); gap:14px; align-items:start}
+  .profile-page header .w-24.h-24{justify-self:start}
+  .profile-page header .fv-card > .flex.gap-5 > div:nth-child(2){display:contents}
+  .profile-page header .profile-identity{display:contents}
+  .profile-page header .profile-identity > h1{grid-column:2; grid-row:1; align-self:center}
+  .profile-page header .profile-badges{grid-column:1 / -1; grid-row:2; display:flex; flex-direction:row; flex-wrap:wrap; align-items:center; gap:6px}
+  .profile-page header .fv-card > .flex.gap-5 > div:nth-child(2) > p{grid-column:1 / -1; grid-row:3}
+  .profile-page header .fv-card > .flex.gap-5 > div:nth-child(2) > .mt-3{grid-column:1 / -1; grid-row:4}
+  .profile-page header .fv-card > .flex.gap-5 > div:nth-child(2) > .flex.gap-2.mt-4{grid-column:1 / -1; grid-row:5}
+  .profile-page header .flex-wrap{align-items:flex-start}
+  .profile-page header .pill{white-space:normal; line-height:1.2}
+  .profile-stat-grid > div{padding:12px 6px !important; min-width:0}
+  .profile-stat-grid > div p{line-height:1.2}
+  .profile-stat-grid > div.col-span-3{flex-wrap:wrap; text-align:center; padding:12px !important}
+  .profile-page .ptab{flex:0 0 auto; white-space:nowrap; min-width:max-content}
   .profile-page > section.grid{grid-template-columns:1fr !important; gap:16px !important}
   #profileGarden{grid-template-columns:1fr !important}
   #profileComms{grid-template-columns:1fr !important}
   #achieveList{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+  /* Garden cards should stack their secondary labels instead of squeezing them. */
+  .garden-page header .fv-card.green > .flex-1{justify-content:flex-start; align-items:flex-start}
+  .garden-page header .fv-card.green .flex.gap-2.mt-4{flex-wrap:wrap; align-items:stretch}
+  .garden-page header .fv-card.green .flex.gap-2.mt-4 > .btn{flex:1 1 170px}
+  .garden-page header .fv-card.green .flex.gap-2.mt-4 > .pill{max-width:100%; white-space:normal; text-align:center}
+  .garden-page #myPlantsGrid > .fv-card > .flex.items-center.gap-3{align-items:start; gap:10px}
+  .garden-page #myPlantsGrid > .fv-card > .flex.items-center.gap-3 > .pill{max-width:100%; white-space:normal; text-align:center; line-height:1.15}
+  .garden-page #detailName{line-height:1.2; overflow-wrap:anywhere}
+  .garden-page #detailSub{overflow-wrap:anywhere; line-height:1.35}
+  .garden-page .fv-card > .flex.items-center.gap-3:has(#detailEmoji){display:grid; grid-template-columns:48px minmax(0,1fr); align-items:start}
+  .garden-page #detailHealth{grid-column:2; justify-self:start; margin-left:0 !important}
+  .garden-page #taskList label{align-items:flex-start}
+  .garden-page #taskList label input{flex:0 0 auto; margin-top:2px}
+  .garden-page #taskList label > span{min-width:0; overflow-wrap:anywhere}
+  .garden-page #journalList > div > div{min-width:0; overflow-wrap:anywhere}
+  .garden-page #newTaskInput + .btn,.garden-page #journalInput + .btn{flex:0 0 auto; white-space:nowrap}
+  .garden-page #addPlantList{grid-template-columns:1fr !important; gap:8px !important}
+  .garden-page #addPlantList > .fv-card{display:grid; grid-template-columns:48px minmax(0,1fr) auto; align-items:center; gap:10px; padding:10px !important}
+  .garden-page #addPlantList > .fv-card > div:first-child{width:48px !important; height:48px !important}
+  .garden-page #addPlantList > .fv-card > div:nth-child(2){min-width:0}
+  .garden-page #addPlantList > .fv-card > div:nth-child(2) p{overflow-wrap:anywhere; line-height:1.25}
+  .garden-page #addPlantList > .fv-card > .pill{max-width:76px; white-space:normal; text-align:center; line-height:1.15}
+  .garden-page #storyTitle{overflow-wrap:anywhere; line-height:1.3}
+  .garden-page .story-stages > .pill{flex:0 0 auto; white-space:nowrap}
+  .garden-page #plantLabRoot{margin-top:16px !important}
+  .garden-page section > .fv-card .flex.flex-wrap > select{width:100%; min-width:0}
+  .garden-page section > .fv-card .flex.flex-wrap:has(> select){align-items:stretch}
+  .garden-page section > .fv-card.blue{align-items:stretch}
+  .garden-page section > .fv-card.blue > .flex{width:100%; flex-wrap:wrap}
+  .garden-page section > .fv-card.blue > .flex > a{flex:1 1 120px}
+
+  /* Level cards need a full row on phones so names and status badges do not collide. */
+  #levelContent > .grid{grid-template-columns:1fr !important; gap:8px !important}
+  #levelContent > .grid > div{min-height:52px}
+  #levelContent > .grid > div > div{min-width:0}
+  #levelContent .pill{white-space:normal; text-align:center; line-height:1.15}
 
   /* Dialogs and cart always remain attached to the viewport. */
   .modal-backdrop{padding:12px; align-items:center; width:100%; height:100dvh}
@@ -159,7 +210,7 @@ input,select,textarea{max-width:100%}
   .navbar .wordmark{font-size:1.22rem !important}
   .display{font-size:2.2rem !important}
   header .grid.grid-cols-2{grid-template-columns:1fr}
-  .profile-page header .fv-card > .flex.gap-5{grid-template-columns:1fr}
+  .profile-page header .fv-card > .flex.gap-5{grid-template-columns:64px minmax(0,1fr)}
   .profile-page header .w-24.h-24{width:64px !important; height:64px !important}
   #feedList .fv-card > .flex.gap-2.mt-3{grid-template-columns:1fr}
 }

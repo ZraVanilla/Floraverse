@@ -381,7 +381,7 @@ $(function(){
     $('#pmStepNum').text(pmStep+'/4');
     $('#pmBar').css('width', (pmStep/4*100)+'%');
     $('#pmQuestion').text(s.q);
-    $('#pmOptions').html(s.opts.map(([label,val])=> `<button onclick="choosePM('${s.key}','${val}')" class="w-full text-left p-4 rounded-2xl border-2 border-gray-100 hover:border-[#6FA8FF] hover:bg-[#EFF6FF] flex items-center justify-between group transition"><span class="font-semibold">${label}</span><span class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-[#6FA8FF] group-hover:text-white flex items-center justify-center">→</span></button>`).join(''));
+    $('#pmOptions').html(s.opts.map(([label,val])=> `<button onclick="choosePM('${s.key}','${val}')" class="w-full text-left p-4 rounded-2xl border-2 border-gray-100 hover:border-[#6FA8FF] hover:bg-[#EFF6FF] flex items-center justify-between group transition"><span class="font-semibold">${label}</span><span class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-[#6FA8FF] group-hover:text-white flex items-center justify-center"></span></button>`).join(''));
     $('#pmPrev').toggle(pmStep>1);
     $('#pmResult').addClass('hidden'); $('#pmQuiz').removeClass('hidden');
   }

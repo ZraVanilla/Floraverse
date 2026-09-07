@@ -198,8 +198,8 @@ const GUIDES = [
    ],
    checklist:["Peta sinar satu hari penuh", "Label cahaya tiap tanaman dicatat", "Shade net 30–40% cadangan", "Rutinitas putar pot mingguan"], populer:true},
 
-  {id:"g18", judul:"Plant Journey: Memahami Fase Seed → Harvest", kategori:"Dasar berkebun", waktu:"7 menit", level:"Pemula", color:"#8BCB8A", emoji:"🌱", desc:"Belajar fase pertumbuhan dan task harian di Kebunku.", plantId:"cabai-rawit",
-   konten:"Di FloraVerse, setiap tanaman di Kebunku berjalan melewati enam fase: Seed → Seedling → Growing → Flowering → Fruiting → Harvest. Memahami fase membuat Anda memberi apa yang dibutuhkan di waktu tepat - kelembapan di awal, nutrisi di pertengahan, dan pengendalian hama menjelang panen. Contoh lengkapnya: perjalanan cabai rawit selama 70–90 hari.",
+  {id:"g18", judul:"Plant Journey: Memahami Fase Seed  Harvest", kategori:"Dasar berkebun", waktu:"7 menit", level:"Pemula", color:"#8BCB8A", emoji:"🌱", desc:"Belajar fase pertumbuhan dan task harian di Kebunku.", plantId:"cabai-rawit",
+   konten:"Di FloraVerse, setiap tanaman di Kebunku berjalan melewati enam fase: Seed  Seedling  Growing  Flowering  Fruiting  Harvest. Memahami fase membuat Anda memberi apa yang dibutuhkan di waktu tepat - kelembapan di awal, nutrisi di pertengahan, dan pengendalian hama menjelang panen. Contoh lengkapnya: perjalanan cabai rawit selama 70–90 hari.",
    langkah:[
      {t:"Seed (0–2 minggu)", d:"Kelembapan dan kehangatan lebih penting daripada cahaya. Cabai berkecambah 5–7 hari pada suhu 24–32°C."},
      {t:"Seedling (2–4 minggu)", d:"Daun sejati muncul; kenalkan sinar secara bertahap dan pindah pot pada umur 3–4 minggu."},

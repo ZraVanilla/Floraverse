@@ -105,7 +105,7 @@
     <div id="cartModalList" class="flex-1 overflow-auto p-4 space-y-3"></div>
     <div class="p-4 border-t bg-gray-50 flex-shrink-0">
        <div class="flex justify-between font-black text-lg"><span>Total</span><span id="cartModalTotal">Rp0</span></div>
-       <button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran →</button>
+       <button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran </button>
        <button onclick="clearCart(); openDrawer()" class="btn btn-ghost w-full mt-2 text-sm">Kosongkan Keranjang</button>
        <button onclick="closeCartModal()" class="btn btn-ghost w-full mt-2">Lanjut Belanja</button>
     </div>
@@ -124,7 +124,7 @@
           <div class="checkout-panel"><p class="font-black">Cara pengantaran</p><div class="grid sm:grid-cols-3 gap-2 mt-3"><label class="checkout-option"><input type="radio" name="delivery" value="reguler" data-fee="12000" checked><span><b>Reguler</b><small>2–4 hari<br>Rp12.000</small></span></label><label class="checkout-option"><input type="radio" name="delivery" value="same-day" data-fee="25000"><span><b>Same day</b><small>Hari ini<br>Rp25.000</small></span></label><label class="checkout-option"><input type="radio" name="delivery" value="pickup" data-fee="0"><span><b>Ambil sendiri</b><small>Gratis<br>FloraVerse</small></span></label></div></div>
           <div class="checkout-panel"><p class="font-black">Metode pembayaran</p><div class="grid sm:grid-cols-2 gap-2 mt-3"><label class="checkout-option"><input type="radio" name="payment" value="Transfer Bank" checked><span><b>Transfer Bank</b><small>BCA, BNI, BRI, Mandiri</small></span></label><label class="checkout-option"><input type="radio" name="payment" value="QRIS"><span><b>QRIS</b><small>Scan dari aplikasi bank/e-wallet</small></span></label><label class="checkout-option"><input type="radio" name="payment" value="E-Wallet"><span><b>E-Wallet</b><small>GoPay, DANA, OVO, ShopeePay</small></span></label><label class="checkout-option"><input type="radio" name="payment" value="COD"><span><b>COD</b><small>Bayar saat pesanan tiba</small></span></label></div></div>
         </div>
-        <aside class="checkout-summary lg:col-span-2"><p class="font-black">Ringkasan pesanan</p><div id="checkoutSummary" class="space-y-2 mt-3"></div><div class="divider my-3"></div><div class="flex justify-between text-sm"><span>Subtotal</span><b id="checkoutSubtotal">Rp0</b></div><div class="flex justify-between text-sm mt-2"><span>Pengantaran</span><b id="checkoutDelivery">Rp0</b></div><div class="flex justify-between text-lg font-black mt-3"><span>Total</span><b id="checkoutTotal">Rp0</b></div><button type="submit" class="btn btn-orange w-full mt-4">Buat Pesanan →</button><p class="text-xs text-muted mt-2 text-center">Pesanan akan diproses setelah data dikonfirmasi.</p></aside>
+        <aside class="checkout-summary lg:col-span-2"><p class="font-black">Ringkasan pesanan</p><div id="checkoutSummary" class="space-y-2 mt-3"></div><div class="divider my-3"></div><div class="flex justify-between text-sm"><span>Subtotal</span><b id="checkoutSubtotal">Rp0</b></div><div class="flex justify-between text-sm mt-2"><span>Pengantaran</span><b id="checkoutDelivery">Rp0</b></div><div class="flex justify-between text-lg font-black mt-3"><span>Total</span><b id="checkoutTotal">Rp0</b></div><button type="submit" class="btn btn-orange w-full mt-4">Buat Pesanan </button><p class="text-xs text-muted mt-2 text-center">Pesanan akan diproses setelah data dikonfirmasi.</p></aside>
       </div>
     </form>
   </div>
@@ -217,7 +217,7 @@ function renderSmartBasket(plantId){
      <div class="smart-kit-items space-y-2 mt-4">${rows}</div>
      <div class="smart-kit-summary flex items-center justify-between gap-3 mt-4">
        <div><p class="text-xs text-muted">Harga normal <span class="line-through">Rp${total.toLocaleString('id-ID')}</span></p><p class="text-xl font-black">Harga kit Rp${b.harga.toLocaleString('id-ID')}</p></div>
-      <button onclick="addBundle('${plantId}')" class="btn btn-orange px-6 py-3">Tambahkan Semua →</button>
+      <button onclick="addBundle('${plantId}')" class="btn btn-orange px-6 py-3">Tambahkan Semua </button>
     </div>
     <p class="text-xs text-muted mt-2">* Simulasi - checkout tanpa pembayaran nyata</p>
   `);
@@ -287,7 +287,7 @@ window.openProduct=function(id){
         </div>
         <div class="bg-[#FFF7ED] border border-[#FFD5BF] rounded-2xl p-3 mt-4">
           <p class="font-bold text-sm">🌱 Cocok untuk</p>
-          ${plant?`<div class="flex items-center gap-2 mt-1"><span class="text-xl">${plant.emoji}</span><div><p class="font-bold text-sm">${plant.nama}</p><p class="text-xs text-muted">${plant.ilmiah}</p></div><a href="plants.html" class="ml-auto text-xs font-bold text-[#FF9B70]">Lihat tanaman →</a></div>`:'<p class="text-sm text-muted">Semua tanaman</p>'}
+          ${plant?`<div class="flex items-center gap-2 mt-1"><span class="text-xl">${plant.emoji}</span><div><p class="font-bold text-sm">${plant.nama}</p><p class="text-xs text-muted">${plant.ilmiah}</p></div><a href="plants.html" class="ml-auto text-xs font-bold text-[#FF9B70]">Lihat tanaman </a></div>`:'<p class="text-sm text-muted">Semua tanaman</p>'}
         </div>
         <ul class="text-sm text-muted mt-3 space-y-1 list-disc pl-5">
           <li>Pengiriman simulasi 1–2 hari</li>
@@ -296,7 +296,7 @@ window.openProduct=function(id){
         </ul>
       </div>
     </div>
-    <div class="flex gap-2 mt-6"><button onclick="$('#productModal').removeClass('open')" class="btn btn-ghost flex-1">Tutup</button><button onclick="addToCart('${p.id}'); $('#productModal').removeClass('open'); openDrawer()" class="btn btn-primary flex-1">Beli Sekarang →</button></div>
+    <div class="flex gap-2 mt-6"><button onclick="$('#productModal').removeClass('open')" class="btn btn-ghost flex-1">Tutup</button><button onclick="addToCart('${p.id}'); $('#productModal').removeClass('open'); openDrawer()" class="btn btn-primary flex-1">Beli Sekarang </button></div>
   `);
   $('#productModal').addClass('open');
 }

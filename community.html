@@ -146,7 +146,7 @@
         <div class="flex-1"><p class="font-bold text-sm">Cabai Rawit - Day 28</p><p class="text-xs text-muted">Growing • 45%</p></div>
         <span class="pill bg-[#6FA8FF] text-white text-xs">Share</span>
       </div>
-      <button onclick="toast('Plant Journey dibagikan ke Pecinta Cabai','🎉')" class="btn btn-primary w-full mt-3 text-sm">Bagikan ke Komunitas →</button>
+      <button onclick="toast('Plant Journey dibagikan ke Pecinta Cabai','🎉')" class="btn btn-primary w-full mt-3 text-sm">Bagikan ke Komunitas </button>
     </div>
 
     <div class="fv-card yellow p-5">
@@ -182,7 +182,7 @@
     <div class="flex gap-2 mt-3">
       <button class="pill pill-white">📷 Foto</button><button class="pill pill-white">🌱 Tag Tanaman</button><button class="pill pill-white"># Tag</button>
     </div>
-    <button id="submitPost" class="btn btn-primary w-full mt-4">Posting ke Komunitas →</button>
+    <button id="submitPost" class="btn btn-primary w-full mt-4">Posting ke Komunitas </button>
   </div>
 </div>
 
@@ -198,7 +198,7 @@
 </div>
 
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
-<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran →</button></div></div>
+<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran </button></div></div>
 <div id="toastBox"></div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -328,7 +328,7 @@ window.openFloraMap=function(city){
     <p class="text-sm text-muted">${d.desc}</p>
     <div class="grid sm:grid-cols-2 gap-3 mt-4">
       <div class="fv-card pink p-4 text-white"><p class="font-black">Komunitas Unggulan</p><div class="mt-2 space-y-2">${d.comms.map(n=>`<div class="bg-white/15 rounded-xl px-3 py-2 font-bold text-sm">${n}</div>`).join('')}</div><button onclick="toast('Bergabung','🎉')" class="btn bg-white text-charcoal w-full mt-3 text-sm">Join Komunitas</button></div>
-      <div class="fv-card yellow p-4"><p class="font-black">Tanaman Populer</p><div class="mt-2 flex flex-wrap gap-1.5">${d.plants.map(p=>`<span class="pill bg-white text-charcoal">${p}</span>`).join('')}</div><a href="plants.html" class="btn btn-dark w-full mt-3 text-sm text-center">Lihat Tanaman →</a></div>
+      <div class="fv-card yellow p-4"><p class="font-black">Tanaman Populer</p><div class="mt-2 flex flex-wrap gap-1.5">${d.plants.map(p=>`<span class="pill bg-white text-charcoal">${p}</span>`).join('')}</div><a href="plants.html" class="btn btn-dark w-full mt-3 text-sm text-center">Lihat Tanaman </a></div>
     </div>
   `);
   $('#floraMapModal').addClass('open');
