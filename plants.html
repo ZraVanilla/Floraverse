@@ -39,12 +39,12 @@
   <div class="fv-card blue p-6 sm:p-8 flex flex-col lg:flex-row gap-6 items-center relative overflow-hidden">
     <div class="blob bg-white w-40 h-40 -right-10 -top-10 opacity-10"></div>
     <div class="flex-1 relative z-10">
-      <span class="pill bg-white text-[#3B82F6] font-black">🌱 Ensiklopedia • 24 Tanaman</span>
+      <span class="pill bg-white text-[#3B82F6] font-black">🌱 Ensiklopedia • 360+ Tanaman</span>
       <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Temukan tanaman yang<br>paling cocok untukmu.</h1>
       <p class="text-white/90 text-sm mt-2 max-w-[560px]">Filter berdasarkan kategori, cahaya, dan tingkat kesulitan. Klik kartu untuk detail lengkap + cara menanam.</p>
       <div class="flex flex-wrap gap-2 mt-4">
         <button onclick="openPlantMatch()" class="btn bg-white text-charcoal font-black px-5">✨ Plant Match</button>
-        <span class="pill bg-white/20 text-charcoal">24 tanaman terkurasi</span>
+        <span class="pill bg-white/20 text-charcoal">360+ tanaman terkurasi</span>
       </div>
     </div>
     <div class="relative z-10 bg-white rounded-3xl p-5 w-full lg:w-[420px]">
@@ -56,7 +56,7 @@
       <div class="grid grid-cols-2 gap-2 mt-3 relative z-20">
         <select id="filterKategori" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate">
           <option value="">Kategori</option>
-          <option>Sayuran</option><option>Buah</option><option>Bunga</option><option>Herbal</option><option>Hias</option><option>Pohon buah</option><option>Sukulen</option><option>Kaktus</option>
+          <option>Sayuran</option><option>Buah</option><option>Bunga</option><option>Herbal</option><option>Hias</option><option>Pohon buah</option><option>Pangan</option><option>Sukulen</option><option>Kaktus</option>
         </select>
         <select id="filterKesulitan" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate">
           <option value="">Level</option>
@@ -95,6 +95,7 @@
 
 <main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-5">
   <div id="plantsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+  <button id="plantsLoadMore" class="btn btn-ghost w-full max-w-md mx-auto mt-5 hidden">Muat lebih banyak</button>
   <div id="emptyState" class="hidden text-center py-16"><div class="text-5xl">🔍</div><p class="font-black mt-3">Tidak ada tanaman ditemukan</p><p class="text-sm text-muted">Coba ubah filter atau kata kunci.</p><button id="resetPlantFilters" class="btn btn-ghost mt-4 text-sm">Reset filter</button></div>
 </main>
 
@@ -108,7 +109,7 @@
         <p class="text-sm text-muted mt-1 max-w-[560px]">Atur air, cahaya, pupuk & media. Tanaman bereaksi secara simulasi - edukasi, bukan diagnosis ilmiah.</p>
       </div>
       <div class="flex gap-2">
-        <select id="labPlantSelect" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm"></select>
+    <label for="labPlantSelect" class="sr-only">Pilih tanaman untuk Plant Lab</label><select id="labPlantSelect" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm"></select>
         <button onclick="toast('Plant Lab direset','🔬')" class="btn btn-ghost text-sm hidden sm:flex">Info</button>
       </div>
     </div>
@@ -138,12 +139,13 @@
 
 <!-- Plant Match Modal -->
 <div id="plantMatchModal" class="modal-backdrop">
-  <div class="modal p-6 sm:p-7 relative">
-    <button onclick="closePlantMatch()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button>
-    <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black">🌱</div><div><p class="font-black leading-none">Plant Match</p><p class="text-xs text-muted">Temukan tanaman idealmu</p></div><span id="pmStepNum" class="ml-auto pill pill-blue font-black">1/4</span></div>
-    <div class="progress-track mt-4"><div id="pmBar" class="progress-fill bg-[#6FA8FF]" style="width:25%"></div></div>
-    <div id="pmQuiz" class="mt-6"><h3 id="pmQuestion" class="text-xl font-black"></h3><div id="pmOptions" class="grid gap-2.5 mt-4"></div><button id="pmPrev" onclick="prevPM()" class="btn btn-ghost w-full mt-3 hidden">← Kembali</button></div>
-    <div id="pmResult" class="hidden mt-6"><h3 class="font-black text-lg">✨ Your Plant Match</h3><p class="text-sm text-muted">Ini rekomendasi untukmu:</p><div id="pmResultList" class="space-y-3 mt-4"></div><div class="flex gap-2 mt-5"><button onclick="closePlantMatch()" class="btn btn-ghost flex-1">Tutup</button><button onclick="closePlantMatch(); $('html,body').animate({scrollTop:0},300)" class="btn btn-primary flex-1">Lihat Tanaman </button></div></div>
+   <div class="modal p-6 sm:p-7 relative" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <button onclick="closePlantMatch()" aria-label="Tutup Plant Match" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button>
+    <div class="plant-match-header flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black">🌱</div><div><p id="pmTitle" class="font-black leading-none">Plant Match</p><p class="text-xs text-muted">Temukan tanaman idealmu</p></div><span id="pmStepNum" class="ml-auto pill pill-blue font-black">1/7</span></div>
+    <div id="pmProgress" class="progress-track mt-4 hidden"><div id="pmBar" class="progress-fill bg-[#6FA8FF]" style="width:14%"></div></div>
+    <div id="pmIntro" class="mt-6"><div class="rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE] p-4"><p class="font-black text-lg">Mulai dari sini</p><p class="text-sm text-muted mt-1">Jawab 7 pertanyaan singkat agar rekomendasi tanaman menyesuaikan cahaya, ruang, waktu, dan pengalamanmu.</p></div><button onclick="startPlantMatch()" class="btn btn-primary w-full mt-4">Mulai survei</button></div>
+    <div id="pmQuiz" class="hidden mt-6"><h3 id="pmQuestion" class="text-xl font-black"></h3><div id="pmOptions" class="grid gap-2.5 mt-4"></div><button id="pmPrev" onclick="prevPM()" class="btn btn-ghost w-full mt-3 hidden">Kembali</button></div>
+    <div id="pmResult" class="hidden mt-6"><h3 class="font-black text-lg">✨ Your Plant Match</h3><p class="text-sm text-muted">Ini 5 tanaman yang paling cocok untukmu:</p><div id="pmResultList" class="space-y-3 mt-4"></div><div class="flex gap-2 mt-5"><button onclick="closePlantMatch()" class="btn btn-ghost flex-1">Tutup</button><button onclick="closePlantMatch(); $('html,body').animate({scrollTop:0},300)" class="btn btn-primary flex-1">Lihat Tanaman </button></div></div>
   </div>
 </div>
 
@@ -153,7 +155,9 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
+<script src="js/indonesia-plants.js"></script>
 <script src="js/products.js"></script>
+<script src="js/indonesia-products.js"></script>
 <script src="js/communities.js"></script>
 <script src="js/guides.js"></script>
 <script src="js/garden.js"></script>
@@ -163,6 +167,8 @@
 <script src="js/app.js?v=3"></script>
 <script>
 let activeCat="";
+const plantPageSize=()=>window.matchMedia('(max-width:767px)').matches ? 12 : 24;
+let visiblePlantCount=plantPageSize();
 function renderPlants(){
   const q = ($('#searchInput').val()||'').toLowerCase();
   const kat = $('#filterKategori').val() || activeCat;
@@ -184,7 +190,7 @@ function renderPlants(){
   $('#resultCount').text(`${list.length} tanaman ditemukan`);
   if(list.length===0){ $('#plantsGrid').empty(); $('#emptyState').removeClass('hidden'); return; }
   $('#emptyState').addClass('hidden');
-  $('#plantsGrid').html(list.map(p=> `
+   $('#plantsGrid').html(list.slice(0,visiblePlantCount).map(p=> `
      <div role="button" tabindex="0" aria-label="Lihat detail ${p.nama}" onclick="openPlant('${p.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlant('${p.id}')}" class="fv-card white overflow-hidden cursor-pointer hover-lift group">
       <div class="h-40 flex items-center justify-center relative overflow-hidden" style="background:${p.color}14">
         ${fvImg(p,'w-full h-full object-cover group-hover:scale-105 transition duration-300')}
@@ -207,7 +213,9 @@ function renderPlants(){
         </div>
       </div>
     </div>
-  `).join(''));
+   `).join(''));
+   const remaining=list.length-visiblePlantCount;
+   $('#plantsLoadMore').toggleClass('hidden', remaining<=0).text(remaining>0 ? `Muat ${Math.min(remaining, visiblePlantCount)} tanaman lagi` : 'Semua tanaman sudah tampil');
 }
 function openPlant(id){
   const p = PLANTS.find(x=>x.id===id);
@@ -320,15 +328,16 @@ function openPlant(id){
 }
 $(function(){
   renderPlants();
-  $('#searchInput').on('input', renderPlants);
-   $('#filterKategori, #filterKesulitan, #filterCahaya, #sortBy').on('change', renderPlants);
-   $('#resetPlantFilters').on('click', function(){ $('#searchInput').val(''); $('#filterKategori, #filterKesulitan, #filterCahaya').val(''); $('#sortBy').val('popular'); activeCat=''; $('.cat-pill').removeClass('active bg-charcoal text-white').addClass('bg-white border'); $('.cat-pill[data-cat=""]').addClass('active bg-charcoal text-white').removeClass('bg-white border'); renderPlants(); });
+  $('#searchInput').on('input', function(){ visiblePlantCount=plantPageSize(); renderPlants(); });
+   $('#filterKategori, #filterKesulitan, #filterCahaya, #sortBy').on('change', function(){ visiblePlantCount=plantPageSize(); renderPlants(); });
+   $('#plantsLoadMore').on('click', function(){ visiblePlantCount+=plantPageSize(); renderPlants(); });
+   $('#resetPlantFilters').on('click', function(){ $('#searchInput').val(''); $('#filterKategori, #filterKesulitan, #filterCahaya').val(''); $('#sortBy').val('popular'); activeCat=''; visiblePlantCount=plantPageSize(); $('.cat-pill').removeClass('active bg-charcoal text-white').addClass('bg-white border'); $('.cat-pill[data-cat=""]').addClass('active bg-charcoal text-white').removeClass('bg-white border'); renderPlants(); });
   $('.cat-pill').on('click', function(){
     $('.cat-pill').removeClass('active bg-charcoal text-white').addClass('bg-white border');
     $(this).addClass('active bg-charcoal text-white').removeClass('bg-white border');
     activeCat = $(this).data('cat');
     $('#filterKategori').val(activeCat);
-    renderPlants();
+     visiblePlantCount=plantPageSize(); renderPlants();
   });
   $('#plantModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
   // Plant Lab init

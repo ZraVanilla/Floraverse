@@ -42,7 +42,7 @@ function renderPlantLab(containerId, initialPlantId){
         <div class="lg:col-span-2 fv-card white p-5 text-center relative overflow-hidden">
           <div class="absolute -top-6 -right-6 w-24 h-24 rounded-full opacity-10" style="background:${plant.color}"></div>
           <p class="font-black text-sm flex items-center justify-center gap-2">🔬 Plant Lab <span class="pill pill-yellow text-xs">Simulasi Edukasi</span></p>
-          <div class="w-32 h-32 mx-auto mt-4 rounded-[28px] flex items-center justify-center text-6xl relative sway" style="background:${res.color}18; border:3px solid ${res.color}30; filter: ${res.health<50?'saturate(.7)':''}">
+          <div class="w-32 h-32 mx-auto mt-4 rounded-[28px] flex items-center justify-center text-6xl relative" style="background:${res.color}18; border:3px solid ${res.color}30; filter: ${res.health<50?'saturate(.7)':''}">
              ${fvImg(plant,'w-full h-full object-cover rounded-[24px]')}
             <span class="absolute -top-2 -right-2 pill text-xs font-black" style="background:${res.color}; color:#fff">${res.status}</span>
           </div>

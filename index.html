@@ -89,7 +89,7 @@ tailwind.config={
       </div>
       <div class="grid grid-cols-3 gap-3 mt-8 max-w-[520px]">
         <div class="fv-card white p-3 text-center">
-          <p class="text-2xl font-black text-[#6FA8FF]">240+</p><p class="text-xs font-bold text-muted">Tanaman</p>
+          <p class="text-2xl font-black text-[#6FA8FF]">360+</p><p class="text-xs font-bold text-muted">Tanaman</p>
         </div>
         <div class="fv-card white p-3 text-center">
           <p class="text-2xl font-black text-[#FF718D]">100+</p><p class="text-xs font-bold text-muted">Komunitas</p>
@@ -224,7 +224,7 @@ tailwind.config={
     <div>
       <span class="pill pill-blue">🌱 Ensiklopedia</span>
       <h2 class="text-[24px] sm:text-[28px] font-black mt-2">Tanaman Populer</h2>
-      <p class="text-muted text-sm">20+ tanaman dengan panduan lengkap dari semai hingga panen.</p>
+      <p class="text-muted text-sm">360+ tanaman Nusantara untuk dipelajari dan ditanam.</p>
     </div>
     <a href="plants.html" class="hidden sm:inline-flex btn btn-ghost">Lihat semua </a>
   </div>
@@ -447,19 +447,27 @@ tailwind.config={
 
 <!-- Plant Match Modal -->
 <div id="plantMatchModal" class="modal-backdrop">
-  <div class="modal p-6 sm:p-7 relative">
-    <button onclick="closePlantMatch()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200">✕</button>
-    <div class="flex items-center gap-3">
+  <div class="modal p-6 sm:p-7 relative" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <button onclick="closePlantMatch()" aria-label="Tutup Plant Match" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200">✕</button>
+    <div class="plant-match-header flex items-center gap-3">
       <div class="w-10 h-10 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black">🌱</div>
       <div>
-        <p class="font-black leading-none">Plant Match</p>
+       <p id="pmTitle" class="font-black leading-none">Plant Match</p>
         <p class="text-xs text-muted">Temukan tanaman idealmu dalam 30 detik</p>
       </div>
-      <span id="pmStepNum" class="ml-auto pill pill-blue font-black">1/4</span>
+      <span id="pmStepNum" class="ml-auto pill pill-blue font-black">1/7</span>
     </div>
-    <div class="progress-track mt-4"><div id="pmBar" class="progress-fill bg-[#6FA8FF]" style="width:25%"></div></div>
+    <div id="pmProgress" class="progress-track mt-4 hidden"><div id="pmBar" class="progress-fill bg-[#6FA8FF]" style="width:14%"></div></div>
 
-    <div id="pmQuiz" class="mt-6">
+    <div id="pmIntro" class="mt-6">
+      <div class="rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE] p-4">
+        <p class="font-black text-lg">Mulai dari sini</p>
+        <p class="text-sm text-muted mt-1">Jawab 7 pertanyaan singkat agar rekomendasi tanaman menyesuaikan cahaya, ruang, waktu, dan pengalamanmu.</p>
+      </div>
+      <button onclick="startPlantMatch()" class="btn btn-primary w-full mt-4">Mulai survei</button>
+    </div>
+
+    <div id="pmQuiz" class="hidden mt-6">
       <h3 id="pmQuestion" class="text-xl font-black leading-tight"></h3>
       <div id="pmOptions" class="grid gap-2.5 mt-4"></div>
       <button id="pmPrev" onclick="prevPM()" class="btn btn-ghost w-full mt-3 hidden">← Kembali</button>
@@ -467,7 +475,7 @@ tailwind.config={
 
     <div id="pmResult" class="hidden mt-6">
       <h3 class="font-black text-lg">✨ Your Plant Match</h3>
-      <p class="text-sm text-muted">Berdasarkan jawabanmu, ini 3 tanaman paling cocok:</p>
+       <p class="text-sm text-muted">Berdasarkan jawabanmu, ini 5 tanaman paling cocok:</p>
       <div id="pmResultList" class="space-y-3 mt-4"></div>
       <div class="flex gap-2 mt-5">
         <button onclick="closePlantMatch()" class="btn btn-ghost flex-1">Tutup</button>
@@ -496,7 +504,9 @@ tailwind.config={
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
+<script src="js/indonesia-plants.js"></script>
 <script src="js/products.js"></script>
+<script src="js/indonesia-products.js"></script>
 <script src="js/communities.js"></script>
 <script src="js/guides.js"></script>
 <script src="js/users.js"></script>

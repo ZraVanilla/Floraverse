@@ -184,7 +184,7 @@
 <div id="addPlantModal" class="modal-backdrop">
   <div class="modal p-6">
     <div class="flex items-center justify-between"><p class="font-black text-lg">Tambah Tanaman</p><button onclick="$('#addPlantModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div>
-    <p class="text-sm text-muted mt-1">Pilih dari ensiklopedia (24 tanaman)</p>
+    <p class="text-sm text-muted mt-1">Pilih dari ensiklopedia (360+ tanaman)</p>
     <input id="searchAddPlant" type="search" placeholder="Cari cabai, tomat..." class="w-full mt-3 px-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#6FA8FF] outline-none">
     <div id="addPlantList" class="grid grid-cols-2 gap-2 mt-3 max-h-[40vh] overflow-auto pr-1"></div>
   </div>
@@ -199,7 +199,9 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
+<script src="js/indonesia-plants.js"></script>
 <script src="js/products.js"></script>
+<script src="js/indonesia-products.js"></script>
 <script src="js/garden.js"></script>
 <script src="js/journey.js"></script>
 <script src="js/plant-lab.js"></script>
@@ -323,6 +325,7 @@ window.toggleTask=function(tid, checked){
   // update progress lightly
   const done=g.tasks.filter(x=>x.done).length;
   g.progress = Math.min(95, 45 + done*5 + g.stageIndex*10);
+  persistGarden();
   renderMyPlants();
   renderDetail();
 }
@@ -332,6 +335,7 @@ window.addTask=function(){
   const g=MY_GARDEN.find(x=>x.id===selectedGardenId);
   g.tasks.push({id:'t'+Date.now(), text:v, done:false});
   $('#newTaskInput').val('');
+  persistGarden();
   renderDetail();
   toast('Task ditambahkan','✅');
 }
@@ -341,6 +345,7 @@ window.addJournal=function(){
   const g=MY_GARDEN.find(x=>x.id===selectedGardenId);
   g.journal.push({date:'Hari '+g.day, note:v});
   $('#journalInput').val('');
+  persistGarden();
   renderDetail();
   toast('Jurnal ditambahkan','📝');
 }
@@ -352,6 +357,7 @@ window.completeStage=function(){
     g.day+=7;
     g.progress=Math.min(100, g.progress+15);
     g.journal.push({date:'Hari '+g.day, note:`Masuk fase ${g.stage} 🌱`});
+    persistGarden();
     toast(`Selamat! Masuk fase ${g.stage} 🎉`,'🌱');
     renderMyPlants(); renderDetail();
   } else {
@@ -363,7 +369,7 @@ window.shareJourney=function(){
 }
 function renderAddPlantList(filter=""){
   const list=PLANTS.filter(p=> !filter || p.nama.toLowerCase().includes(filter.toLowerCase()));
-  $('#addPlantList').html(list.slice(0,12).map(p=> `
+   $('#addPlantList').html(list.map(p=> `
     <div onclick="addPlantToGarden('${p.id}')" class="fv-card white p-3 flex gap-3 items-center cursor-pointer hover:border-[#6FA8FF]">
        <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden" style="background:${p.color}14">${fvImg(p,'w-full h-full object-cover')}</div>
       <div class="flex-1 min-w-0"><p class="font-bold text-sm leading-none truncate">${p.nama}</p><p class="text-xs text-muted truncate">${p.kategori} • ${p.kesulitan}</p></div>
@@ -376,6 +382,7 @@ window.addPlantToGarden=function(plantId){
   const newId='g'+Date.now();
   MY_GARDEN.push({id:newId, plantId:p.id, nama:p.nama, emoji:p.emoji, color:p.color, day:1, stage:"Seed", stageIndex:0, stages:["Seed","Seedling","Growing","Flowering","Fruiting","Harvest"], health:"Healthy", water:p.air, light:p.cahaya, fert:"Belum", progress:5, tasks:[{id:'t'+Date.now(), text:'Siram pertama', done:false}], journal:[{date:'Hari 1', note:`Mulai menanam ${p.nama} 🌱`}]});
   $('#addPlantModal').removeClass('open');
+  persistGarden();
   selectGarden(newId);
   toast(`${p.nama} ditambahkan ke Kebunku!`,'🌱');
 }

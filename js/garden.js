@@ -99,3 +99,15 @@ const GARDEN_PULSE = [
   {plant:"Tomat Cherry", plantId:"tomat", status:"Waktunya pemupukan", icon:"🧪", color:"#FF9B70", action:"Beri pupuk"},
   {plant:"Kemangi", plantId:"kemangi", status:"Sehat", icon:"🟢", color:"#8BCB8A", action:"Lihat"},
 ];
+
+function persistGarden(){
+  localStorage.setItem('fv_garden_state', JSON.stringify(MY_GARDEN));
+}
+let savedGarden=null;
+try{ savedGarden=JSON.parse(localStorage.getItem('fv_garden_state')||'null'); }catch(error){ localStorage.removeItem('fv_garden_state'); }
+if(Array.isArray(savedGarden)){
+  savedGarden.forEach(saved=>{
+    const current=MY_GARDEN.find(plant=>plant.id===saved.id);
+    if(current) Object.assign(current, saved);
+  });
+}
