@@ -1,9 +1,11 @@
 ﻿/* FloraVerse App - shared interactions (jQuery) */
 /* Shared photo renderer for plants and products. */
 window.fvImg = function(obj, cls){
-  if(!obj || !obj.img) return `<span class="image-fallback" aria-hidden="true">${(obj?.nama||'?').slice(0,1)}</span>`;
+  const isProduct = obj && typeof window.getProductImage === 'function' && window.PRODUCT_IMAGES[obj.id];
+  const image = isProduct ? window.getProductImage(obj.id) : window.getPlantImage(obj?.id);
+  if(!obj || !image) return `<span class="image-fallback" aria-hidden="true">${(obj?.nama||'?').slice(0,1)}</span>`;
   const fallback = `<span class="image-fallback" aria-label="${(obj.nama||'Tanaman').replace(/"/g,'')}">${(obj.nama||'?').slice(0,1)}</span>`.replace(/"/g,'&quot;');
-  return `<img src="${obj.img}" alt="${(obj.nama||'').replace(/"/g,'')}" loading="lazy" class="${cls||''}" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')">`;
+  return `<img src="${image}" alt="${(obj.nama||'').replace(/"/g,'')}" loading="lazy" class="${cls||''}" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')">`;
 };
 
 /* ===== Styled dropdown: native <select> stays hidden as the single source of truth ===== */
@@ -117,6 +119,9 @@ window.addEventListener('scroll', function(e){
   window.closeAllFvSelects();
 }, true);
 $(function(){
+  document.querySelectorAll('[data-plant-id]').forEach(image=>{
+    image.src=window.getPlantImage(image.dataset.plantId);
+  });
   $('#cartBtn').attr({'aria-label':'Buka keranjang','title':'Buka keranjang'});
   // Smoothly transition only between internal document pages.
   $(document).on('click', 'a[href]', function(event){
@@ -228,7 +233,10 @@ $(function(){
   const CART_KEY='fv_cart';
   const WISH_KEY='fv_wish';
   const CART_TAB_PREFIX='floraverse:';
-  const normalizeCart = cart => Array.isArray(cart) ? cart.filter(item=>item && item.id).map(item=>({...item, qty:Math.max(1, parseInt(item.qty,10)||1)})) : [];
+  const normalizeCart = cart => Array.isArray(cart) ? cart.filter(item=>item && item.id).map(item=>{
+    const product=PRODUCTS.find(candidate=>candidate.id===item.id) || PRODUCTS.find(candidate=>candidate.nama===item.nama);
+    return product ? {...item, id:product.id, nama:product.nama, harga:product.harga, qty:Math.max(1, parseInt(item.qty,10)||1)} : null;
+  }).filter(Boolean) : [];
   function readTabCart(){
     if(!window.name.startsWith(CART_TAB_PREFIX)) return null;
     try { return normalizeCart(JSON.parse(window.name.slice(CART_TAB_PREFIX.length)).cart); }
@@ -255,7 +263,7 @@ $(function(){
     writeTabCart(clean);
     if(cartChannel) cartChannel.postMessage(clean);
   };
-  window.getWish = ()=> JSON.parse(localStorage.getItem(WISH_KEY)||'[]');
+  window.getWish = ()=> JSON.parse(localStorage.getItem(WISH_KEY)||'[]').filter(id=>PRODUCTS.some(product=>product.id===id));
   window.setWish = (w)=> localStorage.setItem(WISH_KEY, JSON.stringify(w));
   window.updateCartBadge = function(){
     const c=getCart(); const n=c.reduce((a,b)=>a+b.qty,0);
@@ -275,9 +283,25 @@ $(function(){
     if(!prod || qty<=0) return;
     let cart=getCart();
     const f=cart.find(x=>x.id===id);
-    if(f) f.qty+=qty; else cart.push({id, qty, harga:prod.harga, nama:prod.nama, image:prod.img});
+    if(f) f.qty+=qty; else cart.push({id, qty, harga:prod.harga, nama:prod.nama, image:window.getProductImage(id)});
     setCart(cart); updateCartBadge(); toast(`${prod.nama} ditambahkan ke keranjang`,'🛒');
     renderDrawerCart();
+  };
+  window.addPlantToGarden = window.addPlantToGarden || function(plantId){
+    const plant=PLANTS.find(item=>item.id===plantId);
+    if(!plant || typeof MY_GARDEN==='undefined') return;
+    const id=`g${Date.now()}`;
+    MY_GARDEN.push({id,plantId:plant.id,nama:plant.nama,emoji:plant.emoji,color:plant.color,day:1,stage:'Seed',stageIndex:0,stages:['Seed','Seedling','Growing','Flowering','Fruiting','Harvest'],health:'Healthy',water:plant.air,light:plant.cahaya,fert:'Belum',progress:5,tasks:[{id:`${id}-task`,text:'Siram pertama',done:false}],journal:[{date:'Hari 1',note:`Mulai menanam ${plant.nama} 🌱`}]});
+    if(typeof persistGarden==='function') persistGarden();
+    toast(`${plant.nama} ditambahkan ke Kebunku!`,'🌱');
+  };
+  window.addBundle = window.addBundle || function(plantId){
+    const plant=PLANTS.find(item=>item.id===plantId);
+    const items=PRODUCTS.filter(product=>product.related===plantId).slice(0,2);
+    const compost=PRODUCTS.find(product=>product.id==='kompos-kascing-2kg');
+    if(compost) items.push(compost);
+    items.forEach(product=>addToCart(product.id));
+    if(items.length) toast(`${plant?.nama||'Tanaman'} starter kit ditambahkan!`,'🎁');
   };
   window.toggleWish = function(id){
     let w=getWish();
@@ -442,6 +466,8 @@ $(function(){
   function renderPMResult(){
     $('#pmQuiz').addClass('hidden'); $('#pmResult').removeClass('hidden');
     $('#pmBar').css('width','100%');
+    const personality=typeof plantMatchToPersonality==='function' ? plantMatchToPersonality(pmAnswers) : 'The Careful Keeper';
+    $('#pmResultIntro').text(`Profilmu: ${personality}. Ini 5 tanaman yang paling cocok berdasarkan jawabanmu:`);
     // hitung skor
     let scored = PLANTS.map(p=> ({...p, score: scorePlant(p, pmAnswers)})).sort((a,b)=> b.score-a.score).slice(0,5);
     $('#pmResultList').html(scored.map((p,i)=> `
@@ -458,7 +484,7 @@ $(function(){
         <div class="text-right">
           <div class="text-2xl font-black" style="color:${p.color}">${p.score}%</div>
           <div class="text-[10px] font-bold tracking-widest text-muted">COCOK</div>
-          <button onclick="toast('Ditambahkan ke Kebunku','🌱'); closePlantMatch();" class="mt-1 text-xs font-bold px-3 py-1.5 rounded-full bg-[#252525] text-white hover:opacity-90">+ Kebunku</button>
+           <button onclick="addPlantToGarden('${p.id}'); closePlantMatch();" class="mt-1 text-xs font-bold px-3 py-1.5 rounded-full bg-[#252525] text-white hover:opacity-90">+ Kebunku</button>
           <a href="garden.html" class="block text-[10px] font-bold text-[#6FA8FF] mt-1">Buka Kebunku</a>
           <a href="plants.html#plantLabRoot" class="block text-[10px] font-bold text-[#6FA8FF] mt-1">Coba Plant Lab</a>
         </div>

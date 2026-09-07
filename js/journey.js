@@ -18,8 +18,24 @@ const JOURNEY_STORY = {
   ]
 };
 
+function buildPlantJourney(plant){
+  const panen=plant.panen && plant.panen!=="-" ? `Target panen ${plant.panen}.` : "Fokus pada pertumbuhan dan kesehatan tanaman.";
+  return [
+    {day:1, title:`Mulai menanam ${plant.nama}.`, desc:`Siapkan ${plant.media||"media tanam"} dan beri ${plant.cahaya||"cahaya yang sesuai"}.`},
+    {day:7, title:"Akar mulai beradaptasi.", desc:`Jaga kelembapan ${plant.kelembapan||"media"} dan hindari genangan.`},
+    {day:21, title:"Pertumbuhan mulai terlihat.", desc:`Amati daun dan sesuaikan penyiraman ${plant.air||"secukupnya"}.`},
+    {day:35, title:"Tanaman memasuki fase aktif.", desc:`Berikan perawatan ${plant.kesulitan?.toLowerCase()||"rutin"} sesuai kebutuhan.`},
+    {day:60, title:"Perkembangan semakin kuat.", desc:`${plant.tips||"Periksa hama dan kondisi media secara berkala."}`},
+    {day:90, title:"Saatnya mengevaluasi hasil.", desc:panen}
+  ];
+}
+
+PLANTS.forEach(plant=>{
+  if(!JOURNEY_STORY[plant.id]) JOURNEY_STORY[plant.id]=buildPlantJourney(plant);
+});
+
 function getStory(plantId, day){
-  const arr = JOURNEY_STORY[plantId] || JOURNEY_STORY["cabai-rawit"];
+  const arr = JOURNEY_STORY[plantId] || [{day:1, title:"Perjalanan tanaman dimulai.", desc:"Amati cahaya, air, dan kondisi media secara rutin."}];
   // find closest <= day
   let cur = arr[0];
   for(let s of arr){ if(s.day <= day) cur=s; }
@@ -30,4 +46,3 @@ function xpForAction(action){
   const map={ "addPlant":10, "guide":20, "journal":10, "help":15, "journey":50, "challenge":40, "task":10 };
   return map[action]||5;
 }
-

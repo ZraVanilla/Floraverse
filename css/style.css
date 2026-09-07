@@ -161,8 +161,8 @@ select {
 .fv-emoji-chat,.fv-emoji-shop,.fv-emoji-community,.fv-emoji-fire,.fv-emoji-book,
 .fv-emoji-check,.fv-emoji-map,.fv-emoji-spark{background:none}
 
-/* Plant images in cards */
-.fv-card img[src*="assets/photos"]{
+/* Plant and product images in cards */
+.fv-card img{
   object-fit:cover;
 }
 .image-fallback{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-weight:800;font-size:1.5rem;color:var(--charcoal);background:#F3F4F6}

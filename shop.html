@@ -134,9 +134,9 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
-<script src="js/indonesia-plants.js"></script>
+<script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
-<script src="js/indonesia-products.js"></script>
+<script src="js/gambar-produk.js"></script>
 <script src="js/journey.js"></script>
 <script src="js/app.js?v=3"></script>
 <script>
@@ -196,38 +196,43 @@ $('#cartModal').on('click', function(e){ if(e.target === this) closeCartModal();
 <script>
 let activePcat="";
 const bundles={
-  "cabai-rawit":{nama:"Chili Starter Kit", harga:65000, items:[{id:"p01",qty:1},{id:"p04",qty:1},{id:"p06",qty:1},{id:"p10",qty:1}], desc:"Benih Cabai 50 biji + Pot 20cm + Media 5kg + Pupuk Organik Cair"},
-  "tomat":{nama:"Tomato Starter Kit", harga:72000, items:[{id:"p02",qty:1},{id:"p04",qty:1},{id:"p06",qty:1},{id:"p21",qty:1}], desc:"Benih Tomat + Pot + Media + Kalsium Boron anti blossom end rot"},
-  "selada":{nama:"Hidroponik Pemula Kit", harga:145000, items:[{id:"p15",qty:1},{id:"p17",qty:1},{id:"p03",qty:1}], desc:"6 lubang NFT + AB Mix + Benih Selada"},
-  "basil":{nama:"Herb Starter Kit", harga:58000, items:[{id:"p19",qty:1},{id:"p05",qty:1},{id:"p06",qty:1}], desc:"Benih Basil + Polybag + Media Premium"},
-  "stroberi":{nama:"Stroberi Pot Gantung Kit", harga:68000, items:[{id:"p20",qty:1},{id:"p06",qty:1},{id:"p10",qty:1}], desc:"Pot Gantung 18cm + Media + Pupuk Organik"}
+  "cabai-rawit":{nama:"Chili Starter Kit", harga:65000, items:[{id:"benih-cabai-rawit-50-biji",qty:1},{id:"pot-keramik-20cm-putih",qty:1},{id:"media-tanam-premium-5kg",qty:1},{id:"pupuk-organik-cair-500ml",qty:1}], desc:"Benih Cabai 50 biji + Pot 20cm + Media 5kg + Pupuk Organik Cair"},
+  "tomat":{nama:"Tomato Starter Kit", harga:72000, items:[{id:"benih-tomat-cherry-30-biji",qty:1},{id:"pot-keramik-20cm-putih",qty:1},{id:"media-tanam-premium-5kg",qty:1},{id:"pupuk-kalsium-boron",qty:1}], desc:"Benih Tomat + Pot + Media + Kalsium Boron anti blossom end rot"},
+  "selada":{nama:"Hidroponik Pemula Kit", harga:145000, items:[{id:"starter-kit-hidroponik-6-lubang",qty:1},{id:"nutrisi-ab-mix-500ml",qty:1},{id:"benih-selada-romaine",qty:1}], desc:"6 lubang NFT + AB Mix + Benih Selada"},
+  "basil":{nama:"Herb Starter Kit", harga:58000, items:[{id:"benih-basil-50-biji",qty:1},{id:"polybag-25x25-10pcs",qty:1},{id:"media-tanam-premium-5kg",qty:1}], desc:"Benih Basil + Polybag + Media Premium"},
+  "stroberi":{nama:"Stroberi Pot Gantung Kit", harga:68000, items:[{id:"pot-gantung-18cm",qty:1},{id:"media-tanam-premium-5kg",qty:1},{id:"pupuk-organik-cair-500ml",qty:1}], desc:"Pot Gantung 18cm + Media + Pupuk Organik"}
 };
 function getSmartBundle(plantId){
-  if(bundles[plantId]) return bundles[plantId];
+  const priceBundle=bundle=>{
+    const items=bundle.items.filter(item=>PRODUCTS.some(product=>product.id===item.id));
+    const harga=items.reduce((sum,item)=>sum+(PRODUCTS.find(product=>product.id===item.id)?.harga||0)*item.qty,0);
+    return {...bundle,items,harga};
+  };
+  if(bundles[plantId]) return priceBundle(bundles[plantId]);
   const related=PRODUCTS.filter(p=>p.related===plantId).slice(0,2);
   const items=related.map(p=>({id:p.id,qty:1}));
-  items.push({id:"common-product-7",qty:1});
-  const total=items.reduce((sum,item)=>sum+(PRODUCTS.find(p=>p.id===item.id)?.harga||0)*item.qty,0);
-  return {nama:`Paket Awal ${PLANTS.find(p=>p.id===plantId)?.nama||"Tanaman"}`, harga:Math.round(total*.9), items, desc:"Bibit atau benih, paket media, dan kompos untuk mulai menanam."};
+  items.push({id:"kompos-kascing-2kg",qty:1});
+  return priceBundle({nama:`Paket Awal ${PLANTS.find(p=>p.id===plantId)?.nama||"Tanaman"}`,items,desc:"Bibit atau benih, paket media, dan kompos untuk mulai menanam."});
 }
 function renderSmartBasket(plantId){
   const b=getSmartBundle(plantId);
   const plant=PLANTS.find(p=>p.id===plantId);
   let total=0; let rows=b.items.map(it=>{
     const pr=PRODUCTS.find(p=>p.id===it.id);
+    if(!pr) return '';
     total+=pr.harga*it.qty;
      return `<div class="smart-kit-item flex items-center gap-3 bg-white rounded-2xl p-3 border"><div class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden flex-shrink-0">${fvImg(pr,'w-full h-full object-cover')}</div><div class="flex-1 min-w-0"><p class="font-bold text-sm leading-none truncate">${pr.nama}</p><p class="text-xs text-muted">x${it.qty}</p></div><span class="font-black text-sm whitespace-nowrap">Rp${(pr.harga*it.qty).toLocaleString('id-ID')}</span></div>`;
   }).join('');
-  const saving = total - b.harga;
+   const saving = Math.max(0,total - b.harga);
   $('#smartBasketCard').html(`
     <div class="flex items-center gap-3">
        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center overflow-hidden border">${plant?fvImg(plant,'w-full h-full object-cover'):'🎁'}</div>
       <div class="flex-1"><p class="font-black">${b.nama}</p><p class="text-xs text-muted">${b.desc}</p></div>
-      <span class="pill bg-[#FF9B70] text-white font-black">Hemat Rp${saving.toLocaleString('id-ID')}</span>
+       <span class="pill bg-[#FF9B70] text-white font-black">${saving ? `Hemat Rp${saving.toLocaleString('id-ID')}` : 'Harga sesuai isi'}</span>
     </div>
      <div class="smart-kit-items space-y-2 mt-4">${rows}</div>
      <div class="smart-kit-summary flex items-center justify-between gap-3 mt-4">
-       <div><p class="text-xs text-muted">Harga normal <span class="line-through">Rp${total.toLocaleString('id-ID')}</span></p><p class="text-xl font-black">Harga kit Rp${b.harga.toLocaleString('id-ID')}</p></div>
+        <div><p class="text-xs text-muted">Total isi kit</p><p class="text-xl font-black">Rp${b.harga.toLocaleString('id-ID')}</p></div>
       <button onclick="addBundle('${plantId}')" class="btn btn-orange px-6 py-3">Tambahkan Semua </button>
     </div>
     <p class="text-xs text-muted mt-2">* Simulasi - checkout tanpa pembayaran nyata</p>

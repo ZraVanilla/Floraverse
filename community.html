@@ -203,9 +203,9 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
-<script src="js/indonesia-plants.js"></script>
+<script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
-<script src="js/indonesia-products.js"></script>
+<script src="js/gambar-produk.js"></script>
 <script src="js/communities.js"></script>
 <script src="js/guides.js"></script>
 <script src="js/journey.js"></script>
@@ -267,7 +267,7 @@ function renderFeed(){
       <p class="mt-3 text-[15px] leading-relaxed">${p.content}</p>
       <div class="flex flex-wrap gap-1.5 mt-2">${p.tags.map(t=>`<span class="pill pill-blue text-xs">${t}</span>`).join('')}</div>
       <div class="bg-gray-50 rounded-2xl p-3 mt-3 flex items-center gap-3">
-         <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">${({"🌶️":"cabai-rawit","🥬":"selada","🪴":"sukulen","🍅":"tomat","🌹":"mawar","🍓":"stroberi","🌿":"mint"}[p.image]) ? fvImg(PLANTS.find(x=>x.id==={"🌶️":"cabai-rawit","🥬":"selada","🪴":"sukulen","🍅":"tomat","🌹":"mawar","🍓":"stroberi","🌿":"mint"}[p.image]),'w-full h-full object-cover') : p.image}</div>
+         <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">${p.plantId ? fvImg(PLANTS.find(x=>x.id===p.plantId),'w-full h-full object-cover') : p.image || '🌱'}</div>
         <p class="text-sm font-bold">Foto tanaman</p>
         <span class="ml-auto text-xs text-muted">${p.likes} suka • ${p.comments} komentar</span>
       </div>
@@ -361,7 +361,7 @@ $(function(){
     const text=$('#newPostText').val().trim();
     if(!text) return toast('Tulis sesuatu dulu','✏️');
     const commId=$('#newPostComm').val();
-    feedPosts.unshift({id:'p'+Date.now(), community:commId, user:'Izra', avatar:'IZ', time:'Baru saja', content:text, likes:0, comments:0, image:'🌱', liked:false, saved:false, tags:['#berkebun']});
+    feedPosts.unshift({id:'post-'+Date.now(), community:commId, user:'Izra', avatar:'IZ', time:'Baru saja', content:text, likes:0, comments:0, image:'🌱', liked:false, saved:false, tags:['#berkebun']});
     $('#createPostModal').removeClass('open');
     $('#newPostText').val('');
     toast('Postingan berhasil dibuat','🎉');

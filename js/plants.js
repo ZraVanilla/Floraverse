@@ -3,7 +3,6 @@ const PLANTS = [
   {
     id: "cabai-rawit", nama:"Cabai Rawit", ilmiah:"Capsicum frutescens", kategori:"Sayuran", kesulitan:"Mudah", panen:"70–90 hari", cahaya:"Full Sun", air:"Sedang", ph:"6.0–7.0", suhu:"24–32°C", media:"Tanah gembur + kompos",
     color:"#FF718D", emoji:"🌶️",
-    img:"assets/photos/plants/cabai-rawit.jpg",
     desc:"Cabai rawit adalah tanaman paling populer untuk kebun rumah. Tahan panas, produktif, dan cocok untuk pemula.",
     cara:"Semai benih 5–7 hari, pindah tanam setelah 3–4 minggu, beri sinar penuh dan siram teratur.",
     perawat:"Siram 1x sehari, pupuk 2 minggu sekali, pangkas daun tua.",
@@ -14,172 +13,116 @@ const PLANTS = [
   {
     id:"cabai-merah", nama:"Cabai Merah Keriting", ilmiah:"Capsicum annuum", kategori:"Sayuran", kesulitan:"Mudah", panen:"80–100 hari", cahaya:"Full Sun", air:"Sedang", ph:"5.5–6.8", suhu:"25–30°C", media:"Tanah + sekam bakar",
     color:"#FF9B70", emoji:"🌶️",
-    img:"assets/photos/plants/cabai-merah.jpg",
     desc:"Cabai merah keriting ideal untuk masakan harian, buah lebat dan perawatan mudah.", cara:"Sama seperti cabai rawit, butuh pot minimal 20cm.", perawat:"Butuh ajir saat mulai berbuah.", hama:"Thrips, tungau", tips:"Jemur benih sebelum semai agar germinasi tinggi.", rating:4.7, buyers:980
   },
   {
     id:"tomat", nama:"Tomat Cherry", ilmiah:"Solanum lycopersicum", kategori:"Buah", kesulitan:"Sedang", panen:"75–85 hari", cahaya:"Full Sun", air:"Sedang", ph:"6.0–6.8", suhu:"20–28°C", media:"Tanah + kompos + cocopeat",
     color:"#FF718D", emoji:"🍅",
-    img:"assets/photos/plants/tomat.jpg",
     desc:"Tomat cherry manis, cocok untuk pot dan balkon. Buah kecil menggantung cantik.", cara:"Semai, pindah tanam, beri ajir, pangkas tunas air.", perawat:"Siram pagi, hindari daun basah malam.", hama:"Late blight, kutu kebul", tips:"Panen bertahap, petik saat merah mengkilap.", rating:4.9, buyers:1520
   },
   {
     id:"selada", nama:"Selada Romaine", ilmiah:"Lactuca sativa", kategori:"Sayuran", kesulitan:"Mudah", panen:"30–45 hari", cahaya:"Partial Sun", air:"Banyak", ph:"6.0–7.0", suhu:"15–22°C", media:"Rockwool / tanah gembur",
     color:"#8BCB8A", emoji:"🥬",
-    img:"assets/photos/plants/selada.jpg",
     desc:"Selada romaine renyah, cepat panen, ideal untuk hidroponik pemula.", cara:"Semai di rockwool, pindah ke netpot hidroponik hari ke-7.", perawat:"Jaga nutrisi AB Mix, pH stabil.", hama:"Siput, aphid", tips:"Panen daun luar dulu agar terus tumbuh.", rating:4.6, buyers:840
   },
   {
     id:"bayam", nama:"Bayam Hijau", ilmiah:"Amaranthus tricolor", kategori:"Sayuran", kesulitan:"Mudah", panen:"25–35 hari", cahaya:"Partial Sun", air:"Banyak", ph:"6.0–7.5", suhu:"25–30°C", media:"Tanah kompos",
     color:"#8BCB8A", emoji:"🥬",
-    img:"assets/photos/plants/bayam.jpg",
     desc:"Bayam tumbuh sangat cepat, cocok untuk panen kilat di halaman sempit.", cara:"Tabur langsung, jarang 10cm.", perawat:"Siram 2x sehari musim kemarau.", hama:"Ulat grayak", tips:"Panen sebelum berbunga agar tidak pahit.", rating:4.5, buyers:610
   },
   {
     id:"kangkung", nama:"Kangkung Darat", ilmiah:"Ipomoea aquatica", kategori:"Sayuran", kesulitan:"Sangat Mudah", panen:"25–30 hari", cahaya:"Full Sun", air:"Banyak", ph:"5.5–7.0", suhu:"25–32°C", media:"Tanah / hidroponik",
     color:"#8BCB8A", emoji:"🥬",
-    img:"assets/photos/plants/kangkung.jpg",
     desc:"Kangkung darat paling toleran, bahkan bisa tanpa perawatan intensif.", cara:"Tabur benih langsung.", perawat:"Siram rutin, pupuk kompos.", hama:"Belalang", tips:"Potong 5cm dari pangkal, akan tumbuh lagi.", rating:4.7, buyers:720
   },
   {
     id:"wortel", nama:"Wortel Nantes", ilmiah:"Daucus carota", kategori:"Sayuran", kesulitan:"Sedang", panen:"70–80 hari", cahaya:"Full Sun", air:"Sedang", ph:"6.0–6.8", suhu:"16–24°C", media:"Tanah gembur dalam",
     color:"#FF9B70", emoji:"🥕",
-    img:"assets/photos/plants/wortel.jpg",
     desc:"Wortel Nantes manis, umbi lurus, butuh media dalam dan gembur.", cara:"Tabur langsung, jangan pindah tanam.", perawat:"Jarang agar jarak 5cm, gemburkan tanah.", hama:"Lalat wortel", tips:"Panen saat ujung umbi nongol.", rating:4.4, buyers:430
   },
   {
     id:"stroberi", nama:"Stroberi Albion", ilmiah:"Fragaria × ananassa", kategori:"Buah", kesulitan:"Sedang", panen:"90–120 hari", cahaya:"Full Sun", air:"Sedang", ph:"5.5–6.5", suhu:"15–25°C", media:"Tanah + sekam + cocopeat",
     color:"#FF718D", emoji:"🍓",
-    img:"assets/photos/plants/stroberi.jpg",
     desc:"Stroberi manis-asam, cantik untuk pot gantung.", cara:"Bibit stolon, tanam di pot 20cm.", perawat:"Siram pagi, mulsa jerami.", hama:"Tungau, busuk buah", tips:"Buang bunga pertama agar tanaman kuat.", rating:4.8, buyers:890
   },
   {
     id:"timun", nama:"Mentimun Baby", ilmiah:"Cucumis sativus", kategori:"Sayuran", kesulitan:"Mudah", panen:"55–60 hari", cahaya:"Full Sun", air:"Banyak", ph:"6.0–7.0", suhu:"25–32°C", media:"Tanah kompos",
     color:"#8BCB8A", emoji:"🥒",
-    img:"assets/photos/plants/timun.jpg",
     desc:"Mentimun baby renyah, rajin berbuah jika diberi rambatan.", cara:"Tabur 2 benih/lubang, beri ajir.", perawat:"Siram rutin, pupuk K tinggi saat berbuah.", hama:"Embun tepung", tips:"Panen muda agar tidak pahit.", rating:4.5, buyers:560
   },
   {
     id:"terong", nama:"Terong Ungu", ilmiah:"Solanum melongena", kategori:"Sayuran", kesulitan:"Mudah", panen:"70–80 hari", cahaya:"Full Sun", air:"Sedang", ph:"5.5–6.5", suhu:"22–30°C", media:"Tanah + kompos",
     color:"#6FA8FF", emoji:"🍆",
-    img:"assets/photos/plants/terong.jpg",
     desc:"Terong ungu produktif, satu tanaman bisa panen berkali-kali.", cara:"Semai lalu pindah tanam 30x40cm.", perawat:"Pangkas daun bawah, pupuk rutin.", hama:"Kumbang terong", tips:"Petik saat kulit mengkilap.", rating:4.6, buyers:480
   },
   {
     id:"basil", nama:"Basil / Kemangi Manis", ilmiah:"Ocimum basilicum", kategori:"Herbal", kesulitan:"Mudah", panen:"30–40 hari", cahaya:"Full Sun", air:"Sedang", ph:"6.0–7.0", suhu:"20–30°C", media:"Tanah + kompos",
     color:"#8BCB8A", emoji:"🌿",
-    img:"assets/photos/plants/basil.jpg",
     desc:"Basil wangi untuk pasta dan teh, tumbuh cepat di pot kecil.", cara:"Tabur, jarang, panen pucuk.", perawat:"Cubit pucuk agar rimbun.", hama:"Siput", tips:"Jangan biarkan berbunga agar daun tetap wangi.", rating:4.9, buyers:1020
   },
   {
     id:"kemangi", nama:"Kemangi Lokal", ilmiah:"Ocimum citriodorum", kategori:"Herbal", kesulitan:"Sangat Mudah", panen:"30 hari", cahaya:"Full Sun", air:"Sedang", ph:"6.0–7.0", suhu:"25–32°C", media:"Tanah",
     color:"#8BCB8A", emoji:"🌿",
-    img:"assets/photos/plants/kemangi.jpg",
     desc:"Kemangi lokal wangi kuat, pendamping pecel dan lalapan.", cara:"Tabur langsung.", perawat:"Siram 1x sehari.", hama:"Hampir tidak ada", tips:"Panen pagi hari aroma paling kuat.", rating:4.7, buyers:670
   },
   {
     id:"mawar", nama:"Mawar Floribunda", ilmiah:"Rosa hybrid", kategori:"Bunga", kesulitan:"Sedang", panen:"60–90 hari berbunga", cahaya:"Full Sun", air:"Sedang", ph:"6.0–6.5", suhu:"18–28°C", media:"Tanah + sekam + kompos",
     color:"#FF718D", emoji:"🌹",
-    img:"assets/photos/plants/mawar.jpg",
     desc:"Mawar floribunda rajin berbunga, warna cerah.", cara:"Stek atau bibit okulasi, pot 25cm.", perawat:"Pangkas setelah berbunga, pupuk NPK.", hama:"Thrips, black spot", tips:"Pangkas miring 45° di atas mata tunas.", rating:4.7, buyers:540
   },
   {
     id:"matahari", nama:"Bunga Matahari", ilmiah:"Helianthus annuus", kategori:"Bunga", kesulitan:"Mudah", panen:"70–85 hari", cahaya:"Full Sun", air:"Sedang", ph:"6.0–7.5", suhu:"20–30°C", media:"Tanah gembur",
     color:"#FFD45C", emoji:"🌻",
-    img:"assets/photos/plants/matahari.jpg",
     desc:"Bunga matahari ceria, tinggi dan mencolok, disukai lebah.", cara:"Tabur langsung 30cm.", perawat:"Beri ajir jika tinggi >1m.", hama:"Ulat grayak", tips:"Tanam berurutan tiap 2 minggu untuk bunga terus.", rating:4.8, buyers:610
   },
   {
     id:"kaktus", nama:"Kaktus Mini", ilmiah:"Mammillaria spp.", kategori:"Kaktus", kesulitan:"Sangat Mudah", panen:"-", cahaya:"Full Sun", air:"Jarang", ph:"6.0–7.0", suhu:"20–32°C", media:"Pasir + pumice",
     color:"#8BCB8A", emoji:"🌵",
-    img:"assets/photos/plants/kaktus.jpg",
     desc:"Kaktus mini tahan lupa siram, cocok untuk meja kerja.", cara:"Bibit anakan, media poros.", perawat:"Siram 7–10 hari sekali.", hama:"Busuk akar jika overwater", tips:"Jemur 4–6 jam sehari.", rating:4.6, buyers:780
   },
   {
     id:"sukulen", nama:"Sukulen Echeveria", ilmiah:"Echeveria elegans", kategori:"Sukulen", kesulitan:"Mudah", panen:"-", cahaya:"Bright Indirect", air:"Jarang", ph:"6.0–6.5", suhu:"15–28°C", media:"Sukulen mix",
     color:"#8BCB8A", emoji:"🪴",
-    img:"assets/photos/plants/sukulen.jpg",
     desc:"Sukulen roset cantik, warna pastel.", cara:"Daun diperbanyak, letak terang.", perawat:"Siram saat media kering.", hama:"Mealybug", tips:"Jangan semprot daun, siram ke media.", rating:4.7, buyers:920
   },
   {
     id:"mangga", nama:"Mangga Harum Manis", ilmiah:"Mangifera indica", kategori:"Pohon buah", kesulitan:"Sedang", panen:"3–4 tahun", cahaya:"Full Sun", air:"Sedang", ph:"5.5–7.0", suhu:"24–33°C", media:"Tanah + kompos",
     color:"#FFD45C", emoji:"🥭",
-    img:"assets/photos/plants/mangga.jpg",
     desc:"Mangga harum manis legendaris, bisa tabulampot.", cara:"Bibit okulasi, pot 50cm.", perawat:"Pangkas bentuk, pupuk buah.", hama:"Lalat buah", tips:"Bungkus buah saat pentil.", rating:4.8, buyers:310
   },
   {
     id:"jeruk", nama:"Jeruk Kalamansi", ilmiah:"Citrofortunella microcarpa", kategori:"Pohon buah", kesulitan:"Mudah", panen:"6–8 bulan", cahaya:"Full Sun", air:"Sedang", ph:"5.5–6.5", suhu:"22–32°C", media:"Tanah + sekam",
     color:"#FFD45C", emoji:"🍊",
-    img:"assets/photos/plants/jeruk.jpg",
     desc:"Jeruk mini rajin berbuah, asam segar untuk minuman.", cara:"Bibit cangkok, pot 30cm.", perawat:"Pupuk NPK buah.", hama:"Kutu daun", tips:"Panen saat oranye penuh.", rating:4.6, buyers:420
   },
   {
     id:"jambu", nama:"Jambu Air Madu", ilmiah:"Syzygium aqueum", kategori:"Pohon buah", kesulitan:"Mudah", panen:"1–2 tahun", cahaya:"Full Sun", air:"Banyak", ph:"6.0–7.0", suhu:"25–32°C", media:"Tanah gembur",
     color:"#FF718D", emoji:"🍎",
-    img:"assets/photos/plants/jambu.jpg",
     desc:"Jambu air madu manis berair.", cara:"Cangkok, tanam halaman.", perawat:"Siram rutin musim kering.", hama:"Lalat buah", tips:"Bungkus buah dengan plastik.", rating:4.5, buyers:280
   },
   {
     id:"alpukat", nama:"Alpukat Mentega", ilmiah:"Persea americana", kategori:"Pohon buah", kesulitan:"Sedang", panen:"3–5 tahun", cahaya:"Full Sun", air:"Sedang", ph:"6.0–6.5", suhu:"20–28°C", media:"Tanah + kompos",
     color:"#8BCB8A", emoji:"🥑",
-    img:"assets/photos/plants/alpukat.jpg",
     desc:"Alpukat mentega pulen, nilai ekonomi tinggi.", cara:"Bibit okulasi.", perawat:"Jangan genang.", hama:"Ulat kipat", tips:"Panen saat kulit agak kusam.", rating:4.9, buyers:340
   },
   {
     id:"lavender", nama:"Lavender", ilmiah:"Lavandula angustifolia", kategori:"Herbal", kesulitan:"Sedang", panen:"90–120 hari", cahaya:"Full Sun", air:"Jarang", ph:"6.5–8.0", suhu:"15–25°C", media:"Pasir + kompos",
     color:"#6FA8FF", emoji:"🌸",
-    img:"assets/photos/plants/lavender.jpg",
     desc:"Lavender wangi menenangkan, butuh drainase bagus.", cara:"Semai, pindah pot 15cm.", perawat:"Jangan overwater.", hama:"Busuk akar", tips:"Pangkas bunga kering untuk pembungaan ulang.", rating:4.6, buyers:390
   },
   {
     id:"mint", nama:"Mint / Peppermint", ilmiah:"Mentha piperita", kategori:"Herbal", kesulitan:"Sangat Mudah", panen:"30 hari", cahaya:"Partial Sun", air:"Banyak", ph:"6.0–7.0", suhu:"15–25°C", media:"Tanah lembab",
     color:"#8BCB8A", emoji:"🌿",
-    img:"assets/photos/plants/mint.jpg",
     desc:"Mint menyegarkan, invasif - tanam di pot sendiri.", cara:"Stek batang, tancap.", perawat:"Siram rutin, panen sering.", hama:"Whitefly", tips:"Jangan tanam campur, mint akan dominan.", rating:4.8, buyers:740
   },
   {
     id:"lidah-buaya", nama:"Lidah Buaya", ilmiah:"Aloe vera", kategori:"Hias", kesulitan:"Sangat Mudah", panen:"-", cahaya:"Bright Indirect", air:"Jarang", ph:"7.0–8.5", suhu:"20–30°C", media:"Pasir",
     color:"#8BCB8A", emoji:"🪴",
-    img:"assets/photos/plants/lidah-buaya.jpg",
     desc:"Lidah buaya multifungsi, tahan banting.", cara:"Anakan, pot 15cm.", perawat:"Siram 10 hari sekali.", hama:"Hampir tidak ada", tips:"Gel bisa untuk luka ringan.", rating:4.7, buyers:660
   },
   {
     id:"anggrek", nama:"Anggrek Bulan", ilmiah:"Phalaenopsis amabilis", kategori:"Bunga", kesulitan:"Sulit", panen:"-", cahaya:"Bright Indirect", air:"Sedang", ph:"5.5–6.5", suhu:"18–28°C", media:"Moss + pakis",
     color:"#FF718D", emoji:"🌸",
-    img:"assets/photos/plants/anggrek.jpg",
     desc:"Anggrek bulan elegan, berbunga tahan lama.", cara:"Bibit kultur jaringan.", perawat:"Siram 2x seminggu, pupuk anggrek.", hama:"Bekicot", tips:"Jangan pindah pot saat berbunga.", rating:4.9, buyers:510
   }
 ];
-
-/*
- * Photo source: Unsplash direct image URLs, used under the Unsplash License.
- * Keeping the URLs in the data layer makes every plant card use the same photo.
- */
-const PLANT_PHOTOS = {
-  "cabai-rawit":"https://images.unsplash.com/photo-1588252303782-cb80119abd6d?auto=format&fit=crop&w=900&q=85",
-  "cabai-merah":"https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=900&q=85",
-  "tomat":"https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=900&q=85",
-  "selada":"https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?auto=format&fit=crop&w=900&q=85",
-  "bayam":"https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=85",
-  "kangkung":"https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=900&q=85",
-  "wortel":"https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=900&q=85",
-  "stroberi":"https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=900&q=85",
-  "timun":"https://images.unsplash.com/photo-1604977042946-1eecc30f269e?auto=format&fit=crop&w=900&q=85",
-  "terong":"https://images.unsplash.com/photo-1615484477778-ca3b77940c25?auto=format&fit=crop&w=900&q=85",
-  "basil":"https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=900&q=85",
-  "kemangi":"https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=900&q=85",
-  "mawar":"https://images.unsplash.com/photo-1496062031456-07b8f162a322?auto=format&fit=crop&w=900&q=85",
-  "matahari":"https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=900&q=85",
-  "kaktus":"https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=900&q=85",
-  "sukulen":"https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=900&q=85",
-  "mangga":"https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=85",
-  "jeruk":"https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=900&q=85",
-  "jambu":"https://images.unsplash.com/photo-1536511132770-e5058c7e8c46?auto=format&fit=crop&w=900&q=85",
-  "alpukat":"https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=900&q=85",
-  "lavender":"https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=900&q=85",
-  "mint":"https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=900&q=85",
-  "lidah-buaya":"https://images.unsplash.com/photo-1596547609652-9cf5d8d4b7d3?auto=format&fit=crop&w=900&q=85",
-  "anggrek":"https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?auto=format&fit=crop&w=900&q=85"
-};
-
-PLANTS.forEach(plant => { plant.img = PLANT_PHOTOS[plant.id] || plant.img; });

@@ -145,7 +145,7 @@
     <div id="pmProgress" class="progress-track mt-4 hidden"><div id="pmBar" class="progress-fill bg-[#6FA8FF]" style="width:14%"></div></div>
     <div id="pmIntro" class="mt-6"><div class="rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE] p-4"><p class="font-black text-lg">Mulai dari sini</p><p class="text-sm text-muted mt-1">Jawab 7 pertanyaan singkat agar rekomendasi tanaman menyesuaikan cahaya, ruang, waktu, dan pengalamanmu.</p></div><button onclick="startPlantMatch()" class="btn btn-primary w-full mt-4">Mulai survei</button></div>
     <div id="pmQuiz" class="hidden mt-6"><h3 id="pmQuestion" class="text-xl font-black"></h3><div id="pmOptions" class="grid gap-2.5 mt-4"></div><button id="pmPrev" onclick="prevPM()" class="btn btn-ghost w-full mt-3 hidden">Kembali</button></div>
-    <div id="pmResult" class="hidden mt-6"><h3 class="font-black text-lg">✨ Your Plant Match</h3><p class="text-sm text-muted">Ini 5 tanaman yang paling cocok untukmu:</p><div id="pmResultList" class="space-y-3 mt-4"></div><div class="flex gap-2 mt-5"><button onclick="closePlantMatch()" class="btn btn-ghost flex-1">Tutup</button><button onclick="closePlantMatch(); $('html,body').animate({scrollTop:0},300)" class="btn btn-primary flex-1">Lihat Tanaman </button></div></div>
+    <div id="pmResult" class="hidden mt-6"><h3 class="font-black text-lg">✨ Your Plant Match</h3><p id="pmResultIntro" class="text-sm text-muted">Ini 5 tanaman yang paling cocok untukmu:</p><div id="pmResultList" class="space-y-3 mt-4"></div><div class="flex gap-2 mt-5"><button onclick="closePlantMatch()" class="btn btn-ghost flex-1">Tutup</button><button onclick="closePlantMatch(); $('html,body').animate({scrollTop:0},300)" class="btn btn-primary flex-1">Lihat Tanaman </button></div></div>
   </div>
 </div>
 
@@ -155,9 +155,9 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
-<script src="js/indonesia-plants.js"></script>
+<script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
-<script src="js/indonesia-products.js"></script>
+<script src="js/gambar-produk.js"></script>
 <script src="js/communities.js"></script>
 <script src="js/guides.js"></script>
 <script src="js/garden.js"></script>
@@ -209,7 +209,7 @@ function renderPlants(){
         <p class="text-sm text-muted mt-2 line-clamp-2 leading-snug">${p.desc}</p>
         <div class="flex gap-2 mt-3">
           <span class="flex-1 btn btn-primary text-xs py-2.5 justify-center">Lihat Detail </span>
-          <span class="btn btn-ghost text-xs px-3 py-2.5" onclick="event.stopPropagation(); toast('Ditambahkan ke Kebunku','🌱')">+ Kebunku</span>
+           <span class="btn btn-ghost text-xs px-3 py-2.5" onclick="event.stopPropagation(); addPlantToGarden('${p.id}')">+ Kebunku</span>
         </div>
       </div>
     </div>
@@ -225,7 +225,7 @@ function openPlant(id){
   $('#modalContent').html(`
     <div class="relative">
       <div class="h-56 flex items-center justify-center relative overflow-hidden" style="background:${p.color}14">
-        ${fvImg(p,'w-full h-full object-cover sway')}
+         ${fvImg(p,'w-full h-full object-cover')}
         <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full opacity-10" style="background:${p.color}"></div>
         <button onclick="$('#plantModal').removeClass('open')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur shadow-md flex items-center justify-center text-sm font-bold hover:bg-white transition">✕</button>
         <div class="absolute bottom-4 left-4 flex gap-2">
@@ -249,7 +249,7 @@ function openPlant(id){
           <div class="text-right">
             <p class="text-sm font-black">★ ${p.rating} • ${p.buyers.toLocaleString('id-ID')} penanam</p>
             <div class="flex gap-2 mt-2 justify-end">
-              <button onclick="toast('Ditambahkan ke Kebunku','🌱')" class="btn btn-primary text-sm">+ Tambah ke Kebunku</button>
+               <button onclick="addPlantToGarden('${p.id}')" class="btn btn-primary text-sm">+ Tambah ke Kebunku</button>
               <button onclick="toast('Disimpan','🔖')" class="btn btn-ghost text-sm">🔖 Simpan</button>
             </div>
           </div>
@@ -290,7 +290,7 @@ function openPlant(id){
             </div>
           `).join('')}
         </div>
-        <button onclick="addToCart('p25'); toast('Starter Kit ditambahkan','🎁')" class="btn btn-orange w-full mt-3">Tambahkan Starter Kit Rp65.000 </button>
+         <button onclick="addBundle('${p.id}')" class="btn btn-orange w-full mt-3">Tambahkan Starter Kit </button>
         `:''}
 
         <div class="grid sm:grid-cols-2 gap-3 mt-6">
@@ -312,8 +312,8 @@ function openPlant(id){
             <a href="garden.html" class="btn btn-primary text-xs py-2.5 text-center">🌱 Mulai Journey</a>
             <button onclick="$('#plantModal').removeClass('open'); document.getElementById('plantLabRoot').scrollIntoView({behavior:'smooth', block:'center'}); toast('Scroll ke Plant Lab','🔬')" class="btn bg-[#FFD45C] text-charcoal text-xs py-2.5">🔬 Coba Plant Lab</button>
             <button onclick="toast('Gabung komunitas','👥')" class="btn btn-ghost text-xs py-2.5">👥 Gabung Komunitas</button>
-            <button onclick="addToCart('p25')" class="btn btn-orange text-xs py-2.5">🛒 Starter Kit</button>
-            <button onclick="toast('Ditambahkan ke Kebunku','🌱')" class="btn btn-dark text-xs py-2.5">+ Kebunku</button>
+             <button onclick="addBundle('${p.id}')" class="btn btn-orange text-xs py-2.5">🛒 Starter Kit</button>
+             <button onclick="addPlantToGarden('${p.id}')" class="btn btn-dark text-xs py-2.5">+ Kebunku</button>
           </div>
         </div>
 
