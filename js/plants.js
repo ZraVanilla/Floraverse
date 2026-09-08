@@ -76,9 +76,9 @@ const PLANTS = [
     desc:"Bunga matahari ceria, tinggi dan mencolok, disukai lebah.", cara:"Tabur langsung 30cm.", perawat:"Beri ajir jika tinggi >1m.", hama:"Ulat grayak", tips:"Tanam berurutan tiap 2 minggu untuk bunga terus.", rating:4.8, buyers:610
   },
   {
-    id:"kaktus", nama:"Kaktus Mini", ilmiah:"Mammillaria spp.", kategori:"Kaktus", kesulitan:"Sangat Mudah", panen:"-", cahaya:"Full Sun", air:"Jarang", ph:"6.0–7.0", suhu:"20–32°C", media:"Pasir + pumice",
-    color:"#8BCB8A", emoji:"🌵",
-    desc:"Kaktus mini tahan lupa siram, cocok untuk meja kerja.", cara:"Bibit anakan, media poros.", perawat:"Siram 7–10 hari sekali.", hama:"Busuk akar jika overwater", tips:"Jemur 4–6 jam sehari.", rating:4.6, buyers:780
+    id:"mangga", nama:"Mangga Harum Manis", ilmiah:"Mangifera indica", kategori:"Pohon buah", kesulitan:"Sedang", panen:"3–4 tahun", cahaya:"Full Sun", air:"Sedang", ph:"5.5–7.0", suhu:"24–33°C", media:"Tanah + kompos",
+    color:"#FFD45C", emoji:"🥭",
+    desc:"Mangga harum manis legendaris, bisa tabulampot.", cara:"Bibit okulasi, pot 50cm.", perawat:"Pangkas bentuk, pupuk buah.", hama:"Lalat buah", tips:"Bungkus buah saat pentil.", rating:4.8, buyers:310
   },
   {
     id:"sukulen", nama:"Sukulen Echeveria", ilmiah:"Echeveria elegans", kategori:"Sukulen", kesulitan:"Mudah", panen:"-", cahaya:"Bright Indirect", air:"Jarang", ph:"6.0–6.5", suhu:"15–28°C", media:"Sukulen mix",
@@ -86,19 +86,9 @@ const PLANTS = [
     desc:"Sukulen roset cantik, warna pastel.", cara:"Daun diperbanyak, letak terang.", perawat:"Siram saat media kering.", hama:"Mealybug", tips:"Jangan semprot daun, siram ke media.", rating:4.7, buyers:920
   },
   {
-    id:"mangga", nama:"Mangga Harum Manis", ilmiah:"Mangifera indica", kategori:"Pohon buah", kesulitan:"Sedang", panen:"3–4 tahun", cahaya:"Full Sun", air:"Sedang", ph:"5.5–7.0", suhu:"24–33°C", media:"Tanah + kompos",
-    color:"#FFD45C", emoji:"🥭",
-    desc:"Mangga harum manis legendaris, bisa tabulampot.", cara:"Bibit okulasi, pot 50cm.", perawat:"Pangkas bentuk, pupuk buah.", hama:"Lalat buah", tips:"Bungkus buah saat pentil.", rating:4.8, buyers:310
-  },
-  {
     id:"jeruk", nama:"Jeruk Kalamansi", ilmiah:"Citrofortunella microcarpa", kategori:"Pohon buah", kesulitan:"Mudah", panen:"6–8 bulan", cahaya:"Full Sun", air:"Sedang", ph:"5.5–6.5", suhu:"22–32°C", media:"Tanah + sekam",
     color:"#FFD45C", emoji:"🍊",
     desc:"Jeruk mini rajin berbuah, asam segar untuk minuman.", cara:"Bibit cangkok, pot 30cm.", perawat:"Pupuk NPK buah.", hama:"Kutu daun", tips:"Panen saat oranye penuh.", rating:4.6, buyers:420
-  },
-  {
-    id:"jambu", nama:"Jambu Air Madu", ilmiah:"Syzygium aqueum", kategori:"Pohon buah", kesulitan:"Mudah", panen:"1–2 tahun", cahaya:"Full Sun", air:"Banyak", ph:"6.0–7.0", suhu:"25–32°C", media:"Tanah gembur",
-    color:"#FF718D", emoji:"🍎",
-    desc:"Jambu air madu manis berair.", cara:"Cangkok, tanam halaman.", perawat:"Siram rutin musim kering.", hama:"Lalat buah", tips:"Bungkus buah dengan plastik.", rating:4.5, buyers:280
   },
   {
     id:"alpukat", nama:"Alpukat Mentega", ilmiah:"Persea americana", kategori:"Pohon buah", kesulitan:"Sedang", panen:"3–5 tahun", cahaya:"Full Sun", air:"Sedang", ph:"6.0–6.5", suhu:"20–28°C", media:"Tanah + kompos",

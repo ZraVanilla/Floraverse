@@ -24,7 +24,15 @@
 h1,h2,h3,.display{font-family:'Nunito', 'Outfit', sans-serif; letter-spacing:-0.02em;}
 
 html{scroll-behavior:smooth; scrollbar-gutter:stable}
-body{background:#FFFFFF; color:var(--charcoal); -webkit-font-smoothing:antialiased;}
+body{background:#FFFFFF; color:var(--charcoal); -webkit-font-smoothing:antialiased; cursor:default}
+
+/* Cursor utilities */
+button, a[href], select, [role="button"], [onclick], .btn, .cat-pill, .nav-link, .fv-select-btn, .fv-select-option, .menu-toggle, .mobile-nav-panel .nav-link, .mobile-profile-chip{cursor:pointer}
+input[type="text"], input[type="search"], input[type="email"], input[type="password"], input[type="number"], textarea, [contenteditable="true"]{cursor:text}
+
+/* Text cursor for readable content, but NOT inside interactive elements */
+:where(button, a[href], [role="button"], .btn, .cat-pill, .nav-link, .fv-select-btn, .fv-select-option, .menu-toggle, .mobile-nav-panel .nav-link, .mobile-profile-chip) * { cursor: inherit; }
+:where(h1,h2,h3,h4,h5,h6,p,span,label,small,li,td,th,figcaption,.text-muted):not([contenteditable]) { cursor: text; }
 
 /* Wordmark */
 .wordmark{font-family:'Nunito', sans-serif; font-weight:800; letter-spacing:-0.04em; color:var(--charcoal);}

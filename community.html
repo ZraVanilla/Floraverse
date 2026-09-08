@@ -226,7 +226,7 @@ function renderComms(){
   $('#commGrid').html(list.map(c=> `
     <div class="fv-card white p-5 hover-lift">
       <div class="flex items-start justify-between">
-        <div class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden" style="background:${c.color}18">${c.plantId ? fvImg(PLANTS.find(p=>p.id===c.plantId),'w-full h-full object-cover') : c.emoji}</div>
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden" style="background:${c.color}18">${c.coverImg ? `<img src="${c.coverImg}" alt="${c.nama}" class="w-full h-full object-cover">` : c.plantId ? fvImg(PLANTS.find(p=>p.id===c.plantId),'w-full h-full object-cover') : c.emoji}</div>
         <span class="pill text-[11px] font-black" style="background:${c.color};color:#fff">${c.kategori}</span>
       </div>
       <p class="font-black mt-3 leading-tight">${c.nama}</p>

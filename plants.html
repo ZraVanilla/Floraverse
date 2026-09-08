@@ -17,20 +17,20 @@
 <body class="bg-[#FCFCFC]">
 <nav class="navbar">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between gap-4">
-    <a href="index.html" class="wordmark text-[22px]">Flora<span>Verse</span></a>
+    <a href="index.html" class="wordmark text-[22px] cursor-pointer">Flora<span>Verse</span></a>
     <div class="hidden lg:flex items-center gap-1">
-      <a href="index.html" class="nav-link">Beranda</a>
-      <a href="plants.html" class="nav-link">Tanaman</a>
-      <a href="learn.html" class="nav-link">Belajar</a>
-      <a href="community.html" class="nav-link">Komunitas</a>
-      <a href="shop.html" class="nav-link">Belanja</a>
-      <a href="garden.html" class="nav-link">Kebunku</a>
-      <a href="profile.html" class="nav-link">Profil</a>
+      <a href="index.html" class="nav-link cursor-pointer">Beranda</a>
+      <a href="plants.html" class="nav-link cursor-pointer">Tanaman</a>
+      <a href="learn.html" class="nav-link cursor-pointer">Belajar</a>
+      <a href="community.html" class="nav-link cursor-pointer">Komunitas</a>
+      <a href="shop.html" class="nav-link cursor-pointer">Belanja</a>
+      <a href="garden.html" class="nav-link cursor-pointer">Kebunku</a>
+      <a href="profile.html" class="nav-link cursor-pointer">Profil</a>
     </div>
     <div class="flex items-center gap-2">
-      <button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button>
-      <a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a>
-      <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button>
+      <button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center cursor-pointer">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button>
+      <a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white cursor-pointer"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a>
+      <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center cursor-pointer">☰</button>
     </div>
   </div>
 </nav>
@@ -39,34 +39,34 @@
   <div class="fv-card blue p-6 sm:p-8 flex flex-col lg:flex-row gap-6 items-center relative overflow-hidden">
     <div class="blob bg-white w-40 h-40 -right-10 -top-10 opacity-10"></div>
     <div class="flex-1 relative z-10">
-      <span class="pill bg-white text-[#3B82F6] font-black">🌱 Ensiklopedia • 360+ Tanaman</span>
+      <span class="pill bg-white text-[#3B82F6] font-black">🌱 Ensiklopedia • 41 Tanaman</span>
       <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Temukan tanaman yang<br>paling cocok untukmu.</h1>
       <p class="text-white/90 text-sm mt-2 max-w-[560px]">Filter berdasarkan kategori, cahaya, dan tingkat kesulitan. Klik kartu untuk detail lengkap + cara menanam.</p>
       <div class="flex flex-wrap gap-2 mt-4">
-        <button onclick="openPlantMatch()" class="btn bg-white text-charcoal font-black px-5">✨ Plant Match</button>
-        <span class="pill bg-white/20 text-charcoal">360+ tanaman terkurasi</span>
+        <button onclick="openPlantMatch()" class="btn bg-white text-charcoal font-black px-5 cursor-pointer">✨ Plant Match</button>
+        <span class="pill bg-white/20 text-charcoal">41 tanaman terkurasi</span>
       </div>
     </div>
     <div class="relative z-10 bg-white rounded-3xl p-5 w-full lg:w-[420px]">
       <div class="relative z-20">
         <div class="relative">
-          <input id="searchInput" type="search" placeholder="🔍 Cari cabai, tomat, sukulen..." class="w-full pl-4 pr-4 py-3.5 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#6FA8FF] outline-none font-medium text-sm">
+          <input id="searchInput" type="search" placeholder="🔍 Cari cabai, tomat, sukulen..." class="w-full pl-4 pr-4 py-3.5 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#6FA8FF] outline-none font-medium text-sm cursor-text">
         </div>
       </div>
       <div class="grid grid-cols-2 gap-2 mt-3 relative z-20">
-        <select id="filterKategori" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate">
+        <select id="filterKategori" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
           <option value="">Kategori</option>
           <option>Sayuran</option><option>Buah</option><option>Bunga</option><option>Herbal</option><option>Hias</option><option>Pohon buah</option><option>Pangan</option><option>Sukulen</option><option>Kaktus</option>
         </select>
-        <select id="filterKesulitan" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate">
+        <select id="filterKesulitan" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
           <option value="">Level</option>
           <option>Sangat Mudah</option><option>Mudah</option><option>Sedang</option><option>Sulit</option>
         </select>
-        <select id="filterCahaya" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate">
+        <select id="filterCahaya" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
           <option value="">Cahaya</option>
           <option>Full Sun</option><option>Partial Sun</option><option>Bright Indirect</option>
         </select>
-        <select id="sortBy" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate">
+        <select id="sortBy" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
           <option value="popular">Populer</option>
           <option value="cepat">Panen Cepat</option>
           <option value="mudah">Termudah</option>
@@ -81,22 +81,22 @@
 <!-- Category pills -->
 <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
   <div class="flex gap-2 overflow-auto no-scrollbar pb-2" id="catPills">
-    <button data-cat="" class="cat-pill active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm flex items-center justify-center">Semua</button>
-    <button data-cat="Sayuran" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🥬<span class="hidden sm:inline"> Sayuran</span></button>
-    <button data-cat="Buah" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🍓<span class="hidden sm:inline"> Buah</span></button>
-    <button data-cat="Bunga" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🌸<span class="hidden sm:inline"> Bunga</span></button>
-    <button data-cat="Herbal" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🌿<span class="hidden sm:inline"> Herbal</span></button>
-    <button data-cat="Hias" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🪴<span class="hidden sm:inline"> Hias</span></button>
-    <button data-cat="Pohon buah" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🌳<span class="hidden sm:inline"> Pohon buah</span></button>
-    <button data-cat="Sukulen" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🪴<span class="hidden sm:inline"> Sukulen</span></button>
-    <button data-cat="Kaktus" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center">🌵<span class="hidden sm:inline"> Kaktus</span></button>
+    <button data-cat="" class="cat-pill active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm flex items-center justify-center cursor-pointer">Semua</button>
+    <button data-cat="Sayuran" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🥬<span class="hidden sm:inline"> Sayuran</span></button>
+    <button data-cat="Buah" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🍓<span class="hidden sm:inline"> Buah</span></button>
+    <button data-cat="Bunga" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🌸<span class="hidden sm:inline"> Bunga</span></button>
+    <button data-cat="Herbal" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🌿<span class="hidden sm:inline"> Herbal</span></button>
+    <button data-cat="Hias" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🪴<span class="hidden sm:inline"> Hias</span></button>
+    <button data-cat="Pohon buah" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🌳<span class="hidden sm:inline"> Pohon buah</span></button>
+    <button data-cat="Sukulen" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🪴<span class="hidden sm:inline"> Sukulen</span></button>
+    <button data-cat="Kaktus" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🌵<span class="hidden sm:inline"> Kaktus</span></button>
   </div>
 </div>
 
 <main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-5">
   <div id="plantsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
-  <button id="plantsLoadMore" class="btn btn-ghost w-full max-w-md mx-auto mt-5 hidden">Muat lebih banyak</button>
-  <div id="emptyState" class="hidden text-center py-16"><div class="text-5xl">🔍</div><p class="font-black mt-3">Tidak ada tanaman ditemukan</p><p class="text-sm text-muted">Coba ubah filter atau kata kunci.</p><button id="resetPlantFilters" class="btn btn-ghost mt-4 text-sm">Reset filter</button></div>
+  <button id="plantsLoadMore" class="btn btn-ghost w-full max-w-md mx-auto mt-5 hidden cursor-pointer">Muat lebih banyak</button>
+  <div id="emptyState" class="hidden text-center py-16"><div class="text-5xl">🔍</div><p class="font-black mt-3">Tidak ada tanaman ditemukan</p><p class="text-sm text-muted">Coba ubah filter atau kata kunci.</p><button id="resetPlantFilters" class="btn btn-ghost mt-4 text-sm cursor-pointer">Reset filter</button></div>
 </main>
 
 <!-- PLANT LAB (#24) - Interactive simulation -->
@@ -109,8 +109,8 @@
         <p class="text-sm text-muted mt-1 max-w-[560px]">Atur air, cahaya, pupuk & media. Tanaman bereaksi secara simulasi - edukasi, bukan diagnosis ilmiah.</p>
       </div>
       <div class="flex gap-2">
-    <label for="labPlantSelect" class="sr-only">Pilih tanaman untuk Plant Lab</label><select id="labPlantSelect" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm"></select>
-        <button onclick="toast('Plant Lab direset','🔬')" class="btn btn-ghost text-sm hidden sm:flex">Info</button>
+    <label for="labPlantSelect" class="sr-only">Pilih tanaman untuk Plant Lab</label><select id="labPlantSelect" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm cursor-pointer"></select>
+        <button onclick="toast('Plant Lab direset','🔬')" class="btn btn-ghost text-sm hidden sm:flex cursor-pointer">Info</button>
       </div>
     </div>
     <div id="plantLabRoot" class="mt-6"></div>
@@ -126,7 +126,7 @@
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-10">
   <div class="fv-card yellow p-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
     <div><p class="font-black">🌱 Contoh Alur Ekosistem</p><p class="text-sm opacity-70">Cabai  Pelajari  Coba Lab  Mulai Journey  Smart Basket  Kebunku  Share Community</p></div>
-    <a href="garden.html" class="btn btn-dark whitespace-nowrap">Mulai Journey </a>
+    <a href="garden.html" class="btn btn-dark whitespace-nowrap cursor-pointer">Mulai Journey </a>
   </div>
 </section>
 
@@ -140,17 +140,17 @@
 <!-- Plant Match Modal -->
 <div id="plantMatchModal" class="modal-backdrop">
    <div class="modal p-6 sm:p-7 relative" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
-    <button onclick="closePlantMatch()" aria-label="Tutup Plant Match" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button>
+    <button onclick="closePlantMatch()" aria-label="Tutup Plant Match" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center cursor-pointer">✕</button>
     <div class="plant-match-header flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black">🌱</div><div><p id="pmTitle" class="font-black leading-none">Plant Match</p><p class="text-xs text-muted">Temukan tanaman idealmu</p></div><span id="pmStepNum" class="ml-auto pill pill-blue font-black">1/7</span></div>
     <div id="pmProgress" class="progress-track mt-4 hidden"><div id="pmBar" class="progress-fill bg-[#6FA8FF]" style="width:14%"></div></div>
-    <div id="pmIntro" class="mt-6"><div class="rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE] p-4"><p class="font-black text-lg">Mulai dari sini</p><p class="text-sm text-muted mt-1">Jawab 7 pertanyaan singkat agar rekomendasi tanaman menyesuaikan cahaya, ruang, waktu, dan pengalamanmu.</p></div><button onclick="startPlantMatch()" class="btn btn-primary w-full mt-4">Mulai survei</button></div>
-    <div id="pmQuiz" class="hidden mt-6"><h3 id="pmQuestion" class="text-xl font-black"></h3><div id="pmOptions" class="grid gap-2.5 mt-4"></div><button id="pmPrev" onclick="prevPM()" class="btn btn-ghost w-full mt-3 hidden">Kembali</button></div>
-    <div id="pmResult" class="hidden mt-6"><h3 class="font-black text-lg">✨ Your Plant Match</h3><p id="pmResultIntro" class="text-sm text-muted">Ini 5 tanaman yang paling cocok untukmu:</p><div id="pmResultList" class="space-y-3 mt-4"></div><div class="flex gap-2 mt-5"><button onclick="closePlantMatch()" class="btn btn-ghost flex-1">Tutup</button><button onclick="closePlantMatch(); $('html,body').animate({scrollTop:0},300)" class="btn btn-primary flex-1">Lihat Tanaman </button></div></div>
+    <div id="pmIntro" class="mt-6"><div class="rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE] p-4"><p class="font-black text-lg">Mulai dari sini</p><p class="text-sm text-muted mt-1">Jawab 7 pertanyaan singkat agar rekomendasi tanaman menyesuaikan cahaya, ruang, waktu, dan pengalamanmu.</p></div><button onclick="startPlantMatch()" class="btn btn-primary w-full mt-4 cursor-pointer">Mulai survei</button></div>
+    <div id="pmQuiz" class="hidden mt-6"><h3 id="pmQuestion" class="text-xl font-black"></h3><div id="pmOptions" class="grid gap-2.5 mt-4"></div><button id="pmPrev" onclick="prevPM()" class="btn btn-ghost w-full mt-3 hidden cursor-pointer">Kembali</button></div>
+    <div id="pmResult" class="hidden mt-6"><h3 class="font-black text-lg">✨ Your Plant Match</h3><p id="pmResultIntro" class="text-sm text-muted">Ini 5 tanaman yang paling cocok untukmu:</p><div id="pmResultList" class="space-y-3 mt-4"></div><div class="flex gap-2 mt-5"><button onclick="closePlantMatch()" class="btn btn-ghost flex-1 cursor-pointer">Tutup</button><button onclick="closePlantMatch(); $('html,body').animate({scrollTop:0},300)" class="btn btn-primary flex-1 cursor-pointer">Lihat Tanaman </button></div></div>
   </div>
 </div>
 
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
-<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran </button></div></div>
+<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center cursor-pointer">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3 cursor-pointer">Lanjut ke Pembayaran </button></div></div>
 <div id="toastBox"></div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -227,7 +227,7 @@ function openPlant(id){
       <div class="h-56 flex items-center justify-center relative overflow-hidden" style="background:${p.color}14">
          ${fvImg(p,'w-full h-full object-cover')}
         <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full opacity-10" style="background:${p.color}"></div>
-        <button onclick="$('#plantModal').removeClass('open')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur shadow-md flex items-center justify-center text-sm font-bold hover:bg-white transition">✕</button>
+        <button onclick="$('#plantModal').removeClass('open')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur shadow-md flex items-center justify-center text-sm font-bold hover:bg-white transition cursor-pointer">✕</button>
         <div class="absolute bottom-4 left-4 flex gap-2">
           <span class="pill bg-white font-black">${p.kategori}</span>
           <span class="pill text-white font-black" style="background:${p.color}">${p.kesulitan}</span>

@@ -1,5 +1,6 @@
 ﻿/* FloraVerse App - shared interactions (jQuery) */
 /* Shared photo renderer for plants and products. */
+window.getProductImage = function(id){ return (window.PRODUCT_IMAGES||{})[id] || window.PRODUCT_IMAGES.default; };
 window.fvImg = function(obj, cls){
   const isProduct = obj && typeof window.getProductImage === 'function' && window.PRODUCT_IMAGES[obj.id];
   const image = isProduct ? window.getProductImage(obj.id) : window.getPlantImage(obj?.id);
