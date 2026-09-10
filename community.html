@@ -146,7 +146,7 @@
         <div class="flex-1"><p class="font-bold text-sm">Cabai Rawit - Day 28</p><p class="text-xs text-muted">Growing • 45%</p></div>
         <span class="pill bg-[#6FA8FF] text-white text-xs">Share</span>
       </div>
-      <button onclick="toast('Plant Journey dibagikan ke Pecinta Cabai','🎉')" class="btn btn-primary w-full mt-3 text-sm">Bagikan ke Komunitas →</button>
+      <button onclick="toast('Plant Journey dibagikan ke Pecinta Cabai','🎉')" class="btn btn-primary w-full mt-3 text-sm">Bagikan ke Komunitas </button>
     </div>
 
     <div class="fv-card yellow p-5">
@@ -182,7 +182,7 @@
     <div class="flex gap-2 mt-3">
       <button class="pill pill-white">📷 Foto</button><button class="pill pill-white">🌱 Tag Tanaman</button><button class="pill pill-white"># Tag</button>
     </div>
-    <button id="submitPost" class="btn btn-primary w-full mt-4">Posting ke Komunitas →</button>
+    <button id="submitPost" class="btn btn-primary w-full mt-4">Posting ke Komunitas </button>
   </div>
 </div>
 
@@ -198,12 +198,14 @@
 </div>
 
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
-<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran →</button></div></div>
+<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran </button></div></div>
 <div id="toastBox"></div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
+<script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
+<script src="js/gambar-produk.js"></script>
 <script src="js/communities.js"></script>
 <script src="js/guides.js"></script>
 <script src="js/journey.js"></script>
@@ -224,7 +226,7 @@ function renderComms(){
   $('#commGrid').html(list.map(c=> `
     <div class="fv-card white p-5 hover-lift">
       <div class="flex items-start justify-between">
-        <div class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden" style="background:${c.color}18">${c.plantId ? fvImg(PLANTS.find(p=>p.id===c.plantId),'w-full h-full object-cover') : c.emoji}</div>
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden" style="background:${c.color}18">${c.coverImg ? `<img src="${c.coverImg}" alt="${c.nama}" class="w-full h-full object-cover">` : c.plantId ? fvImg(PLANTS.find(p=>p.id===c.plantId),'w-full h-full object-cover') : c.emoji}</div>
         <span class="pill text-[11px] font-black" style="background:${c.color};color:#fff">${c.kategori}</span>
       </div>
       <p class="font-black mt-3 leading-tight">${c.nama}</p>
@@ -265,7 +267,7 @@ function renderFeed(){
       <p class="mt-3 text-[15px] leading-relaxed">${p.content}</p>
       <div class="flex flex-wrap gap-1.5 mt-2">${p.tags.map(t=>`<span class="pill pill-blue text-xs">${t}</span>`).join('')}</div>
       <div class="bg-gray-50 rounded-2xl p-3 mt-3 flex items-center gap-3">
-         <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">${({"🌶️":"cabai-rawit","🥬":"selada","🪴":"sukulen","🍅":"tomat","🌹":"mawar","🍓":"stroberi","🌿":"mint"}[p.image]) ? fvImg(PLANTS.find(x=>x.id==={"🌶️":"cabai-rawit","🥬":"selada","🪴":"sukulen","🍅":"tomat","🌹":"mawar","🍓":"stroberi","🌿":"mint"}[p.image]),'w-full h-full object-cover') : p.image}</div>
+         <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">${p.plantId ? fvImg(PLANTS.find(x=>x.id===p.plantId),'w-full h-full object-cover') : p.image || '🌱'}</div>
         <p class="text-sm font-bold">Foto tanaman</p>
         <span class="ml-auto text-xs text-muted">${p.likes} suka • ${p.comments} komentar</span>
       </div>
@@ -328,7 +330,7 @@ window.openFloraMap=function(city){
     <p class="text-sm text-muted">${d.desc}</p>
     <div class="grid sm:grid-cols-2 gap-3 mt-4">
       <div class="fv-card pink p-4 text-white"><p class="font-black">Komunitas Unggulan</p><div class="mt-2 space-y-2">${d.comms.map(n=>`<div class="bg-white/15 rounded-xl px-3 py-2 font-bold text-sm">${n}</div>`).join('')}</div><button onclick="toast('Bergabung','🎉')" class="btn bg-white text-charcoal w-full mt-3 text-sm">Join Komunitas</button></div>
-      <div class="fv-card yellow p-4"><p class="font-black">Tanaman Populer</p><div class="mt-2 flex flex-wrap gap-1.5">${d.plants.map(p=>`<span class="pill bg-white text-charcoal">${p}</span>`).join('')}</div><a href="plants.html" class="btn btn-dark w-full mt-3 text-sm text-center">Lihat Tanaman →</a></div>
+      <div class="fv-card yellow p-4"><p class="font-black">Tanaman Populer</p><div class="mt-2 flex flex-wrap gap-1.5">${d.plants.map(p=>`<span class="pill bg-white text-charcoal">${p}</span>`).join('')}</div><a href="plants.html" class="btn btn-dark w-full mt-3 text-sm text-center">Lihat Tanaman </a></div>
     </div>
   `);
   $('#floraMapModal').addClass('open');
@@ -359,7 +361,7 @@ $(function(){
     const text=$('#newPostText').val().trim();
     if(!text) return toast('Tulis sesuatu dulu','✏️');
     const commId=$('#newPostComm').val();
-    feedPosts.unshift({id:'p'+Date.now(), community:commId, user:'Izra', avatar:'IZ', time:'Baru saja', content:text, likes:0, comments:0, image:'🌱', liked:false, saved:false, tags:['#berkebun']});
+    feedPosts.unshift({id:'post-'+Date.now(), community:commId, user:'Izra', avatar:'IZ', time:'Baru saja', content:text, likes:0, comments:0, image:'🌱', liked:false, saved:false, tags:['#berkebun']});
     $('#createPostModal').removeClass('open');
     $('#newPostText').val('');
     toast('Postingan berhasil dibuat','🎉');

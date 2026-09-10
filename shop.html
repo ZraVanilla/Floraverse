@@ -27,7 +27,7 @@
 <header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
   <div class="fv-card orange p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden">
     <div class="flex-1 relative z-10">
-      <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop • 32 Produk</span>
+       <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop • 28 Produk</span>
       <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Semua kebutuhan<br>berkebun, satu tempat.</h1>
       <p class="text-white/90 text-sm mt-2 max-w-[520px]">Benih, pot, media, pupuk, alat, hidroponik - kurasi untuk pemula & hobbyist. Alur checkout lengkap - simulasi, tanpa pembayaran nyata.</p>
       <div class="flex flex-wrap gap-2 mt-4"></div>
@@ -87,9 +87,9 @@
   </div>
 </div>
 
-<main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-5 pb-10">
-  <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
-  <div id="prodEmpty" class="hidden text-center py-16"><div class="text-5xl">🛒</div><p class="font-black mt-2">Produk tidak ditemukan</p></div>
+ <main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-5 pb-10">
+   <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+   <div id="prodEmpty" class="hidden text-center py-16"><div class="text-5xl">🛒</div><p class="font-black mt-2">Produk tidak ditemukan</p><p class="text-sm text-muted mt-1">Coba ubah kata kunci atau filter.</p><button id="resetProductFilters" class="btn btn-ghost mt-4 text-sm">Reset filter</button></div>
 </main>
 
 <!-- Product Modal -->
@@ -105,7 +105,7 @@
     <div id="cartModalList" class="flex-1 overflow-auto p-4 space-y-3"></div>
     <div class="p-4 border-t bg-gray-50 flex-shrink-0">
        <div class="flex justify-between font-black text-lg"><span>Total</span><span id="cartModalTotal">Rp0</span></div>
-       <button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran →</button>
+       <button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran </button>
        <button onclick="clearCart(); openDrawer()" class="btn btn-ghost w-full mt-2 text-sm">Kosongkan Keranjang</button>
        <button onclick="closeCartModal()" class="btn btn-ghost w-full mt-2">Lanjut Belanja</button>
     </div>
@@ -124,7 +124,7 @@
           <div class="checkout-panel"><p class="font-black">Cara pengantaran</p><div class="grid sm:grid-cols-3 gap-2 mt-3"><label class="checkout-option"><input type="radio" name="delivery" value="reguler" data-fee="12000" checked><span><b>Reguler</b><small>2–4 hari<br>Rp12.000</small></span></label><label class="checkout-option"><input type="radio" name="delivery" value="same-day" data-fee="25000"><span><b>Same day</b><small>Hari ini<br>Rp25.000</small></span></label><label class="checkout-option"><input type="radio" name="delivery" value="pickup" data-fee="0"><span><b>Ambil sendiri</b><small>Gratis<br>FloraVerse</small></span></label></div></div>
           <div class="checkout-panel"><p class="font-black">Metode pembayaran</p><div class="grid sm:grid-cols-2 gap-2 mt-3"><label class="checkout-option"><input type="radio" name="payment" value="Transfer Bank" checked><span><b>Transfer Bank</b><small>BCA, BNI, BRI, Mandiri</small></span></label><label class="checkout-option"><input type="radio" name="payment" value="QRIS"><span><b>QRIS</b><small>Scan dari aplikasi bank/e-wallet</small></span></label><label class="checkout-option"><input type="radio" name="payment" value="E-Wallet"><span><b>E-Wallet</b><small>GoPay, DANA, OVO, ShopeePay</small></span></label><label class="checkout-option"><input type="radio" name="payment" value="COD"><span><b>COD</b><small>Bayar saat pesanan tiba</small></span></label></div></div>
         </div>
-        <aside class="checkout-summary lg:col-span-2"><p class="font-black">Ringkasan pesanan</p><div id="checkoutSummary" class="space-y-2 mt-3"></div><div class="divider my-3"></div><div class="flex justify-between text-sm"><span>Subtotal</span><b id="checkoutSubtotal">Rp0</b></div><div class="flex justify-between text-sm mt-2"><span>Pengantaran</span><b id="checkoutDelivery">Rp0</b></div><div class="flex justify-between text-lg font-black mt-3"><span>Total</span><b id="checkoutTotal">Rp0</b></div><button type="submit" class="btn btn-orange w-full mt-4">Buat Pesanan →</button><p class="text-xs text-muted mt-2 text-center">Pesanan akan diproses setelah data dikonfirmasi.</p></aside>
+        <aside class="checkout-summary lg:col-span-2"><p class="font-black">Ringkasan pesanan</p><div id="checkoutSummary" class="space-y-2 mt-3"></div><div class="divider my-3"></div><div class="flex justify-between text-sm"><span>Subtotal</span><b id="checkoutSubtotal">Rp0</b></div><div class="flex justify-between text-sm mt-2"><span>Pengantaran</span><b id="checkoutDelivery">Rp0</b></div><div class="flex justify-between text-lg font-black mt-3"><span>Total</span><b id="checkoutTotal">Rp0</b></div><button type="submit" class="btn btn-orange w-full mt-4">Buat Pesanan </button><p class="text-xs text-muted mt-2 text-center">Pesanan akan diproses setelah data dikonfirmasi.</p></aside>
       </div>
     </form>
   </div>
@@ -133,7 +133,9 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
+<script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
+<script src="js/gambar-produk.js"></script>
 <script src="js/journey.js"></script>
 <script src="js/app.js?v=3"></script>
 <script>
@@ -193,37 +195,50 @@ $('#cartModal').on('click', function(e){ if(e.target === this) closeCartModal();
 <script>
 let activePcat="";
 const bundles={
-  "cabai-rawit":{nama:"Chili Starter Kit", harga:65000, items:[{id:"p01",qty:1},{id:"p04",qty:1},{id:"p06",qty:1},{id:"p10",qty:1}], desc:"Benih Cabai 50 biji + Pot 20cm + Media 5kg + Pupuk Organik Cair"},
-  "tomat":{nama:"Tomato Starter Kit", harga:72000, items:[{id:"p02",qty:1},{id:"p04",qty:1},{id:"p06",qty:1},{id:"p21",qty:1}], desc:"Benih Tomat + Pot + Media + Kalsium Boron anti blossom end rot"},
-  "selada":{nama:"Hidroponik Pemula Kit", harga:145000, items:[{id:"p15",qty:1},{id:"p17",qty:1},{id:"p03",qty:1}], desc:"6 lubang NFT + AB Mix + Benih Selada"},
-  "basil":{nama:"Herb Starter Kit", harga:58000, items:[{id:"p19",qty:1},{id:"p05",qty:1},{id:"p06",qty:1}], desc:"Benih Basil + Polybag + Media Premium"},
-  "stroberi":{nama:"Stroberi Pot Gantung Kit", harga:68000, items:[{id:"p20",qty:1},{id:"p06",qty:1},{id:"p10",qty:1}], desc:"Pot Gantung 18cm + Media + Pupuk Organik"}
+  "cabai-rawit":{nama:"Chili Starter Kit", harga:65000, items:[{id:"benih-cabai-rawit-50-biji",qty:1},{id:"pot-keramik-20cm-putih",qty:1},{id:"media-tanam-premium-5kg",qty:1},{id:"pupuk-organik-cair-500ml",qty:1}], desc:"Benih Cabai 50 biji + Pot 20cm + Media 5kg + Pupuk Organik Cair"},
+  "tomat":{nama:"Tomato Starter Kit", harga:72000, items:[{id:"benih-tomat-cherry-30-biji",qty:1},{id:"pot-keramik-20cm-putih",qty:1},{id:"media-tanam-premium-5kg",qty:1},{id:"pupuk-kalsium-boron",qty:1}], desc:"Benih Tomat + Pot + Media + Kalsium Boron anti blossom end rot"},
+  "selada":{nama:"Hidroponik Pemula Kit", harga:145000, items:[{id:"starter-kit-hidroponik-6-lubang",qty:1},{id:"nutrisi-ab-mix-500ml",qty:1},{id:"benih-selada-romaine",qty:1}], desc:"6 lubang NFT + AB Mix + Benih Selada"},
+  "basil":{nama:"Herb Starter Kit", harga:58000, items:[{id:"benih-basil-50-biji",qty:1},{id:"polybag-25x25-10pcs",qty:1},{id:"media-tanam-premium-5kg",qty:1}], desc:"Benih Basil + Polybag + Media Premium"},
+  "stroberi":{nama:"Stroberi Pot Gantung Kit", harga:68000, items:[{id:"pot-gantung-18cm",qty:1},{id:"media-tanam-premium-5kg",qty:1},{id:"pupuk-organik-cair-500ml",qty:1}], desc:"Pot Gantung 18cm + Media + Pupuk Organik"}
 };
+function getSmartBundle(plantId){
+  const priceBundle=bundle=>{
+    const items=bundle.items.filter(item=>PRODUCTS.some(product=>product.id===item.id));
+    const harga=items.reduce((sum,item)=>sum+(PRODUCTS.find(product=>product.id===item.id)?.harga||0)*item.qty,0);
+    return {...bundle,items,harga};
+  };
+  if(bundles[plantId]) return priceBundle(bundles[plantId]);
+  const related=PRODUCTS.filter(p=>p.related===plantId).slice(0,2);
+  const items=related.map(p=>({id:p.id,qty:1}));
+  items.push({id:"kompos-kascing-2kg",qty:1});
+  return priceBundle({nama:`Paket Awal ${PLANTS.find(p=>p.id===plantId)?.nama||"Tanaman"}`,items,desc:"Bibit atau benih, paket media, dan kompos untuk mulai menanam."});
+}
 function renderSmartBasket(plantId){
-  const b=bundles[plantId] || bundles["cabai-rawit"];
+  const b=getSmartBundle(plantId);
   const plant=PLANTS.find(p=>p.id===plantId);
   let total=0; let rows=b.items.map(it=>{
     const pr=PRODUCTS.find(p=>p.id===it.id);
+    if(!pr) return '';
     total+=pr.harga*it.qty;
      return `<div class="smart-kit-item flex items-center gap-3 bg-white rounded-2xl p-3 border"><div class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden flex-shrink-0">${fvImg(pr,'w-full h-full object-cover')}</div><div class="flex-1 min-w-0"><p class="font-bold text-sm leading-none truncate">${pr.nama}</p><p class="text-xs text-muted">x${it.qty}</p></div><span class="font-black text-sm whitespace-nowrap">Rp${(pr.harga*it.qty).toLocaleString('id-ID')}</span></div>`;
   }).join('');
-  const saving = total - b.harga;
+   const saving = Math.max(0,total - b.harga);
   $('#smartBasketCard').html(`
     <div class="flex items-center gap-3">
        <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center overflow-hidden border">${plant?fvImg(plant,'w-full h-full object-cover'):'🎁'}</div>
       <div class="flex-1"><p class="font-black">${b.nama}</p><p class="text-xs text-muted">${b.desc}</p></div>
-      <span class="pill bg-[#FF9B70] text-white font-black">Hemat Rp${saving.toLocaleString('id-ID')}</span>
+       <span class="pill bg-[#FF9B70] text-white font-black">${saving ? `Hemat Rp${saving.toLocaleString('id-ID')}` : 'Harga sesuai isi'}</span>
     </div>
      <div class="smart-kit-items space-y-2 mt-4">${rows}</div>
      <div class="smart-kit-summary flex items-center justify-between gap-3 mt-4">
-       <div><p class="text-xs text-muted">Harga normal <span class="line-through">Rp${total.toLocaleString('id-ID')}</span></p><p class="text-xl font-black">Harga kit Rp${b.harga.toLocaleString('id-ID')}</p></div>
-      <button onclick="addBundle('${plantId}')" class="btn btn-orange px-6 py-3">Tambahkan Semua →</button>
+        <div><p class="text-xs text-muted">Total isi kit</p><p class="text-xl font-black">Rp${b.harga.toLocaleString('id-ID')}</p></div>
+      <button onclick="addBundle('${plantId}')" class="btn btn-orange px-6 py-3">Tambahkan Semua </button>
     </div>
     <p class="text-xs text-muted mt-2">* Simulasi - checkout tanpa pembayaran nyata</p>
   `);
 }
 window.addBundle=function(plantId){
-  const b=bundles[plantId];
+  const b=getSmartBundle(plantId);
   b.items.forEach(it=> addToCart(it.id, it.qty));
   toast(`${b.nama} ditambahkan!`, '🎁');
 }
@@ -248,12 +263,12 @@ function renderProducts(){
   $('#prodCount').text(`${list.length} produk`);
   if(list.length===0){ $('#productsGrid').empty(); $('#prodEmpty').removeClass('hidden'); return; }
   $('#prodEmpty').addClass('hidden');
-  $('#productsGrid').html(list.map(p=> `
+   $('#productsGrid').html(list.map(p=> `
     <div class="fv-card white overflow-hidden hover-lift">
       <div class="h-36 bg-gray-50 flex items-center justify-center text-5xl relative cursor-pointer" onclick="openProduct('${p.id}')">
         ${fvImg(p,'w-full h-full object-cover')}
         ${p.badge?`<span class="absolute top-3 left-3 pill text-[11px] font-black ${p.badge==='Best Seller'?'bg-[#FF9B70] text-white':p.badge==='Beginner Pick'?'bg-[#FFD45C] text-charcoal':p.badge==='Popular'?'bg-[#FF718D] text-white':'bg-charcoal text-white'}">${p.badge}</span>`:''}
-        <button onclick="event.stopPropagation(); toggleWish('${p.id}'); $(this).toggleClass('bg-[#FF718D] text-white')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border flex items-center justify-center text-sm">♡</button>
+         <button onclick="event.stopPropagation(); toggleWish('${p.id}'); $(this).toggleClass('bg-[#FF718D] text-white')" aria-label="Simpan ${p.nama}" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border flex items-center justify-center text-sm">♡</button>
         <span class="absolute bottom-3 right-3 pill pill-white text-xs">★ ${p.rating} • ${p.ulas}</span>
       </div>
       <div class="p-4">
@@ -265,7 +280,7 @@ function renderProducts(){
         </div>
       </div>
     </div>
-  `).join(''));
+   `).join(''));
 }
 window.openProduct=function(id){
   const p=PRODUCTS.find(x=>x.id===id);
@@ -281,13 +296,19 @@ window.openProduct=function(id){
         <h2 class="text-xl font-black leading-tight">${p.nama}</h2>
         <p class="text-sm text-muted">${p.kategori} • ★ ${p.rating} (${p.ulas} ulasan) • Stok ${p.stok}</p>
         <p class="text-2xl font-black text-[#FF9B70] mt-2">Rp${p.harga.toLocaleString('id-ID')}</p>
+        <div class="grid grid-cols-2 gap-2 mt-3 text-xs">
+          <div class="bg-gray-50 rounded-xl p-2"><b>Isi</b><p class="text-muted mt-1">${p.isi||'1 unit'}</p></div>
+          <div class="bg-gray-50 rounded-xl p-2"><b>Stok</b><p class="text-muted mt-1">${p.stok} tersedia</p></div>
+        </div>
+        <p class="text-sm text-muted mt-3"><b>Manfaat:</b> ${p.manfaat||'Membantu perawatan kebun.'}</p>
+        <p class="text-sm text-muted mt-1"><b>Cocok untuk:</b> ${p.cocokUntuk||'Beragam tanaman'}</p>
         <div class="flex gap-2 mt-3">
           <button onclick="addToCart('${p.id}')" class="btn btn-dark flex-1">+ Keranjang</button>
           <button onclick="toggleWish('${p.id}')" class="btn btn-ghost">♡ Wishlist</button>
         </div>
         <div class="bg-[#FFF7ED] border border-[#FFD5BF] rounded-2xl p-3 mt-4">
           <p class="font-bold text-sm">🌱 Cocok untuk</p>
-          ${plant?`<div class="flex items-center gap-2 mt-1"><span class="text-xl">${plant.emoji}</span><div><p class="font-bold text-sm">${plant.nama}</p><p class="text-xs text-muted">${plant.ilmiah}</p></div><a href="plants.html" class="ml-auto text-xs font-bold text-[#FF9B70]">Lihat tanaman →</a></div>`:'<p class="text-sm text-muted">Semua tanaman</p>'}
+          ${plant?`<div class="flex items-center gap-2 mt-1"><span class="text-xl">${plant.emoji}</span><div><p class="font-bold text-sm">${plant.nama}</p><p class="text-xs text-muted">${plant.ilmiah}</p></div><a href="plants.html" class="ml-auto text-xs font-bold text-[#FF9B70]">Lihat tanaman </a></div>`:'<p class="text-sm text-muted">Semua tanaman</p>'}
         </div>
         <ul class="text-sm text-muted mt-3 space-y-1 list-disc pl-5">
           <li>Pengiriman simulasi 1–2 hari</li>
@@ -296,7 +317,7 @@ window.openProduct=function(id){
         </ul>
       </div>
     </div>
-    <div class="flex gap-2 mt-6"><button onclick="$('#productModal').removeClass('open')" class="btn btn-ghost flex-1">Tutup</button><button onclick="addToCart('${p.id}'); $('#productModal').removeClass('open'); openDrawer()" class="btn btn-primary flex-1">Beli Sekarang →</button></div>
+    <div class="flex gap-2 mt-6"><button onclick="$('#productModal').removeClass('open')" class="btn btn-ghost flex-1">Tutup</button><button onclick="addToCart('${p.id}'); $('#productModal').removeClass('open'); openDrawer()" class="btn btn-primary flex-1">Beli Sekarang </button></div>
   `);
   $('#productModal').addClass('open');
 }
@@ -310,17 +331,18 @@ $(function(){
     $(this).addClass('active bg-charcoal text-white').removeClass('bg-white border');
     renderSmartBasket($(this).data('plant'));
   });
-  $('#searchProd').on('input', renderProducts);
-  $('#filterProdKat, #sortProd').on('change', renderProducts);
+   $('#searchProd').on('input', renderProducts);
+   $('#filterProdKat, #sortProd').on('change', renderProducts);
   $('.pcat').on('click', function(){
     $('.pcat').removeClass('active bg-charcoal text-white').addClass('bg-white border');
     $(this).addClass('active bg-charcoal text-white').removeClass('bg-white border');
-    activePcat=$(this).data('cat');
-    $('#filterProdKat').val(activePcat);
-    renderProducts();
+     activePcat=$(this).data('cat');
+     $('#filterProdKat').val(activePcat);
+     renderProducts();
   });
-  $('#filterBest').on('change', function(){ currentFilterBest=this.checked; renderProducts(); });
-  $('#filterBeginner').on('change', function(){ currentFilterBeginner=this.checked; renderProducts(); });
+   $('#filterBest').on('change', function(){ currentFilterBest=this.checked; renderProducts(); });
+   $('#filterBeginner').on('change', function(){ currentFilterBeginner=this.checked; renderProducts(); });
+   $('#resetProductFilters').on('click', function(){ $('#searchProd').val(''); $('#filterProdKat, #sortProd').val(''); $('#filterBest, #filterBeginner').prop('checked',false); activePcat=''; currentFilterBest=false; currentFilterBeginner=false; $('.pcat').removeClass('active bg-charcoal text-white').addClass('bg-white border'); $('.pcat[data-cat=""]').addClass('active bg-charcoal text-white').removeClass('bg-white border'); renderProducts(); });
   $('#productModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
 });
 </script>
