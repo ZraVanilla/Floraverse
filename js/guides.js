@@ -5,7 +5,7 @@
  * Struktur langkah: langkah:[{t:"judul langkah", d:"penjelasan"}], checklist:[...]
  */
 const GUIDES = [
-  {id:"g01", judul:"Dasar Berkebun untuk Pemula", kategori:"Dasar berkebun", waktu:"8 menit", level:"Pemula", color:"#6FA8FF", emoji:"🌱", desc:"Mulai dari nol: alat, media, dan mindset berkebun.", plantId:"kangkung",
+  {id:"g01", judul:"Dasar Berkebun untuk Pemula", kategori:"Dasar berkebun", waktu:"8 menit", level:"Pemula", color:"#6FA8FF", emoji:"🌱", desc:"Mulai dari nol: alat, media, dan mindset berkebun.", plantId:"kangkung", img:"https://akcdn.detik.net.id/visual/2020/09/22/ilustrasi-berkebun-sayur_169.jpeg?w=1200",
    konten:"Berkebun berhasil itu 80% persiapan: pilih tanaman yang sesuai kondisi rumah, siapkan media yang porous, dan konsisten menyiram. Mulailah dari tanaman yang sulit mati seperti kangkung (Sangat Mudah, panen 25–30 hari) atau kemangi (panen 30 hari), lalu naik level ke cabai dan tomat saat sudah percaya diri.",
    langkah:[
      {t:"Petakan sinar rumahmu", d:"Hitung berapa jam matahari langsung yang diterima spot yang tersedia. Full Sun butuh 6–8 jam (cabai, kangkung, matahari), Partial Sun cukup 3–6 jam (selada, mint, bayam)."},
@@ -16,7 +16,7 @@ const GUIDES = [
    ],
    checklist:["Pot berlubang drainase", "Media tanah gembur + kompos", "Benih kangkung / kemangi / bayam", "Label tanggal tanam", "Jadwal cek pagi hari"], populer:true},
 
-  {id:"g02", judul:"Mengenal Media Tanam: Tanah, Sekam, Cocopeat", kategori:"Media tanam", waktu:"6 menit", level:"Pemula", color:"#FFD45C", emoji:"🌿", desc:"Perbandingan media tanam dan kapan menggunakannya.", plantId:"tomat",
+  {id:"g02", judul:"Mengenal Media Tanam: Tanah, Sekam, Cocopeat", kategori:"Media tanam", waktu:"6 menit", level:"Pemula", color:"#FFD45C", emoji:"🌿", desc:"Perbandingan media tanam dan kapan menggunakannya.", plantId:"tomat", img:"https://bdsgp.my.id/img/800/brff50htbrfsa3s610_1/hsp1oImJx85dCuHhspa5f5THiIGMBtSqMHpiTFPOLw.jpg",
    konten:"Media tanam menentukan akar bernapas atau busuk. Tanah gembur menyimpan air dan nutrisi, sekam bakar menciptakan porositas, cocopeat menahan kelembapan tanpa menggenang. Kombinasi keduanya adalah resep yang dipakai langsung oleh ensiklopedia: tomat memakai tanah + kompos + cocopeat, stroberi memakai tanah + sekam + cocopeat, sedangkan sukulen dan kaktus butuh media paling poros.",
    langkah:[
      {t:"Kenali tiga bahan dasar", d:"Tanah gembur memberi struktur dan nutrisi, sekam bakar melonggarkan media, cocopeat menjaga kelembapan merata."},
@@ -27,7 +27,7 @@ const GUIDES = [
    ],
    checklist:["Tanah gembur sebagai dasar", "Sekam bakar / cocopeat untuk porositas", "Kompos matang (hitam, tidak berbau)", "Lapisan drainase di dasar pot", "Catat tanggal ganti media"], populer:true},
 
-  {id:"g03", judul:"Cara Menyiram yang Benar (Jangan Overwater!)", kategori:"Penyiraman", waktu:"5 menit", level:"Pemula", color:"#8BCB8A", emoji:"💧", desc:"Kenali tanda overwater vs underwater dari daun.", plantId:"cabai-rawit",
+  {id:"g03", judul:"Cara Menyiram yang Benar (Jangan Overwater!)", kategori:"Penyiraman", waktu:"5 menit", level:"Pemula", color:"#8BCB8A", emoji:"💧", desc:"Kenali tanda overwater vs underwater dari daun.", plantId:"cabai-rawit", img:"https://awsimages.detik.net.id/community/media/visual/2024/04/01/ilustrasi-siram-tanaman_43.jpeg?w=1200",
    konten:"Penyiraman berlebih adalah penyebab kematian nomor satu tanaman pot. Kebutuhan tiap tanaman berbeda jauh: kangkung dan bayam haus (2x sehari saat kemarau), cabai dan tomat cukup 1x sehari, sedangkan kaktus dan sukulen hanya butuh disiram 7–10 hari sekali. Kunci uji sebelum menyiram ada di ujung jari Anda.",
    langkah:[
      {t:"Uji media dengan jari", d:"Tancapkan jari 2–3cm ke media. Masih lembab = tunda menyiram. Satu kebiasaan ini mencegah 90% kasus overwatering."},
@@ -38,7 +38,7 @@ const GUIDES = [
    ],
    checklist:["Cek jari sebelum menyiram", "Siram pagi, arahkan ke media", "Lubang pot tidak tersumbat", "Kaktus & sukulen: 7–10 hari sekali", "Amati daun sebagai indikator"], populer:true},
 
-  {id:"g04", judul:"Panduan Pupuk: Kompos, NPK, dan AB Mix", kategori:"Pemupukan", waktu:"7 menit", level:"Menengah", color:"#FF9B70", emoji:"🧪", desc:"Kapan pakai organik vs sintetis, dosis aman.", plantId:"jeruk",
+  {id:"g04", judul:"Panduan Pupuk: Kompos, NPK, dan AB Mix", kategori:"Pemupukan", waktu:"7 menit", level:"Menengah", color:"#FF9B70", emoji:"🧪", desc:"Kapan pakai organik vs sintetis, dosis aman.", plantId:"jeruk", img:"https://distankan.bulelengkab.go.id/uploads/konten/90_yuk-belajar-mengenal-pupuk.jpg",
    konten:"Pupuk menggantikan nutrisi yang tercuci dari media pot. Kompos menjadi dasar yang aman, NPK seimbang memacu masa pertumbuhan daun, dan pupuk tinggi K dipakai saat tanaman masuk fase berbunga-berbuah - persis seperti jeruk kalamansi di ensiklopedia yang dianjurkan pupuk NPK buah. AB Mix adalah formulasi khusus hidroponik.",
    langkah:[
      {t:"Dasari dengan kompos", d:"Campur 20–30% kompos matang ke media saat tanam. Nutrisi lepas lambat dan struktur media ikut membaik."},
@@ -49,7 +49,7 @@ const GUIDES = [
    ],
    checklist:["Kompos sebagai pupuk dasar", "NPK seimbang masa vegetatif", "Pupuk tinggi K saat berbuah", "Mulai dari setengah dosis label", "Catat tanggal pupuk terakhir"], populer:false},
 
-  {id:"g05", judul:"Hama & Penyakit: Kenali dan Atasi", kategori:"Hama & penyakit", waktu:"9 menit", level:"Menengah", color:"#FF718D", emoji:"🐛", desc:"Kutu daun, thrips, embun tepung - solusi organik.", plantId:"cabai-merah",
+  {id:"g05", judul:"Hama & Penyakit: Kenali dan Atasi", kategori:"Hama & penyakit", waktu:"9 menit", level:"Menengah", color:"#FF718D", emoji:"🐛", desc:"Kutu daun, thrips, embun tepung - solusi organik.", plantId:"cabai-merah", img:"https://doran.id/wp-content/uploads/2024/12/Hama-dan-Penyakit-Tanaman-featured.jpg",
    konten:"Kenali musuhnya sebelum menyemprot. Ensiklopedia FloraVerse mencatat hama paling umum: kutu daun dan ulat pada cabai rawit, thrips dan tungau pada cabai merah keriting, late blight dan kutu kebul pada tomat, embun tepung pada mentimun, siput pada selada, sampai lalat buah pada mangga. Semuanya punya jalur pengendalian organik yang terbukti.",
    langkah:[
      {t:"Inspeksi mingguan", d:"Cek bagian bawah daun (koloni kutu daun), pucuk muda (thrips), dan bercak pada daun tua. Deteksi dini = perlakuan ringan."},
@@ -60,7 +60,7 @@ const GUIDES = [
    ],
    checklist:["Inspeksi bawah daun tiap minggu", "Neem oil siap pakai (5ml/L)", "Perangkap kuning & biru", "Pot 'karantina' untuk tanaman sakit", "Catat hama + tanggal kemunculan"], populer:true},
 
-  {id:"g06", judul:"Hidroponik Wick System untuk Balkon", kategori:"Hidroponik", waktu:"10 menit", level:"Pemula", color:"#6FA8FF", emoji:"💧", desc:"Hidroponik tanpa pompa, modal <100rb.", plantId:"selada",
+  {id:"g06", judul:"Hidroponik Wick System untuk Balkon", kategori:"Hidroponik", waktu:"10 menit", level:"Pemula", color:"#6FA8FF", emoji:"💧", desc:"Hidroponik tanpa pompa, modal <100rb.", plantId:"selada", img:"https://gkmdblog.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2024/01/17134653/Blog-Sistem-Hidroponik.jpg",
    konten:"Wick system adalah hidroponik paling sederhana: sumbu flanel menarik nutrisi dari reservoir ke media secara kapiler - tanpa listrik, tanpa pompa, tanpa listrik. Paling cocok untuk selada dan sawi; selada romaine di ensiklopedia tercatat panen 30–45 hari dengan pH ideal 6.0–7.0.",
    langkah:[
      {t:"Siapkan dua wadah bertingkat", d:"Pot kecil berlubang di atas, reservoir gelap di bawah (botol 5L dicat hitam agar lumut tidak tumbuh di nutrisi)."},
@@ -72,7 +72,7 @@ const GUIDES = [
    ],
    checklist:["Reservoir gelap 3–5 liter", "Sumbu flanel 2–3 tali", "AB Mix + TDS/pH meter", "Rockwool untuk semai", "Netpot yang pas ukurannya"], populer:true},
 
-  {id:"g07", judul:"Urban Farming di Lahan 2x1 Meter", kategori:"Urban farming", waktu:"8 menit", level:"Pemula", color:"#FFD45C", emoji:"🏙️", desc:"Vertikal garden, rak susun, pot gantung.", plantId:"bayam",
+  {id:"g07", judul:"Urban Farming di Lahan 2x1 Meter", kategori:"Urban farming", waktu:"8 menit", level:"Pemula", color:"#FFD45C", emoji:"🏙️", desc:"Vertikal garden, rak susun, pot gantung.", plantId:"bayam", img:"https://images.alodokter.com/dk0z4ums3/image/upload/v1629213663/attached_image/belanja-sayur-gratis-di-rumah-berkat-urban-farming.jpg",
    konten:"Lahan 2x1 meter cukup untuk pasokan sayur mingguan jika tanamannya dipilih cerdas. Kuncinya tiga: prioritaskan tanaman panen cepat (kangkung 25–30 hari, bayam 25–35 hari), manfaatkan dimensi vertikal, dan tanam bergiliran supaya panen tidak menumpuk di minggu yang sama.",
    langkah:[
      {t:"Bagi tiga lapis", d:"Lantai: kangkung dan bayam yang panen kilat. Tengah: pot cabai dan tomat. Atas: rak atau gantungan untuk herbal (basil, kemangi, mint)."},
@@ -83,7 +83,7 @@ const GUIDES = [
    ],
    checklist:["Rak 2–3 tingkat / gantungan", "Minimal 4 pot ukuran 20–30cm", "Benih panen cepat: kangkung, bayam, selada", "1 herbal aromatik sebagai anti-hama alami", "Tandon air / tetes sederhana"], populer:false},
 
-  {id:"g08", judul:"Cara Membuat Kompos dari Sampah Dapur", kategori:"Composting", waktu:"12 menit", level:"Pemula", color:"#8BCB8A", emoji:"♻️", desc:"30 hari jadi kompos, tanpa bau.", plantId:"kemangi",
+  {id:"g08", judul:"Cara Membuat Kompos dari Sampah Dapur", kategori:"Composting", waktu:"12 menit", level:"Pemula", color:"#8BCB8A", emoji:"♻️", desc:"30 hari jadi kompos, tanpa bau.", plantId:"kemangi", img:"https://sustaination.id/wp-content/uploads/2021/05/apa-itu-kompos-2.jpeg",
    konten:"Kompos mengubah sisa dapur menjadi pupuk gratis dalam 30–45 hari. Resepnya satu: dua bagian bahan 'coklat' (kering, kaya karbon) untuk setiap satu bagian bahan 'hijau' (basah, kaya nitrogen). Bau muncul hanya jika rasio ini terbalik - dan hasilnya langsung terpakai untuk media tanam kemangi yang butuh tanah gembur.",
    langkah:[
      {t:"Siapkan dua wadah bahan", d:"Hijau: sisa sayur, kulit buah, ampas kopi, daun segar. Coklat: daun kering, kertas, serbuk gergaji, sekam."},
@@ -187,7 +187,7 @@ const GUIDES = [
    ],
    checklist:["Bibit okulasi bersertifikat", "Pot 50cm+ dan media tanah-kompos", "Gunting pangkas untuk bentuk", "Pupuk P-K tinggi tiap 2 bulan", "Kantong pembungkus buah"], populer:false},
 
-  {id:"g17", judul:"Cahaya untuk Tanaman: Full Sun vs Partial Sun vs Indirect", kategori:"Cahaya", waktu:"6 menit", level:"Pemula", color:"#FFD45C", emoji:"☀️", desc:"Kenali kebutuhan cahaya tiap tanaman, dari cabai yang butuh terik hingga monstera yang suka teduh.", plantId:"anggrek",
+  {id:"g17", judul:"Cahaya untuk Tanaman: Full Sun vs Partial Sun vs Indirect", kategori:"Cahaya", waktu:"6 menit", level:"Pemula", color:"#FFD45C", emoji:"☀️", desc:"Kenali kebutuhan cahaya tiap tanaman, dari cabai yang butuh terik hingga monstera yang suka teduh.", plantId:"anggrek", img:"https://faperta.umsu.ac.id/wp-content/uploads/2022/01/9AE0E91D-7B5D-49DA-8DDC-824AB7A3C165.jpeg",
    konten:"Cahaya adalah 'makanan' tanaman. Ensiklopedia membaginya tiga kelas: Full Sun 6–8 jam terik langsung (cabai, tomat, kangkung, bunga matahari, kaktus), Partial Sun 3–6 jam (selada, mint, bayam), dan Bright Indirect - terang tanpa sinar langsung (sukulen, lidah buaya, anggrek bulan). Salah menempatkan berarti tanaman jinjang atau daun gosong.",
    langkah:[
      {t:"Petakan sinar rumahmu", d:"Amati satu hari penuh dan catat jam berapa tiap titik mendapat matahari langsung. Arah barat dan selatan biasanya paling terik."},
@@ -198,8 +198,8 @@ const GUIDES = [
    ],
    checklist:["Peta sinar satu hari penuh", "Label cahaya tiap tanaman dicatat", "Shade net 30–40% cadangan", "Rutinitas putar pot mingguan"], populer:true},
 
-  {id:"g18", judul:"Plant Journey: Memahami Fase Seed → Harvest", kategori:"Dasar berkebun", waktu:"7 menit", level:"Pemula", color:"#8BCB8A", emoji:"🌱", desc:"Belajar fase pertumbuhan dan task harian di Kebunku.", plantId:"cabai-rawit",
-   konten:"Di FloraVerse, setiap tanaman di Kebunku berjalan melewati enam fase: Seed → Seedling → Growing → Flowering → Fruiting → Harvest. Memahami fase membuat Anda memberi apa yang dibutuhkan di waktu tepat - kelembapan di awal, nutrisi di pertengahan, dan pengendalian hama menjelang panen. Contoh lengkapnya: perjalanan cabai rawit selama 70–90 hari.",
+  {id:"g18", judul:"Plant Journey: Memahami Fase Seed  Harvest", kategori:"Dasar berkebun", waktu:"7 menit", level:"Pemula", color:"#8BCB8A", emoji:"🌱", desc:"Belajar fase pertumbuhan dan task harian di Kebunku.", plantId:"cabai-rawit", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRewM0Unu5Snia7TLz1Q9DjNYAYS9nm926OlGVNLGIqjCM0lwMor3LLvIcgrFvCZP0&s=10&ec=121966386",
+   konten:"Di FloraVerse, setiap tanaman di Kebunku berjalan melewati enam fase: Seed  Seedling  Growing  Flowering  Fruiting  Harvest. Memahami fase membuat Anda memberi apa yang dibutuhkan di waktu tepat - kelembapan di awal, nutrisi di pertengahan, dan pengendalian hama menjelang panen. Contoh lengkapnya: perjalanan cabai rawit selama 70–90 hari.",
    langkah:[
      {t:"Seed (0–2 minggu)", d:"Kelembapan dan kehangatan lebih penting daripada cahaya. Cabai berkecambah 5–7 hari pada suhu 24–32°C."},
      {t:"Seedling (2–4 minggu)", d:"Daun sejati muncul; kenalkan sinar secara bertahap dan pindah pot pada umur 3–4 minggu."},

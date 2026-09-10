@@ -1,9 +1,12 @@
 ﻿/* FloraVerse App - shared interactions (jQuery) */
 /* Shared photo renderer for plants and products. */
+window.getProductImage = function(id){ return (window.PRODUCT_IMAGES||{})[id] || window.PRODUCT_IMAGES.default; };
 window.fvImg = function(obj, cls){
-  if(!obj || !obj.img) return `<span class="image-fallback" aria-hidden="true">${(obj?.nama||'?').slice(0,1)}</span>`;
+  const isProduct = obj && typeof window.getProductImage === 'function' && window.PRODUCT_IMAGES[obj.id];
+  const image = isProduct ? window.getProductImage(obj.id) : window.getPlantImage(obj?.id);
+  if(!obj || !image) return `<span class="image-fallback" aria-hidden="true">${(obj?.nama||'?').slice(0,1)}</span>`;
   const fallback = `<span class="image-fallback" aria-label="${(obj.nama||'Tanaman').replace(/"/g,'')}">${(obj.nama||'?').slice(0,1)}</span>`.replace(/"/g,'&quot;');
-  return `<img src="${obj.img}" alt="${(obj.nama||'').replace(/"/g,'')}" loading="lazy" class="${cls||''}" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')">`;
+  return `<img src="${image}" alt="${(obj.nama||'').replace(/"/g,'')}" loading="lazy" class="${cls||''}" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')">`;
 };
 
 /* ===== Styled dropdown: native <select> stays hidden as the single source of truth ===== */
@@ -112,8 +115,14 @@ function fvEnhanceSelects(){
 document.addEventListener('click', function(){ window.closeAllFvSelects(); });
 document.addEventListener('keydown', function(e){ if(e.key === 'Escape') window.closeAllFvSelects(); });
 window.addEventListener('resize', window.closeAllFvSelects);
-window.addEventListener('scroll', window.closeAllFvSelects, true);
+window.addEventListener('scroll', function(e){
+  if(e.target && e.target.closest && e.target.closest('.fv-select-panel')) return;
+  window.closeAllFvSelects();
+}, true);
 $(function(){
+  document.querySelectorAll('[data-plant-id]').forEach(image=>{
+    image.src=window.getPlantImage(image.dataset.plantId);
+  });
   $('#cartBtn').attr({'aria-label':'Buka keranjang','title':'Buka keranjang'});
   // Smoothly transition only between internal document pages.
   $(document).on('click', 'a[href]', function(event){
@@ -225,7 +234,10 @@ $(function(){
   const CART_KEY='fv_cart';
   const WISH_KEY='fv_wish';
   const CART_TAB_PREFIX='floraverse:';
-  const normalizeCart = cart => Array.isArray(cart) ? cart.filter(item=>item && item.id).map(item=>({...item, qty:Math.max(1, parseInt(item.qty,10)||1)})) : [];
+  const normalizeCart = cart => Array.isArray(cart) ? cart.filter(item=>item && item.id).map(item=>{
+    const product=PRODUCTS.find(candidate=>candidate.id===item.id) || PRODUCTS.find(candidate=>candidate.nama===item.nama);
+    return product ? {...item, id:product.id, nama:product.nama, harga:product.harga, qty:Math.max(1, parseInt(item.qty,10)||1)} : null;
+  }).filter(Boolean) : [];
   function readTabCart(){
     if(!window.name.startsWith(CART_TAB_PREFIX)) return null;
     try { return normalizeCart(JSON.parse(window.name.slice(CART_TAB_PREFIX.length)).cart); }
@@ -252,7 +264,7 @@ $(function(){
     writeTabCart(clean);
     if(cartChannel) cartChannel.postMessage(clean);
   };
-  window.getWish = ()=> JSON.parse(localStorage.getItem(WISH_KEY)||'[]');
+  window.getWish = ()=> JSON.parse(localStorage.getItem(WISH_KEY)||'[]').filter(id=>PRODUCTS.some(product=>product.id===id));
   window.setWish = (w)=> localStorage.setItem(WISH_KEY, JSON.stringify(w));
   window.updateCartBadge = function(){
     const c=getCart(); const n=c.reduce((a,b)=>a+b.qty,0);
@@ -272,9 +284,25 @@ $(function(){
     if(!prod || qty<=0) return;
     let cart=getCart();
     const f=cart.find(x=>x.id===id);
-    if(f) f.qty+=qty; else cart.push({id, qty, harga:prod.harga, nama:prod.nama, image:prod.img});
+    if(f) f.qty+=qty; else cart.push({id, qty, harga:prod.harga, nama:prod.nama, image:window.getProductImage(id)});
     setCart(cart); updateCartBadge(); toast(`${prod.nama} ditambahkan ke keranjang`,'🛒');
     renderDrawerCart();
+  };
+  window.addPlantToGarden = window.addPlantToGarden || function(plantId){
+    const plant=PLANTS.find(item=>item.id===plantId);
+    if(!plant || typeof MY_GARDEN==='undefined') return;
+    const id=`g${Date.now()}`;
+    MY_GARDEN.push({id,plantId:plant.id,nama:plant.nama,emoji:plant.emoji,color:plant.color,day:1,stage:'Seed',stageIndex:0,stages:['Seed','Seedling','Growing','Flowering','Fruiting','Harvest'],health:'Healthy',water:plant.air,light:plant.cahaya,fert:'Belum',progress:5,tasks:[{id:`${id}-task`,text:'Siram pertama',done:false}],journal:[{date:'Hari 1',note:`Mulai menanam ${plant.nama} 🌱`}]});
+    if(typeof persistGarden==='function') persistGarden();
+    toast(`${plant.nama} ditambahkan ke Kebunku!`,'🌱');
+  };
+  window.addBundle = window.addBundle || function(plantId){
+    const plant=PLANTS.find(item=>item.id===plantId);
+    const items=PRODUCTS.filter(product=>product.related===plantId).slice(0,2);
+    const compost=PRODUCTS.find(product=>product.id==='kompos-kascing-2kg');
+    if(compost) items.push(compost);
+    items.forEach(product=>addToCart(product.id));
+    if(items.length) toast(`${plant?.nama||'Tanaman'} starter kit ditambahkan!`,'🎁');
   };
   window.toggleWish = function(id){
     let w=getWish();
@@ -366,58 +394,83 @@ $(function(){
 
   // Plant Match
   let pmStep=1; const pmAnswers={};
-  window.openPlantMatch = function(){ pmStep=1; pmAnswers.cahaya=null; pmAnswers.lokasi=null; pmAnswers.waktu=null; pmAnswers.tujuan=null; renderPMStep(); $('#plantMatchModal').addClass('open'); }
+  const pmQuestions = [
+    {q:"Seberapa banyak cahaya di tempatmu?", opts:[["Banyak (6+ jam)","banyak"],["Sedang (3–6 jam)","sedang"],["Sedikit / teduh","sedikit"]], key:"cahaya"},
+    {q:"Di mana kamu akan menanam?", opts:[["Dalam rumah","rumah"],["Balkon / teras","balkon"],["Halaman","halaman"],["Lahan luas","lahan"]], key:"lokasi"},
+    {q:"Seberapa sering kamu bisa merawat tanaman?", opts:[["Jarang, 1–2 kali seminggu","jarang"],["Kadang, beberapa kali seminggu","kadang"],["Sering, hampir setiap hari","sering"]], key:"waktu"},
+    {q:"Seberapa sering kamu bisa menyiram?", opts:[["Jarang","jarang"],["Secukupnya","sedang"],["Rutin setiap hari","rutin"]], key:"air"},
+    {q:"Seberapa luas ruang yang tersedia?", opts:[["Sangat sempit / meja","sempit"],["Pot atau balkon kecil","sedang"],["Halaman atau lahan luas","luas"]], key:"ruang"},
+    {q:"Seberapa berpengalaman kamu berkebun?", opts:[["Baru mulai","pemula"],["Pernah mencoba","menengah"],["Sudah terbiasa","mahir"]], key:"pengalaman"},
+    {q:"Apa hasil yang paling kamu inginkan?", opts:[["Panen cepat","cepat"],["Tanaman hias","hias"],["Buah atau sayur","panen"],["Herbal untuk dapur","herbal"]], key:"tujuan"}
+  ];
+  window.openPlantMatch = function(){ pmStep=1; Object.keys(pmAnswers).forEach(k=>delete pmAnswers[k]); $('#pmIntro').removeClass('hidden'); $('#pmProgress,#pmQuiz,#pmResult').addClass('hidden'); $('#plantMatchModal').addClass('open'); }
+  window.startPlantMatch = function(){ $('#pmIntro').addClass('hidden'); $('#pmProgress').removeClass('hidden'); renderPMStep(); }
   window.closePlantMatch = function(){ $('#plantMatchModal').removeClass('open'); }
-  window.choosePM = function(k,v){ pmAnswers[k]=v; if(pmStep<4){ pmStep++; renderPMStep(); } else { renderPMResult(); } };
+  window.choosePM = function(k,v){ pmAnswers[k]=v; if(pmStep<pmQuestions.length){ pmStep++; renderPMStep(); } else { renderPMResult(); } };
   window.prevPM = function(){ if(pmStep>1){ pmStep--; renderPMStep(); } };
   function renderPMStep(){
-    const steps = {
-      1:{q:"Seberapa banyak cahaya di tempatmu?", opts:[["Banyak","banyak"],["Sedang","sedang"],["Sedikit","sedikit"]], key:"cahaya"},
-      2:{q:"Di mana kamu akan menanam?", opts:[["Rumah","rumah"],["Balkon","balkon"],["Halaman","halaman"],["Lahan","lahan"]], key:"lokasi"},
-      3:{q:"Berapa waktu merawat?", opts:[["Jarang","jarang"],["Kadang","kadang"],["Sering","sering"]], key:"waktu"},
-      4:{q:"Apa tujuan berkebun?", opts:[["Sayuran","sayuran"],["Buah","buah"],["Hias","hias"],["Herbal","herbal"]], key:"tujuan"},
-    };
-    const s=steps[pmStep];
-    $('#pmStepNum').text(pmStep+'/4');
-    $('#pmBar').css('width', (pmStep/4*100)+'%');
+    const s=pmQuestions[pmStep-1];
+    $('#pmStepNum').text(pmStep+'/'+pmQuestions.length);
+    $('#pmBar').css('width', (pmStep/pmQuestions.length*100)+'%');
     $('#pmQuestion').text(s.q);
-    $('#pmOptions').html(s.opts.map(([label,val])=> `<button onclick="choosePM('${s.key}','${val}')" class="w-full text-left p-4 rounded-2xl border-2 border-gray-100 hover:border-[#6FA8FF] hover:bg-[#EFF6FF] flex items-center justify-between group transition"><span class="font-semibold">${label}</span><span class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-[#6FA8FF] group-hover:text-white flex items-center justify-center">→</span></button>`).join(''));
+    $('#pmOptions').html(s.opts.map(([label,val])=> `<button onclick="choosePM('${s.key}','${val}')" class="w-full text-left p-4 rounded-2xl border-2 border-gray-100 hover:border-[#6FA8FF] hover:bg-[#EFF6FF] flex items-center justify-between group transition"><span class="font-semibold">${label}</span><span class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-[#6FA8FF] group-hover:text-white flex items-center justify-center"></span></button>`).join(''));
     $('#pmPrev').toggle(pmStep>1);
     $('#pmResult').addClass('hidden'); $('#pmQuiz').removeClass('hidden');
   }
   function scorePlant(plant, ans){
     let s=0;
     // cahaya
-    if(ans.cahaya==="banyak" && plant.cahaya==="Full Sun") s+=30;
-    else if(ans.cahaya==="sedang" && plant.cahaya==="Partial Sun") s+=30;
-    else if(ans.cahaya==="sedikit" && plant.cahaya==="Bright Indirect") s+=30;
-    else if(ans.cahaya==="sedang" && plant.cahaya==="Full Sun") s+=15;
+    if(ans.cahaya==="banyak" && plant.cahaya==="Full Sun") s+=25;
+    else if(ans.cahaya==="sedang" && ["Partial Sun","Full Sun"].includes(plant.cahaya)) s+=22;
+    else if(ans.cahaya==="sedikit" && plant.cahaya==="Bright Indirect") s+=25;
+    else if(ans.cahaya==="sedikit" && plant.cahaya==="Partial Sun") s+=12;
     // lokasi
-    if(ans.lokasi==="balkon" && ["Sangat Mudah","Mudah"].includes(plant.kesulitan)) s+=20;
-    else if(ans.lokasi==="rumah" && plant.kategori==="Hias") s+=20;
-    else s+=10;
+    if(ans.lokasi==="balkon" && ["Sangat Mudah","Mudah"].includes(plant.kesulitan)) s+=15;
+    else if(ans.lokasi==="rumah" && ["Hias","Sukulen","Kaktus"].includes(plant.kategori)) s+=15;
+    else if(ans.lokasi==="lahan" && ["Pohon buah","Sayuran","Buah"].includes(plant.kategori)) s+=15;
+    else s+=8;
     // waktu
-    if(ans.waktu==="jarang" && ["Sangat Mudah"].includes(plant.kesulitan)) s+=25;
-    else if(ans.waktu==="kadang" && ["Mudah","Sedang"].includes(plant.kesulitan)) s+=25;
-    else if(ans.waktu==="sering") s+=20;
+    if(ans.waktu==="jarang" && ["Sangat Mudah","Mudah"].includes(plant.kesulitan)) s+=20;
+    else if(ans.waktu==="kadang" && ["Mudah","Sedang"].includes(plant.kesulitan)) s+=20;
+    else if(ans.waktu==="sering") s+=18;
     else s+=10;
-    // tujuan
-    if(ans.tujuan==="sayuran" && plant.kategori==="Sayuran") s+=25;
-    else if(ans.tujuan==="buah" && plant.kategori==="Buah") s+=25;
-    else if(ans.tujuan==="hias" && ["Hias","Bunga"].includes(plant.kategori)) s+=25;
-    else if(ans.tujuan==="herbal" && plant.kategori==="Herbal") s+=25;
+    // water frequency
+    if(ans.air==="jarang" && ["Jarang","Sedang"].includes(plant.air)) s+=12;
+    else if(ans.air==="rutin" && ["Banyak","Sedang"].includes(plant.air)) s+=12;
+    else s+=6;
+    // available space
+    if(ans.ruang==="sempit" && ["Kaktus","Sukulen","Hias","Herbal"].includes(plant.kategori)) s+=12;
+    else if(ans.ruang==="luas" && ["Pohon buah","Sayuran","Buah"].includes(plant.kategori)) s+=12;
+    else s+=6;
+    // experience
+    if(ans.pengalaman==="pemula" && ["Sangat Mudah","Mudah"].includes(plant.kesulitan)) s+=12;
+    else if(ans.pengalaman==="mahir") s+=10;
+    else s+=6;
+    // goal
+    if(ans.tujuan==="cepat" && /\d+/.test(plant.panen) && parseInt(plant.panen,10)<=60) s+=18;
+    else if(ans.tujuan==="hias" && ["Hias","Bunga","Sukulen","Kaktus"].includes(plant.kategori)) s+=18;
+    else if(ans.tujuan==="panen" && ["Sayuran","Buah","Pohon buah"].includes(plant.kategori)) s+=18;
+    else if(ans.tujuan==="herbal" && plant.kategori==="Herbal") s+=18;
     else s+=5;
-    // sedikit random untuk variasi
-    s += Math.floor(Math.random()*6);
-    return Math.min(98, s);
+    return Math.min(98, Math.round(s * 98 / 114));
+  }
+  function matchReasons(plant, ans){
+    const reasons=[];
+    if((ans.cahaya==="banyak" && plant.cahaya==="Full Sun") || (ans.cahaya==="sedang" && ["Full Sun","Partial Sun"].includes(plant.cahaya)) || (ans.cahaya==="sedikit" && plant.cahaya==="Bright Indirect")) reasons.push(`cahaya ${plant.cahaya.toLowerCase()}`);
+    if((ans.waktu==="jarang" && ["Sangat Mudah","Mudah"].includes(plant.kesulitan)) || (ans.pengalaman==="pemula" && ["Sangat Mudah","Mudah"].includes(plant.kesulitan))) reasons.push(`perawatan ${plant.kesulitan.toLowerCase()}`);
+    if(ans.lokasi && plant.lokasi && plant.lokasi.toLowerCase().includes(ans.lokasi==="rumah" ? "rumah" : ans.lokasi)) reasons.push(`lokasi ${plant.lokasi.toLowerCase()}`);
+    if(ans.tujuan==="hias" && ["Hias","Bunga","Sukulen","Kaktus"].includes(plant.kategori)) reasons.push("tujuan tanaman hias");
+    if(ans.tujuan==="herbal" && plant.kategori==="Herbal") reasons.push("tujuan herbal dapur");
+    if(ans.tujuan==="panen" && ["Sayuran","Buah","Pohon buah"].includes(plant.kategori)) reasons.push("tujuan panen");
+    return reasons.slice(0,3);
   }
   function renderPMResult(){
     $('#pmQuiz').addClass('hidden'); $('#pmResult').removeClass('hidden');
     $('#pmBar').css('width','100%');
+    const personality=typeof plantMatchToPersonality==='function' ? plantMatchToPersonality(pmAnswers) : 'The Careful Keeper';
+    $('#pmResultIntro').text(`Profilmu: ${personality}. Ini 5 tanaman yang paling cocok berdasarkan jawabanmu:`);
     // hitung skor
-    let scored = PLANTS.map(p=> ({...p, score: scorePlant(p, pmAnswers)})).sort((a,b)=> b.score-a.score).slice(0,3);
-    // pastikan cabai/basil/tomat muncul jika relevan (sesuai spec contoh 93/89/84)
-    // tapi biarkan algoritma - fallback contoh
+    let scored = PLANTS.map(p=> ({...p, score: scorePlant(p, pmAnswers)})).sort((a,b)=> b.score-a.score).slice(0,5);
     $('#pmResultList').html(scored.map((p,i)=> `
       <div class="fv-card p-4 flex gap-4 items-center ${i===0?'!border-[#6FA8FF] !bg-[#EFF6FF]':''}">
         <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 overflow-hidden" style="background:${p.color}18">
@@ -427,11 +480,14 @@ $(function(){
           <p class="font-extrabold leading-none">${p.nama}</p>
           <p class="text-xs text-muted italic">${p.ilmiah}</p>
           <div class="flex gap-1.5 mt-1.5"><span class="pill pill-blue text-[10px]">${p.kategori}</span><span class="pill pill-green text-[10px]">${p.kesulitan}</span></div>
+          <p class="text-xs text-muted mt-2">Cocok karena ${matchReasons(p,pmAnswers).join(', ') || `${p.kategori.toLowerCase()} sesuai profilmu`}.</p>
         </div>
         <div class="text-right">
           <div class="text-2xl font-black" style="color:${p.color}">${p.score}%</div>
           <div class="text-[10px] font-bold tracking-widest text-muted">COCOK</div>
-          <button onclick="toast('Ditambahkan ke Kebunku','🌱'); closePlantMatch();" class="mt-1 text-xs font-bold px-3 py-1.5 rounded-full bg-[#252525] text-white hover:opacity-90">+ Kebunku</button>
+           <button onclick="addPlantToGarden('${p.id}'); closePlantMatch();" class="mt-1 text-xs font-bold px-3 py-1.5 rounded-full bg-[#252525] text-white hover:opacity-90">+ Kebunku</button>
+          <a href="garden.html" class="block text-[10px] font-bold text-[#6FA8FF] mt-1">Buka Kebunku</a>
+          <a href="plants.html#plantLabRoot" class="block text-[10px] font-bold text-[#6FA8FF] mt-1">Coba Plant Lab</a>
         </div>
       </div>
     `).join(''));
