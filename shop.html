@@ -27,7 +27,7 @@
 <header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
   <div class="fv-card orange p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden">
     <div class="flex-1 relative z-10">
-       <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop • 770+ Produk</span>
+       <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop • 28 Produk</span>
       <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Semua kebutuhan<br>berkebun, satu tempat.</h1>
       <p class="text-white/90 text-sm mt-2 max-w-[520px]">Benih, pot, media, pupuk, alat, hidroponik - kurasi untuk pemula & hobbyist. Alur checkout lengkap - simulasi, tanpa pembayaran nyata.</p>
       <div class="flex flex-wrap gap-2 mt-4"></div>
@@ -89,7 +89,6 @@
 
  <main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-5 pb-10">
    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
-   <button id="productsLoadMore" class="btn btn-ghost w-full max-w-md mx-auto mt-5 hidden">Muat lebih banyak</button>
    <div id="prodEmpty" class="hidden text-center py-16"><div class="text-5xl">🛒</div><p class="font-black mt-2">Produk tidak ditemukan</p><p class="text-sm text-muted mt-1">Coba ubah kata kunci atau filter.</p><button id="resetProductFilters" class="btn btn-ghost mt-4 text-sm">Reset filter</button></div>
 </main>
 
@@ -245,8 +244,6 @@ window.addBundle=function(plantId){
 }
 
 let currentFilterBest=false, currentFilterBeginner=false;
-const productPageSize=()=>window.matchMedia('(max-width:767px)').matches ? 12 : 24;
-let visibleProductCount=productPageSize();
 function renderProducts(){
   const q=($('#searchProd').val()||'').toLowerCase();
   const kat=$('#filterProdKat').val() || activePcat;
@@ -266,7 +263,7 @@ function renderProducts(){
   $('#prodCount').text(`${list.length} produk`);
   if(list.length===0){ $('#productsGrid').empty(); $('#prodEmpty').removeClass('hidden'); return; }
   $('#prodEmpty').addClass('hidden');
-   $('#productsGrid').html(list.slice(0,visibleProductCount).map(p=> `
+   $('#productsGrid').html(list.map(p=> `
     <div class="fv-card white overflow-hidden hover-lift">
       <div class="h-36 bg-gray-50 flex items-center justify-center text-5xl relative cursor-pointer" onclick="openProduct('${p.id}')">
         ${fvImg(p,'w-full h-full object-cover')}
@@ -284,8 +281,6 @@ function renderProducts(){
       </div>
     </div>
    `).join(''));
-   const remaining=list.length-visibleProductCount;
-   $('#productsLoadMore').toggleClass('hidden', remaining<=0).text(remaining>0 ? `Muat ${Math.min(remaining, productPageSize())} produk lagi` : 'Semua produk sudah tampil');
 }
 window.openProduct=function(id){
   const p=PRODUCTS.find(x=>x.id===id);
@@ -336,19 +331,18 @@ $(function(){
     $(this).addClass('active bg-charcoal text-white').removeClass('bg-white border');
     renderSmartBasket($(this).data('plant'));
   });
-   $('#searchProd').on('input', function(){ visibleProductCount=productPageSize(); renderProducts(); });
-   $('#filterProdKat, #sortProd').on('change', function(){ visibleProductCount=productPageSize(); renderProducts(); });
-   $('#productsLoadMore').on('click', function(){ visibleProductCount+=productPageSize(); renderProducts(); });
+   $('#searchProd').on('input', renderProducts);
+   $('#filterProdKat, #sortProd').on('change', renderProducts);
   $('.pcat').on('click', function(){
     $('.pcat').removeClass('active bg-charcoal text-white').addClass('bg-white border');
     $(this).addClass('active bg-charcoal text-white').removeClass('bg-white border');
-    activePcat=$(this).data('cat');
-    $('#filterProdKat').val(activePcat);
-     visibleProductCount=productPageSize(); renderProducts();
+     activePcat=$(this).data('cat');
+     $('#filterProdKat').val(activePcat);
+     renderProducts();
   });
-   $('#filterBest').on('change', function(){ currentFilterBest=this.checked; visibleProductCount=productPageSize(); renderProducts(); });
-   $('#filterBeginner').on('change', function(){ currentFilterBeginner=this.checked; visibleProductCount=productPageSize(); renderProducts(); });
-   $('#resetProductFilters').on('click', function(){ $('#searchProd').val(''); $('#filterProdKat, #sortProd').val(''); $('#filterBest, #filterBeginner').prop('checked',false); activePcat=''; currentFilterBest=false; currentFilterBeginner=false; visibleProductCount=productPageSize(); $('.pcat').removeClass('active bg-charcoal text-white').addClass('bg-white border'); $('.pcat[data-cat=""]').addClass('active bg-charcoal text-white').removeClass('bg-white border'); renderProducts(); });
+   $('#filterBest').on('change', function(){ currentFilterBest=this.checked; renderProducts(); });
+   $('#filterBeginner').on('change', function(){ currentFilterBeginner=this.checked; renderProducts(); });
+   $('#resetProductFilters').on('click', function(){ $('#searchProd').val(''); $('#filterProdKat, #sortProd').val(''); $('#filterBest, #filterBeginner').prop('checked',false); activePcat=''; currentFilterBest=false; currentFilterBeginner=false; $('.pcat').removeClass('active bg-charcoal text-white').addClass('bg-white border'); $('.pcat[data-cat=""]').addClass('active bg-charcoal text-white').removeClass('bg-white border'); renderProducts(); });
   $('#productModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
 });
 </script>

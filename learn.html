@@ -177,8 +177,8 @@ function renderGuides(){
   $('#guideEmpty').addClass('hidden');
   $('#guidesGrid').html(list.map(g=> `
     <div onclick="openGuide('${g.id}')" class="fv-card white overflow-hidden cursor-pointer hover-lift">
-      <div class="h-32 flex items-center justify-center text-5xl relative" style="background:${g.color}14">
-        ${PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())) ? fvImg(PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())),'w-full h-full object-cover') : g.emoji}
+      <div class="h-32 flex items-center justify-center text-5xl relative overflow-hidden" style="background:${g.color}14">
+        ${g.img ? `<img src="${g.img}" alt="${g.judul}" class="w-full h-full object-cover">` : PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())) ? fvImg(PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())),'w-full h-full object-cover') : g.emoji}
         <span class="absolute top-3 left-3 pill text-[11px] font-black" style="background:${g.color};color:${g.color==='#FFD45C'?'#252525':'#fff'}">${g.kategori}</span>
         <span class="absolute top-3 right-3 pill pill-white text-[11px]">${g.level}</span>
         ${g.populer?'<span class="absolute bottom-3 right-3 pill pill-yellow text-[11px] font-black">🔥 Populer</span>':''}
@@ -238,7 +238,7 @@ function openGuide(id){
     </div>`:'';
   $('#guideModalContent').html(`
     <div class="flex items-start justify-between gap-3">
-       <div class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden" style="background:${g.color}18">${gPlant ? fvImg(gPlant,'w-full h-full object-cover') : g.emoji}</div>
+       <div class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden" style="background:${g.color}18">${g.img ? `<img src="${g.img}" alt="${g.judul}" class="w-full h-full object-cover">` : gPlant ? fvImg(gPlant,'w-full h-full object-cover') : g.emoji}</div>
       <button onclick="$('#guideModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button>
     </div>
     <span class="pill mt-3 inline-flex" style="background:${g.color}18; border-color:${g.color}30; color:${g.color==='#FFD45C'?'#9A7400':g.color}">${g.kategori}</span>
@@ -264,7 +264,7 @@ $(function(){
   // popular side
   $('#popularGuidesSide').html(GUIDES.filter(g=>g.populer).slice(0,3).map(g=>`
     <div onclick="openGuide('${g.id}')" class="flex gap-3 p-2.5 rounded-2xl hover:bg-gray-50 cursor-pointer border border-transparent hover:border-gray-100">
-       <div class="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0" style="background:${g.color}18">${PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())) ? fvImg(PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())),'w-full h-full object-cover') : g.emoji}</div>
+       <div class="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0" style="background:${g.color}18">${g.img ? `<img src="${g.img}" alt="${g.judul}" class="w-full h-full object-cover">` : PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())) ? fvImg(PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())),'w-full h-full object-cover') : g.emoji}</div>
       <div class="min-w-0"><p class="font-bold text-sm leading-tight truncate">${g.judul}</p><p class="text-xs text-muted">${g.waktu} • ${g.kategori}</p></div>
     </div>
   `).join(''));
