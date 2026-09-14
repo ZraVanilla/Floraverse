@@ -90,6 +90,9 @@ function renderPlantLab(containerId, initialPlantId){
       clearTimeout(window._labTimer);
       window._labTimer=setTimeout(draw, 250);
     });
+    // Drag cursor: persist grabbing even when cursor leaves track
+    $c.find('.lab-range').on('mousedown', function(){ $(this).addClass('dragging'); });
+    $(document).on('mouseup.labdrag', function(){ $c.find('.lab-range').removeClass('dragging'); });
     $c.find('.lab-reset').on('click', ()=>{ params={...PLANT_LAB_DEFAULT}; draw(); toast('Reset ke kondisi ideal','🔬'); });
     $c.find('.lab-apply').on('click', ()=> toast('Simulasi diterapkan - cek Garden Pulse','✨'));
   }

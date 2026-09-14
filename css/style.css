@@ -359,6 +359,14 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
   transform:translateY(-3px); box-shadow:0 12px 32px rgba(37,37,37,.08);
 }
 
+/* Range slider drag cursor */
+.lab-range{cursor:grab; user-select:none;}
+.lab-range::-webkit-slider-thumb{cursor:grab;}
+.lab-range::-moz-range-thumb{cursor:grab;}
+.lab-range:active,.lab-range.dragging{cursor:grabbing;}
+.lab-range:active::-webkit-slider-thumb,.lab-range.dragging::-webkit-slider-thumb{cursor:grabbing;}
+.lab-range:active::-moz-range-thumb,.lab-range.dragging::-moz-range-thumb{cursor:grabbing;}
+
 /* Compact product UI: preserve every feature while reducing visual noise. */
 :root{
   --card-shadow:0 4px 18px rgba(37,37,37,.055);
