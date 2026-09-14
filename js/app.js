@@ -495,8 +495,8 @@ $(function(){
     $b.removeClass('anim-heart');
     void $b[0].offsetWidth; // force reflow
     $b.addClass('anim-heart');
-    if(liked){ $b.removeClass('liked bg-[#FF718D] text-white').addClass('bg-white'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())-1); }
-    else { $b.addClass('liked bg-[#FF718D] text-white'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())+1); toast('Kamu menyukai postingan','💖'); }
+    if(liked){ $b.removeClass('liked bg-[#FF718D] text-white border-[#FF718D]').addClass('bg-white border-[#252525]'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())-1); }
+    else { $b.addClass('liked bg-[#FF718D] text-white border-[#FF718D]').removeClass('bg-white border-[#252525]'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())+1); toast('Kamu menyukai postingan','💖'); }
   };
   window.toggleSave = function(el){
     const $b=$(el); $b.toggleClass('saved');
