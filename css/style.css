@@ -256,23 +256,6 @@ select {
 .mpc-info small{color:var(--muted); font-size:.72rem; font-weight:600}
 .mpc-xp{margin-left:auto; background:rgba(255,212,92,.4); color:#9A7400; font-size:.7rem; font-weight:800; padding:.28rem .55rem; border-radius:999px; flex-shrink:0}
 
-.hero-visual-shell{
-  overflow:visible !important;
-  padding-bottom:1.5rem;
-}
-
-.garden-pulse-card{
-  position:relative; z-index:20;
-  margin-top:auto; margin-bottom:1rem;
-}
-/* Guarantee breathing room between the plant tiles and the Garden Pulse card. */
-.hero-visual-shell .grid.grid-cols-3{margin-bottom:1.25rem;}
-
-/* Garden hero: the pulse panel is taller than the intro copy - center the copy so the
-   colored card does not read as one big empty block. */
-header .fv-card.green > .flex-1{display:flex; flex-direction:column; justify-content:center;}
-header .fv-card.green > .flex-1 > .pill{align-self:flex-start;}
-
 /* Illustrative blobs */
 .blob{
   position:absolute; border-radius:50%; filter:blur(0px); opacity:.9; pointer-events:none;
@@ -385,16 +368,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .blob{opacity:.45;}
 .modal{border-radius:20px;}
 .progress-track{height:7px;}
-.hero-visual-shell{min-height:360px !important;}
-.smart-kit-items{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.5rem !important;}
-.smart-kit-item{padding:.6rem !important; border-radius:12px !important; min-width:0;}
-.smart-kit-summary{border-top:1px solid #FFD5BF; padding-top:.75rem;}
-.smart-kit-summary .btn{flex-shrink:0;}
-#smartBasketSection{background:transparent; border:0; box-shadow:none; padding:0 !important; overflow:visible;}
-#smartBasketLayout{align-items:start;}
-section:has(> .grid.lg\:grid-cols-12){align-items:start;}
-#smartBasketSection .smart-basket-intro{background:#fff; border:1px solid #EFEFEF; border-radius:18px; padding:1.5rem;}
-#smartBasketCard{border-radius:18px;}
 #productsGrid > .fv-card{display:flex; flex-direction:column;}
 #productsGrid > .fv-card > .p-4{display:flex; flex:1; flex-direction:column;}
 #productsGrid .items-end.justify-between{margin-top:auto !important; padding-top:.65rem;}
