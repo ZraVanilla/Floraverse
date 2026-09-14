@@ -1,8 +1,4 @@
 /* Single source of truth for the expanded product catalog and its images. */
-const SHOP_COMMON_EXTRAS = [];
-
-const shopSlug=value => value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-
 window.PRODUCT_IMAGES = {
   default: "https://loremflickr.com/640/480/gardening?lock=0",
   "benih-cabai-rawit-50-biji": "https://asset.kompas.com/crops/gcV_0a22iNicHYdNP_S5pT3Sppo=/0x0:1000x667/1200x800/data/photo/2022/06/06/629d7a949e846.jpg",

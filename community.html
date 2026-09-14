@@ -21,19 +21,21 @@
 </nav>
 
 <!-- Main 2-column layout -->
-<section class="community-layout max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid lg:grid-cols-12 gap-6 pb-10">
+<section class="community-layout max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid lg:grid-cols-12 gap-6 pb-10 items-start">
 
   <!-- LEFT: Main Content -->
   <main class="community-main lg:col-span-8 space-y-4">
 
     <!-- Hero -->
-    <div class="fv-card pink p-6 relative overflow-hidden">
-      <span class="pill bg-white text-[#FF4D6D] font-black">👥 Komunitas • 12 Grup</span>
-      <h1 class="text-[28px] sm:text-[32px] font-black leading-tight mt-2 text-white">Bertumbuh bareng<br>yang sepemikiran.</h1>
-      <p class="text-white/90 text-sm mt-2 max-w-[520px]">Pilih komunitas berdasarkan tanaman, metode, atau hobi. Berbagi progress, tanya jawab, dan panen bareng.</p>
-      <div class="flex gap-2 mt-4">
-        <button onclick="$('#createPostModal').addClass('open')" class="btn bg-white text-charcoal font-black px-5 text-sm">✏️ Buat Postingan</button>
-        <span class="pill bg-white/20 text-charcoal text-xs">Aktif harian • Moderasi ramah</span>
+    <div class="fv-card p-6 relative overflow-hidden" style="background: url('asset/grow-amazon.gif') center/cover no-repeat;">
+      <div class="relative z-10">
+        <span class="pill bg-white text-[#FF4D6D] font-black">👥 Komunitas • 12 Grup</span>
+        <h1 class="text-[28px] sm:text-[32px] font-black leading-tight mt-2 text-white" style="text-shadow:2px 2px 12px rgba(0,0,0,0.5)">Bertumbuh bareng<br>yang sepemikiran.</h1>
+        <p class="text-white/90 text-sm mt-2 max-w-[520px]" style="text-shadow:1px 1px 8px rgba(0,0,0,0.4)">Pilih komunitas berdasarkan tanaman, metode, atau hobi. Berbagi progress, tanya jawab, dan panen bareng.</p>
+        <div class="flex gap-2 mt-4">
+          <button onclick="$('#createPostModal').addClass('open')" class="btn bg-white text-charcoal font-black px-5 text-sm">✏️ Buat Postingan</button>
+          <span class="pill bg-white/80 text-charcoal text-xs">Aktif harian • Moderasi ramah</span>
+        </div>
       </div>
     </div>
 
@@ -72,7 +74,7 @@
   </main>
 
   <!-- RIGHT: Sidebar -->
-  <aside class="community-sidebar lg:col-span-4 space-y-4 lg:sticky lg:top-[80px] lg:self-start">
+  <aside class="community-sidebar lg:col-span-4 space-y-4 lg:sticky lg:top-[76px] lg:self-start lg:max-h-[calc(100vh-76px)] lg:overflow-y-auto lg:sidebar-scroll">
 
     <!-- Semua Komunitas (compact list) -->
     <div class="fv-card white p-5">
@@ -133,6 +135,7 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
+<script src="js/utils.js"></script>
 <script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>
@@ -184,14 +187,15 @@ function renderFeed(){
           <p class="font-black text-sm leading-none">${p.user} <span class="font-normal text-muted">• ${p.time}</span></p>
           <p class="text-xs text-muted flex items-center gap-1"><span class="w-3 h-3 rounded-full inline-block" style="background:${comm?comm.color:'#6FA8FF'}"></span> ${comm?comm.nama:'Komunitas'} • ${comm?comm.kategori:''}</p>
         </div>
-        <span class="pill pill-white text-xs">${p.image} Post</span>
+        <span class="pill pill-white text-xs">${comm?comm.kategori:'Post'}</span>
       </div>
       <p class="mt-3 text-[15px] leading-relaxed">${p.content}</p>
       <div class="flex flex-wrap gap-1.5 mt-2">${p.tags.map(t=>`<span class="pill pill-blue text-xs">${t}</span>`).join('')}</div>
-      <div class="bg-gray-50 rounded-2xl p-3 mt-3 flex items-center gap-3">
-         <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">${p.plantId ? fvImg(PLANTS.find(x=>x.id===p.plantId),'w-full h-full object-cover') : p.image || '🌱'}</div>
-        <p class="text-sm font-bold">Foto tanaman</p>
-        <span class="ml-auto text-xs text-muted">${p.likes} suka • ${p.comments} komentar</span>
+      <div class="bg-gray-50 rounded-2xl mt-3 overflow-hidden">
+        <div class="w-full aspect-video bg-white flex items-center justify-center overflow-hidden">${p.plantId ? fvImg(PLANTS.find(x=>x.id===p.plantId),'w-full h-full object-cover') : `<span class="text-4xl">${p.image||'🌱'}</span>`}</div>
+        <div class="p-3 flex items-center gap-3">
+          <span class="text-xs text-muted">${p.likes} suka • ${p.comments} komentar</span>
+        </div>
       </div>
       <div class="flex gap-2 mt-3">
         <button onclick="toggleLike(this)" class="flex-1 py-2 rounded-full border bg-white font-bold text-sm flex items-center justify-center gap-1.5 ${p.liked?'liked bg-[#FF718D] text-white border-[#FF718D]':''}"><span>♥</span> <span class="cnt">${p.likes}</span> Suka</button>

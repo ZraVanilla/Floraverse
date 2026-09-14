@@ -233,7 +233,7 @@ input,select,textarea{max-width:100%}
   body > header,body > section,body > main,body > div.max-w-\[1280px\]{margin-top:24px !important}
   header .lg\:w-\[420px\],header .lg\:w-\[380px\],header .community-search-panel{width:100% !important}
   #plantsGrid,#productsGrid,#guidesGrid,#myPlantsGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
-  .community-panel,.community-feed-shell,.profile-page > section.grid{grid-template-columns:1fr !important}
+  .community-panel,.community-feed-shell,.community-layout,.profile-page > section.grid{grid-template-columns:1fr !important}
   .smart-kit-items{grid-template-columns:repeat(2,minmax(0,1fr))}
   .modal{max-width:calc(100vw - 40px) !important; max-height:calc(100dvh - 40px)}
 }

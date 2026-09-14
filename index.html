@@ -113,32 +113,14 @@ tailwind.config={
           <span class="pill bg-[#252525] text-white text-xs">Plant & Bloom</span>
         </div>
 
-        <!-- cartoon garden grid -->
-        <div class="relative z-10 grid grid-cols-3 gap-3 mt-6">
-          <div class="bg-white rounded-[20px] p-3 text-center">
-            <img data-plant-id="cabai-rawit" alt="Cabai" loading="lazy" class="w-12 h-12 mx-auto object-cover rounded-xl">
-            <p class="font-black text-xs mt-1">Cabai</p><p class="text-[10px] text-muted">70 hari</p>
-          </div>
-          <div class="bg-[#FFD45C] rounded-[20px] p-3 text-center">
-            <img data-plant-id="matahari" alt="Matahari" loading="lazy" class="w-12 h-12 mx-auto object-cover rounded-xl">
-            <p class="font-black text-xs mt-1">Matahari</p><p class="text-[10px] opacity-70">Mudah</p>
-          </div>
-          <div class="bg-white rounded-[20px] p-3 text-center">
-            <img data-plant-id="tomat" alt="Tomat" loading="lazy" class="w-12 h-12 mx-auto object-cover rounded-xl">
-            <p class="font-black text-xs mt-1">Tomat</p><p class="text-[10px] text-muted">84% match</p>
-          </div>
-          <div class="bg-[#FF718D] rounded-[20px] p-3 text-center text-white">
-            <img data-plant-id="kaktus" alt="Kaktus" loading="lazy" class="w-12 h-12 mx-auto object-cover rounded-xl">
-            <p class="font-black text-xs mt-1">Kaktus</p><p class="text-[10px] opacity-90">Jarang siram</p>
-          </div>
-          <div class="bg-white rounded-[20px] p-3 text-center">
-            <img data-plant-id="selada" alt="Selada" loading="lazy" class="w-12 h-12 mx-auto object-cover rounded-xl">
-            <p class="font-black text-xs mt-1">Selada</p><p class="text-[10px] text-muted">Hidroponik</p>
-          </div>
-          <div class="bg-[#8BCB8A] rounded-[20px] p-3 text-center text-white">
-            <img data-plant-id="basil" alt="Basil" loading="lazy" class="w-12 h-12 mx-auto object-cover rounded-xl">
-            <p class="font-black text-xs mt-1">Basil</p><p class="text-[10px] opacity-90">Harum</p>
-          </div>
+        <!-- compact plant chips -->
+        <div class="relative z-10 flex flex-wrap gap-2 mt-6">
+          <span class="inline-flex items-center gap-1.5 bg-white rounded-full px-3 py-1.5 text-xs font-bold"><img data-plant-id="cabai-rawit" alt="Cabai" loading="lazy" class="w-5 h-5 rounded-full object-cover">Cabai</span>
+          <span class="inline-flex items-center gap-1.5 bg-[#FFD45C] rounded-full px-3 py-1.5 text-xs font-bold"><img data-plant-id="matahari" alt="Matahari" loading="lazy" class="w-5 h-5 rounded-full object-cover">Matahari</span>
+          <span class="inline-flex items-center gap-1.5 bg-white rounded-full px-3 py-1.5 text-xs font-bold"><img data-plant-id="tomat" alt="Tomat" loading="lazy" class="w-5 h-5 rounded-full object-cover">Tomat</span>
+          <span class="inline-flex items-center gap-1.5 bg-[#FF718D] text-white rounded-full px-3 py-1.5 text-xs font-bold"><img data-plant-id="kaktus" alt="Kaktus" loading="lazy" class="w-5 h-5 rounded-full object-cover">Kaktus</span>
+          <span class="inline-flex items-center gap-1.5 bg-white rounded-full px-3 py-1.5 text-xs font-bold"><img data-plant-id="selada" alt="Selada" loading="lazy" class="w-5 h-5 rounded-full object-cover">Selada</span>
+          <span class="inline-flex items-center gap-1.5 bg-[#8BCB8A] text-white rounded-full px-3 py-1.5 text-xs font-bold"><img data-plant-id="basil" alt="Basil" loading="lazy" class="w-5 h-5 rounded-full object-cover">Basil</span>
         </div>
 
         <!-- Garden Pulse mini -->
@@ -163,7 +145,7 @@ tailwind.config={
           <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">📚</div>
           <div><p class="font-black text-sm">18 Panduan</p><p class="text-xs opacity-70">Belajar step-by-step</p></div>
         </div>
-        <div class="fv-card pink p-4 flex items-center gap-3 text-white">
+        <div class="fv-card pink p-4 flex items-center gap-3">
           <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">👥</div>
           <div><p class="font-black text-sm">100+ Komunitas</p><p class="text-xs opacity-90">Sesuai hobi</p></div>
         </div>
@@ -177,14 +159,14 @@ tailwind.config={
   <div class="fv-card blue p-6 sm:p-8 flex flex-col lg:flex-row items-center gap-6 relative overflow-hidden">
     <div class="blob bg-white w-64 h-64 -right-16 -top-16 opacity-10"></div>
     <div class="flex-1 relative z-10">
-      <span class="pill bg-white text-[#3B82F6] font-black">✨ Killer Feature #1</span>
-      <h2 class="text-[28px] sm:text-[32px] font-black leading-tight mt-3 text-white">Bingung mau tanam apa?<br>Coba <span class="underline decoration-white/40 decoration-4 underline-offset-4">Plant Match</span></h2>
-      <p class="text-white/90 mt-2 max-w-[560px]">Jawab 4 pertanyaan singkat - kami rekomendasikan tanaman dengan skor kecocokan personal. Seperti quiz, tapi untuk kebun.</p>
+      <span class="pill bg-white text-[#3B82F6] font-black">✨ Fitur Unggulan</span>
+      <h2 class="text-[28px] sm:text-[32px] font-black leading-tight mt-3">Bingung mau tanam apa?<br>Coba <span class="underline decoration-charcoal/40 decoration-4 underline-offset-4">Plant Match</span></h2>
+      <p class="mt-2 max-w-[560px]">Jawab 4 pertanyaan singkat - kami rekomendasikan tanaman dengan skor kecocokan personal. Seperti quiz, tapi untuk kebun.</p>
       <div class="flex flex-wrap gap-2 mt-4 text-xs font-bold">
-        <span class="bg-white/20 text-white px-3 py-1.5 rounded-full">☀️ Cahaya</span>
-        <span class="bg-white/20 text-white px-3 py-1.5 rounded-full">🏠 Lokasi</span>
-        <span class="bg-white/20 text-white px-3 py-1.5 rounded-full">⏱️ Waktu rawat</span>
-        <span class="bg-white/20 text-white px-3 py-1.5 rounded-full">🎯 Tujuan</span>
+        <span class="bg-white/50 px-3 py-1.5 rounded-full">☀️ Cahaya</span>
+        <span class="bg-white/50 px-3 py-1.5 rounded-full">🏠 Lokasi</span>
+        <span class="bg-white/50 px-3 py-1.5 rounded-full">⏱️ Waktu rawat</span>
+        <span class="bg-white/50 px-3 py-1.5 rounded-full">🎯 Tujuan</span>
       </div>
     </div>
     <div class="relative z-10 w-full lg:w-[420px] bg-white rounded-[24px] p-5 text-charcoal">
@@ -262,7 +244,7 @@ tailwind.config={
     </div>
 
     <!-- Plant Journey teaser -->
-    <div class="lg:col-span-7 fv-card yellow p-6 sm:p-8 relative overflow-hidden">
+    <div class="lg:col-span-7 fv-card white p-6 sm:p-8 relative overflow-hidden">
       <span class="pill bg-white text-charcoal font-black">🌱 Plant Journey</span>
       <h3 class="text-xl sm:text-2xl font-black mt-2 leading-tight">Ubah proses berkebun jadi<br>perjalanan yang menyenangkan</h3>
       <p class="text-sm opacity-70 mt-1">Setiap tanaman punya timeline: Seed  Harvest dengan task harian.</p>
@@ -342,10 +324,10 @@ tailwind.config={
       </div>
       <div class="lg:w-[380px] bg-[#FFF7ED] border-2 border-[#FFD5BF] rounded-[24px] p-5">
         <p class="font-black flex items-center gap-2">👥 Peserta Terbaru</p>
-        <div class="space-y-2 mt-3">
-          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#FFD45C] flex items-center justify-center font-black text-xs">IZ</span><div class="flex-1"><p class="font-bold text-sm">Izra - Day 18</p><p class="text-xs text-muted">Cabai Rawit • Healthy</p></div><span class="text-xs font-black text-[#8BCB8A]">✓</span></div>
-          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#FF718D] flex items-center justify-center font-black text-xs text-white">FA</span><div class="flex-1"><p class="font-bold text-sm">Fairuz - Day 22</p><p class="text-xs text-muted">Tomat Cherry • Flowering</p></div><span class="text-xs font-black text-[#8BCB8A]">✓</span></div>
-          <div class="flex items-center gap-2 bg-white rounded-xl p-2.5"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] flex items-center justify-center font-black text-xs text-white">TA</span><div class="flex-1"><p class="font-bold text-sm">Tafayad - Day 15</p><p class="text-xs text-muted">Kangkung • Growing</p></div><span class="text-xs font-black text-[#6FA8FF]">●</span></div>
+        <div class="space-y-3 mt-3">
+          <div class="flex items-center gap-3 bg-white rounded-xl p-3"><span class="w-9 h-9 rounded-full bg-[#FFD45C] flex items-center justify-center font-black text-xs">IZ</span><div class="flex-1"><p class="font-bold text-sm">Izra - Day 18</p><p class="text-xs text-muted">Cabai Rawit • Healthy</p></div><span class="text-xs font-black text-[#8BCB8A]">✓</span></div>
+          <div class="flex items-center gap-3 bg-white rounded-xl p-3"><span class="w-9 h-9 rounded-full bg-[#FF718D] flex items-center justify-center font-black text-xs text-white">FA</span><div class="flex-1"><p class="font-bold text-sm">Fairuz - Day 22</p><p class="text-xs text-muted">Tomat Cherry • Flowering</p></div><span class="text-xs font-black text-[#8BCB8A]">✓</span></div>
+          <div class="flex items-center gap-3 bg-white rounded-xl p-3"><span class="w-9 h-9 rounded-full bg-[#8BCB8A] flex items-center justify-center font-black text-xs text-white">TA</span><div class="flex-1"><p class="font-bold text-sm">Tafayad - Day 15</p><p class="text-xs text-muted">Kangkung • Growing</p></div><span class="text-xs font-black text-[#6FA8FF]">●</span></div>
         </div>
         <button onclick="toast('Journal dibagikan ke challenge','↗')" class="btn btn-dark w-full mt-3 text-sm">↗ Bagikan Journal ke Challenge</button>
       </div>
@@ -355,41 +337,32 @@ tailwind.config={
 
 <!-- LEARNING preview -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 reveal">
-  <div class="flex items-end justify-between">
-    <div>
-      <span class="pill pill-yellow">📚 Ruang Belajar</span>
-      <h2 class="text-[24px] sm:text-[28px] font-black mt-2">Belajar Tanpa Ribet</h2>
-      <p class="text-muted text-sm">18 panduan terkurasi, dari pemula hingga menengah.</p>
+  <div class="fv-card white p-6 sm:p-8 relative overflow-hidden">
+    <div class="flex items-end justify-between">
+      <div>
+        <span class="pill pill-yellow">📚 Ruang Belajar</span>
+        <h2 class="text-[24px] sm:text-[28px] font-black mt-2">Belajar Tanpa Ribet</h2>
+        <p class="text-muted text-sm">18 panduan terkurasi, dari pemula hingga menengah.</p>
+      </div>
+      <a href="learn.html" class="hidden sm:inline-flex btn btn-ghost">Lihat semua </a>
     </div>
-    <a href="learn.html" class="hidden sm:inline-flex btn btn-ghost">Lihat semua </a>
+    <div id="homeGuides" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5"></div>
   </div>
-  <div id="homeGuides" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5"></div>
 </section>
-
+  </div>
+</section>
 <!-- SHOP preview -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 reveal">
-  <div class="fv-card orange p-6 sm:p-8 relative overflow-hidden">
+  <div class="fv-card white p-6 sm:p-8 relative overflow-hidden">
     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 relative z-10">
       <div>
-        <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop</span>
-        <h2 class="text-[24px] sm:text-[28px] font-black mt-2 text-white">Semua kebutuhan berkebun, satu keranjang.</h2>
-        <p class="text-white/90 text-sm mt-1">Benih, pot, media, pupuk, alat - plus Smart Garden Basket yang merekomendasikan kit sesuai tanamanmu.</p>
+        <span class="pill bg-white text-[#E56A2E] font-black border border-gray-200">🛒 FloraShop</span>
+        <h2 class="text-[24px] sm:text-[28px] font-black mt-2">Semua kebutuhan berkebun, satu keranjang.</h2>
+        <p class="text-sm mt-1">Benih, pot, media, pupuk, alat - plus Smart Garden Basket yang merekomendasikan kit sesuai tanamanmu.</p>
       </div>
       <a href="shop.html" class="btn bg-white text-charcoal px-6 py-3">Belanja sekarang </a>
     </div>
-    <div id="homeProducts" class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6 relative z-10"></div>
-
-    <!-- Smart Basket teaser -->
-    <div class="bg-white rounded-[24px] p-5 mt-6 flex flex-col lg:flex-row items-center gap-4 relative z-10">
-      <div class="flex-1">
-        <p class="font-black flex items-center gap-2">🎁 Chili Starter Kit <span class="pill pill-orange text-xs">Hemat 15%</span></p>
-        <p class="text-sm text-muted">Rekomendasi otomatis jika kamu memilih menanam cabai.</p>
-        <ul class="text-sm mt-2 space-y-1">
-          <li class="flex justify-between"><span>Benih Cabai • Pot 20cm • Media Tanam • Pupuk Organik</span><span class="font-black">Rp65.000</span></li>
-        </ul>
-      </div>
-      <button onclick="addToCart('chili-starter-kit-bundling')" class="btn btn-orange whitespace-nowrap">Tambahkan Semua </button>
-    </div>
+    <div id="homeProducts" class="grid grid-cols-2 lg:grid-cols-5 gap-3 mt-6 relative z-10"></div>
   </div>
 </section>
 
@@ -504,6 +477,7 @@ tailwind.config={
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
+<script src="js/utils.js"></script>
 <script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>
@@ -574,11 +548,13 @@ $(function(){
     </div>
   `).join(''));
 
-  // Products 4
+  // Products 4 + Chili Starter Kit bundle card
   const pr4 = PRODUCTS.slice(0,4);
-  $('#homeProducts').html(pr4.map(p=> `
+  const chiliBundle = {id:'chili-starter-kit-bundling', nama:'Chili Starter Kit', kategori:'Bundling', harga:65000, rating:4.8, ulas:89, badge:'Bundle', emoji:'🌶️', stok:15};
+  const allHomeProducts = [...pr4, chiliBundle];
+  $('#homeProducts').html(allHomeProducts.map(p=> `
     <div class="bg-white rounded-2xl p-4 flex gap-3 items-center">
-      <div class="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden flex-shrink-0">${fvImg(p,'w-full h-full object-cover')}</div>
+      <div class="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden flex-shrink-0">${p.id==='chili-starter-kit-bundling'?'<span class="text-2xl">🌶️</span>':fvImg(p,'w-full h-full object-cover')}</div>
       <div class="flex-1 min-w-0">
         <p class="font-bold text-sm leading-tight truncate">${p.nama}</p>
         <p class="text-xs text-muted">${p.kategori} • ★ ${p.rating}</p>

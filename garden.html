@@ -25,14 +25,17 @@
 </nav>
 
 <header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-  <div class="fv-card green p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden">
+  <div class="fv-card p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden" style="border-color:rgba(255,255,255,0.6);">
+    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+      <source src="asset/garden-grow.mp4" type="video/mp4">
+    </video>
     <div class="flex-1 relative z-10">
       <span class="pill bg-white text-[#2F7A2E] font-black">🌿 Kebunku • 6 Tanaman</span>
-      <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Kebun digitalmu,<br>terpantau setiap hari.</h1>
-      <p class="text-white/90 text-sm mt-2 max-w-[520px]">Plant Journey mengubah proses berkebun jadi perjalanan visual: task harian, progress, dan jurnal.</p>
+      <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white" style="text-shadow:2px 2px 12px rgba(0,0,0,0.5)">Kebun digitalmu,<br>terpantau setiap hari.</h1>
+      <p class="text-white/90 text-sm mt-2 max-w-[520px]" style="text-shadow:1px 1px 8px rgba(0,0,0,0.4)">Plant Journey mengubah proses berkebun jadi perjalanan visual: task harian, progress, dan jurnal.</p>
       <div class="flex gap-2 mt-4">
          <button onclick="$('#addPlantModal').addClass('open')" class="btn bg-white text-charcoal font-black px-5">Tambah Tanaman</button>
-        <span class="pill bg-white/20 text-white">Izra • Lv 8 • 340 XP</span>
+        <span class="pill bg-white/80 text-charcoal">Izra • Lv 8 • 340 XP</span>
       </div>
     </div>
     <div class="lg:w-[420px] bg-white rounded-[24px] p-5 relative z-10">
@@ -63,9 +66,8 @@
 </section>
 
 <!-- Journey detail -->
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid lg:grid-cols-12 gap-6 pb-10">
-  <div class="lg:col-span-7 fv-card white p-6 sm:p-7">
-    <div class="flex items-center gap-3">
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid lg:grid-cols-12 gap-6 pb-10 items-start">
+  <div class="lg:col-span-7 fv-card white p-6 sm:p-7">    <div class="flex items-center gap-3">
        <div id="detailEmoji" class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden"></div>
       <div>
         <h3 id="detailName" class="font-black text-lg leading-none">Cabai Rawit - Day 28</h3>
@@ -131,7 +133,7 @@
   </div>
 
   <!-- Journal & tips -->
-  <div class="lg:col-span-5 space-y-4">
+  <div class="lg:col-span-5 space-y-4 lg:sticky lg:top-[76px] lg:self-start lg:max-h-[calc(100vh-76px)] lg:overflow-y-auto lg:sidebar-scroll">
     <div class="fv-card white p-5">
       <p class="font-black">📝 Plant Journal</p>
       <p class="text-xs text-muted">Dokumentasikan perkembangan - seperti story kebun.</p>
@@ -199,6 +201,7 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
+<script src="js/utils.js"></script>
 <script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>
@@ -233,7 +236,7 @@ function renderMyPlants(){
         <span class="pill text-xs font-black ${g.health==='Healthy'?'pill-green':g.health==='Needs Water'?'bg-[#6FA8FF] text-white':g.health==='Needs Fertilizer'?'bg-[#FF9B70] text-white':'pill-yellow'}">${g.health}</span>
       </div>
       <div class="flex gap-2 mt-3 items-center">
-        <div class="flex-1 progress-track"><div class="progress-fill" style="width:${g.progress}%; background:${g.color}"></div></div>
+        <div class="flex-1 progress-track"><div class="progress-fill" style="width:${g.progress}%; background:${g.health==='Healthy'?'#8BCB8A':g.health==='Needs Water'?'#6FA8FF':g.health==='Needs Fertilizer'?'#FF9B70':'#FFD45C'}"></div></div>
         <span class="text-xs font-black">${g.progress}%</span>
       </div>
       <div class="flex gap-1.5 mt-2 flex-wrap">
@@ -254,7 +257,7 @@ function renderDetail(){
   const plant=PLANTS.find(p=>p.id===g.plantId);
   $('#detailSub').text(`${plant?plant.ilmiah:''} • ${g.stage} • ${g.progress}%`);
   $('#detailHealth').text(g.health).attr('class', 'ml-auto pill text-xs font-black ' + (g.health==='Healthy'?'pill-green':g.health==='Needs Water'?'bg-[#6FA8FF] text-white':'bg-[#FF9B70] text-white'));
-  $('#detailProgress').css('width', g.progress+'%').css('background', g.color);
+  $('#detailProgress').css('width', g.progress+'%').css('background', g.health==='Healthy'?'#8BCB8A':g.health==='Needs Water'?'#6FA8FF':g.health==='Needs Fertilizer'?'#FF9B70':'#FFD45C');
   $('#detailProgressText').text(g.progress+'%');
   $('#detailWater').text(g.water);
   $('#detailLight').text(g.light);
