@@ -349,6 +349,17 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
   border-radius:24px; position:relative; overflow:hidden; display:flex; align-items:flex-end; justify-content:center;
 }
 
+/* Homepage navigation hub items */
+.nav-hub-item{
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  padding:1.5rem 1rem; border-radius:18px; background:#FAFAFA; border:1.5px solid #F0F0F0;
+  transition:all .25s cubic-bezier(.2,.8,.2,1); cursor:pointer; text-decoration:none; color:var(--charcoal);
+}
+.nav-hub-item:hover{
+  background:#fff; border-color:#E5E7EB;
+  transform:translateY(-3px); box-shadow:0 12px 32px rgba(37,37,37,.08);
+}
+
 /* Compact product UI: preserve every feature while reducing visual noise. */
 :root{
   --card-shadow:0 4px 18px rgba(37,37,37,.055);
