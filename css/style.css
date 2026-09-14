@@ -32,7 +32,6 @@ input[type="text"], input[type="search"], input[type="email"], input[type="passw
 
 /* Text cursor for readable content, but NOT inside interactive elements */
 :where(button, a[href], [role="button"], .btn, .cat-pill, .nav-link, .fv-select-btn, .fv-select-option, .menu-toggle, .mobile-nav-panel .nav-link, .mobile-profile-chip) * { cursor: inherit; }
-:where(h1,h2,h3,h4,h5,h6,p,span,label,small,li,td,th,figcaption,.text-muted):not([contenteditable]) { cursor: text; }
 
 /* Wordmark */
 .wordmark{font-family:'Nunito', sans-serif; font-weight:800; letter-spacing:-0.04em; color:var(--charcoal);}
