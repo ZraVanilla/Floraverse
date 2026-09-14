@@ -302,6 +302,14 @@ body.is-leaving{animation:pageLeave .18s ease-in forwards; pointer-events:none;}
 .drawer-backdrop{position:fixed; inset:0; background:rgba(37,37,37,.35); backdrop-filter:blur(4px); display:none; z-index:60}
 .drawer-backdrop.open{display:block}
 
+/* Inline Comment Section */
+.comment-section{max-height:0;overflow:hidden;transition:max-height .3s cubic-bezier(.4,0,.2,1)}
+.comment-section>.comment-section-inner{opacity:0;transform:translateY(-4px);transition:opacity .25s ease .05s,transform .3s ease .05s}
+.comment-section.open>.comment-section-inner{opacity:1;transform:translateY(0)}
+.comment-btn.active{background:#EFF6FF;border-color:#6FA8FF;color:#6FA8FF}
+.comment-chevron{display:inline-block;transition:transform .2s ease}
+.comment-chevron.open{transform:rotate(180deg)}
+
 /* Progress */
 .progress-track{background:#F3F4F6; border-radius:999px; height:8px; overflow:hidden}
 .progress-fill{height:100%; border-radius:999px; transition:width .6s ease}

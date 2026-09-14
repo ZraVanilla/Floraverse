@@ -126,9 +126,6 @@
   </div>
 </div>
 
-<!-- Comment Modal -->
-<div id="commentModal" class="modal-backdrop"><div class="modal p-6"><div id="commentContent"></div></div></div>
-
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
 <div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran</button></div></div>
 <div id="toastBox"></div>
@@ -148,6 +145,9 @@
 let activeCommFilter="all";
 let activeFeedTab="semua";
 let feedPosts=[...POSTS];
+const expandedComments=new Set();
+const fullyExpandedComments=new Set();
+const PREVIEW_COUNT=3;
 
 function renderCommsSidebar(){
   let list=COMMUNITIES.slice(0,8);
@@ -177,8 +177,17 @@ function renderFeed(){
     list=list.filter(p=> p.community===window._feedCommFilter);
   }
 
+  const chevronBase=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="comment-chevron`;
+  const chevronTail=`"><polyline points="6 9 12 15 18 9"/></svg>`;
+
   $('#feedList').html(list.map(p=>{
     const comm=COMMUNITIES.find(c=>c.id===p.community);
+    const isExpanded=expandedComments.has(p.id);
+    const isFull=fullyExpandedComments.has(p.id);
+    const comments=DUMMY_COMMENTS[p.id]||[];
+    const visible=isFull?comments:comments.slice(0,PREVIEW_COUNT);
+    const hidden=comments.length-PREVIEW_COUNT;
+    const chevronSvg=chevronBase+(isFull?' open':'')+chevronTail;
     return `
     <div class="fv-card white p-4 sm:p-5">
       <div class="flex items-center gap-3">
@@ -194,18 +203,49 @@ function renderFeed(){
       <div class="bg-gray-50 rounded-2xl mt-3 overflow-hidden">
         <div class="w-full aspect-video bg-white flex items-center justify-center overflow-hidden">${p.plantId ? fvImg(PLANTS.find(x=>x.id===p.plantId),'w-full h-full object-cover') : `<span class="text-4xl">${p.image||'🌱'}</span>`}</div>
         <div class="p-3 flex items-center gap-3">
-          <span class="text-xs text-muted">${p.likes} suka • ${p.comments} komentar</span>
+          <span class="text-xs text-muted">${p.likes} suka • ${comments.length} komentar</span>
         </div>
       </div>
       <div class="flex gap-2 mt-3">
         <button onclick="toggleLike(this)" class="flex-1 py-2 rounded-full border bg-white font-bold text-sm flex items-center justify-center gap-1.5 ${p.liked?'liked bg-[#FF718D] text-white border-[#FF718D]':''}"><span>♥</span> <span class="cnt">${p.likes}</span> Suka</button>
-        <button onclick="openComments('${p.id}')" class="flex-1 py-2 rounded-full border bg-white font-bold text-sm">💬 ${p.comments} Komentar</button>
+        <button onclick="toggleComments('${p.id}')" class="comment-btn flex-1 py-2 rounded-full border bg-white font-bold text-sm flex items-center justify-center gap-1.5 ${isExpanded?'active':''}">💬 ${comments.length} Komentar</button>
         <button onclick="toggleSave(this)" class="px-4 py-2 rounded-full border bg-white font-bold text-sm ${p.saved?'saved bg-[#FFD45C]':''}">🔖 Simpan</button>
         <button onclick="sharePost(this)" class="px-4 py-2 rounded-full border bg-white font-bold text-sm">↗ Bagikan</button>
+      </div>
+      <div class="comment-section${isExpanded?' open':''}" data-comments="${p.id}"${isExpanded?' style="max-height:none"':''}>
+        <div class="comment-section-inner">
+          <div class="border-t border-gray-100 mt-3 pt-3">
+            <div class="flex gap-2 mb-3">
+              <span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs flex-shrink-0">IZ</span>
+              <input id="ci-${p.id}" placeholder="Tulis komentar..." class="flex-1 px-4 py-2.5 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#6FA8FF] outline-none text-sm">
+              <button onclick="submitInlineComment('${p.id}')" class="btn btn-primary px-4 py-2 text-sm flex-shrink-0">Kirim</button>
+            </div>
+            <div class="space-y-2.5">
+              ${visible.map(c=>`
+                <div class="flex gap-2">
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center font-black text-xs text-white flex-shrink-0" style="background:${c.color}">${c.avatar}</span>
+                  <div class="bg-gray-50 rounded-2xl px-3 py-2 flex-1 min-w-0">
+                    <p class="font-bold text-xs">${c.user}</p>
+                    <p class="text-sm break-words">${c.text}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+            ${hidden>0?`
+            <button onclick="toggleShowMore('${p.id}')" class="w-full text-center text-xs font-bold text-[#6FA8FF] mt-2 py-1.5 hover:bg-gray-50 rounded-lg transition flex items-center justify-center gap-1.5">
+              ${chevronSvg} <span>${isFull?'Lihat lebih sedikit':'Lihat '+hidden+' komentar lainnya'}</span>
+            </button>
+            `:''}
+          </div>
+        </div>
       </div>
     </div>
     `;
   }).join(''));
+
+  requestAnimationFrame(()=>{
+    document.querySelectorAll('.comment-section.open').forEach(s=>{ s.style.maxHeight='none'; });
+  });
 }
 
 window.filterFeedByComm=function(id){
@@ -215,33 +255,54 @@ window.filterFeedByComm=function(id){
   renderFeed();
   $('html,body').animate({scrollTop: $('#feedList').offset().top - 80}, 300);
 }
-window.openComments=function(id){
-  const p=feedPosts.find(x=>x.id===id);
-  const comm=COMMUNITIES.find(c=>c.id===p.community);
-  $('#commentContent').html(`
-    <div class="flex items-center justify-between"><p class="font-black text-lg">💬 Komentar</p><button onclick="$('#commentModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div>
-    <div class="fv-card white p-4 mt-4">
-      <div class="flex gap-2"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">${p.avatar}</span><div><p class="font-bold text-sm">${p.user}</p><p class="text-sm">${p.content}</p></div></div>
-    </div>
-    <div class="space-y-3 mt-4 max-h-[32vh] overflow-auto pr-1">
-      <div class="flex gap-2"><span class="w-8 h-8 rounded-full bg-[#FFD45C] flex items-center justify-center font-black text-xs">FA</span><div class="bg-gray-50 rounded-2xl px-3 py-2 flex-1"><p class="font-bold text-xs">Fairuz</p><p class="text-sm">Keren Izra! Coba kasih pupuk K tinggi biar buah lebat 🌶️</p></div></div>
-      <div class="flex gap-2"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] text-white flex items-center justify-center font-black text-xs">TA</span><div class="bg-gray-50 rounded-2xl px-3 py-2 flex-1"><p class="font-bold text-xs">Tafayad</p><p class="text-sm">Gue juga nanam cabai di polybag, 70 hari udah panen pertama.</p></div></div>
-    </div>
-    <div class="flex gap-2 mt-4">
-      <span class="w-9 h-9 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span>
-      <input id="commentInput" placeholder="Tulis komentar..." class="flex-1 px-4 py-2.5 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white outline-none">
-      <button onclick="submitComment('${id}')" class="btn btn-primary px-5">Kirim</button>
-    </div>
-  `);
-  $('#commentModal').addClass('open');
+
+window.toggleComments=function(postId){
+  const section=document.querySelector(`.comment-section[data-comments="${postId}"]`);
+  if(!section) return;
+  const inner=section.querySelector('.comment-section-inner');
+  const card=section.closest('.fv-card');
+
+  if(expandedComments.has(postId)){
+    section.style.maxHeight=inner.scrollHeight+'px';
+    void section.offsetHeight;
+    section.style.maxHeight='0';
+    section.classList.remove('open');
+    expandedComments.delete(postId);
+  } else {
+    section.classList.add('open');
+    section.style.maxHeight=inner.scrollHeight+'px';
+    expandedComments.add(postId);
+    const onEnd=()=>{
+      if(section.classList.contains('open')) section.style.maxHeight='none';
+      section.removeEventListener('transitionend',onEnd);
+    };
+    section.addEventListener('transitionend',onEnd);
+  }
+
+  if(card){
+    const btn=card.querySelector('.comment-btn');
+    if(btn) btn.classList.toggle('active',expandedComments.has(postId));
+  }
 }
-window.submitComment=function(id){
-  const v=$('#commentInput').val().trim();
-  if(!v) return;
+
+window.submitInlineComment=function(postId){
+  const input=document.getElementById('ci-'+postId);
+  if(!input) return;
+  const text=input.value.trim();
+  if(!text) return;
+  if(!DUMMY_COMMENTS[postId]) DUMMY_COMMENTS[postId]=[];
+  DUMMY_COMMENTS[postId].push({user:'Izra',avatar:'IZ',color:'#6FA8FF',text:text});
+  const post=feedPosts.find(p=>p.id===postId);
+  if(post) post.comments++;
+  expandedComments.add(postId);
+  fullyExpandedComments.add(postId);
+  renderFeed();
   toast('Komentar ditambahkan','💬');
-  const p=feedPosts.find(x=>x.id===id);
-  p.comments++;
-  $('#commentModal').removeClass('open');
+}
+
+window.toggleShowMore=function(postId){
+  if(fullyExpandedComments.has(postId)) fullyExpandedComments.delete(postId);
+  else fullyExpandedComments.add(postId);
   renderFeed();
 }
 
@@ -273,7 +334,13 @@ $(function(){
     toast('Postingan berhasil dibuat','🎉');
     renderFeed();
   });
-  $('#createPostModal, #commentModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
+  $('#createPostModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
+  $(document).on('keydown','[id^="ci-"]',function(e){
+    if(e.key==='Enter'){
+      e.preventDefault();
+      submitInlineComment(this.id.replace('ci-',''));
+    }
+  });
 });
 </script>
 </body>
