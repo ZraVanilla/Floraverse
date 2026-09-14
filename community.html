@@ -379,6 +379,8 @@ $(function(){
   $('#rulesModal').on('click', function(e){ if(e.target===this) closeRulesModal(); });
   // Reset sidebar scroll to top on page load
   document.querySelector('.community-sidebar')?.scrollTo(0,0);
+  // Clear body transform after page-enter animation so position:fixed modals work correctly
+  setTimeout(()=>{ document.body.style.transform='none'; }, 350);
   $(document).on('keydown','[id^="ci-"]',function(e){
     if(e.key==='Enter'){
       e.preventDefault();
