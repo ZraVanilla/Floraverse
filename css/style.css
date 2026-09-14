@@ -270,10 +270,12 @@ select {
 body{animation:pageEnter .3s cubic-bezier(.2,.8,.2,1) both;}
 body.is-leaving{animation:pageLeave .18s ease-in forwards; pointer-events:none;}
 
-/* Scrollbar */
-::-webkit-scrollbar{width:8px; height:8px}
-::-webkit-scrollbar-thumb{background:#E5E7EB; border-radius:999px}
-::-webkit-scrollbar-thumb:hover{background:#D1D5DB}
+/* Scrollbar — thin, subtle, consistent across all pages */
+html{scrollbar-width:thin; scrollbar-color:#D1D5DB transparent}
+::-webkit-scrollbar{width:5px; height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#D1D5DB; border-radius:999px}
+::-webkit-scrollbar-thumb:hover{background:#BDC3C9}
 
 /* Sidebar independent scroll — thin scrollbar, smooth behavior */
 .sidebar-scroll{scrollbar-width:thin; scrollbar-color:#D1D5DB transparent; scroll-behavior:smooth; overscroll-behavior:contain}

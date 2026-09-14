@@ -27,7 +27,7 @@
   <main class="community-main lg:col-span-8 space-y-4">
 
     <!-- Hero -->
-    <div class="fv-card p-6 relative overflow-hidden" style="background: url('asset/community_page.gif') center/cover no-repeat;">
+    <div class="fv-card p-5 sm:p-6 relative overflow-hidden" style="background: url('asset/community_page.gif') center/cover no-repeat;">
       <div class="relative z-10">
         <span class="pill bg-white text-[#FF4D6D] font-black">👥 Komunitas • 12 Grup</span>
         <h1 class="text-[28px] sm:text-[32px] font-black leading-tight mt-2 text-white" style="text-shadow:2px 2px 12px rgba(0,0,0,0.5)">Bertumbuh bareng<br>yang sepemikiran.</h1>
@@ -36,11 +36,16 @@
           <button onclick="$('#createPostModal').addClass('open')" class="btn bg-white text-charcoal font-black px-5 text-sm">✏️ Buat Postingan</button>
           <span class="pill bg-white/80 text-charcoal text-xs">Aktif harian • Moderasi ramah</span>
         </div>
+        <div class="flex gap-3 mt-4">
+          <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">12</p><p class="text-white/80 text-[10px] font-bold">Grup</p></div>
+          <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">14K+</p><p class="text-white/80 text-[10px] font-bold">Anggota</p></div>
+          <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">4K+</p><p class="text-white/80 text-[10px] font-bold">Post</p></div>
+        </div>
       </div>
     </div>
 
     <!-- Search & Filter -->
-    <div class="fv-card white p-5">
+    <div class="fv-card white p-4">
       <p class="font-black">🔍 Cari Komunitas</p>
       <div class="relative mt-2"><input id="searchComm" type="search" placeholder="Cari pecinta cabai, hidroponik..." class="w-full pl-4 pr-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#FF718D] outline-none font-medium text-sm"></div>
       <div class="flex gap-1.5 mt-3 flex-wrap">
@@ -126,6 +131,24 @@
   </div>
 </div>
 
+<!-- Rules Modal (one-time onboarding) -->
+<div id="rulesModal" class="modal-backdrop">
+  <div class="modal p-6">
+    <div class="flex items-center justify-between"><p class="font-black text-lg">💡 Aturan Komunitas</p><button onclick="closeRulesModal()" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div>
+    <p class="text-sm text-muted mt-3">Sebelum bergabung, silakan baca dan setuju aturan berikut:</p>
+    <ul class="text-sm mt-3 space-y-2 list-disc pl-5">
+      <li>Saling support, no judge untuk pemula</li>
+      <li>Foto tanaman wajib pakai caption jelas</li>
+      <li>Dilarang jualan di feed (pakai FloraShop)</li>
+      <li>Gunakan tag #cabai #hidroponik biar mudah dicari</li>
+    </ul>
+    <div class="flex gap-2 mt-5">
+      <button onclick="closeRulesModal()" class="flex-1 py-2.5 rounded-full border border-[#252525] bg-white font-bold text-sm">Batal</button>
+      <button onclick="acceptRulesAndJoin()" class="flex-1 py-2.5 rounded-full bg-[#252525] text-white font-bold text-sm">Setuju & Bergabung</button>
+    </div>
+  </div>
+</div>
+
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
 <div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran</button></div></div>
 <div id="toastBox"></div>
@@ -162,7 +185,7 @@ function renderCommsSidebar(){
         <p class="font-bold text-sm leading-tight truncate">${c.nama}</p>
         <p class="text-[11px] text-muted">${c.kategori} • ${c.members.toLocaleString('id-ID')} members</p>
       </div>
-      <span class="pill text-[10px] font-black flex-shrink-0" style="background:${c.color};color:#fff">${c.kategori}</span>
+      <button onclick="event.stopPropagation();joinCommunity('${c.id}')" class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-[#252525] text-white hover:opacity-80 transition flex-shrink-0">Gabung</button>
     </div>
   `).join(''));
 }
@@ -306,6 +329,24 @@ window.toggleShowMore=function(postId){
   renderFeed();
 }
 
+window.joinCommunity=function(commId){
+  if(localStorage.getItem('fv_community_rules_accepted')){
+    toast('Bergabung ke komunitas!','🎉');
+    return;
+  }
+  window._pendingJoinComm=commId;
+  $('#rulesModal').addClass('open');
+}
+window.acceptRulesAndJoin=function(){
+  localStorage.setItem('fv_community_rules_accepted','1');
+  $('#rulesModal').removeClass('open');
+  toast('Bergabung ke komunitas!','🎉');
+}
+window.closeRulesModal=function(){
+  $('#rulesModal').removeClass('open');
+  window._pendingJoinComm=null;
+}
+
 $(function(){
   renderCommsSidebar();
   renderFeed();
@@ -335,6 +376,9 @@ $(function(){
     renderFeed();
   });
   $('#createPostModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
+  $('#rulesModal').on('click', function(e){ if(e.target===this) closeRulesModal(); });
+  // Reset sidebar scroll to top on page load
+  document.querySelector('.community-sidebar')?.scrollTo(0,0);
   $(document).on('keydown','[id^="ci-"]',function(e){
     if(e.key==='Enter'){
       e.preventDefault();
