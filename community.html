@@ -20,42 +20,47 @@
   </div>
 </nav>
 
-<!-- Main 2-column layout -->
-<section class="community-layout max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid lg:grid-cols-12 gap-6 pb-10 items-start">
+<!-- Hero (full width) -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-4">
+
+  <!-- Hero -->
+  <div class="fv-card p-5 sm:p-6 relative overflow-hidden" style="background: url('asset/community_page.gif') center/cover no-repeat;">
+    <div class="relative z-10">
+      <span class="pill bg-white text-[#FF4D6D] font-black">👥 Komunitas • 12 Grup</span>
+      <h1 class="text-[28px] sm:text-[32px] font-black leading-tight mt-2 text-white" style="text-shadow:2px 2px 12px rgba(0,0,0,0.5)">Bertumbuh bareng<br>yang sepemikiran.</h1>
+      <p class="text-white/90 text-sm mt-2 max-w-[520px]" style="text-shadow:1px 1px 8px rgba(0,0,0,0.4)">Pilih komunitas berdasarkan tanaman, metode, atau hobi. Berbagi progress, tanya jawab, dan panen bareng.</p>
+      <div class="flex gap-2 mt-4">
+        <button onclick="$('#createPostModal').addClass('open')" class="btn bg-white text-charcoal font-black px-5 text-sm">✏️ Buat Postingan</button>
+        <span class="pill bg-white/80 text-charcoal text-xs">Aktif harian • Moderasi ramah</span>
+      </div>
+      <div class="flex gap-3 mt-4">
+        <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">12</p><p class="text-white/80 text-[10px] font-bold">Grup</p></div>
+        <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">14K+</p><p class="text-white/80 text-[10px] font-bold">Anggota</p></div>
+        <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">4K+</p><p class="text-white/80 text-[10px] font-bold">Post</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search & Filter -->
+  <div class="fv-card white p-4">
+    <p class="font-black">🔍 Cari Komunitas</p>
+    <div class="relative mt-2"><input id="searchComm" type="search" placeholder="Cari pecinta cabai, hidroponik..." class="w-full pl-4 pr-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#FF718D] outline-none font-medium text-sm"></div>
+    <div class="flex gap-1.5 mt-3 flex-wrap">
+      <button data-f="all" class="commFilter active px-3 py-1.5 rounded-full bg-charcoal text-white font-bold text-xs">Semua</button>
+      <button data-f="Tanaman" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🌱 Tanaman</button>
+      <button data-f="Metode" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🧪 Metode</button>
+      <button data-f="Hobi" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🎨 Hobi</button>
+    </div>
+    <p class="text-xs text-muted mt-3">Bergabung sebagai <b>Izra</b> • 4 komunitas diikuti</p>
+  </div>
+
+</section>
+
+<!-- 2-column: Feed + Sidebar -->
+<section class="community-layout max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 grid lg:grid-cols-12 gap-6 pb-10 items-start">
 
   <!-- LEFT: Main Content -->
   <main class="community-main lg:col-span-8 space-y-4">
-
-    <!-- Hero -->
-    <div class="fv-card p-5 sm:p-6 relative overflow-hidden" style="background: url('asset/community_page.gif') center/cover no-repeat;">
-      <div class="relative z-10">
-        <span class="pill bg-white text-[#FF4D6D] font-black">👥 Komunitas • 12 Grup</span>
-        <h1 class="text-[28px] sm:text-[32px] font-black leading-tight mt-2 text-white" style="text-shadow:2px 2px 12px rgba(0,0,0,0.5)">Bertumbuh bareng<br>yang sepemikiran.</h1>
-        <p class="text-white/90 text-sm mt-2 max-w-[520px]" style="text-shadow:1px 1px 8px rgba(0,0,0,0.4)">Pilih komunitas berdasarkan tanaman, metode, atau hobi. Berbagi progress, tanya jawab, dan panen bareng.</p>
-        <div class="flex gap-2 mt-4">
-          <button onclick="$('#createPostModal').addClass('open')" class="btn bg-white text-charcoal font-black px-5 text-sm">✏️ Buat Postingan</button>
-          <span class="pill bg-white/80 text-charcoal text-xs">Aktif harian • Moderasi ramah</span>
-        </div>
-        <div class="flex gap-3 mt-4">
-          <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">12</p><p class="text-white/80 text-[10px] font-bold">Grup</p></div>
-          <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">14K+</p><p class="text-white/80 text-[10px] font-bold">Anggota</p></div>
-          <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">4K+</p><p class="text-white/80 text-[10px] font-bold">Post</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Search & Filter -->
-    <div class="fv-card white p-4">
-      <p class="font-black">🔍 Cari Komunitas</p>
-      <div class="relative mt-2"><input id="searchComm" type="search" placeholder="Cari pecinta cabai, hidroponik..." class="w-full pl-4 pr-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#FF718D] outline-none font-medium text-sm"></div>
-      <div class="flex gap-1.5 mt-3 flex-wrap">
-        <button data-f="all" class="commFilter active px-3 py-1.5 rounded-full bg-charcoal text-white font-bold text-xs">Semua</button>
-        <button data-f="Tanaman" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🌱 Tanaman</button>
-        <button data-f="Metode" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🧪 Metode</button>
-        <button data-f="Hobi" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🎨 Hobi</button>
-      </div>
-      <p class="text-xs text-muted mt-3">Bergabung sebagai <b>Izra</b> • 4 komunitas diikuti</p>
-    </div>
 
     <!-- Feed -->
     <div>
