@@ -200,7 +200,6 @@
 <script src="js/app.js?v=3"></script>
 <script>
 let selectedGardenId = MY_GARDEN[0].id;
-const collapsedPlants = new Set();
 
 function renderPulse(){
   $('#pulseList').html(GARDEN_PULSE.map(p=> `
@@ -214,37 +213,25 @@ function renderPulse(){
 function renderMyPlants(){
   const filter=$('#filterGarden').val();
   let list=MY_GARDEN.filter(g=> !filter || g.health===filter);
-  $('#myPlantsGrid').html(list.map(g=> {
-    const collapsed = collapsedPlants.has(g.id);
-    return `
-    <div class="fv-card white p-4 cursor-pointer hover-lift ${g.id===selectedGardenId?'!border-[#6FA8FF] !shadow-lg':''}">
-      <div class="flex items-center gap-3" onclick="selectGarden('${g.id}')">
+  $('#myPlantsGrid').html(list.map(g=> `
+    <div onclick="selectGarden('${g.id}')" class="fv-card white p-4 cursor-pointer hover-lift ${g.id===selectedGardenId?'!border-[#6FA8FF] !shadow-lg':''}">
+      <div class="flex items-center gap-3">
         <div class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden" style="background:${g.color}18">${fvImg(PLANTS.find(x=>x.id===g.plantId),'w-full h-full object-cover')}</div>
         <div class="flex-1">
           <p class="font-black leading-none">${g.nama}</p>
           <p class="text-xs text-muted">Day ${g.day} • ${g.stage}</p>
         </div>
         <span class="pill text-xs font-black ${g.health==='Healthy'?'pill-green':g.health==='Needs Water'?'bg-[#6FA8FF] text-white':g.health==='Needs Fertilizer'?'bg-[#FF9B70] text-white':'pill-yellow'}">${g.health}</span>
-        <button onclick="event.stopPropagation(); togglePlantCollapse('${g.id}')" class="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 hover:bg-gray-200 transition" aria-label="${collapsed?'Tampilkan':'Sembunyikan'} detail">
-          <svg class="w-4 h-4 text-charcoal transition-transform ${collapsed?'rotate-180':''}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </button>
       </div>
-      <div class="collapsible-content ${collapsed?'collapsed':''}">
-        <div class="flex gap-2 mt-3 items-center">
-          <div class="flex-1 progress-track"><div class="progress-fill" style="width:${g.progress}%; background:${g.health==='Healthy'?'#8BCB8A':g.health==='Needs Water'?'#6FA8FF':g.health==='Needs Fertilizer'?'#FF9B70':'#FFD45C'}"></div></div>
-          <span class="text-xs font-black">${g.progress}%</span>
-        </div>
-        <div class="flex gap-1.5 mt-2 flex-wrap">
-          ${g.stages.map((s,i)=> `<span class="text-[10px] font-black px-2 py-1 rounded-full ${i<g.stageIndex?'bg-[#8BCB8A] text-white':i===g.stageIndex?'bg-[#6FA8FF] text-white':'bg-gray-100 text-muted'}">${s}</span>`).join('')}
-        </div>
+      <div class="flex gap-2 mt-3 items-center">
+        <div class="flex-1 progress-track"><div class="progress-fill" style="width:${g.progress}%; background:${g.health==='Healthy'?'#8BCB8A':g.health==='Needs Water'?'#6FA8FF':g.health==='Needs Fertilizer'?'#FF9B70':'#FFD45C'}"></div></div>
+        <span class="text-xs font-black">${g.progress}%</span>
       </div>
-    </div>`;
-  }).join(''));
-}
-function togglePlantCollapse(id){
-  if(collapsedPlants.has(id)) collapsedPlants.delete(id);
-  else collapsedPlants.add(id);
-  renderMyPlants();
+      <div class="flex gap-1.5 mt-2 flex-wrap">
+        ${g.stages.map((s,i)=> `<span class="text-[10px] font-black px-2 py-1 rounded-full ${i<g.stageIndex?'bg-[#8BCB8A] text-white':i===g.stageIndex?'bg-[#6FA8FF] text-white':'bg-gray-100 text-muted'}">${s}</span>`).join('')}
+      </div>
+    </div>
+  `).join(''));
 }
 function selectGarden(id){
   selectedGardenId=id;
