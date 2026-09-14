@@ -152,21 +152,6 @@
   </div>
 </section>
 
-<!-- Plant Lab full section (#24) -->
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-6">
-  <div class="fv-card white p-6 sm:p-7">
-    <div class="flex flex-wrap items-start justify-between gap-3">
-      <div>
-        <span class="pill pill-yellow font-black">🔬 Plant Lab - Simulasi Edukasi</span>
-        <h2 class="text-xl font-black mt-2">Uji coba sebelum tanam beneran.</h2>
-        <p class="text-sm text-muted">Atur parameter, lihat tanaman bereaksi secara simulasi. Hubungkan ke Garden Pulse & Journal.</p>
-      </div>
-      <select id="labGardenSelect" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm"></select>
-    </div>
-    <div id="plantLabRoot" class="mt-6"></div>
-  </div>
-</section>
-
 <!-- Ecosystem cross-link (#32) -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-6">
   <div class="fv-card blue p-6 flex flex-col sm:flex-row gap-4 items-center justify-between text-white">
@@ -398,10 +383,6 @@ $(function(){
   $('#searchAddPlant').on('input', function(){ renderAddPlantList(this.value); });
   $('#addPlantModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
   $('#plantLabModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
-  // Plant Lab init for garden page
-  $('#labGardenSelect').html(MY_GARDEN.map(g=>`<option value="${g.plantId}">${g.emoji} ${g.nama}</option>`).join(''));
-  renderPlantLab('plantLabRoot', MY_GARDEN[0].plantId);
-  $('#labGardenSelect').on('change', function(){ const id=$(this).val(); $('#plantLabRoot').data('setPlant')(id); });
 });
 </script>
 </body>
