@@ -504,7 +504,7 @@ $(function(){
     $b.removeClass('anim-save');
     void $b[0].offsetWidth;
     $b.addClass('anim-save');
-    if($b.hasClass('saved')){ $b.addClass('bg-[#8BCB8A] text-white border-[#8BCB8A]'); toast('Disimpan','🔖'); } else { $b.removeClass('bg-[#8BCB8A] text-white border-[#8BCB8A]'); toast('Dihapus dari simpanan',''); }
+    if($b.hasClass('saved')){ $b.addClass('bg-[#8BCB8A] text-white border-[#8BCB8A]').removeClass('bg-white border-[#252525]'); toast('Disimpan','🔖'); } else { $b.removeClass('bg-[#8BCB8A] text-white border-[#8BCB8A]').addClass('bg-white border-[#252525]'); toast('Dihapus dari simpanan',''); }
   };
   window.sharePost = function(el){
     const $b=$(el);
