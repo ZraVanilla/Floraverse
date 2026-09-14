@@ -90,17 +90,6 @@
       <div id="commSidebar" class="mt-3"></div>
     </div>
 
-    <!-- Aturan Komunitas -->
-    <div class="fv-card yellow p-5">
-      <p class="font-black">💡 Aturan Komunitas</p>
-      <ul class="text-sm mt-2 space-y-1.5 list-disc pl-5 opacity-80">
-        <li>Saling support, no judge untuk pemula</li>
-        <li>Foto tanaman wajib pakai caption jelas</li>
-        <li>Dilarang jualan di feed (pakai FloraShop)</li>
-        <li>Gunakan tag #cabai #hidroponik biar mudah dicari</li>
-      </ul>
-    </div>
-
     <!-- Anggota Aktif -->
     <div class="fv-card white p-5">
       <p class="font-black">✨ Anggota Aktif</p>
@@ -131,11 +120,11 @@
   </div>
 </div>
 
-<!-- Rules Modal (one-time onboarding) -->
+<!-- Rules Modal (page-load onboarding) -->
 <div id="rulesModal" class="modal-backdrop">
   <div class="modal p-6">
     <div class="flex items-center justify-between"><p class="font-black text-lg">💡 Aturan Komunitas</p><button onclick="closeRulesModal()" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div>
-    <p class="text-sm text-muted mt-3">Sebelum bergabung, silakan baca dan setuju aturan berikut:</p>
+    <p class="text-sm text-muted mt-3">Selamat datang di komunitas FloraVerse! Silakan baca dan setuju aturan berikut:</p>
     <ul class="text-sm mt-3 space-y-2 list-disc pl-5">
       <li>Saling support, no judge untuk pemula</li>
       <li>Foto tanaman wajib pakai caption jelas</li>
@@ -143,8 +132,8 @@
       <li>Gunakan tag #cabai #hidroponik biar mudah dicari</li>
     </ul>
     <div class="flex gap-2 mt-5">
-      <button onclick="closeRulesModal()" class="flex-1 py-2.5 rounded-full border border-[#252525] bg-white font-bold text-sm">Batal</button>
-      <button onclick="acceptRulesAndJoin()" class="flex-1 py-2.5 rounded-full bg-[#252525] text-white font-bold text-sm">Setuju & Bergabung</button>
+      <button onclick="window.location.href='index.html'" class="flex-1 py-2.5 rounded-full border border-[#252525] bg-white font-bold text-sm">Kembali</button>
+      <button onclick="closeRulesModal()" class="flex-1 py-2.5 rounded-full bg-[#252525] text-white font-bold text-sm">Setuju</button>
     </div>
   </div>
 </div>
@@ -329,22 +318,8 @@ window.toggleShowMore=function(postId){
   renderFeed();
 }
 
-window.joinCommunity=function(commId){
-  if(localStorage.getItem('fv_community_rules_accepted')){
-    toast('Bergabung ke komunitas!','🎉');
-    return;
-  }
-  window._pendingJoinComm=commId;
-  $('#rulesModal').addClass('open');
-}
-window.acceptRulesAndJoin=function(){
-  localStorage.setItem('fv_community_rules_accepted','1');
-  $('#rulesModal').removeClass('open');
-  toast('Bergabung ke komunitas!','🎉');
-}
 window.closeRulesModal=function(){
   $('#rulesModal').removeClass('open');
-  window._pendingJoinComm=null;
 }
 
 $(function(){
@@ -377,6 +352,8 @@ $(function(){
   });
   $('#createPostModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
   $('#rulesModal').on('click', function(e){ if(e.target===this) closeRulesModal(); });
+  // Auto-open rules modal on page load
+  $('#rulesModal').addClass('open');
   // Reset sidebar scroll to top on page load
   document.querySelector('.community-sidebar')?.scrollTo(0,0);
   $(document).on('keydown','[id^="ci-"]',function(e){
