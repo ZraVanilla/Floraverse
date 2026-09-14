@@ -216,7 +216,7 @@ $(function(){
     if($box.children().length >= 3) $box.children().first().remove();
     const $t = $(`<div class="toast">${icon}<span>${msg}</span></div>`);
     $box.append($t);
-    setTimeout(()=> $t.fadeOut(300, ()=> $t.remove()), 2600);
+    setTimeout(()=> { $t.addClass('is-leaving'); setTimeout(()=> $t.remove(), 200); }, 2600);
   };
 
   // Cart (localStorage)
@@ -491,15 +491,27 @@ $(function(){
   // Like / Save / Join helpers (simulate)
   window.toggleLike = function(el){
     const $b=$(el); const liked=$b.hasClass('liked');
+    // Trigger bounce animation
+    $b.removeClass('anim-heart');
+    void $b[0].offsetWidth; // force reflow
+    $b.addClass('anim-heart');
     if(liked){ $b.removeClass('liked bg-[#FF718D] text-white').addClass('bg-white'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())-1); }
     else { $b.addClass('liked bg-[#FF718D] text-white'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())+1); toast('Kamu menyukai postingan','💖'); }
   };
   window.toggleSave = function(el){
     const $b=$(el); $b.toggleClass('saved');
+    // Trigger save animation
+    $b.removeClass('anim-save');
+    void $b[0].offsetWidth;
+    $b.addClass('anim-save');
     if($b.hasClass('saved')){ $b.addClass('bg-[#FFD45C]'); toast('Disimpan','🔖'); } else { $b.removeClass('bg-[#FFD45C]'); toast('Dihapus dari simpanan',''); }
   };
   window.toggleJoin = function(el){
     const $b=$(el);
+    // Trigger bounce animation
+    $b.removeClass('anim-icon');
+    void $b[0].offsetWidth;
+    $b.addClass('anim-icon');
     if($b.text().includes('Bergabung')){ $b.text('✓ Bergabung').removeClass('bg-[#252525] text-white').addClass('bg-[#8BCB8A] text-white'); toast('Bergabung ke komunitas','🎉'); }
     else { $b.text('Bergabung').removeClass('bg-[#8BCB8A]').addClass('bg-[#252525] text-white'); toast('Keluar dari komunitas','👋'); }
   };

@@ -45,7 +45,7 @@ input[type="text"], input[type="search"], input[type="email"], input[type="passw
   box-shadow:var(--card-shadow);
   transition: all .25s cubic-bezier(.2,.8,.2,1);
 }
-.fv-card:hover{transform:translateY(-2px); box-shadow:var(--card-shadow-hover);}
+.fv-card:hover{transform:translateY(-3px); box-shadow:var(--card-shadow-hover);}
 .fv-card.blue{background:var(--blue); border-color:rgba(255,255,255,0.6); color:var(--charcoal);}
 .fv-card.pink{background:var(--pink); border-color:rgba(255,255,255,0.6); color:var(--charcoal);}
 .fv-card.yellow{background:var(--yellow); border-color:#FFE9A8; color:var(--charcoal);}
@@ -92,11 +92,12 @@ input[type="text"], input[type="search"], input[type="email"], input[type="passw
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
   padding:.85rem 1.35rem; border-radius:14px; font-weight:700; font-size:.95rem;
-  line-height:1; transition:all .2s ease; cursor:pointer; white-space:nowrap;
+  line-height:1; transition:all .2s cubic-bezier(.2,.8,.2,1); cursor:pointer; white-space:nowrap;
 }
-.btn:active{transform:scale(.98)}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(1px) scale(0.97); transition-duration:.08s}
 .btn-primary{background:var(--blue); color:#fff; box-shadow:0 8px 20px rgba(111,168,255,.35);}
-.btn-primary:hover{background:#5B96F0; transform:translateY(-1px)}
+.btn-primary:hover{background:#5B96F0; box-shadow:0 12px 28px rgba(111,168,255,.4)}
 .btn-dark{background:var(--charcoal); color:#fff;}
 .btn-dark:hover{background:#1a1a1a}
 .btn-ghost{background:#fff; border:1.5px solid #E5E7EB; color:var(--charcoal);}
@@ -266,17 +267,8 @@ select {
 .blob-green{background:var(--green)}
 
 /* Animations */
-@keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
-@keyframes sway { 0%,100%{transform:rotate(-1deg)} 50%{transform:rotate(1deg)} }
-@keyframes fadeUp { from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:translateY(0)} }
-@keyframes pageEnter { from{opacity:.45} to{opacity:1} }
-body{animation:pageEnter .28s ease-out both;}
-body.is-leaving{animation:pageLeave .2s ease-in forwards; pointer-events:none;}
-@keyframes pageLeave { from{opacity:1} to{opacity:0} }
-.float{animation: floatY 4s ease-in-out infinite}
-.sway{animation: sway 5s ease-in-out infinite; transform-origin: bottom center}
-.reveal{opacity:0; transform:translateY(16px); transition: all .6s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1; transform:translateY(0)}
+body{animation:pageEnter .3s cubic-bezier(.2,.8,.2,1) both;}
+body.is-leaving{animation:pageLeave .18s ease-in forwards; pointer-events:none;}
 
 /* Scrollbar */
 ::-webkit-scrollbar{width:8px; height:8px}
@@ -296,10 +288,10 @@ body.is-leaving{animation:pageLeave .2s ease-in forwards; pointer-events:none;}
   display:none; align-items:center; justify-content:center; z-index:60; padding:1rem;
   width:100%; height:100dvh; overflow-y:auto; overscroll-behavior:contain;
 }
-.modal-backdrop.open{display:flex}
+.modal-backdrop.open{display:flex; animation: modalOverlayIn .2s ease}
 .modal{
   background:#fff; border-radius:28px; max-width:640px; width:100%; max-height:90vh; overflow:auto;
-  box-shadow:0 24px 64px rgba(0,0,0,.2); animation: fadeUp .3s ease;
+  box-shadow:0 24px 64px rgba(0,0,0,.2); animation: modalContentIn .28s cubic-bezier(.2,.8,.2,1);
 }
 .drawer{
   position:fixed; top:0; right:0; height:100%; width:420px; max-width:92vw; background:#fff;
@@ -326,8 +318,9 @@ body.is-leaving{animation:pageLeave .2s ease-in forwards; pointer-events:none;}
 .toast{
   background:var(--charcoal); color:#fff; padding:.9rem 1.15rem; border-radius:12px; font-weight:600; font-size:.88rem;
   box-shadow:0 12px 32px rgba(0,0,0,.18); display:flex; align-items:center; gap:.6rem;
-  animation: fadeUp .3s ease; pointer-events:auto; white-space:nowrap; max-width:92vw;
+  animation: toastIn .28s cubic-bezier(.2,.8,.2,1); pointer-events:auto; white-space:nowrap; max-width:92vw;
 }
+.toast.is-leaving{animation: toastOut .2s ease forwards;}
 
 /* Range etc */
 input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button{display:none}
@@ -366,6 +359,27 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .lab-range:active,.lab-range.dragging{cursor:grabbing;}
 .lab-range:active::-webkit-slider-thumb,.lab-range.dragging::-webkit-slider-thumb{cursor:grabbing;}
 .lab-range:active::-moz-range-thumb,.lab-range.dragging::-moz-range-thumb{cursor:grabbing;}
+
+/* Like / Save / Join interaction feedback */
+.like-btn, .save-btn, .join-btn {
+  transition: all .2s cubic-bezier(.2,.8,.2,1);
+}
+.like-btn:hover, .save-btn:hover, .join-btn:hover {
+  transform:translateY(-1px);
+}
+.like-btn:active, .save-btn:active, .join-btn:active {
+  transform:scale(0.95);
+  transition-duration:.08s;
+}
+
+/* Comment expand transition */
+.comment-section {
+  max-height:0; overflow:hidden; opacity:0;
+  transition: max-height .3s cubic-bezier(.2,.8,.2,1), opacity .25s ease, padding .25s ease;
+}
+.comment-section.open {
+  max-height:600px; opacity:1;
+}
 
 /* Compact product UI: preserve every feature while reducing visual noise. */
 :root{
