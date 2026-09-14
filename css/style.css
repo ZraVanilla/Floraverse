@@ -316,6 +316,10 @@ html{scrollbar-width:thin; scrollbar-color:#D1D5DB transparent}
 .progress-track{background:#F3F4F6; border-radius:999px; height:8px; overflow:hidden}
 .progress-fill{height:100%; border-radius:999px; transition:width .6s ease}
 
+/* Collapsible plant card details */
+.collapsible-content{max-height:200px; overflow:hidden; transition:max-height .3s ease, opacity .3s ease; opacity:1}
+.collapsible-content.collapsed{max-height:0; opacity:0}
+
 /* Journeys */
 .journey-line{position:absolute; left:19px; top:32px; bottom:32px; width:3px; background:#F0F0F0; border-radius:999px}
 .journey-dot{width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; border:3px solid #fff; box-shadow:0 4px 12px rgba(0,0,0,.08); flex-shrink:0}
