@@ -506,6 +506,13 @@ $(function(){
     $b.addClass('anim-save');
     if($b.hasClass('saved')){ $b.addClass('bg-[#FFD45C]'); toast('Disimpan','🔖'); } else { $b.removeClass('bg-[#FFD45C]'); toast('Dihapus dari simpanan',''); }
   };
+  window.sharePost = function(el){
+    const $b=$(el);
+    $b.removeClass('anim-icon');
+    void $b[0].offsetWidth;
+    $b.addClass('anim-icon');
+    toast('Link disalin','🔗');
+  };
   window.toggleJoin = function(el){
     const $b=$(el);
     // Trigger bounce animation

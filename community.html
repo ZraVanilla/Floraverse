@@ -201,7 +201,7 @@ function renderFeed(){
         <button onclick="toggleLike(this)" class="flex-1 py-2 rounded-full border bg-white font-bold text-sm flex items-center justify-center gap-1.5 ${p.liked?'liked bg-[#FF718D] text-white border-[#FF718D]':''}"><span>♥</span> <span class="cnt">${p.likes}</span> Suka</button>
         <button onclick="openComments('${p.id}')" class="flex-1 py-2 rounded-full border bg-white font-bold text-sm">💬 ${p.comments} Komentar</button>
         <button onclick="toggleSave(this)" class="px-4 py-2 rounded-full border bg-white font-bold text-sm ${p.saved?'saved bg-[#FFD45C]':''}">🔖 Simpan</button>
-        <button onclick="toast('Link disalin','🔗')" class="px-4 py-2 rounded-full border bg-white font-bold text-sm">↗ Bagikan</button>
+        <button onclick="sharePost(this)" class="px-4 py-2 rounded-full border bg-white font-bold text-sm">↗ Bagikan</button>
       </div>
     </div>
     `;
