@@ -1,0 +1,6 @@
+shop_page.mp4 =
+https://i0.wp.com/media.giphy.com/media/l4FGBE6xf8x9Xn8ME/giphy.gif?w=750&ssl=1
+plant_page.gif = https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExenF2NG84cXEyamF6ZjV6bWVrdHpuN3YyZHZsMHZyd3hsZXkwajU3NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oz8xLS8hfwecW6Wje/giphy.gif
+garden_page.mp4 = https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDY2cDhpbzV5c3Nld3VncXNqOTk1ZXM2a3ZzdW1lOXpnOTFqajFscyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/S7L0IzbC8542Pqy4O2/giphy.gif
+community_page.gif = https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTZxa2lyeXQ0OG02a3R5aGswYzV4YWh4a2Nycm04cnI1OWRnanB6ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l1J3NPQf42bgLV3Bm/giphy.gif
+learn_page.mp4 = https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWRvZjlxenQ4MTBkYTZvN2ZiMWp0b3loZzlwdHVidW1ncmkwOXF3MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RCtKcMeeIlIFskmH7C/giphy.gif
