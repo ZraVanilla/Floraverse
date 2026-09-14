@@ -120,6 +120,8 @@ window.addEventListener('scroll', function(e){
   window.closeAllFvSelects();
 }, true);
 $(function(){
+  // Clear body animation/transform after pageEnter so position:fixed modals work
+  setTimeout(()=>{ document.body.style.animation='none'; document.body.style.transform='none'; }, 350);
   document.querySelectorAll('[data-plant-id]').forEach(image=>{
     image.src=window.getPlantImage(image.dataset.plantId);
   });
