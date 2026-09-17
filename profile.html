@@ -45,7 +45,7 @@
         </div>
         <div class="flex gap-2 mt-4">
           <button onclick="toast('Profil dibagikan','↗')" class="btn bg-white text-charcoal font-black px-5 text-sm">↗ Bagikan Profil</button>
-          <button onclick="toast('Edit profil (simulasi)','✏️')" class="btn bg-charcoal text-white px-5 text-sm">✏️ Edit</button>
+          <button onclick="openEditProfile()" class="btn bg-charcoal text-white px-5 text-sm">✏️ Edit</button>
         </div>
       </div>
     </div>
@@ -189,6 +189,31 @@
 
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
 <div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran</button></div></div>
+<div id="editProfileModal" class="modal-backdrop">
+  <div class="modal max-w-[480px]">
+    <div class="p-6 sm:p-7">
+      <div class="flex items-center justify-between mb-5">
+        <p class="font-black text-lg">✏️ Edit Profil</p>
+        <button onclick="closeEditProfile()" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button>
+      </div>
+      <div class="space-y-4">
+        <label class="text-sm font-bold block">Nama
+          <input id="editName" type="text" value="Izra" class="checkout-input mt-1" placeholder="Nama kamu">
+        </label>
+        <label class="text-sm font-bold block">Bio
+          <textarea id="editBio" rows="3" class="checkout-input mt-1" placeholder="Ceritakan tentang kamu...">Pemula yang jatuh cinta pada cabai dan sukulen. Berkebun di balkon 2x1m - belajar, berbagi, panen.</textarea>
+        </label>
+        <label class="text-sm font-bold block">Lokasi
+          <input id="editLocation" type="text" value="Urban Gardener" class="checkout-input mt-1" placeholder="Lokasi kamu">
+        </label>
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button onclick="closeEditProfile()" class="btn btn-ghost flex-1">Batal</button>
+        <button onclick="saveEditProfile()" class="btn btn-dark flex-1">Simpan Perubahan</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="toastBox"></div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -205,6 +230,21 @@
 <script src="js/plant-lab.js"></script>
 <script src="js/plant-match.js"></script>
 <script src="js/app.js?v=3"></script>
+<script>
+function openEditProfile(){
+  $('#editProfileModal').addClass('open');
+  document.body.style.overflow='hidden';
+}
+function closeEditProfile(){
+  $('#editProfileModal').removeClass('open');
+  document.body.style.overflow='';
+}
+function saveEditProfile(){
+  closeEditProfile();
+  toast('Profil berhasil diperbarui (Simulasi)','✅');
+}
+$('#editProfileModal').on('click',function(e){ if(e.target===this) closeEditProfile(); });
+</script>
 <script>
 function toggleLevel(){
   const content=$('#levelContent');

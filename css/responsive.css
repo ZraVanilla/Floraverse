@@ -74,12 +74,25 @@ input,select,textarea{max-width:100%}
   #catPills > *,#prodCats > *,#smartChoices > *,#guideCats > *,#stagePills > *{flex:0 0 auto}
   .cat-pill,.pcat,.smartBtn,.gcat,.commFilter,.feedTab,.levelBtn,.ptab{min-height:42px}
 
-  /* Product and content catalogues prioritize readability over density. */
-  #plantsGrid,#productsGrid,#guidesGrid,#myPlantsGrid{grid-template-columns:1fr !important; gap:14px !important}
-  #plantsGrid .h-40,#productsGrid .h-36{height:180px !important}
+  /* Product and content catalogues: 2-col compact grid on mobile. */
+  #plantsGrid,#productsGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; align-items:stretch !important}
+  #guidesGrid,#myPlantsGrid{grid-template-columns:1fr !important; gap:14px !important}
   #guidesGrid .h-32{height:150px !important}
-  #plantsGrid .p-4,#productsGrid .p-4,#guidesGrid .p-4,#myPlantsGrid .p-4{padding:16px !important}
-  #productsGrid .items-end.justify-between{align-items:center; gap:12px}
+  #plantsGrid .h-40,#productsGrid .h-36{height:auto !important; aspect-ratio:1; overflow:hidden}
+  #plantsGrid .p-4,#productsGrid .p-4,#guidesGrid .p-4,#myPlantsGrid .p-4{padding:10px !important}
+  #productsGrid .fv-card{display:flex !important; flex-direction:column !important; height:100% !important}
+  #productsGrid .fv-card .line-clamp-2{min-height:auto !important; font-size:12px !important; line-height:1.3}
+  #productsGrid .fv-card .text-xs.text-muted{display:none !important}
+  #productsGrid .fv-card .text-lg.font-black{font-size:13px !important}
+  #productsGrid .fv-card .btn{padding:5px 8px !important; font-size:10px !important; min-height:0 !important}
+  #productsGrid .fv-card .items-end{gap:6px}
+  #productsGrid .fv-card .truncate{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  #plantsGrid .fv-card .line-clamp-2{min-height:auto !important; font-size:12px !important; line-height:1.3}
+  #plantsGrid .fv-card > .p-4 > p:first-child{font-size:12px !important; line-height:1.3}
+  #plantsGrid .fv-card .flex.flex-wrap.gap-1\.5{display:none !important}
+  #plantsGrid .fv-card .text-sm.text-muted{display:none !important}
+  #plantsGrid .fv-card .btn{display:none !important}
+  #plantsGrid .fv-card .items-center.gap-2{gap:4px !important}
 
   /* Homepage specific: decorative flora smaller on mobile */
   .display ~ .flex.justify-center.items-end{gap:8px !important; height:80px !important}
