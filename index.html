@@ -20,6 +20,7 @@ tailwind.config={
 <link rel="stylesheet" href="css/style.css?v=3">
 <link rel="stylesheet" href="css/animations.css?v=3">
 <link rel="stylesheet" href="css/responsive.css?v=3">
+<link rel="stylesheet" href="css/home.css?v=1">
 </head>
 <body class="bg-white text-charcoal min-h-screen flex flex-col">
 <!-- NAVBAR -->
@@ -50,65 +51,102 @@ tailwind.config={
   </div>
 </nav>
 
-<!-- MAIN CONTENT — HUB -->
-<main class="flex-1 flex flex-col justify-center max-w-[1280px] mx-auto w-full px-4 sm:px-6 lg:px-8">
-
-  <!-- HERO -->
-  <section class="text-center pt-16 sm:pt-20 lg:pt-24 pb-6">
-    <h1 class="display text-[36px] sm:text-[48px] lg:text-[56px] font-extrabold leading-[0.92]">
-      Satu Dunia,<br>
-      <span class="text-[#6FA8FF]">Berjuta Cara</span><br>
-      untuk Tumbuh.
-    </h1>
-    <p class="text-[15px] sm:text-[17px] text-muted mt-4 max-w-[480px] mx-auto leading-relaxed">
-      Temukan tanaman, pelajari cara merawatnya, dan tumbuh bersama komunitas FloraVerse.
-    </p>
-  </section>
-
-  <!-- PRIMARY NAVIGATION HUB -->
-  <section class="py-10 sm:py-14">
-    <h2 class="text-center text-[13px] sm:text-sm font-bold tracking-widest uppercase text-muted mb-8">Jelajahi FloraVerse</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-[900px] mx-auto">
-      <a href="plants.html" class="nav-hub-item group">
-        <span class="text-3xl sm:text-4xl block group-hover:scale-110 transition-transform">🌱</span>
-        <span class="font-black text-[15px] mt-3">Tanaman</span>
-        <span class="text-xs text-muted mt-0.5">Temukan & kenali</span>
-      </a>
-      <a href="learn.html" class="nav-hub-item group">
-        <span class="text-3xl sm:text-4xl block group-hover:scale-110 transition-transform">📚</span>
-        <span class="font-black text-[15px] mt-3">Belajar</span>
-        <span class="text-xs text-muted mt-0.5">Panduan & tips</span>
-      </a>
-      <a href="community.html" class="nav-hub-item group">
-        <span class="text-3xl sm:text-4xl block group-hover:scale-110 transition-transform">👥</span>
-        <span class="font-black text-[15px] mt-3">Komunitas</span>
-        <span class="text-xs text-muted mt-0.5">Berbagi & tumbuh</span>
-      </a>
-      <a href="shop.html" class="nav-hub-item group">
-        <span class="text-3xl sm:text-4xl block group-hover:scale-110 transition-transform">🛒</span>
-        <span class="font-black text-[15px] mt-3">Shop</span>
-        <span class="text-xs text-muted mt-0.5">Kebutuhan berkebun</span>
-      </a>
-      <a href="garden.html" class="nav-hub-item group col-span-2 sm:col-span-3 lg:col-span-1">
-        <span class="text-3xl sm:text-4xl block group-hover:scale-110 transition-transform">🪴</span>
-        <span class="font-black text-[15px] mt-3">Kebunku</span>
-        <span class="text-xs text-muted mt-0.5">Kelola kebunmu</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- PLANT MATCH — OPTIONAL FEATURE -->
-  <section class="pb-10 sm:pb-14">
-    <div class="bg-[#EFF6FF] border border-[#BFDBFE] rounded-[20px] p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-5 max-w-[700px] mx-auto text-center sm:text-left">
-      <div class="text-4xl sm:text-5xl">🌱</div>
-      <div class="flex-1">
-        <p class="font-black text-[17px]">Bingung mau tanam apa?</p>
-        <p class="text-sm text-muted mt-1">Jawab beberapa pertanyaan singkat — kami temukan tanaman yang cocok untukmu.</p>
+<!-- MAIN CONTENT - INTERACTIVE GATEWAY -->
+<main id="homeGateway" class="home-gateway flex-1 max-w-[1280px] mx-auto w-full px-4 sm:px-6 lg:px-8" data-world="home">
+  <section id="worldStage" class="world-stage" data-world="home" role="region" aria-live="polite" aria-labelledby="heroTitle">
+    <div class="world-stage-copy">
+      <div class="world-kicker-row">
+        <span id="worldKicker" class="world-kicker">FloraVerse</span>
+        <span id="worldStatus" class="world-status">Ekosistem berkebun digital</span>
       </div>
-      <button onclick="openPlantMatch()" class="btn btn-primary px-6 py-3 text-sm whitespace-nowrap">Mulai Plant Match</button>
+      <h1 id="heroTitle" class="world-title"></h1>
+      <p id="heroDescription" class="world-description"></p>
+      <div id="worldFacts" class="world-facts" aria-label="Ringkasan FloraVerse"></div>
+      <div class="world-actions">
+        <a id="worldCta" class="btn world-cta" href="plants.html" hidden></a>
+        <button id="heroPlantMatch" type="button" class="btn world-secondary" onclick="openPlantMatch()">Coba Plant Match</button>
+        <button id="worldBack" type="button" class="world-back" hidden>Kembali ke beranda</button>
+      </div>
+      <div class="world-stage-footer">
+        <span class="world-stage-note"><span class="world-note-dot"></span><span id="worldNote">Semua kebutuhan berkebun dalam satu alur.</span></span>
+        <span id="worldIndex" class="world-stage-index">00 / 05</span>
+      </div>
+    </div>
+
+    <div class="world-stage-visual">
+      <div id="worldScene" class="world-scene" data-world="home">
+        <video id="worldVideo" class="world-scene-video" src="asset/plant.mp4" autoplay loop muted playsinline aria-label="Preview ruang FloraVerse"></video>
+        <div class="world-scene-shade"></div>
+        <div class="world-scene-header"><span id="worldSceneKicker">FloraVerse</span><span id="worldSceneIndex">00 / 05</span></div>
+        <div class="world-scene-live"><span></span> Preview ruang</div>
+        <div id="worldCore" class="world-core">
+          <span id="worldCoreIcon" class="world-core-icon">✦</span>
+          <span class="world-core-copy"><span id="worldCoreTitle" class="world-core-title">FloraVerse</span><span id="worldCoreCaption" class="world-core-caption">Ruang digital untuk berkebun</span></span>
+        </div>
+      </div>
     </div>
   </section>
 
+  <section class="world-picker" aria-labelledby="worldPickerTitle">
+    <div class="world-picker-heading">
+      <div>
+        <p class="section-eyebrow">Satu ekosistem</p>
+        <h2 id="worldPickerTitle">Lima ruang untuk terus bertumbuh</h2>
+      </div>
+      <p id="worldPickerInstruction" class="world-picker-instruction">Pilih ruang untuk melihat bagaimana FloraVerse membantumu.</p>
+    </div>
+    <div id="worldPicker" class="world-picker-grid">
+      <button type="button" class="world-trigger" data-world="tanaman" aria-pressed="false" aria-controls="worldStage">
+        <span class="world-trigger-number" aria-hidden="true">01</span>
+        <span class="world-trigger-body"><span class="world-trigger-label">Tanaman</span><span class="world-trigger-description">Kenali tanaman yang tepat untuk ruangmu.</span></span>
+        <span class="world-trigger-arrow" aria-hidden="true">↗</span>
+      </button>
+      <button type="button" class="world-trigger" data-world="belajar" aria-pressed="false" aria-controls="worldStage">
+        <span class="world-trigger-number" aria-hidden="true">02</span>
+        <span class="world-trigger-body"><span class="world-trigger-label">Belajar</span><span class="world-trigger-description">Ikuti panduan praktis tanpa istilah rumit.</span></span>
+        <span class="world-trigger-arrow" aria-hidden="true">↗</span>
+      </button>
+      <button type="button" class="world-trigger" data-world="komunitas" aria-pressed="false" aria-controls="worldStage">
+        <span class="world-trigger-number" aria-hidden="true">03</span>
+        <span class="world-trigger-body"><span class="world-trigger-label">Komunitas</span><span class="world-trigger-description">Bertanya dan berbagi dengan sesama gardener.</span></span>
+        <span class="world-trigger-arrow" aria-hidden="true">↗</span>
+      </button>
+      <button type="button" class="world-trigger" data-world="belanja" aria-pressed="false" aria-controls="worldStage">
+        <span class="world-trigger-number" aria-hidden="true">04</span>
+        <span class="world-trigger-body"><span class="world-trigger-label">FloraShop</span><span class="world-trigger-description">Siapkan kebutuhan kebun dalam satu keranjang.</span></span>
+        <span class="world-trigger-arrow" aria-hidden="true">↗</span>
+      </button>
+      <button type="button" class="world-trigger" data-world="kebunku" aria-pressed="false" aria-controls="worldStage">
+        <span class="world-trigger-number" aria-hidden="true">05</span>
+        <span class="world-trigger-body"><span class="world-trigger-label">Kebunku</span><span class="world-trigger-description">Pantau tugas dan perjalanan setiap tanaman.</span></span>
+        <span class="world-trigger-arrow" aria-hidden="true">↗</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="home-journey" aria-labelledby="journeyTitle">
+    <div class="home-journey-heading">
+      <p class="section-eyebrow">Dari niat hingga panen</p>
+      <h2 id="journeyTitle">Berkebun jadi lebih terarah.</h2>
+      <p>FloraVerse menghubungkan informasi, alat, dan kebiasaan merawat tanaman dalam satu perjalanan sederhana.</p>
+    </div>
+    <ol class="home-journey-steps">
+      <li><span>01</span><strong>Temukan</strong><p>Pilih tanaman sesuai cahaya, ruang, dan waktumu.</p></li>
+      <li><span>02</span><strong>Pelajari</strong><p>Pahami cara tanam dan perawatan lewat panduan singkat.</p></li>
+      <li><span>03</span><strong>Rawat</strong><p>Catat tugas, progres, dan cerita tanamanmu.</p></li>
+      <li><span>04</span><strong>Bagikan</strong><p>Tumbuh bersama komunitas yang sepemikiran.</p></li>
+    </ol>
+  </section>
+
+  <section class="plant-match-prompt" aria-labelledby="plantMatchPromptTitle">
+    <div class="plant-match-mark" aria-hidden="true">?</div>
+    <div class="plant-match-copy">
+      <p class="section-eyebrow">Plant Match</p>
+      <h2 id="plantMatchPromptTitle">Belum tahu harus mulai dari tanaman apa?</h2>
+      <p>Jawab tujuh pertanyaan singkat dan dapatkan rekomendasi yang sesuai dengan kondisi rumahmu.</p>
+    </div>
+    <button onclick="openPlantMatch()" class="btn btn-primary">Temukan tanamanmu <span aria-hidden="true">↗</span></button>
+  </section>
 </main>
 
 <!-- FOOTER -->
@@ -116,6 +154,7 @@ tailwind.config={
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted">
       <p class="wordmark text-base">Flora<span>Verse</span></p>
+      <p>Tanam lebih yakin. Tumbuh lebih terarah.</p>
       <p>&copy; 2026 FloraVerse</p>
     </div>
   </div>
@@ -192,5 +231,252 @@ tailwind.config={
 <script src="js/plant-lab.js"></script>
 <script src="js/plant-match.js"></script>
 <script src="js/app.js?v=3"></script>
+<script>
+  const HOME_WORLDS = {
+    home: {
+      pageTitle: 'FloraVerse - Satu Dunia, Berjuta Cara untuk Tumbuh.',
+      kicker: 'Ekosistem berkebun digital',
+      status: 'Untuk pemula & urban gardener',
+      titleLines: ['Semua yang kamu butuhkan', 'untuk tumbuh.'],
+      highlight: 1,
+      description: 'Temukan tanaman yang tepat, pelajari cara merawatnya, dan pantau kebunmu dalam satu pengalaman yang saling terhubung.',
+      note: 'Satu ruang untuk menemukan, belajar, merawat, dan berbagi.',
+      instruction: 'Pilih ruang untuk melihat bagaimana FloraVerse membantumu.',
+      index: '00 / 05',
+      video: 'asset/plant.mp4',
+      cta: 'Jelajahi tanaman →',
+      route: 'plants.html',
+      coreIcon: '✦',
+      coreTitle: 'FloraVerse',
+      coreCaption: 'Kebunmu, dalam satu ekosistem',
+      facts: [
+        {value: '41', label: 'tanaman'},
+        {value: '18', label: 'panduan'},
+        {value: '12', label: 'komunitas'}
+      ]
+    },
+    tanaman: {
+      pageTitle: 'FloraVerse - Dunia Tanaman',
+      kicker: 'Tanaman',
+      status: 'Preview aktif',
+      titleLines: ['Temukan', 'tanamanmu.'],
+      highlight: 1,
+      description: 'Kenali berbagai tanaman, temukan karakteristiknya, dan cari tanaman yang cocok untukmu.',
+      note: 'Kenali, cocokkan, lalu mulai menanam.',
+      instruction: 'Lihat apa yang bisa kamu temukan di ruang Tanaman.',
+      index: '01 / 05',
+      video: 'asset/plant.mp4',
+      cta: 'Buka Ensiklopedia →',
+      route: 'plants.html',
+      coreIcon: '🌱',
+      coreTitle: 'Ensiklopedia Tanaman',
+      coreCaption: 'Temukan yang cocok untukmu',
+      facts: [
+        {value: '41', label: 'tanaman'},
+        {value: '9', label: 'kategori'},
+        {value: '↗', label: 'Plant Match'}
+      ]
+    },
+    belajar: {
+      pageTitle: 'FloraVerse - Dunia Belajar',
+      kicker: 'Belajar',
+      status: 'Preview aktif',
+      titleLines: ['Belajar merawat', 'tanpa bingung.'],
+      highlight: 1,
+      description: 'Pelajari cara merawat tanaman melalui panduan, tips, dan pengetahuan praktis.',
+      note: 'Baca satu panduan, praktikkan, lalu lihat hasilnya.',
+      instruction: 'Langkah kecil dan panduan praktis untuk kebunmu.',
+      index: '02 / 05',
+      video: 'asset/learnpage.mp4',
+      cta: 'Lihat Panduan →',
+      route: 'learn.html',
+      coreIcon: '📖',
+      coreTitle: 'Ruang Belajar',
+      coreCaption: 'Belajar dengan langkah kecil',
+      facts: [
+        {value: '18', label: 'panduan'},
+        {value: '4–12', label: 'menit'},
+        {value: '↗', label: 'Plant Lab'}
+      ]
+    },
+    komunitas: {
+      pageTitle: 'FloraVerse - Taman Komunitas',
+      kicker: 'Komunitas',
+      status: 'Preview aktif',
+      titleLines: ['Tumbuh', 'bareng.'],
+      highlight: 1,
+      description: 'Berbagi cerita, pengalaman, dan inspirasi bersama para pecinta tanaman.',
+      note: 'Temukan teman tumbuh dan ceritakan progressmu.',
+      instruction: 'Cerita, tanya jawab, dan progress dari sesama gardener.',
+      index: '03 / 05',
+      video: 'asset/community.mp4',
+      cta: 'Masuk Komunitas →',
+      route: 'community.html',
+      coreIcon: '💬',
+      coreTitle: 'Taman Komunitas',
+      coreCaption: 'Cerita tumbuh bersama',
+      facts: [
+        {value: '12', label: 'grup'},
+        {value: '14K+', label: 'anggota'},
+        {value: '4K+', label: 'post'}
+      ]
+    },
+    belanja: {
+      pageTitle: 'FloraVerse - Flora Market',
+      kicker: 'Belanja',
+      status: 'Preview aktif',
+      titleLines: ['Siapkan kebun', 'dengan tepat.'],
+      highlight: 1,
+      description: 'Temukan berbagai kebutuhan untuk membuat kebunmu tumbuh lebih baik.',
+      note: 'Susun kebutuhan kebunmu sebelum mulai menanam.',
+      instruction: 'Perlengkapan yang membantu kebunmu berjalan lebih jauh.',
+      index: '04 / 05',
+      video: 'asset/shop.mp4',
+      cta: 'Lihat FloraShop →',
+      route: 'shop.html',
+      coreIcon: '🛒',
+      coreTitle: 'FloraShop',
+      coreCaption: 'Kebutuhan kebun terkurasi',
+      facts: [
+        {value: '28', label: 'produk'},
+        {value: '9', label: 'kategori'},
+        {value: '↗', label: 'Smart Basket'}
+      ]
+    },
+    kebunku: {
+      pageTitle: 'FloraVerse - Kebunmu, Ceritamu',
+      kicker: 'Kebunku',
+      status: 'Preview aktif',
+      titleLines: ['Rawat kebunmu', 'setiap hari.'],
+      highlight: 1,
+      description: 'Kelola tanamanmu, catat perkembangannya, dan lihat bagaimana kebunmu tumbuh.',
+      note: 'Satu task kecil hari ini, satu cerita baru untuk kebunmu.',
+      instruction: 'Catat, rawat, dan lihat perkembangan kebunmu dari waktu ke waktu.',
+      index: '05 / 05',
+      video: 'asset/garden.mp4',
+      cta: 'Buka Kebunku →',
+      route: 'garden.html',
+      coreIcon: '🌻',
+      coreTitle: 'Kebun Pribadi',
+      coreCaption: 'Pantau perjalananmu',
+      facts: [
+        {value: '6', label: 'tanaman'},
+        {value: '340', label: 'XP'},
+        {value: '↗', label: 'Plant Journal'}
+      ]
+    }
+  };
+
+  let activeWorld = 'home';
+  let worldTimers = [];
+
+  function clearWorldTimers() {
+    worldTimers.forEach(timer => window.clearTimeout(timer));
+    worldTimers = [];
+  }
+
+  function renderWorldContent(world, revealActions) {
+    const $stage = $('#worldStage');
+    const $cta = $('#worldCta');
+    const hasRoute = Boolean(world.route);
+    const title = world.titleLines.map((line, index) => `<span class="world-title-line${world.highlight === index ? ' world-title-highlight' : ''}">${line}</span>`).join('<br>');
+    const video = document.getElementById('worldVideo');
+
+    if (video && video.dataset.source !== world.video) {
+      video.dataset.source = world.video;
+      video.src = world.video;
+      video.load();
+    }
+
+    $('#worldKicker').text(world.kicker);
+    $('#worldStatus').text(world.status);
+    $('#heroTitle').html(title);
+    $('#heroDescription').text(world.description);
+    $('#worldFacts').html((world.facts || []).map(fact => `
+      <span class="world-fact"><strong class="world-fact-value">${fact.value}</strong><span class="world-fact-label">${fact.label}</span></span>
+    `).join(''));
+    $('#worldNote').text(world.note);
+    $('#worldPickerInstruction').text(world.instruction);
+    $('#worldIndex').text(world.index);
+    $('#worldSceneKicker').text(world.kicker);
+    $('#worldSceneIndex').text(world.index);
+    $('#worldCoreIcon').text(world.coreIcon);
+    $('#worldCoreTitle').text(world.coreTitle);
+    $('#worldCoreCaption').text(world.coreCaption);
+
+    if (video) {
+      const playPromise = video.play();
+      if (playPromise) playPromise.catch(() => {});
+    }
+
+    $cta.text(world.cta || '').attr('href', world.route || 'plants.html');
+    $cta.prop('hidden', !(revealActions && hasRoute)).removeClass('world-cta-reveal');
+    $('#heroPlantMatch').prop('hidden', world !== HOME_WORLDS.home);
+    $('#worldBack').prop('hidden', !(revealActions && hasRoute && world !== HOME_WORLDS.home));
+    $stage.attr('aria-label', `${world.titleLines.join(' ')}. ${world.description}`);
+  }
+
+  function syncWorldPicker(worldId) {
+    $('.world-trigger').each(function() {
+      const isActive = $(this).data('world') === worldId;
+      $(this).toggleClass('is-active', isActive).attr('aria-pressed', isActive ? 'true' : 'false');
+    });
+  }
+
+  function setActiveWorld(worldId, initial = false) {
+    const world = HOME_WORLDS[worldId];
+    const stage = document.getElementById('worldStage');
+    if (!world || !stage) return;
+    if (!initial && worldId === activeWorld) return;
+
+    clearWorldTimers();
+    activeWorld = worldId;
+    window.activeWorld = worldId;
+    syncWorldPicker(worldId);
+    document.title = world.pageTitle;
+
+    if (initial) {
+      $('#homeGateway').attr('data-world', worldId);
+      $(stage).attr('data-world', worldId);
+      $('#worldScene').attr('data-world', worldId);
+      renderWorldContent(world, true);
+      $(stage).addClass('is-ready');
+      return;
+    }
+
+    $(stage).removeClass('is-ready is-transitioning');
+    void stage.offsetWidth;
+    $(stage).addClass('is-transitioning');
+    $('#homeGateway').attr('data-world', worldId);
+    $(stage).attr('data-world', worldId);
+    $('#worldScene').attr('data-world', worldId);
+    $('#worldCta, #worldBack, #heroPlantMatch').prop('hidden', true);
+
+    worldTimers.push(window.setTimeout(() => {
+      if (activeWorld !== worldId) return;
+      renderWorldContent(world, false);
+      $(stage).addClass('is-ready');
+    }, 180));
+
+    worldTimers.push(window.setTimeout(() => {
+      if (activeWorld !== worldId) return;
+      renderWorldContent(world, true);
+      $('#worldCta').addClass('world-cta-reveal');
+      $(stage).removeClass('is-transitioning');
+    }, 820));
+  }
+
+  window.setActiveWorld = setActiveWorld;
+
+  $(function() {
+    setActiveWorld('home', true);
+    $('.world-trigger').on('click', function() {
+      setActiveWorld($(this).data('world'));
+    });
+    $('#worldBack').on('click', function() {
+      setActiveWorld('home');
+    });
+  });
+</script>
 </body>
 </html>
