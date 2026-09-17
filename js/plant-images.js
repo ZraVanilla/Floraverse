@@ -9,11 +9,10 @@ const NUSANTARA_PLANT_GROUPS = {
 const NUSANTARA_EMOJI = {Sayuran:"🥬",Buah:"🍎",Herbal:"🌿",Bunga:"🌸",Hias:"🪴","Pohon buah":"🌳",Pangan:"🌾"};
 const NUSANTARA_COLORS = ["#8BCB8A","#6FA8FF","#FFD45C","#FF9B70","#FF718D"];
 const NUSANTARA_EASY = ["Sangat Mudah","Mudah","Sedang"];
-const nusantaraSlug = name => name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 Object.entries(NUSANTARA_PLANT_GROUPS).forEach(([kategori, names])=>{
   names.split("|").forEach((nama,index)=>{
-    const id=nusantaraSlug(nama);
+    const id = window.slugify(nama);
     if(PLANTS.some(plant=>plant.id===id || plant.nama.toLowerCase()===nama.toLowerCase())) return;
     const easy=NUSANTARA_EASY[index % NUSANTARA_EASY.length];
     const indoor=["Hias","Herbal"].includes(kategori) && index % 3 === 0;

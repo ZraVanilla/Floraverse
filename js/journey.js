@@ -42,6 +42,13 @@ function getStory(plantId, day){
   return cur;
 }
 
+// STATUS: Fondasi sistem XP, BELUM terintegrasi ke runtime.
+// Saat ini semua "+N XP" di toast adalah teks statis (lihat index.html, learn.html,
+// garden.html) dan TIDAK benar-benar menambah XP user.
+// users.js xp/points juga statis, tidak berubah saat runtime.
+// Untuk mengaktifkan: perlu (a) fungsi addXP(amount) yang update state user
+// (localStorage atau in-memory), (b) panggil xpForAction() dari setiap interaksi
+// terkait (toggleTask, join challenge, dst) menggantikan toast hardcoded yang ada.
 function xpForAction(action){
   const map={ "addPlant":10, "guide":20, "journal":10, "help":15, "journey":50, "challenge":40, "task":10 };
   return map[action]||5;

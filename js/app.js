@@ -120,6 +120,8 @@ window.addEventListener('scroll', function(e){
   window.closeAllFvSelects();
 }, true);
 $(function(){
+  // Clear body animation/transform after pageEnter so position:fixed modals work
+  setTimeout(()=>{ document.body.style.animation='none'; document.body.style.transform='none'; }, 350);
   document.querySelectorAll('[data-plant-id]').forEach(image=>{
     image.src=window.getPlantImage(image.dataset.plantId);
   });
@@ -211,23 +213,12 @@ $(function(){
   });
   $('#closeMobileNav, #mobileNavBackdrop').on('click', closeMobileNav);
 
-  // Plain emoji mode: keep the original Unicode emoji rendering instead of sprite conversion.
-  const FV_EMOJI_CLASSES = {};
-
-  function fvEmojiMarkup(icon='✨'){
-    return icon;
-  }
-
-  function replaceEmojiTextNodes(){
-    return;
-  }
-
   window.toast = function(msg, icon="✨"){
     const $box = $('#toastBox');
     if($box.children().length >= 3) $box.children().first().remove();
-    const $t = $(`<div class="toast">${fvEmojiMarkup(icon)}<span>${msg}</span></div>`);
+    const $t = $(`<div class="toast">${icon}<span>${msg}</span></div>`);
     $box.append($t);
-    setTimeout(()=> $t.fadeOut(300, ()=> $t.remove()), 2600);
+    setTimeout(()=> { $t.addClass('is-leaving'); setTimeout(()=> $t.remove(), 200); }, 2600);
   };
 
   // Cart (localStorage)
@@ -296,6 +287,8 @@ $(function(){
     if(typeof persistGarden==='function') persistGarden();
     toast(`${plant.nama} ditambahkan ke Kebunku!`,'🌱');
   };
+  // NOTE: addBundle di-override di shop.html dengan versi yang pakai hardcoded
+  // bundle pricing (getSmartBundle) + qty per item. Versi ini hanya fallback.
   window.addBundle = window.addBundle || function(plantId){
     const plant=PLANTS.find(item=>item.id===plantId);
     const items=PRODUCTS.filter(product=>product.related===plantId).slice(0,2);
@@ -310,7 +303,9 @@ $(function(){
     setWish(w); toast(w.includes(id)?'Disimpan ke wishlist':'Dihapus dari wishlist', w.includes(id)?'💖':'🤍');
   };
 
-  // Drawer cart (safe fallback if drawer elements don't exist)
+  // NOTE: openDrawer, removeFromCart, clearCart, addBundle di-override sepenuhnya
+  // di shop.html (baris ~152-253) dengan versi modal + qty support + smart bundle pricing.
+  // Perubahan di sini TIDAK berlaku di shop.html. Cek shop.html dulu sebelum ubah behavior cart.
   window.openDrawer = typeof window.openDrawer === 'function' ? window.openDrawer : function(){
     if($('#cartDrawer').length){
       $('#drawerBackdrop').addClass('open');
@@ -354,6 +349,8 @@ $(function(){
     }).join(''));
     $('#drawerTotal').text('Rp'+total.toLocaleString('id-ID'));
   };
+  // NOTE: removeFromCart di-override di shop.html — versi shop memanggil openDrawer()
+  // (modal) alih-alih renderDrawerCart(). Lihat catatan di atas.
   window.removeFromCart = typeof window.removeFromCart === 'function' ? window.removeFromCart : function(id){
     let c=getCart().filter(x=>x.id!==id); setCart(c); updateCartBadge(); renderDrawerCart(); toast('Dihapus dari keranjang','🗑️');
   };
@@ -496,15 +493,34 @@ $(function(){
   // Like / Save / Join helpers (simulate)
   window.toggleLike = function(el){
     const $b=$(el); const liked=$b.hasClass('liked');
-    if(liked){ $b.removeClass('liked bg-[#FF718D] text-white').addClass('bg-white'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())-1); }
-    else { $b.addClass('liked bg-[#FF718D] text-white'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())+1); toast('Kamu menyukai postingan','💖'); }
+    // Trigger bounce animation
+    $b.removeClass('anim-heart');
+    void $b[0].offsetWidth; // force reflow
+    $b.addClass('anim-heart');
+    if(liked){ $b.removeClass('liked bg-[#FF718D] text-white border-[#FF718D]').addClass('bg-white border-[#252525]'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())-1); }
+    else { $b.addClass('liked bg-[#FF718D] text-white border-[#FF718D]').removeClass('bg-white border-[#252525]'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())+1); toast('Kamu menyukai postingan','💖'); }
   };
   window.toggleSave = function(el){
     const $b=$(el); $b.toggleClass('saved');
-    if($b.hasClass('saved')){ $b.addClass('bg-[#FFD45C]'); toast('Disimpan','🔖'); } else { $b.removeClass('bg-[#FFD45C]'); toast('Dihapus dari simpanan',''); }
+    // Trigger save animation
+    $b.removeClass('anim-save');
+    void $b[0].offsetWidth;
+    $b.addClass('anim-save');
+    if($b.hasClass('saved')){ $b.addClass('bg-[#8BCB8A] text-white border-[#8BCB8A]').removeClass('bg-white border-[#252525]'); toast('Disimpan','🔖'); } else { $b.removeClass('bg-[#8BCB8A] text-white border-[#8BCB8A]').addClass('bg-white border-[#252525]'); toast('Dihapus dari simpanan',''); }
+  };
+  window.sharePost = function(el){
+    const $b=$(el);
+    $b.removeClass('anim-icon');
+    void $b[0].offsetWidth;
+    $b.addClass('anim-icon');
+    toast('Link disalin','🔗');
   };
   window.toggleJoin = function(el){
     const $b=$(el);
+    // Trigger bounce animation
+    $b.removeClass('anim-icon');
+    void $b[0].offsetWidth;
+    $b.addClass('anim-icon');
     if($b.text().includes('Bergabung')){ $b.text('✓ Bergabung').removeClass('bg-[#252525] text-white').addClass('bg-[#8BCB8A] text-white'); toast('Bergabung ke komunitas','🎉'); }
     else { $b.text('Bergabung').removeClass('bg-[#8BCB8A]').addClass('bg-[#252525] text-white'); toast('Keluar dari komunitas','👋'); }
   };

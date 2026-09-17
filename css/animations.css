@@ -1,16 +1,15 @@
 ﻿/*
   FloraVerse - animations.css
-  Living World & signature moments - lightweight playful animations
+  Interaction system: micro-interactions, page transitions, playful motion
   Source: Custom for FloraVerse - Open License
 */
 
-/* Living World */
+/* ===== LIVING WORLD (decorative) ===== */
 @keyframes drift { 0%{transform:translateX(-8px)} 50%{transform:translateX(8px)} 100%{transform:translateX(-8px)} }
 @keyframes driftSlow { 0%{transform:translateX(-12px)} 50%{transform:translateX(12px)} 100%{transform:translateX(-12px)} }
 @keyframes beePath { 0%{transform:translate(0,0) rotate(0deg)} 25%{transform:translate(18px,-10px) rotate(3deg)} 50%{transform:translate(36px,0) rotate(-2deg)} 75%{transform:translate(18px,8px) rotate(2deg)} 100%{transform:translate(0,0) rotate(0deg)} }
 @keyframes butterflyPath { 0%{transform:translate(0,0)} 50%{transform:translate(40px,-16px)} 100%{transform:translate(0,0)} }
 @keyframes sunPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
-@keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
 
 .drift{animation:drift 8s ease-in-out infinite}
 .drift-slow{animation:driftSlow 12s ease-in-out infinite}
@@ -18,18 +17,195 @@
 .butterfly{animation:butterflyPath 9s ease-in-out infinite}
 .sun-pulse{animation:sunPulse 3s ease-in-out infinite}
 
-/* Micro interactions */
-@keyframes pop { 0%{transform:scale(.9)} 60%{transform:scale(1.04)} 100%{transform:scale(1)} }
-.pop{animation:pop .4s cubic-bezier(.2,.8,.2,1)}
-@keyframes xpFloat { 0%{transform:translateY(0); opacity:1} 100%{transform:translateY(-18px); opacity:0} }
-.xp-float{animation:xpFloat .9s ease forwards}
+/* ===== PAGE TRANSITIONS ===== */
+@keyframes pageEnter {
+  from { opacity:0; transform:translateY(8px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes pageLeave {
+  from { opacity:1; transform:translateY(0); }
+  to { opacity:0; transform:translateY(-6px); }
+}
 
-/* Progress shimmer */
-.shimmer{
+/* ===== SCROLL REVEAL ===== */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(14px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.reveal { opacity:0; transform:translateY(16px); transition: all .5s cubic-bezier(.2,.8,.2,1); }
+.reveal.in { opacity:1; transform:translateY(0); }
+
+/* ===== MICRO-INTERACTION: BOUNCE (like, save, join) ===== */
+@keyframes bounce {
+  0% { transform:scale(1); }
+  25% { transform:scale(0.78); }
+  50% { transform:scale(1.12); }
+  75% { transform:scale(0.96); }
+  100% { transform:scale(1); }
+}
+.anim-bounce { animation: bounce .35s cubic-bezier(.2,.8,.2,1); }
+
+/* ===== MICRO-INTERACTION: HEART POP (like specific) ===== */
+@keyframes heartPop {
+  0% { transform:scale(1); }
+  20% { transform:scale(0.7); }
+  45% { transform:scale(1.2); }
+  70% { transform:scale(0.95); }
+  100% { transform:scale(1); }
+}
+.anim-heart { animation: heartPop .4s cubic-bezier(.2,.8,.2,1); }
+
+/* ===== MICRO-INTERACTION: SAVE BOUNCE ===== */
+@keyframes saveBounce {
+  0% { transform:scale(1) rotate(0deg); }
+  30% { transform:scale(0.85) rotate(-8deg); }
+  60% { transform:scale(1.15) rotate(4deg); }
+  100% { transform:scale(1) rotate(0deg); }
+}
+.anim-save { animation: saveBounce .4s cubic-bezier(.2,.8,.2,1); }
+
+/* ===== MICRO-INTERACTION: ICON BOUNCE (share, join, general) ===== */
+@keyframes iconBounce {
+  0% { transform:scale(1); }
+  30% { transform:scale(0.85); }
+  60% { transform:scale(1.1); }
+  100% { transform:scale(1); }
+}
+.anim-icon { animation: iconBounce .3s cubic-bezier(.2,.8,.2,1); }
+
+/* ===== XP FLOAT ===== */
+@keyframes xpFloat {
+  0% { transform:translateY(0); opacity:1; }
+  100% { transform:translateY(-18px); opacity:0; }
+}
+.xp-float { animation: xpFloat .9s ease forwards; }
+
+/* ===== FLOAT & SWAY (decorative flora) ===== */
+@keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes sway { 0%,100%{transform:rotate(-1deg)} 50%{transform:rotate(1deg)} }
+.float { animation: floatY 4s ease-in-out infinite; }
+.sway { animation: sway 5s ease-in-out infinite; transform-origin: bottom center; }
+
+/* ===== SHIMMER (progress bars, loading) ===== */
+@keyframes shimmer {
+  0% { background-position:-200% 0; }
+  100% { background-position:200% 0; }
+}
+.shimmer {
   background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.45) 50%, rgba(255,255,255,0) 100%);
   background-size:200% 100%;
   animation:shimmer 1.6s linear infinite;
 }
 
-/* Scroll reveal already in style.css */
+/* ===== POP (generic small pop) ===== */
+@keyframes pop {
+  0% { transform:scale(.9); }
+  60% { transform:scale(1.04); }
+  100% { transform:scale(1); }
+}
+.pop { animation: pop .35s cubic-bezier(.2,.8,.2,1); }
 
+/* ===== TOAST ENTER/EXIT ===== */
+@keyframes toastIn {
+  from { opacity:0; transform:translateY(12px) scale(0.96); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
+@keyframes toastOut {
+  from { opacity:1; transform:translateY(0) scale(1); }
+  to { opacity:0; transform:translateY(-8px) scale(0.96); }
+}
+
+/* ===== MODAL ===== */
+@keyframes modalOverlayIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+@keyframes modalOverlayOut {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+@keyframes modalContentIn {
+  from { opacity:0; transform:scale(0.95) translateY(8px); }
+  to { opacity:1; transform:scale(1) translateY(0); }
+}
+@keyframes modalContentOut {
+  from { opacity:1; transform:scale(1) translateY(0); }
+  to { opacity:0; transform:scale(0.97) translateY(4px); }
+}
+
+/* ===== PLANT CARD IMAGE ZOOM ===== */
+.fv-card .plant-img-wrap { overflow:hidden; }
+.fv-card .plant-img-wrap img,
+.fv-card .plant-img-wrap .image-fallback { transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+.fv-card:hover .plant-img-wrap img { transform:scale(1.04); }
+.fv-card:hover .plant-img-wrap .image-fallback { transform:scale(1.04); }
+
+/* ===== NAV HUB ITEM STAGGER ===== */
+@keyframes hubItemIn {
+  from { opacity:0; transform:translateY(12px) scale(0.96); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
+
+/* ===== INTERACTIVE GATEWAY WORLDS ===== */
+@keyframes worldWipe {
+  0% { opacity:0; transform:translateX(-115%) skewX(-5deg); }
+  18% { opacity:.9; }
+  50% { opacity:.96; transform:translateX(0) skewX(-5deg); }
+  82% { opacity:.55; }
+  100% { opacity:0; transform:translateX(115%) skewX(-5deg); }
+}
+
+@keyframes worldCopyOut {
+  from { opacity:1; transform:translateY(0); }
+  to { opacity:0; transform:translateY(7px); }
+}
+
+@keyframes worldCopyIn {
+  from { opacity:0; transform:translateY(12px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+@keyframes worldObjectOut {
+  from { opacity:1; transform:translateY(0) scale(1) rotate(var(--object-rotate,0deg)); }
+  to { opacity:0; transform:translateY(-5px) scale(.82) rotate(var(--object-rotate,0deg)); }
+}
+
+@keyframes worldObjectIn {
+  0% { opacity:0; transform:translateY(14px) scale(.72) rotate(var(--object-rotate,0deg)); }
+  72% { opacity:1; transform:translateY(-2px) scale(1.04) rotate(var(--object-rotate,0deg)); }
+  100% { opacity:1; transform:translateY(0) scale(1) rotate(var(--object-rotate,0deg)); }
+}
+
+@keyframes worldCoreIn {
+  0% { opacity:0; transform:translate(-50%,-50%) scale(.7) rotate(-4deg); }
+  70% { opacity:1; transform:translate(-50%,-50%) scale(1.04) rotate(1deg); }
+  100% { opacity:1; transform:translate(-50%,-50%) scale(1) rotate(0); }
+}
+
+@keyframes worldCtaIn {
+  from { opacity:0; transform:translateY(8px) scale(.96); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
+
+.world-stage.is-transitioning .world-stage-copy{animation:worldCopyOut .18s ease both;}
+.world-stage.is-transitioning .world-object{animation:worldObjectOut .18s ease both;}
+.world-stage.is-ready .world-stage-copy{animation:worldCopyIn .52s cubic-bezier(.2,.8,.2,1) both;}
+.world-stage.is-ready .world-core{animation:worldCoreIn .62s cubic-bezier(.2,.8,.2,1) both;}
+.world-stage.is-ready .world-object{animation:worldObjectIn .58s cubic-bezier(.2,.8,.2,1) var(--object-delay,0ms) both;}
+
+/* Editorial gateway motion keeps the preview anchored while its content changes. */
+@keyframes worldMarkerOut {
+  from { opacity:1; transform:translateY(0); }
+  to { opacity:0; transform:translateY(-5px); }
+}
+@keyframes worldMarkerIn {
+  from { opacity:0; transform:translateY(8px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes worldCoreEditorialIn {
+  from { opacity:0; transform:translateY(8px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.world-stage.is-transitioning .world-object{animation:worldMarkerOut .18s ease both;}
+.world-stage.is-ready .world-core{animation:worldCoreEditorialIn .5s cubic-bezier(.2,.8,.2,1) both;}
+.world-stage.is-ready .world-object{animation:worldMarkerIn .42s cubic-bezier(.2,.8,.2,1) var(--object-delay,0ms) both;}
