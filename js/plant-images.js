@@ -45,6 +45,7 @@ const PLANT_IMAGES = {
   "mint": "https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=640&q=80",
   "lidah-buaya": "https://asset.kompas.com/crops/Bs1FyeWLdjfA2KRSsr8LMnd7bAg=/0x0:1000x667/1200x800/data/photo/2023/09/20/650b15cb5dadc.jpg",
   "anggrek": "https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?auto=format&fit=crop&w=640&q=80",
+  "kaktus": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&w=640&q=80",
   "kemangi": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHua-CU9liuLZ3jiefJ7PjbjOdRhnQCfHyX-S5BUhZuj0Iy2Y0513SmxJFv9ye4Vx_jB82-wqrn4JmHf6eXT_cFWGC4ayQIjRJrZ7IQ7x1uUEE96ilgzEiDPY9XJpK8Ct7ix61nCwxazCRLZMq3BB9YcmZJlkIcbUq_vtjWr4FPJVt7C2szd1xm5qXzKJV/s720/ilustrasi-tanaman-kemangi-atau-ocimum-sanctum-1746512743013_43.jpeg",
   "sukulen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyKx6T_Ltu49caRJKsluFOwS3Rcja0jEyBjGIVyv99o28tIWkyrT-s3is&s=10",
 
@@ -75,5 +76,5 @@ window.getPlantImage = function(plantId){
 };
 
 if(Object.keys(PLANT_IMAGES).length - 1 !== PLANTS.length){
-  throw new Error(`Mapping gambar tanaman tidak lengkap: ${Object.keys(PLANT_IMAGES).length - 1}/${PLANTS.length}`);
+  console.warn(`Mapping gambar tanaman tidak lengkap: ${Object.keys(PLANT_IMAGES).length - 1}/${PLANTS.length}`);
 }

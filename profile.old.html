@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profil - FloraVerse</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{blue:'#6FA8FF',pink:'#FF718D',yellow:'#FFD45C',orange:'#FF9B70',green:'#8BCB8A',charcoal:'#252525'}}}}</script>
+<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="stylesheet" href="css/animations.css?v=4">
+<link rel="stylesheet" href="css/responsive.css?v=4">
+<link rel="stylesheet" href="css/profile.css?v=1">
+</head>
+<body class="bg-[#FCFCFC]">
+<nav class="navbar">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between">
+    <a href="index.html" class="wordmark text-[22px]">Flora<span>Verse</span></a>
+    <div class="hidden lg:flex items-center gap-1 nav-links-wrap">
+      <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center" aria-label="Keranjang">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+        <span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span>
+      </button>
+      <a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white">
+        <span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span>
+        <span class="text-sm font-bold">Izra</span>
+        <span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span>
+      </a>
+      <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center" aria-label="Menu" aria-expanded="false">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════ PROFILE HERO ═══════ -->
+<section class="profile-hero">
+  <svg class="profile-hero-decor" style="top:12px;right:8%;width:48px;height:48px;opacity:.12" viewBox="0 0 48 48" fill="none"><path d="M24 44c-8-8-16-18-16-28C8 8 16 4 24 4s16 4 16 12c0 10-8 20-16 28z" fill="#8BCB8A"/><path d="M24 44V14" stroke="#5a9a59" stroke-width="1.5"/><path d="M24 22c-4-4-8-4-10-2" stroke="#5a9a59" stroke-width="1.2" fill="none"/><path d="M24 30c4-4 8-4 10-2" stroke="#5a9a59" stroke-width="1.2" fill="none"/></svg>
+  <svg class="profile-hero-decor" style="bottom:18px;left:6%;width:36px;height:36px;opacity:.09" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="16" fill="#FFD45C" opacity=".3"/><path d="M18 6v24M10 14l8-8 8 8M10 22l8 8 8-8" stroke="#b8860b" stroke-width="1.2" fill="none"/></svg>
+
+  <div class="profile-hero-inner">
+    <div class="profile-hero-left">
+      <div class="profile-avatar" style="position:relative"></div>
+      <div class="flex-1 min-w-0">
+        <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">
+          <h1 class="text-[26px] sm:text-[30px] font-black leading-none tracking-tight profile-name">Izra</h1>
+          <span class="profile-streak text-[11px] font-bold text-[#FF9B70]" style="white-space:nowrap"></span>
+        </div>
+        <p class="text-[13px] text-[#64748b] mt-0.5 font-medium profile-tagline">Urban Gardener · Plant Keeper</p>
+        <p class="text-[13px] text-[#64748b] mt-1 leading-relaxed max-w-[400px] profile-bio"></p>
+        <p class="text-[11px] text-[#94a3b8] mt-1 profile-meta"></p>
+        <div class="mt-1.5" style="display:flex;gap:.4rem;align-items:center">
+          <span class="text-[11px] font-bold text-[#475569]">Badge terbaru:</span>
+          <span class="profile-recent-badges"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-hero-right">
+      <div class="profile-stats"></div>
+      <div>
+        <div class="flex justify-between text-[11px] font-bold text-[#64748b]">
+          <span class="profile-xp-label">0 / 0 XP</span>
+          <span class="profile-xp-target">Lv 9</span>
+        </div>
+        <div class="xp-bar-track mt-1"><div class="xp-bar-fill" style="width:0%"></div></div>
+        <p class="text-[10px] text-[#94a3b8] mt-0.5 font-semibold profile-xp-more"></p>
+      </div>
+      <div class="profile-hero-actions">
+        <button onclick="_profileShare()" class="px-3.5 py-1.5 rounded-full bg-white border border-gray-200 text-[11px] font-bold text-[#475569] hover:bg-gray-50 transition">&#x2197; Bagikan</button>
+        <button onclick="_profileOpenEdit()" class="px-3.5 py-1.5 rounded-full bg-[#252525] text-white text-[11px] font-bold hover:bg-[#1a1a1a] transition">&#x270F;&#xFE0F; Edit</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MAIN CONTENT ═══════ -->
+<div class="profile-body">
+  <div class="profile-grid">
+
+    <!-- DAILY TASKS (full width) -->
+    <section class="reveal span-full" id="dailyBanner"></section>
+
+    <!-- KEBUNKU -->
+    <section class="reveal">
+      <div class="sec-head">
+        <h2 class="sec-title">Kebunku</h2>
+        <a href="garden.html" class="sec-link">Buka Kebunku &#x2192;</a>
+      </div>
+      <div id="profileGarden" class="garden-strip"></div>
+    </section>
+
+    <!-- GARDEN JOURNEY -->
+    <section class="reveal">
+      <h2 class="sec-title" style="margin-bottom:.75rem">Garden Journey</h2>
+      <div id="journeyContent"></div>
+    </section>
+
+    <div class="sec-div"></div>
+
+    <!-- COMMUNITY -->
+    <section class="reveal">
+      <div class="sec-head">
+        <h2 class="sec-title">Komunitas</h2>
+        <a href="community.html" class="sec-link">Lihat Semua &#x2192;</a>
+      </div>
+      <div id="profileComms"></div>
+    </section>
+
+    <!-- BADGES -->
+    <section class="reveal">
+      <h2 class="sec-title" style="margin-bottom:.5rem">Garden Badges</h2>
+      <div id="achieveList"></div>
+    </section>
+
+    <div class="sec-div"></div>
+
+    <!-- HEATMAP (full width) -->
+    <section class="reveal span-full">
+      <div class="sec-head">
+        <h2 class="sec-title">Aktivitas 12 Minggu</h2>
+      </div>
+      <div id="heatmapContent"></div>
+    </section>
+
+    <!-- WEEKLY TARGET (full width) -->
+    <section class="reveal span-full">
+      <div id="weeklyTarget"></div>
+    </section>
+
+    <div class="sec-div"></div>
+
+    <!-- TABS -->
+    <section class="reveal span-full">
+      <div class="journal-tabs" role="tablist" aria-label="Konten profil">
+        <button data-tab="savedPlants" class="journal-tab" role="tab" aria-selected="true" aria-controls="tabSavedPlants" id="tabBtnPlants">Tanaman</button>
+        <button data-tab="savedGuides" class="journal-tab" role="tab" aria-selected="false" aria-controls="tabSavedGuides" id="tabBtnGuides">Panduan</button>
+        <button data-tab="activity" class="journal-tab" role="tab" aria-selected="false" aria-controls="tabActivity" id="tabBtnActivity">Aktivitas</button>
+      </div>
+      <div id="tabSavedPlants" class="ptabContent" role="tabpanel" aria-labelledby="tabBtnPlants" style="padding-top:.75rem"></div>
+      <div id="tabSavedGuides" class="ptabContent hidden" role="tabpanel" aria-labelledby="tabBtnGuides" style="padding-top:.75rem"></div>
+      <div id="tabActivity" class="ptabContent hidden" role="tabpanel" aria-labelledby="tabBtnActivity" style="padding-top:.75rem"></div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="border-t bg-[#FCFCFC]">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-xs text-muted">
+    FloraVerse &#x2014; Satu Dunia, Berjuta Cara untuk Tumbuh. &#x00B7; Project By : Izra, Fairuz, Tafayad &#x00B7; &#x00A9; 2026
+  </div>
+</footer>
+
+<!-- ═══════ EDIT MODAL ═══════ -->
+<div id="editModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Edit Profil">
+  <div class="modal" style="padding:1.5rem">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+      <h3 style="font-size:1.1rem;font-weight:900">Edit Profil</h3>
+      <button onclick="_profileCloseEdit()" style="width:32px;height:32px;border-radius:50%;background:#f3f4f6;border:none;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center" aria-label="Tutup">&#x2715;</button>
+    </div>
+    <label for="editNama">Nama</label>
+    <input type="text" id="editNama" maxlength="30" required>
+    <label for="editBio">Bio</label>
+    <textarea id="editBio" rows="2" maxlength="150" style="resize:none"></textarea>
+    <label for="editTagline">Tagline</label>
+    <input type="text" id="editTagline" maxlength="50">
+    <div style="display:flex;gap:.5rem;margin-top:1.25rem">
+      <button onclick="_profileCloseEdit()" class="btn btn-ghost" style="flex:1">Batal</button>
+      <button onclick="_profileSaveEdit()" class="btn btn-primary" style="flex:1">Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ CART DRAWER ═══════ -->
+<div id="drawerBackdrop" class="drawer-backdrop"></div>
+<div id="cartDrawer" class="drawer">
+  <div class="p-5 border-b flex items-center justify-between">
+    <div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div>
+    <button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center" aria-label="Tutup keranjang"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+  </div>
+  <div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div>
+  <div class="p-4 border-t bg-gray-50">
+    <div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div>
+    <button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran</button>
+  </div>
+</div>
+
+<div id="toastBox"></div>
+
+<!-- ═══════ SCRIPTS ═══════ -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/plants.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/plant-images.js"></script>
+<script src="js/communities.js"></script>
+<script src="js/guides.js"></script>
+<script src="js/garden.js"></script>
+<script src="js/products.js"></script>
+<script src="js/gambar-produk.js"></script>
+<script src="js/users.js"></script>
+<script src="js/journey.js"></script>
+<script src="js/plant-lab.js"></script>
+<script src="js/plant-match.js"></script>
+<script src="js/profile-data.js"></script>
+<script src="js/app.js?v=4"></script>
+<script src="js/profile.js?v=1"></script>
+</body>
+</html>

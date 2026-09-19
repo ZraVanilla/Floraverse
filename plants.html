@@ -18,7 +18,7 @@
 <nav class="navbar">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between gap-4">
     <a href="index.html" class="wordmark text-[22px] cursor-pointer">Flora<span>Verse</span></a>
-    <div class="hidden lg:flex items-center gap-1">
+    <div class="hidden lg:flex items-center gap-1 nav-links-wrap">
       <a href="index.html" class="nav-link cursor-pointer">Beranda</a>
       <a href="plants.html" class="nav-link cursor-pointer">Tanaman</a>
       <a href="learn.html" class="nav-link cursor-pointer">Belajar</a>
@@ -28,29 +28,33 @@
       <a href="profile.html" class="nav-link cursor-pointer">Profil</a>
     </div>
     <div class="flex items-center gap-2">
-      <button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center cursor-pointer">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button>
+      <button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center cursor-pointer"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg><span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button>
       <a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white cursor-pointer"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a>
-      <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center cursor-pointer">☰</button>
+      <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center cursor-pointer"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     </div>
   </div>
 </nav>
 
 <header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-  <div class="fv-card blue p-6 sm:p-8 flex flex-col lg:flex-row gap-6 items-center relative overflow-hidden">
-    <div class="blob bg-white w-40 h-40 -right-10 -top-10 opacity-10"></div>
+  <div class="fv-card p-6 sm:p-8 flex flex-col lg:flex-row gap-6 items-center relative overflow-hidden" style="border-color:rgba(255,255,255,0.6);">
+    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+      <source src="asset/plant.mp4" type="video/mp4">
+    </video>
+    <div class="blob bg-white w-40 h-40 -right-10 -top-10 opacity-10 relative z-10"></div>
     <div class="flex-1 relative z-10">
-      <span class="pill bg-white text-[#3B82F6] font-black">🌱 Ensiklopedia • 41 Tanaman</span>
-      <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Temukan tanaman yang<br>paling cocok untukmu.</h1>
-      <p class="text-white/90 text-sm mt-2 max-w-[560px]">Filter berdasarkan kategori, cahaya, dan tingkat kesulitan. Klik kartu untuk detail lengkap + cara menanam.</p>
+      <span class="pill bg-white text-[#3B82F6] font-black"><svg class="w-3.5 h-3.5 inline-block -mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5 8-6 8-12a1 1 0 0 0-1.25-.97C13.81 8.03 11.03 9.5 9 12c-1.5 1.8-3 4-3 6a1 1 0 0 0 1 1z"/></svg> Ensiklopedia · 41 Tanaman</span>
+      <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white" style="text-shadow:2px 2px 12px rgba(0,0,0,0.5)">Temukan tanaman yang<br>paling cocok untukmu.</h1>
+      <p class="text-white/90 text-sm mt-2 max-w-[560px]" style="text-shadow:1px 1px 8px rgba(0,0,0,0.4)">Filter berdasarkan kategori, cahaya, dan tingkat kesulitan. Klik kartu untuk detail lengkap + cara menanam.</p>
       <div class="flex flex-wrap gap-2 mt-4">
-        <button onclick="openPlantMatch()" class="btn bg-white text-charcoal font-black px-5 cursor-pointer">✨ Plant Match</button>
-        <span class="pill bg-white/20 text-charcoal">41 tanaman terkurasi</span>
+        <button onclick="openPlantMatch()" class="btn bg-white text-charcoal font-black px-5 cursor-pointer"><svg class="w-4 h-4 inline-block -mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l1.912 5.813a2 2 0 001.275 1.275L21 12l-5.813 1.912a2 2 0 00-1.275 1.275L12 21l-1.912-5.813a2 2 0 00-1.275-1.275L3 12l5.813-1.912a2 2 0 001.275-1.275z"/></svg> Plant Match</button>
+        <span class="pill bg-white/80 text-charcoal">41 tanaman terkurasi</span>
       </div>
     </div>
     <div class="relative z-10 bg-white rounded-3xl p-5 w-full lg:w-[420px]">
       <div class="relative z-20">
         <div class="relative">
-          <input id="searchInput" type="search" placeholder="🔍 Cari cabai, tomat, sukulen..." class="w-full pl-4 pr-4 py-3.5 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#6FA8FF] outline-none font-medium text-sm cursor-text">
+          <input id="searchInput" type="search" placeholder="Cari cabai, tomat, sukulen..." class="w-full pl-10 pr-4 py-3.5 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#6FA8FF] outline-none font-medium text-sm cursor-text">
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2"><svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></span>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-2 mt-3 relative z-20">
@@ -82,21 +86,21 @@
 <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
   <div class="flex gap-2 overflow-auto no-scrollbar pb-2" id="catPills">
     <button data-cat="" class="cat-pill active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm flex items-center justify-center cursor-pointer">Semua</button>
-    <button data-cat="Sayuran" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🥬<span class="hidden sm:inline"> Sayuran</span></button>
-    <button data-cat="Buah" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🍓<span class="hidden sm:inline"> Buah</span></button>
-    <button data-cat="Bunga" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🌸<span class="hidden sm:inline"> Bunga</span></button>
-    <button data-cat="Herbal" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🌿<span class="hidden sm:inline"> Herbal</span></button>
-    <button data-cat="Hias" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🪴<span class="hidden sm:inline"> Hias</span></button>
-    <button data-cat="Pohon buah" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🌳<span class="hidden sm:inline"> Pohon buah</span></button>
-    <button data-cat="Sukulen" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🪴<span class="hidden sm:inline"> Sukulen</span></button>
-    <button data-cat="Kaktus" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🌵<span class="hidden sm:inline"> Kaktus</span></button>
+    <button data-cat="Sayuran" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22c4.2 0 7-1.667 7-5-4.2 0-7 1.667-7 5Z"/><path d="M12 22c-4.2 0-7-1.667-7-5 4.2 0 7 1.667 7 5Z"/><path d="M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M12 4V1"/><path d="m4.93 7.07.93-.93"/><path d="m19.07 7.07-.93-.93"/><path d="M12 10v12"/></svg><span class="hidden sm:inline"> Sayuran</span></button>
+    <button data-cat="Buah" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="11" r="8"/><path d="M12 3v2"/><path d="m8 14 4-2 4 2"/><path d="M9 18l-1.5-1.5"/><path d="M15 18l1.5-1.5"/></svg><span class="hidden sm:inline"> Buah</span></button>
+    <button data-cat="Bunga" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V9m-4.5 3a4.5 4.5 0 1 0 4.5 4.5M7.5 12H9m7.5 0a4.5 4.5 0 1 1-4.5 4.5m4.5-4.5H15m-3 4.5V15"/><circle cx="12" cy="12" r="3"/></svg><span class="hidden sm:inline"> Bunga</span></button>
+    <button data-cat="Herbal" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1.5 0 2.8 1.3c1 1 1.3 2.3 1.5 3.5A7 7 0 0 1 11 20"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg><span class="hidden sm:inline"> Herbal</span></button>
+    <button data-cat="Hias" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5 8-6 8-12a1 1 0 0 0-1.25-.97C13.81 8.03 11.03 9.5 9 12c-1.5 1.8-3 4-3 6a1 1 0 0 0 1 1z"/><path d="M9 8a3 3 0 1 0 3 3"/></svg><span class="hidden sm:inline"> Hias</span></button>
+    <button data-cat="Pohon buah" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22v-7"/><path d="M12 15H6a1 1 0 0 1-.707-1.707l5-5A1 1 0 0 1 12 8h6a1 1 0 0 1 .707 1.707l-5 5A1 1 0 0 1 12 15z"/><path d="M12 8V3"/><path d="m4.93 10.07.93-.93"/><path d="m19.07 10.07-.93-.93"/></svg><span class="hidden sm:inline"> Pohon buah</span></button>
+    <button data-cat="Sukulen" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="14" rx="8" ry="5"/><path d="M12 9V4"/><path d="M8 14c-2-1-3-3-3-5"/><path d="M16 14c2-1 3-3 3-5"/><path d="M12 9c-1.5-1-2.5-3-2.5-5"/><path d="M12 9c1.5-1 2.5-3 2.5-5"/></svg><span class="hidden sm:inline"> Sukulen</span></button>
+    <button data-cat="Kaktus" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M12 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M9 8c-2 0-3 1-3 3v1h12v-1c0-2-1-3-3-3"/><path d="M9 8a3 3 0 1 1-3 3"/><path d="M15 8a3 3 0 1 0 3 3"/></svg><span class="hidden sm:inline"> Kaktus</span></button>
   </div>
 </div>
 
 <main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-5">
   <div id="plantsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
   <button id="plantsLoadMore" class="btn btn-ghost w-full max-w-md mx-auto mt-5 hidden cursor-pointer">Muat lebih banyak</button>
-  <div id="emptyState" class="hidden text-center py-16"><div class="text-5xl">🔍</div><p class="font-black mt-3">Tidak ada tanaman ditemukan</p><p class="text-sm text-muted">Coba ubah filter atau kata kunci.</p><button id="resetPlantFilters" class="btn btn-ghost mt-4 text-sm cursor-pointer">Reset filter</button></div>
+  <div id="emptyState" class="hidden text-center py-16"><div class="text-5xl"><svg class="w-12 h-12 mx-auto text-gray-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div><p class="font-black mt-3">Tidak ada tanaman ditemukan</p><p class="text-sm text-muted">Coba ubah filter atau kata kunci.</p><button id="resetPlantFilters" class="btn btn-ghost mt-4 text-sm cursor-pointer">Reset filter</button></div>
 </main>
 
 <!-- PLANT LAB (#24) - Interactive simulation -->
@@ -140,7 +144,7 @@
 <!-- Plant Match Modal -->
 <div id="plantMatchModal" class="modal-backdrop">
    <div class="modal p-6 sm:p-7 relative" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
-    <button onclick="closePlantMatch()" aria-label="Tutup Plant Match" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center cursor-pointer">✕</button>
+    <button onclick="closePlantMatch()" aria-label="Tutup Plant Match" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center cursor-pointer"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
     <div class="plant-match-header flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black">🌱</div><div><p id="pmTitle" class="font-black leading-none">Plant Match</p><p class="text-xs text-muted">Temukan tanaman idealmu</p></div><span id="pmStepNum" class="ml-auto pill pill-blue font-black">1/7</span></div>
     <div id="pmProgress" class="progress-track mt-4 hidden"><div id="pmBar" class="progress-fill bg-[#6FA8FF]" style="width:14%"></div></div>
     <div id="pmIntro" class="mt-6"><div class="rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE] p-4"><p class="font-black text-lg">Mulai dari sini</p><p class="text-sm text-muted mt-1">Jawab 7 pertanyaan singkat agar rekomendasi tanaman menyesuaikan cahaya, ruang, waktu, dan pengalamanmu.</p></div><button onclick="startPlantMatch()" class="btn btn-primary w-full mt-4 cursor-pointer">Mulai survei</button></div>
@@ -150,11 +154,12 @@
 </div>
 
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
-<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center cursor-pointer">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3 cursor-pointer">Lanjut ke Pembayaran </button></div></div>
+<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center cursor-pointer"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3 cursor-pointer">Lanjut ke Pembayaran </button></div></div>
 <div id="toastBox"></div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
+<script src="js/utils.js"></script>
 <script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>
@@ -169,7 +174,7 @@
 let activeCat="";
 const plantPageSize=()=>window.matchMedia('(max-width:767px)').matches ? 12 : 24;
 let visiblePlantCount=plantPageSize();
-function renderPlants(){
+function renderPlants(animate){
   const q = ($('#searchInput').val()||'').toLowerCase();
   const kat = $('#filterKategori').val() || activeCat;
   const kes = $('#filterKesulitan').val();
@@ -190,7 +195,19 @@ function renderPlants(){
   $('#resultCount').text(`${list.length} tanaman ditemukan`);
   if(list.length===0){ $('#plantsGrid').empty(); $('#emptyState').removeClass('hidden'); return; }
   $('#emptyState').addClass('hidden');
-   $('#plantsGrid').html(list.slice(0,visiblePlantCount).map(p=> `
+  const $grid = $('#plantsGrid');
+  if(animate && $grid.children().length){
+    $grid.css({opacity:'0', transform:'translateY(4px)', transition:'opacity 120ms ease, transform 120ms ease'});
+    setTimeout(()=>{
+      renderPlantsContent($grid, list);
+      $grid.css({opacity:'1', transform:'translateY(0)', transition:'opacity 250ms ease 30ms, transform 250ms ease 30ms'});
+    }, 130);
+  } else {
+    renderPlantsContent($grid, list);
+  }
+}
+function renderPlantsContent($grid, list){
+   $grid.html(list.slice(0,visiblePlantCount).map(p=> `
      <div role="button" tabindex="0" aria-label="Lihat detail ${p.nama}" onclick="openPlant('${p.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlant('${p.id}')}" class="fv-card white overflow-hidden cursor-pointer hover-lift group">
       <div class="h-40 flex items-center justify-center relative overflow-hidden" style="background:${p.color}14">
         ${fvImg(p,'w-full h-full object-cover group-hover:scale-105 transition duration-300')}
@@ -227,7 +244,7 @@ function openPlant(id){
       <div class="h-56 flex items-center justify-center relative overflow-hidden" style="background:${p.color}14">
          ${fvImg(p,'w-full h-full object-cover')}
         <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full opacity-10" style="background:${p.color}"></div>
-        <button onclick="$('#plantModal').removeClass('open')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur shadow-md flex items-center justify-center text-sm font-bold hover:bg-white transition cursor-pointer">✕</button>
+        <button onclick="$('#plantModal').removeClass('open')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur shadow-md flex items-center justify-center text-sm font-bold hover:bg-white transition cursor-pointer"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
         <div class="absolute bottom-4 left-4 flex gap-2">
           <span class="pill bg-white font-black">${p.kategori}</span>
           <span class="pill text-white font-black" style="background:${p.color}">${p.kesulitan}</span>
@@ -250,7 +267,7 @@ function openPlant(id){
             <p class="text-sm font-black">★ ${p.rating} • ${p.buyers.toLocaleString('id-ID')} penanam</p>
             <div class="flex gap-2 mt-2 justify-end">
                <button onclick="addPlantToGarden('${p.id}')" class="btn btn-primary text-sm">+ Tambah ke Kebunku</button>
-              <button onclick="toast('Disimpan','🔖')" class="btn btn-ghost text-sm">🔖 Simpan</button>
+              <button onclick="toast('Disimpan','🔖')" class="btn btn-ghost text-sm"><svg class="w-4 h-4 inline-block -mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg> Simpan</button>
             </div>
           </div>
         </div>
@@ -328,16 +345,16 @@ function openPlant(id){
 }
 $(function(){
   renderPlants();
-  $('#searchInput').on('input', function(){ visiblePlantCount=plantPageSize(); renderPlants(); });
-   $('#filterKategori, #filterKesulitan, #filterCahaya, #sortBy').on('change', function(){ visiblePlantCount=plantPageSize(); renderPlants(); });
+  $('#searchInput').on('input', function(){ visiblePlantCount=plantPageSize(); renderPlants(true); });
+   $('#filterKategori, #filterKesulitan, #filterCahaya, #sortBy').on('change', function(){ visiblePlantCount=plantPageSize(); renderPlants(true); });
    $('#plantsLoadMore').on('click', function(){ visiblePlantCount+=plantPageSize(); renderPlants(); });
-   $('#resetPlantFilters').on('click', function(){ $('#searchInput').val(''); $('#filterKategori, #filterKesulitan, #filterCahaya').val(''); $('#sortBy').val('popular'); activeCat=''; visiblePlantCount=plantPageSize(); $('.cat-pill').removeClass('active bg-charcoal text-white').addClass('bg-white border'); $('.cat-pill[data-cat=""]').addClass('active bg-charcoal text-white').removeClass('bg-white border'); renderPlants(); });
+   $('#resetPlantFilters').on('click', function(){ $('#searchInput').val(''); $('#filterKategori, #filterKesulitan, #filterCahaya').val(''); $('#sortBy').val('popular'); activeCat=''; visiblePlantCount=plantPageSize(); $('.cat-pill').removeClass('active bg-charcoal text-white').addClass('bg-white border'); $('.cat-pill[data-cat=""]').addClass('active bg-charcoal text-white').removeClass('bg-white border'); renderPlants(true); });
   $('.cat-pill').on('click', function(){
     $('.cat-pill').removeClass('active bg-charcoal text-white').addClass('bg-white border');
     $(this).addClass('active bg-charcoal text-white').removeClass('bg-white border');
     activeCat = $(this).data('cat');
     $('#filterKategori').val(activeCat);
-     visiblePlantCount=plantPageSize(); renderPlants();
+     visiblePlantCount=plantPageSize(); renderPlants(true);
   });
   $('#plantModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
   // Plant Lab init

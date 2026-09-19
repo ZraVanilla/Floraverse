@@ -4,195 +4,123 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Profil - FloraVerse</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={theme:{extend:{colors:{blue:'#6FA8FF', pink:'#FF718D', yellow:'#FFD45C', orange:'#FF9B70', green:'#8BCB8A', charcoal:'#252525'}}}}</script>
+<script>tailwind.config={theme:{extend:{colors:{blue:'#6FA8FF',pink:'#FF718D',yellow:'#FFD45C',orange:'#FF9B70',green:'#8BCB8A',charcoal:'#252525'}}}}</script>
 <link rel="stylesheet" href="css/style.css?v=3">
 <link rel="stylesheet" href="css/animations.css?v=3">
 <link rel="stylesheet" href="css/responsive.css?v=3">
-<!--
-  Image source: Custom illustration created for FloraVerse - Open License
-  Personality illustration: Custom FloraVerse - Open License
--->
+<link rel="stylesheet" href="css/profile.css?v=2">
 </head>
-<body class="bg-[#FCFCFC] profile-page">
+<body class="bg-[#FCFCFC]">
+
 <nav class="navbar">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between">
     <a href="index.html" class="wordmark text-[22px]">Flora<span>Verse</span></a>
-    <div class="hidden lg:flex items-center gap-1">
+    <div class="hidden lg:flex items-center gap-1 nav-links-wrap">
       <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
     </div>
-    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
+    <div class="flex items-center gap-2">
+      <button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center" aria-label="Keranjang">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+        <span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span>
+      </button>
+      <a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white">
+        <span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span>
+        <span class="text-sm font-bold">Izra</span>
+        <span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span>
+      </a>
+      <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center" aria-label="Menu" aria-expanded="false">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 
-<header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-  <div class="fv-card blue p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden">
-    <div class="blob bg-white w-40 h-40 -right-10 -top-10 opacity-10"></div>
-    <div class="flex gap-5 flex-1 relative z-10">
-      <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-[28px] bg-white flex items-center justify-center text-4xl font-black text-[#6FA8FF] border-4 border-white shadow-xl">IZ</div>
-      <div class="flex-1 min-w-0">
-        <div class="profile-identity flex flex-wrap items-center gap-2">
-          <h1 class="text-[26px] sm:text-[32px] font-black leading-none text-white">Izra</h1>
-          <div class="profile-badges flex flex-wrap items-center gap-2">
-            <span class="pill bg-white text-charcoal font-black">Gardener Lv 8</span>
-            <span class="pill bg-[#FFD45C] text-charcoal font-black">340 XP</span>
-            <span class="pill bg-white/20 text-charcoal">Urban Gardener</span>
-          </div>
-        </div>
-        <p class="text-white/90 text-sm mt-2 max-w-[520px]">Pemula yang jatuh cinta pada cabai dan sukulen. Berkebun di balkon 2x1m - belajar, berbagi, panen.</p>
-        <div class="mt-3">
-          <div class="flex justify-between text-xs font-bold text-white/90"><span>Progress ke Lv 9</span><span>340 / 500 XP</span></div>
-          <div class="progress-track bg-white/20 mt-1"><div class="progress-fill bg-white" style="width:68%"></div></div>
-        </div>
-        <div class="flex gap-2 mt-4">
-          <button onclick="toast('Profil dibagikan','↗')" class="btn bg-white text-charcoal font-black px-5 text-sm">↗ Bagikan Profil</button>
-          <button onclick="toast('Edit profil (simulasi)','✏️')" class="btn bg-charcoal text-white px-5 text-sm">✏️ Edit</button>
-        </div>
-      </div>
-    </div>
-    <div class="profile-stat-grid lg:w-[340px] grid grid-cols-3 gap-3 relative z-10">
-      <div class="bg-white rounded-2xl p-4 text-center"><p class="text-2xl font-black text-[#6FA8FF]">6</p><p class="text-xs font-bold">Tanaman</p></div>
-      <div class="bg-white rounded-2xl p-4 text-center"><p class="text-2xl font-black text-[#FF718D]">4</p><p class="text-xs font-bold">Komunitas</p></div>
-      <div class="bg-white rounded-2xl p-4 text-center"><p class="text-2xl font-black text-[#FFD45C]">18</p><p class="text-xs font-bold">Panduan</p></div>
-      <div class="bg-white rounded-2xl p-4 text-center col-span-3 flex items-center justify-center gap-2"><p class="font-black">340 Green Points</p><span class="pill pill-yellow text-xs">+20 hari ini</span></div>
-    </div>
-  </div>
-</header>
+<noscript>
+  <div class="pf-wrap"><p class="pf-empty"><b>⚠️</b>Halaman profil membutuhkan JavaScript. Aktifkan JavaScript di browser lalu muat ulang.</p></div>
+</noscript>
+<div class="pf-app-error" id="appError" role="alert">
+  <div style="font-size:2rem">🥀</div>
+  Gagal memuat profil. Coba muat ulang halaman (Ctrl+R). Kalau masih gagal, buka Console (F12) untuk melihat detail errornya.
+</div>
 
+<section class="pf-hero" id="hero" aria-label="Ringkasan profil"></section>
 
-
-<!-- XP & Level detail (#29) -->
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 grid lg:grid-cols-12 gap-6 items-start">
-  <div class="lg:col-span-5 fv-card white p-6">
-    <button onclick="toggleXP()" class="font-black flex items-center justify-between w-full text-left">
-      <span>Cara Dapat XP</span>
-      <span id="xpArrow" class="text-sm transition-transform duration-300">▾</span>
-    </button>
-    <div id="xpContent" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-      <div class="space-y-2 pt-3 text-sm">
-        <div class="flex justify-between p-2.5 rounded-xl bg-[#EFF6FF] border border-[#BFDBFE]"><span>Tambah tanaman</span><b>+10 XP</b></div>
-        <div class="flex justify-between p-2.5 rounded-xl bg-[#FEF9C3] border border-yellow-200"><span>Selesaikan guide</span><b>+20 XP</b></div>
-        <div class="flex justify-between p-2.5 rounded-xl bg-[#F0FDF4] border border-green-200"><span>Update journal</span><b>+10 XP</b></div>
-        <div class="flex justify-between p-2.5 rounded-xl bg-[#FFF7ED] border border-orange-200"><span>Bantu komunitas</span><b>+15 XP</b></div>
-        <div class="flex justify-between p-2.5 rounded-xl bg-[#EFF6FF] border border-[#BFDBFE]"><span>Selesaikan journey</span><b>+50 XP</b></div>
-        <div class="flex justify-between p-2.5 rounded-xl bg-[#FDF2F8] border border-pink-200"><span>Selesaikan challenge</span><b>+40 XP</b></div>
-      </div>
-    </div>
-  </div>
-  <div class="lg:col-span-7 fv-card white p-6">
-    <button onclick="toggleLevel()" class="font-black flex items-center justify-between w-full text-left">
-      <span>Level Progression</span>
-      <span id="levelArrow" class="text-sm transition-transform duration-300">▾</span>
-    </button>
-    <div id="levelContent" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-      <div class="grid grid-cols-2 gap-2 pt-3">
-      <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] text-white flex items-center justify-center font-black text-xs">01</span><div class="flex-1"><p class="font-bold text-sm">Seed Starter</p><p class="text-xs text-muted">0 XP</p></div><span class="pill pill-green text-xs">✓</span></div>
-      <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] text-white flex items-center justify-center font-black text-xs">02</span><div class="flex-1"><p class="font-bold text-sm">First Sprout</p><p class="text-xs text-muted">50 XP</p></div><span class="pill pill-green text-xs">✓</span></div>
-      <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] text-white flex items-center justify-center font-black text-xs">03</span><div class="flex-1"><p class="font-bold text-sm">Plant Friend</p><p class="text-xs text-muted">100 XP</p></div><span class="pill pill-green text-xs">✓</span></div>
-      <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] text-white flex items-center justify-center font-black text-xs">04</span><div class="flex-1"><p class="font-bold text-sm">Leaf Lover</p><p class="text-xs text-muted">150 XP</p></div><span class="pill pill-green text-xs">✓</span></div>
-      <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] text-white flex items-center justify-center font-black text-xs">05</span><div class="flex-1"><p class="font-bold text-sm">Garden Explorer</p><p class="text-xs text-muted">200 XP</p></div><span class="pill pill-green text-xs">✓</span></div>
-      <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] text-white flex items-center justify-center font-black text-xs">06</span><div class="flex-1"><p class="font-bold text-sm">Bloom Buddy</p><p class="text-xs text-muted">250 XP</p></div><span class="pill pill-green text-xs">✓</span></div>
-      <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] text-white flex items-center justify-center font-black text-xs">07</span><div class="flex-1"><p class="font-bold text-sm">Garden Guardian</p><p class="text-xs text-muted">300 XP</p></div><span class="pill pill-green text-xs">✓</span></div>
-      <div class="flex items-center gap-3 p-2.5 rounded-xl bg-[#6FA8FF] text-white"><span class="w-8 h-8 rounded-full bg-white text-[#6FA8FF] flex items-center justify-center font-black text-xs">08</span><div class="flex-1"><p class="font-black text-sm">Plant Keeper - Kamu di sini</p><p class="text-xs opacity-90">340 XP</p></div><span class="pill bg-white text-charcoal text-xs">● Aktif</span></div>
-      <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50 opacity-60"><span class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center font-black text-xs">09</span><div class="flex-1"><p class="font-bold text-sm">Flora Ranger</p><p class="text-xs text-muted">420 XP</p></div><span class="pill pill-white text-xs">🔒</span></div>
-      <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50 opacity-60"><span class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center font-black text-xs">10</span><div class="flex-1"><p class="font-bold text-sm">Flora Master</p><p class="text-xs text-muted">500 XP</p></div><span class="pill pill-white text-xs">🔒</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 grid lg:grid-cols-12 gap-6">
-  <!-- Left: garden & communities -->
-  <div class="lg:col-span-8 space-y-6">
-    <!-- Garden summary -->
-    <div class="fv-card white p-6">
-      <div class="flex items-center justify-between">
-        <h2 class="font-black text-lg">Kebun Ku - Ringkasan</h2>
-        <a href="garden.html" class="btn btn-ghost text-sm px-4 py-2">Buka Kebunku</a>
-      </div>
-      <div id="profileGarden" class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4"></div>
-      <div class="mt-4">
-        <p class="font-black text-sm">Completed Journeys (2)</p>
-        <div class="grid grid-cols-2 gap-2 mt-2">
-          <div class="bg-[#F0FDF4] border border-green-200 rounded-xl p-3 flex items-center gap-2"><div><p class="font-bold text-sm">Kangkung - Harvest</p><p class="text-xs text-muted">25 hari • +50 XP</p></div></div>
-          <div class="bg-[#F0FDF4] border border-green-200 rounded-xl p-3 flex items-center gap-2"><div><p class="font-bold text-sm">Kaktus - Growing</p><p class="text-xs text-muted">120 hari • +10 XP</p></div></div>
-        </div>
-      </div>
-      <div class="bg-[#EFF6FF] border border-[#BFDBFE] rounded-2xl p-4 mt-4 flex items-center gap-3">
-        <div class="flex-1"><p class="font-bold text-sm">Garden Pulse</p><p class="text-xs text-muted">2 tanaman butuh aksi hari ini - cek Kebunku</p></div>
-        <a href="garden.html" class="btn btn-primary text-xs px-4 py-2">Lihat</a>
-      </div>
-    </div>
-
-    <!-- Joined communities -->
-    <div class="fv-card white p-6">
-      <h2 class="font-black text-lg">Komunitas Diikuti (4)</h2>
-      <div id="profileComms" class="grid sm:grid-cols-2 gap-3 mt-4"></div>
-    </div>
-
-    <!-- Saved guides + plants tabs -->
-    <div class="fv-card white p-6">
-      <div class="flex gap-2 border-b pb-3 overflow-auto no-scrollbar max-w-full">
-        <button data-tab="savedPlants" class="ptab active px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm whitespace-nowrap">Tanaman Tersimpan</button>
-        <button data-tab="savedGuides" class="ptab px-4 py-2 rounded-full bg-gray-100 font-bold text-sm whitespace-nowrap">Panduan Tersimpan</button>
-        <button data-tab="activity" class="ptab px-4 py-2 rounded-full bg-gray-100 font-bold text-sm whitespace-nowrap">Aktivitas</button>
-      </div>
-      <div id="tabSavedPlants" class="ptabContent mt-4 grid sm:grid-cols-2 gap-3"></div>
-      <div id="tabSavedGuides" class="ptabContent hidden mt-4 grid sm:grid-cols-2 gap-3"></div>
-      <div id="tabActivity" class="ptabContent hidden mt-4 space-y-3"></div>
-    </div>
+<main class="pf-wrap pf-main" id="app">
+  <div class="pf-sec pf-grid2">
+    <section aria-labelledby="h-kebun">
+      <div class="pf-sec__hd"><h2 id="h-kebun">Kebunku</h2><a href="garden.html">Buka Kebunku →</a></div>
+      <div id="tasks"></div>
+      <div class="pf-garden" id="garden"></div>
+    </section>
+    <section aria-labelledby="h-journey">
+      <div class="pf-sec__hd"><h2 id="h-journey">Garden Journey</h2></div>
+      <div id="journey"></div>
+    </section>
   </div>
 
-  <!-- Right: achievements, stats, share -->
-  <div class="lg:col-span-4 space-y-4">
-    <div class="fv-card yellow p-5">
-      <p class="font-black">Achievements</p>
-      <div id="achieveList" class="grid grid-cols-2 gap-2 mt-3"></div>
-      <div class="bg-white rounded-2xl p-3 mt-4 text-center">
-        <p class="font-black text-sm">Level 8 - Urban Gardener</p>
-        <p class="text-xs text-muted">Selanjutnya: Level 9 "Green Thumb" di 500 XP</p>
-        <div class="progress-track mt-2"><div class="progress-fill bg-[#6FA8FF]" style="width:68%"></div></div>
-      </div>
-    </div>
-
-    <div class="fv-card white p-5">
-      <p class="font-black">Statistik</p>
-      <div class="space-y-2 mt-3 text-sm">
-        <div class="flex justify-between p-3 bg-gray-50 rounded-xl"><span>Tanaman aktif</span><b>6</b></div>
-        <div class="flex justify-between p-3 bg-gray-50 rounded-xl"><span>Task selesai</span><b>42</b></div>
-        <div class="flex justify-between p-3 bg-gray-50 rounded-xl"><span>Jurnal</span><b>18 entri</b></div>
-        <div class="flex justify-between p-3 bg-gray-50 rounded-xl"><span>Postingan</span><b>7</b></div>
-        <div class="flex justify-between p-3 bg-gray-50 rounded-xl"><span>Pesanan</span><b>3 (simulasi)</b></div>
-      </div>
-      <button onclick="toast('Statistik dibagikan','📊')" class="btn btn-ghost w-full mt-3">Bagikan Statistik</button>
-    </div>
-
-    <div class="fv-card pink p-5 text-white">
-      <p class="font-black">Tantangan Mingguan</p>
-      <p class="text-sm opacity-90 mt-1">Selesaikan 5 task Kebunku untuk +50 XP</p>
-      <div class="bg-white rounded-2xl p-3 mt-3 text-charcoal">
-        <div class="flex justify-between text-xs font-bold"><span>Progress</span><span>3/5</span></div>
-        <div class="progress-track mt-1"><div class="progress-fill bg-[#FF718D]" style="width:60%"></div></div>
-        <button onclick="toast('Semangat! Sisa 2 task lagi','🔥')" class="btn btn-dark w-full mt-3 text-sm">Lihat Task</button>
-      </div>
-    </div>
-
+  <div class="pf-sec pf-grid2">
+    <section aria-labelledby="h-komu">
+      <div class="pf-sec__hd"><h2 id="h-komu">Komunitas</h2><a href="community.html">Lihat Semua →</a></div>
+      <ul class="pf-clist" id="komu"></ul>
+    </section>
+    <section aria-labelledby="h-badge">
+      <div class="pf-sec__hd"><h2 id="h-badge">Garden Badges</h2><span class="pf-count-tag" id="badgeCount"></span></div>
+      <div class="pf-badges" id="badges"></div>
+      <p class="pf-badge-info" id="badgeInfo" aria-live="polite">Pilih sebuah badge untuk melihat syarat mendapatkannya.</p>
+      <div class="pf-weekly" id="weekly"></div>
+    </section>
   </div>
-</section>
 
+  <section class="pf-sec" aria-labelledby="h-heat">
+    <div class="pf-sec__hd"><h2 id="h-heat">Aktivitas 12 Minggu</h2></div>
+    <div class="pf-heatbox">
+      <div>
+        <div class="pf-heatscroll"><div class="pf-heat" id="heat" role="img" aria-label="Peta aktivitas perawatan 12 minggu terakhir"></div></div>
+        <div class="pf-legend" aria-hidden="true">Sedikit <span class="pf-cell"></span><span class="pf-cell l1"></span><span class="pf-cell l2"></span><span class="pf-cell l3"></span><span class="pf-cell l4"></span> Banyak</div>
+      </div>
+      <div class="pf-heatsum" id="heatSum"></div>
+    </div>
+  </section>
 
+  <section class="pf-sec" style="border-bottom:0" aria-label="Koleksi profil">
+    <div class="pf-tabs" role="tablist" aria-label="Konten profil" id="tabs">
+      <button class="pf-tab" role="tab" id="tab-tanaman" aria-controls="panel-tanaman" data-action="tab" data-tab="tanaman" aria-selected="true">Tanaman</button>
+      <button class="pf-tab" role="tab" id="tab-panduan" aria-controls="panel-panduan" data-action="tab" data-tab="panduan" aria-selected="false" tabindex="-1">Panduan</button>
+      <button class="pf-tab" role="tab" id="tab-aktivitas" aria-controls="panel-aktivitas" data-action="tab" data-tab="aktivitas" aria-selected="false" tabindex="-1">Aktivitas</button>
+    </div>
+    <div class="pf-panel" role="tabpanel" id="panel-tanaman" aria-labelledby="tab-tanaman"></div>
+    <div class="pf-panel" role="tabpanel" id="panel-panduan" aria-labelledby="tab-panduan" hidden></div>
+    <div class="pf-panel" role="tabpanel" id="panel-aktivitas" aria-labelledby="tab-aktivitas" hidden></div>
+  </section>
+</main>
 
-<footer class="border-t bg-[#FCFCFC] mt-6">
+<footer class="border-t bg-[#FCFCFC]">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-xs text-muted">
-    FloraVerse - Satu Dunia, Berjuta Cara untuk Tumbuh. • Project By : Izra, Fairuz, Tafayad • © 2026
+    FloraVerse &#x2014; Satu Dunia, Berjuta Cara untuk Tumbuh. &#x00B7; Project By : Izra, Fairuz, Tafayad &#x00A9; 2026
   </div>
 </footer>
 
-<div id="drawerBackdrop" class="drawer-backdrop"></div>
-<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran</button></div></div>
+<div class="pf-toast-box" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<dialog class="pf-dlg" id="editDlg" aria-labelledby="editTitle">
+  <form id="editForm">
+    <h2 id="editTitle">Edit profil</h2>
+    <label for="editName">Nama<input name="name" id="editName" maxlength="30" required autocomplete="off"></label>
+    <label for="editTagline">Tagline<input name="tagline" id="editTagline" maxlength="60" autocomplete="off"></label>
+    <label for="editBio">Bio<textarea name="bio" id="editBio" rows="4" maxlength="200"></textarea></label>
+    <div class="pf-dlg__btns">
+      <button type="button" class="pf-btn" data-action="close-edit">Batal</button>
+      <button type="submit" class="pf-btn pf-btn--dark">Simpan perubahan</button>
+    </div>
+  </form>
+</dialog>
+
 <div id="toastBox"></div>
 
+<!-- ═══════ SCRIPTS ═══════ -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
+<script src="js/utils.js"></script>
 <script src="js/plant-images.js"></script>
 <script src="js/communities.js"></script>
 <script src="js/guides.js"></script>
@@ -203,101 +131,8 @@
 <script src="js/journey.js"></script>
 <script src="js/plant-lab.js"></script>
 <script src="js/plant-match.js"></script>
-<script src="js/app.js?v=3"></script>
-<script>
-function toggleLevel(){
-  const content=$('#levelContent');
-  const arrow=$('#levelArrow');
-  if(content.hasClass('open')){
-    content.css('max-height','0px').removeClass('open');
-    arrow.removeClass('rotate-180');
-  } else {
-    content.addClass('open').css('max-height', content[0].scrollHeight+'px');
-    arrow.addClass('rotate-180');
-  }
-}
-function toggleXP(){
-  const content=$('#xpContent');
-  const arrow=$('#xpArrow');
-  if(content.hasClass('open')){
-    content.css('max-height','0px').removeClass('open');
-    arrow.removeClass('rotate-180');
-  } else {
-    content.addClass('open').css('max-height', content[0].scrollHeight+'px');
-    arrow.addClass('rotate-180');
-  }
-}
-$(function(){
-  const u=CURRENT_USER;
-  // garden summary (6)
-  $('#profileGarden').html(MY_GARDEN.map(g=> `
-    <div class="bg-gray-50 rounded-2xl p-3 flex gap-3 items-center">
-       <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden" style="background:${g.color}18">${fvImg(PLANTS.find(p=>p.id===g.plantId),'w-full h-full object-cover')}</div>
-      <div class="flex-1 min-w-0"><p class="font-bold text-sm leading-none truncate">${g.nama}</p><p class="text-xs text-muted">Day ${g.day} • ${g.stage} • ${g.progress}%</p></div>
-    </div>
-  `).join(''));
-  // communities
-  const joined=COMMUNITIES.filter(c=> u.joined.includes(c.id));
-  $('#profileComms').html(joined.map(c=> `
-    <div class="flex gap-3 p-3 rounded-2xl border bg-white">
-       <div class="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden" style="background:${c.color}18">${c.plantId ? fvImg(PLANTS.find(p=>p.id===c.plantId),'w-full h-full object-cover') : c.emoji}</div>
-      <div class="flex-1 min-w-0"><p class="font-bold text-sm leading-none">${c.nama}</p><p class="text-xs text-muted">${c.members.toLocaleString('id-ID')} members</p></div>
-      <span class="pill pill-green text-xs">✓ Joined</span>
-    </div>
-  `).join(''));
-  // saved plants
-  const savedPlants = PLANTS.filter(p=> u.savedPlants.includes(p.id));
-  $('#tabSavedPlants').html(savedPlants.map(p=> `
-    <div class="flex gap-3 p-3 rounded-2xl border bg-white">
-       <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden" style="background:${p.color}14">${fvImg(p,'w-full h-full object-cover')}</div>
-      <div class="flex-1"><p class="font-bold text-sm">${p.nama}</p><p class="text-xs italic text-muted">${p.ilmiah}</p><p class="text-xs text-muted">${p.kategori} • ${p.panen}</p></div>
-      <a href="plants.html" class="btn btn-ghost text-xs px-3 py-2">Lihat</a>
-    </div>
-  `).join(''));
-  // saved guides (dummy 3)
-  const savedGuides = GUIDES.slice(0,4);
-  $('#tabSavedGuides').html(savedGuides.map(g=> `
-    <div class="flex gap-3 p-3 rounded-2xl border bg-white">
-       <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden" style="background:${g.color}14">${fvImg(PLANTS.find(p=>p.id===g.plantId),'w-full h-full object-cover')}</div>
-      <div class="flex-1"><p class="font-bold text-sm leading-tight">${g.judul}</p><p class="text-xs text-muted">${g.waktu} • ${g.kategori}</p></div>
-    </div>
-  `).join(''));
-  // activity
-  const activities=[
-    {time:"Hari ini, 09:00", text:"Menyelesaikan task <b>Siram Cabai Rawit</b> +10 XP", color:"#8BCB8A"},
-    {time:"Kemarin, 18:30", text:"Membagikan Plant Journey <b>Cabai Day 28</b> ke Pecinta Cabai", color:"#FF718D"},
-    {time:"2 hari lalu", text:"Menyelesaikan panduan <b>Dasar Berkebun untuk Pemula</b> +15 XP", color:"#FFD45C"},
-    {time:"3 hari lalu", text:"Bergabung ke komunitas <b>Hidroponik Indonesia</b>", color:"#6FA8FF"},
-    {time:"4 hari lalu", text:"Menambahkan <b>Tomat Cherry</b> ke Kebunku", color:"#8BCB8A"},
-    {time:"5 hari lalu", text:"Checkout <b>Chili Starter Kit Rp65.000</b> (simulasi)", color:"#FF9B70"},
-  ];
-  $('#tabActivity').html(activities.map(a=> `
-    <div class="flex gap-3 p-3 rounded-2xl bg-white border">
-      <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:${a.color}"></div>
-      <div class="flex-1"><p class="text-sm">${a.text}</p><p class="text-xs text-muted">${a.time}</p></div>
-    </div>
-  `).join(''));
-  // achievements per Instruksi2 #29
-  const allAchieve=["First Sprout","Water Wizard","Plant Parent","Garden Explorer","Chili Champion","Community Helper","Harvest Hero","Green Thumb"];
-  // mapping dummy unlocked: Izra has First Sprout, Water Wizard, Garden Explorer, Community Helper as unlocked for demo
-  const unlockedDemo=["First Sprout","Water Wizard","Garden Explorer","Community Helper"];
-  const unlocked=[...new Set([...u.achievements, ...unlockedDemo])].slice(0,4);
-  $('#achieveList').html(allAchieve.map(name=>{
-    const ok=unlocked.includes(name) || unlockedDemo.includes(name);
-    return `<div class="rounded-2xl p-3 text-center border-2 ${ok?'bg-white border-[#FFD45C]':'bg-gray-50 border-gray-100 opacity-60'}"><p class="font-bold text-xs">${name}</p><p class="text-[10px] ${ok?'text-[#9A7400]':'text-muted'}">${ok?'Terbuka':'Terkunci'}</p></div>`;
-  }).join(''));
-  window.setPersonality=function(name){ $('#personalityModal').removeClass('open'); toast('Personality: '+name+'!','🌿'); };
-
-  $('.ptab').on('click', function(){
-    $('.ptab').removeClass('active bg-charcoal text-white').addClass('bg-gray-100');
-    $(this).addClass('active bg-charcoal text-white').removeClass('bg-gray-100');
-    const tab=$(this).data('tab');
-    $('.ptabContent').addClass('hidden');
-    if(tab==='savedPlants') $('#tabSavedPlants').removeClass('hidden');
-    if(tab==='savedGuides') $('#tabSavedGuides').removeClass('hidden');
-    if(tab==='activity') $('#tabActivity').removeClass('hidden');
-  });
-});
-</script>
+<script src="js/profile-data.js"></script>
+<script src="js/app.js?v=4"></script>
+<script src="js/profile.js?v=2"></script>
 </body>
 </html>

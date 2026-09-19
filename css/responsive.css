@@ -59,23 +59,12 @@ input,select,textarea{max-width:100%}
   input,select,textarea{font-size:16px !important; min-height:44px}
   input[type="checkbox"],input[type="radio"]{min-height:0}
 
-  /* Hero content must reflow instead of shrinking horizontally. */
+  /* Hero content reflows on mobile. */
   header > .fv-card,header .fv-card > .flex-col,body > section:first-of-type > .grid{gap:18px !important}
   header .lg\:w-\[420px\],header .lg\:w-\[380px\],header .community-search-panel{width:100% !important}
   header .bg-white.rounded-\[24px\],header .bg-white.rounded-3xl{padding:16px !important; border-radius:16px}
   header .flex-wrap{gap:8px !important}
   header .flex-wrap > .btn{flex:1 1 140px}
-
-  /* Home hero actions are stacked to keep full labels readable. */
-  .display ~ .flex.flex-wrap.gap-3{display:grid; grid-template-columns:1fr; width:100%}
-  .display ~ .flex.flex-wrap.gap-3 > *{width:100%}
-  .display ~ .flex.items-center.gap-6{gap:12px; flex-wrap:wrap}
-  .display ~ .grid.grid-cols-3{gap:8px; margin-top:20px}
-  .display ~ .grid.grid-cols-3 .p-3{padding:10px !important}
-  .hero-visual-shell{min-height:0 !important; padding:16px !important; border-radius:22px !important}
-  .hero-visual-shell .grid.grid-cols-3{gap:8px}
-  .hero-visual-shell .grid.grid-cols-3 > div{padding:8px !important; border-radius:14px}
-  .garden-pulse-card{margin-top:14px; margin-bottom:0}
 
   /* Search and filter controls stack naturally. */
   header select,header input[type="search"]{width:100%}
@@ -92,15 +81,22 @@ input,select,textarea{max-width:100%}
   #plantsGrid .p-4,#productsGrid .p-4,#guidesGrid .p-4,#myPlantsGrid .p-4{padding:16px !important}
   #productsGrid .items-end.justify-between{align-items:center; gap:12px}
 
+  /* Homepage specific: decorative flora smaller on mobile */
+  .display ~ .flex.justify-center.items-end{gap:8px !important; height:80px !important}
+
+  /* Full-viewport world canvas mobile */
+  #worldBar{padding:10px 12px; gap:6px}
+  #worldBar .world-btn{padding:8px 10px; font-size:.72rem; gap:4px; border-radius:12px}
+  #worldBar .world-btn svg{width:14px; height:14px}
+  #worldBack{top:12px; left:12px; padding:6px 12px; font-size:.72rem; border-radius:10px}
+  .world-title{font-size:2rem !important; line-height:1 !important}
+  .world-subtitle{font-size:.85rem !important; max-width:90vw}
+  .world-cta{padding:.7rem 1.5rem; font-size:.82rem}
+  .world-icon-float svg{width:32px !important; height:32px !important}
+  #hubView .display{font-size:2rem !important}
+
   /* Shop and checkout. */
   #homeProducts{grid-template-columns:1fr !important; gap:10px !important;}
-  #smartBasketLayout{gap:14px !important; align-items:stretch}
-  #smartBasketSection .smart-basket-intro{padding:16px}
-  #smartBasketCard{width:100% !important; padding:16px !important}
-  .smart-kit-items{grid-template-columns:1fr}
-  .smart-kit-item{padding:10px !important}
-  .smart-kit-summary{align-items:flex-start; flex-wrap:wrap}
-  .smart-kit-summary .btn{width:100%}
   .checkout-panel,.checkout-summary{padding:14px}
   .checkout-option{min-height:56px}
   #cartModalList > .flex{display:grid; grid-template-columns:48px minmax(0,1fr) 44px; gap:8px 10px; align-items:center}
@@ -233,9 +229,12 @@ input,select,textarea{max-width:100%}
   body > header,body > section,body > main,body > div.max-w-\[1280px\]{margin-top:24px !important}
   header .lg\:w-\[420px\],header .lg\:w-\[380px\],header .community-search-panel{width:100% !important}
   #plantsGrid,#productsGrid,#guidesGrid,#myPlantsGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
-  .community-panel,.community-feed-shell,.profile-page > section.grid{grid-template-columns:1fr !important}
-  .smart-kit-items{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .community-panel,.community-feed-shell,.community-layout,.profile-page > section.grid{grid-template-columns:1fr !important}
   .modal{max-width:calc(100vw - 40px) !important; max-height:calc(100dvh - 40px)}
+
+  /* World canvas tablet */
+  #worldBar .world-btn{padding:8px 14px; font-size:.78rem; border-radius:14px}
+  .world-title{font-size:2.8rem !important}
 }
 
 @media (prefers-reduced-motion:reduce){

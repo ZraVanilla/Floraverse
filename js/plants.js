@@ -114,5 +114,10 @@ const PLANTS = [
     id:"anggrek", nama:"Anggrek Bulan", ilmiah:"Phalaenopsis amabilis", kategori:"Bunga", kesulitan:"Sulit", panen:"-", cahaya:"Bright Indirect", air:"Sedang", ph:"5.5–6.5", suhu:"18–28°C", media:"Moss + pakis",
     color:"#FF718D", emoji:"🌸",
     desc:"Anggrek bulan elegan, berbunga tahan lama.", cara:"Bibit kultur jaringan.", perawat:"Siram 2x seminggu, pupuk anggrek.", hama:"Bekicot", tips:"Jangan pindah pot saat berbunga.", rating:4.9, buyers:510
+  },
+  {
+    id:"kaktus", nama:"Kaktus Mini", ilmiah:"Cactaceae sp.", kategori:"Sukulen", kesulitan:"Sangat Mudah", panen:"-", cahaya:"Full Sun", air:"Jarang", ph:"6.0–7.0", suhu:"18–30°C", media:"Sukulen mix",
+    color:"#8BCB8A", emoji:"🌵",
+    desc:"Kaktus mini dekoratif, tahan kekeringan, cocok untuk meja atau jendela.", cara:"Tanam di media poros, beri cahaya terang.", perawat:"Siram 10-14 hari sekali.", hama:"Mealybug", tips:"Jangan overwater, akar gampang busuk.", rating:4.6, buyers:780
   }
 ];

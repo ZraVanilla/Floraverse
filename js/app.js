@@ -120,29 +120,77 @@ window.addEventListener('scroll', function(e){
   window.closeAllFvSelects();
 }, true);
 $(function(){
+  // Page transition: enter animation runs on load via CSS (pageEnter on body).
+  // Handle bfcache (browser Back/Forward restoring a cached page)
+  window.addEventListener('pageshow', function(e){
+    if(e.persisted){
+      document.body.classList.remove('is-leaving');
+      document.body.style.cssText = '';
+    }
+  });
+
   document.querySelectorAll('[data-plant-id]').forEach(image=>{
     image.src=window.getPlantImage(image.dataset.plantId);
   });
   $('#cartBtn').attr({'aria-label':'Buka keranjang','title':'Buka keranjang'});
-  // Smoothly transition only between internal document pages.
+
+  // Page transition: intercept internal navigation and add exit/enter animation
+  let navigating = false;
   $(document).on('click', 'a[href]', function(event){
     const link=this;
     const href=link.getAttribute('href');
     if(event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !href || href[0]==='#' || href.startsWith('javascript:') || link.target==='_blank' || link.hasAttribute('download')) return;
+    // Close mobile nav if open
+    if($('#mobileNavPanel').hasClass('open')){ $('#mobileNavPanel').removeClass('open'); $('#mobileNavBackdrop').removeClass('open'); $('#menuBtn').removeClass('is-open').attr('aria-expanded','false'); document.body.style.overflow=''; }
     let destination;
     try { destination=new URL(href, window.location.href); } catch { return; }
     if(destination.origin!==window.location.origin || destination.pathname===window.location.pathname && destination.search===window.location.search) return;
     event.preventDefault();
+    if(navigating) return;
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ window.location.href=destination.href; return; }
+    navigating = true;
+    // Clear any stale inline styles, then trigger exit animation
+    document.body.style.cssText = '';
+    document.body.classList.remove('is-leaving');
+    // Force reflow so browser registers the clean state before adding the class
+    void document.body.offsetHeight;
     document.body.classList.add('is-leaving');
-    window.setTimeout(()=>{ window.location.href=destination.href; }, 190);
+    // Navigate after exit animation completes (~280ms for pageLeave)
+    window.setTimeout(()=>{ window.location.href=destination.href; }, 280);
   });
-  // Active nav
+  // Active nav + sliding indicator
   const path = location.pathname.split('/').pop() || 'index.html';
-  $('.nav-link').each(function(){
+  const $navLinks = $('.nav-links-wrap .nav-link');
+  let $activeLink = null;
+  $navLinks.each(function(){
     const href = $(this).attr('href');
-    if(href === path || (path==='' && href==='index.html')) $(this).addClass('active');
+    if(href === path || (path==='' && href==='index.html')){ $(this).addClass('active'); $activeLink = $(this); }
   });
+  function positionIndicator(){
+    const $wrap = $('.nav-links-wrap');
+    if(!$wrap.length || !$activeLink || !$activeLink.length) return;
+    let $indicator = $wrap.children('.nav-indicator');
+    if(!$indicator.length){ $indicator = $('<div class="nav-indicator"></div>'); $wrap.append($indicator); }
+    const wrapRect = $wrap[0].getBoundingClientRect();
+    const linkRect = $activeLink[0].getBoundingClientRect();
+    $indicator.css({
+      left: (linkRect.left - wrapRect.left) + 'px',
+      width: linkRect.width + 'px'
+    });
+  }
+  positionIndicator();
+  // Reposition on resize
+  $(window).on('resize', positionIndicator);
+  // Reposition after fonts load (nav link widths may change)
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(positionIndicator);
+
+  // Soft scrollbar: visible while scrolling, fades out after 1.5s idle
+  let scrollTimer = null;
+  window.addEventListener('scroll', function(){
+    document.documentElement.classList.add('scrolling');
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function(){ document.documentElement.classList.remove('scrolling'); }, 1500);
+  }, {passive: true});
 
   // Mobile menu - slide from left
   $('#menuBtn').each(function(){
@@ -211,23 +259,12 @@ $(function(){
   });
   $('#closeMobileNav, #mobileNavBackdrop').on('click', closeMobileNav);
 
-  // Plain emoji mode: keep the original Unicode emoji rendering instead of sprite conversion.
-  const FV_EMOJI_CLASSES = {};
-
-  function fvEmojiMarkup(icon='✨'){
-    return icon;
-  }
-
-  function replaceEmojiTextNodes(){
-    return;
-  }
-
   window.toast = function(msg, icon="✨"){
     const $box = $('#toastBox');
     if($box.children().length >= 3) $box.children().first().remove();
-    const $t = $(`<div class="toast">${fvEmojiMarkup(icon)}<span>${msg}</span></div>`);
+    const $t = $(`<div class="toast">${icon}<span>${msg}</span></div>`);
     $box.append($t);
-    setTimeout(()=> $t.fadeOut(300, ()=> $t.remove()), 2600);
+    setTimeout(()=> { $t.addClass('is-leaving'); setTimeout(()=> $t.remove(), 200); }, 2600);
   };
 
   // Cart (localStorage)
@@ -296,6 +333,8 @@ $(function(){
     if(typeof persistGarden==='function') persistGarden();
     toast(`${plant.nama} ditambahkan ke Kebunku!`,'🌱');
   };
+  // NOTE: addBundle di-override di shop.html dengan versi yang pakai hardcoded
+  // bundle pricing (getSmartBundle) + qty per item. Versi ini hanya fallback.
   window.addBundle = window.addBundle || function(plantId){
     const plant=PLANTS.find(item=>item.id===plantId);
     const items=PRODUCTS.filter(product=>product.related===plantId).slice(0,2);
@@ -310,7 +349,9 @@ $(function(){
     setWish(w); toast(w.includes(id)?'Disimpan ke wishlist':'Dihapus dari wishlist', w.includes(id)?'💖':'🤍');
   };
 
-  // Drawer cart (safe fallback if drawer elements don't exist)
+  // NOTE: openDrawer, removeFromCart, clearCart, addBundle di-override sepenuhnya
+  // di shop.html (baris ~152-253) dengan versi modal + qty support + smart bundle pricing.
+  // Perubahan di sini TIDAK berlaku di shop.html. Cek shop.html dulu sebelum ubah behavior cart.
   window.openDrawer = typeof window.openDrawer === 'function' ? window.openDrawer : function(){
     if($('#cartDrawer').length){
       $('#drawerBackdrop').addClass('open');
@@ -354,6 +395,8 @@ $(function(){
     }).join(''));
     $('#drawerTotal').text('Rp'+total.toLocaleString('id-ID'));
   };
+  // NOTE: removeFromCart di-override di shop.html — versi shop memanggil openDrawer()
+  // (modal) alih-alih renderDrawerCart(). Lihat catatan di atas.
   window.removeFromCart = typeof window.removeFromCart === 'function' ? window.removeFromCart : function(id){
     let c=getCart().filter(x=>x.id!==id); setCart(c); updateCartBadge(); renderDrawerCart(); toast('Dihapus dari keranjang','🗑️');
   };
@@ -496,17 +539,51 @@ $(function(){
   // Like / Save / Join helpers (simulate)
   window.toggleLike = function(el){
     const $b=$(el); const liked=$b.hasClass('liked');
-    if(liked){ $b.removeClass('liked bg-[#FF718D] text-white').addClass('bg-white'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())-1); }
-    else { $b.addClass('liked bg-[#FF718D] text-white'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())+1); toast('Kamu menyukai postingan','💖'); }
+    // Trigger bounce animation
+    $b.removeClass('anim-heart');
+    void $b[0].offsetWidth; // force reflow
+    $b.addClass('anim-heart');
+    if(liked){ $b.removeClass('liked bg-[#FF718D] text-white border-[#FF718D]').addClass('bg-white border-[#252525]'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())-1); }
+    else { $b.addClass('liked bg-[#FF718D] text-white border-[#FF718D]').removeClass('bg-white border-[#252525]'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())+1); toast('Kamu menyukai postingan','💖'); }
   };
   window.toggleSave = function(el){
     const $b=$(el); $b.toggleClass('saved');
-    if($b.hasClass('saved')){ $b.addClass('bg-[#FFD45C]'); toast('Disimpan','🔖'); } else { $b.removeClass('bg-[#FFD45C]'); toast('Dihapus dari simpanan',''); }
+    // Trigger save animation
+    $b.removeClass('anim-save');
+    void $b[0].offsetWidth;
+    $b.addClass('anim-save');
+    if($b.hasClass('saved')){ $b.addClass('bg-[#8BCB8A] text-white border-[#8BCB8A]').removeClass('bg-white border-[#252525]'); toast('Disimpan','🔖'); } else { $b.removeClass('bg-[#8BCB8A] text-white border-[#8BCB8A]').addClass('bg-white border-[#252525]'); toast('Dihapus dari simpanan',''); }
+  };
+  window.sharePost = function(el){
+    const $b=$(el);
+    $b.removeClass('anim-icon');
+    void $b[0].offsetWidth;
+    $b.addClass('anim-icon');
+    toast('Link disalin','🔗');
   };
   window.toggleJoin = function(el){
     const $b=$(el);
+    // Trigger bounce animation
+    $b.removeClass('anim-icon');
+    void $b[0].offsetWidth;
+    $b.addClass('anim-icon');
     if($b.text().includes('Bergabung')){ $b.text('✓ Bergabung').removeClass('bg-[#252525] text-white').addClass('bg-[#8BCB8A] text-white'); toast('Bergabung ke komunitas','🎉'); }
     else { $b.text('Bergabung').removeClass('bg-[#8BCB8A]').addClass('bg-[#252525] text-white'); toast('Keluar dari komunitas','👋'); }
+  };
+
+  // Content transition helper — fade out, wait, then caller re-renders, then fade in
+  // Usage: contentTransition('#gridId', () => { /* re-render */ });
+  window.contentTransition = function(selector, renderFn){
+    const el = document.querySelector(selector);
+    if(!el || el.children.length === 0){ renderFn(); return; }
+    el.style.transition = 'opacity 120ms ease, transform 120ms ease';
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(4px)';
+    setTimeout(function(){
+      renderFn();
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 130);
   };
 
   // Reveal on scroll
@@ -515,18 +592,29 @@ $(function(){
   },{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=> obs.observe(el));
 
-  // Close modals on backdrop
+  // Close modals on backdrop — consistent close with body overflow restore
+  function closeModalBackdrop(modal){
+    $(modal).removeClass('open');
+    // Restore scroll if no other modals/drawers are open
+    if(!$('.modal-backdrop.open').length && !$('.drawer.open').length && !$('.mobile-nav-panel.open').length){
+      document.body.style.overflow='';
+    }
+  }
   $('.modal-backdrop').on('click', function(e){
     if(e.target!==this) return;
     if(this.id==='checkoutModal') closeCheckout();
     else if(this.id==='cartModal' && typeof window.closeCartModal==='function') closeCartModal();
-    else $(this).removeClass('open');
+    else closeModalBackdrop(this);
   });
   $(document).on('keydown', function(event){
     if(event.key!=='Escape') return;
     if($('#checkoutModal').hasClass('open')) closeCheckout();
     else if($('#cartModal').hasClass('open') && typeof window.closeCartModal==='function') closeCartModal();
     else if($('#cartDrawer').hasClass('open')) closeDrawer();
+    else if($('.modal-backdrop.open').length){
+      $('.modal-backdrop.open').each(function(){ $(this).removeClass('open'); });
+      if(!$('.drawer.open').length && !$('.mobile-nav-panel.open').length) document.body.style.overflow='';
+    }
   });
 
   // Upgrade native selects into styled dropdowns. Deferred so page-ready scripts
@@ -535,4 +623,22 @@ $(function(){
     window.__fvSelectsInit = true;
     window.setTimeout(fvEnhanceSelects, 0);
   }
+
+  // Sync navbar user pill from profile localStorage
+  (function(){
+    try{
+      var s=JSON.parse(localStorage.getItem('floraverse:profile:v1'));
+      if(!s||typeof s!=='object') return;
+      var p=(s.profile&&s.profile.name)||'Izra';
+      var lv=s.level||8;
+      var w=p.trim().split(/\s+/).filter(Boolean);
+      var ini=w.length>1?(w[0][0]+w[1][0]).toUpperCase():(w[0]?w[0].slice(0,2).toUpperCase():'?');
+      var av=document.querySelector('nav .bg-\\[\\#6FA8FF\\]');
+      var nm=document.querySelector('nav .text-sm.font-bold');
+      var lv2=document.querySelector('nav .bg-\\[\\#FFD45C\\]');
+      if(av) av.textContent=ini;
+      if(nm) nm.textContent=p;
+      if(lv2) lv2.textContent='Lv '+lv;
+    }catch(e){}
+  })();
 });

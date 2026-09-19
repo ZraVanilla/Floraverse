@@ -8,172 +8,130 @@
 <link rel="stylesheet" href="css/style.css?v=3">
 <link rel="stylesheet" href="css/animations.css?v=3">
 <link rel="stylesheet" href="css/responsive.css?v=3">
-<!--
-  Image source: Custom illustration created for FloraVerse - Open License
-  FloraMap illustration: Custom FloraVerse - Open License
--->
 </head>
 <body class="bg-[#FCFCFC]">
 <nav class="navbar">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between">
     <a href="index.html" class="wordmark text-[22px]">Flora<span>Verse</span></a>
-    <div class="hidden lg:flex items-center gap-1">
+    <div class="hidden lg:flex items-center gap-1 nav-links-wrap">
       <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
     </div>
-    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
+    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg><span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
   </div>
 </nav>
 
-<header class="community-header max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-  <div class="community-hero fv-card pink p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden">
-    <div class="flex-1 relative z-10">
+<!-- Hero (full width) -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-4">
+
+  <!-- Hero -->
+  <div class="fv-card p-5 sm:p-6 relative overflow-hidden">
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover"><source src="asset/community.mp4" type="video/mp4"></video>
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative z-10">
       <span class="pill bg-white text-[#FF4D6D] font-black">👥 Komunitas • 12 Grup</span>
-      <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white">Bertumbuh bareng<br>yang sepemikiran.</h1>
-      <p class="text-white/90 text-sm mt-2 max-w-[520px]">Pilih komunitas berdasarkan tanaman, metode, atau hobi. Berbagi progress Kebunku, tanya jawab, dan panen bareng.</p>
+      <h1 class="text-[28px] sm:text-[32px] font-black leading-tight mt-2 text-white" style="text-shadow:2px 2px 12px rgba(0,0,0,0.5)">Bertumbuh bareng<br>yang sepemikiran.</h1>
+      <p class="text-white/90 text-sm mt-2 max-w-[520px]" style="text-shadow:1px 1px 8px rgba(0,0,0,0.4)">Pilih komunitas berdasarkan tanaman, metode, atau hobi. Berbagi progress, tanya jawab, dan panen bareng.</p>
       <div class="flex gap-2 mt-4">
-        <button onclick="$('#createPostModal').addClass('open')" class="btn bg-white text-charcoal font-black px-5">✏️ Buat Postingan</button>
-        <span class="pill bg-white/20 text-charcoal">Aktif harian • Moderasi ramah</span>
+        <button onclick="$('#createPostModal').addClass('open')" class="btn bg-white text-charcoal font-black px-5 text-sm">✏️ Buat Postingan</button>
+        <span class="pill bg-white/80 text-charcoal text-xs">Aktif harian • Moderasi ramah</span>
+      </div>
+      <div class="flex gap-3 mt-4">
+        <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">12</p><p class="text-white/80 text-[10px] font-bold">Grup</p></div>
+        <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">14K+</p><p class="text-white/80 text-[10px] font-bold">Anggota</p></div>
+        <div class="bg-white/20 rounded-xl px-3 py-1.5 text-center"><p class="font-black text-white text-sm">4K+</p><p class="text-white/80 text-[10px] font-bold">Post</p></div>
       </div>
     </div>
-    <div class="community-search-panel lg:w-[360px] bg-white rounded-[24px] p-5 relative z-10">
-      <p class="font-black">🔍 Cari Komunitas</p>
-      <div class="relative mt-2 z-20"><input id="searchComm" type="search" placeholder="Cari pecinta cabai, hidroponik..." class="w-full pl-4 pr-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#FF718D] outline-none font-medium text-sm"></div>
-      <div class="flex gap-1.5 mt-3 flex-wrap relative z-20">
-        <button data-f="all" class="commFilter active px-3 py-1.5 rounded-full bg-charcoal text-white font-bold text-xs">Semua</button>
-        <button data-f="Tanaman" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🌱 Tanaman</button>
-        <button data-f="Metode" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🧪 Metode</button>
-        <button data-f="Hobi" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs">🎨 Hobi</button>
+  </div>
+
+  <!-- Search & Filter -->
+  <div class="fv-card white p-4">
+    <p class="font-black"><svg class="w-4 h-4 inline-block -mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg> Cari Komunitas</p>
+    <div class="relative mt-2"><input id="searchComm" type="search" placeholder="Cari pecinta cabai, hidroponik..." class="w-full pl-4 pr-4 py-3 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#FF718D] outline-none font-medium text-sm"></div>
+    <div class="flex gap-1.5 mt-3 flex-wrap">
+      <button data-f="all" class="commFilter active px-3 py-1.5 rounded-full bg-charcoal text-white font-bold text-xs">Semua</button>
+      <button data-f="Tanaman" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs"><svg class="w-3.5 h-3.5 inline-block -mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22v-7"/><path d="M12 15c-4.97 0-9-2.69-9-6s4.03-6 9-6 9 2.69 9 6-4.03 6-9 6Z"/><path d="M12 8V3"/><path d="m8 7 4-4 4 4"/></svg> Tanaman</button>
+      <button data-f="Metode" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs"><svg class="w-3.5 h-3.5 inline-block -mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3h6"/><path d="M10 9V3"/><path d="M14 9V3"/><path d="M6 21h12"/><path d="M10 9l-4 6h12l-4-6"/></svg> Metode</button>
+      <button data-f="Hobi" class="commFilter px-3 py-1.5 rounded-full bg-white border text-charcoal font-bold text-xs"><svg class="w-3.5 h-3.5 inline-block -mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg> Hobi</button>
+    </div>
+    <p class="text-xs text-muted mt-3">Bergabung sebagai <b>Izra</b> • 4 komunitas diikuti</p>
+  </div>
+
+</section>
+
+<!-- 2-column: Feed + Sidebar -->
+<section class="community-layout max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 grid lg:grid-cols-12 gap-6 pb-10 items-start">
+
+  <!-- LEFT: Main Content -->
+  <main class="community-main lg:col-span-8 space-y-4">
+
+    <!-- Feed -->
+    <div>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <h2 class="text-xl font-black">💬 Feed Komunitas</h2>
+        <div class="flex gap-1 bg-white border rounded-full p-1 overflow-auto no-scrollbar max-w-full">
+          <button data-tab="semua" class="feedTab active px-4 py-1.5 rounded-full bg-charcoal text-white font-bold text-sm whitespace-nowrap">Semua</button>
+          <button data-tab="populer" class="feedTab px-4 py-1.5 rounded-full font-bold text-sm whitespace-nowrap">Populer</button>
+          <button data-tab="terbaru" class="feedTab px-4 py-1.5 rounded-full font-bold text-sm whitespace-nowrap">Terbaru</button>
+          <button data-tab="mengikuti" class="feedTab px-4 py-1.5 rounded-full font-bold text-sm whitespace-nowrap">Mengikuti</button>
+        </div>
       </div>
-      <p class="text-xs text-muted mt-3 relative z-20">Bergabung sebagai <b>Izra</b> • 4 komunitas diikuti</p>
-    </div>
-  </div>
-</header>
-
-<!-- Communities grid -->
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-  <div id="commGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
-</section>
-
-<!-- Community Challenge + FloraMap (#27, #30) -->
-<section class="community-panel max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 grid lg:grid-cols-12 gap-6">
-  <!-- Challenge -->
-  <div class="community-challenge lg:col-span-7 fv-card white p-6 relative overflow-hidden">
-    <span class="pill pill-pink font-black">🏆 Community Challenge</span>
-    <h3 class="text-xl font-black mt-2 leading-tight">30 Hari Menanam Cabai</h3>
-    <p class="text-sm text-muted">Challenge komunitas Pecinta Cabai - 124 gardeners joined, 18 / 30 Days. Selesaikan journey, share journal, dapat +40 XP & unlock Chili Champion.</p>
-    <div class="progress-track mt-4"><div class="progress-fill bg-[#FF718D] shimmer" style="width:60%"></div></div>
-    <div class="flex justify-between text-xs font-bold mt-1.5"><span>18/30 hari</span><span>60%</span></div>
-    <div class="grid sm:grid-cols-2 gap-3 mt-4">
-      <div class="bg-[#FFF7ED] border border-[#FFD5BF] rounded-2xl p-3 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-[#FFD45C] flex items-center justify-center font-black text-xs">IZ</span><div><p class="font-bold text-sm">Izra - Day 18</p><p class="text-xs text-muted">Progress 60%</p></div><span class="ml-auto pill pill-green text-xs">● Aktif</span></div>
-      <div class="bg-gray-50 rounded-2xl p-3 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-[#FF718D] flex items-center justify-center font-black text-xs text-white">FA</span><div><p class="font-bold text-sm">Fairuz - Day 22</p><p class="text-xs text-muted">Tomat juga!</p></div><span class="ml-auto pill pill-yellow text-xs">🔥 73%</span></div>
-    </div>
-    <div class="flex gap-2 mt-4">
-      <button onclick="joinChallenge()" class="btn btn-pink flex-1">🔥 Join Challenge</button>
-      <button onclick="toast('Progress diupdate +5 XP','✨')" class="btn btn-ghost flex-1">↗ Update Progress</button>
-    </div>
-    <p class="text-xs text-muted mt-2">Hadiah: 40 XP + badge Chili Champion + starter kit diskon</p>
-  </div>
-  <!-- FloraMap -->
-  <div class="community-map lg:col-span-5 fv-card yellow p-6 relative overflow-hidden">
-    <span class="pill bg-white text-charcoal font-black">🗺️ FloraMap - Illustrated Community Map</span>
-    <h3 class="text-xl font-black mt-2">Verse gardeners di Nusantara</h3>
-    <p class="text-sm opacity-70">Bukan GPS sungguhan - peta ilustrasi untuk discovery.</p>
-    <div class="grid grid-cols-3 gap-2 mt-4">
-      <button onclick="openFloraMap('pekanbaru')" class="bg-white rounded-2xl p-3 text-center hover:shadow border-2 border-transparent hover:border-charcoal transition">
-        <div class="text-2xl">🏙️</div><p class="font-black text-xs mt-1">Pekanbaru</p><p class="text-xs font-bold">324</p><p class="text-[10px] text-muted">6 komunitas</p>
-      </button>
-      <button onclick="openFloraMap('jakarta')" class="bg-white rounded-2xl p-3 text-center hover:shadow border-2 border-transparent hover:border-charcoal transition ring-2 ring-charcoal">
-        <div class="text-2xl">🌃</div><p class="font-black text-xs mt-1">Jakarta</p><p class="text-xs font-bold">1.2K</p><p class="text-[10px] text-muted">14 komunitas</p>
-      </button>
-      <button onclick="openFloraMap('bandung')" class="bg-white rounded-2xl p-3 text-center hover:shadow border-2 border-transparent hover:border-charcoal transition">
-        <div class="text-2xl">🏞️</div><p class="font-black text-xs mt-1">Bandung</p><p class="text-xs font-bold">840</p><p class="text-[10px] text-muted">10 komunitas</p>
-      </button>
-    </div>
-    <div class="bg-white rounded-2xl p-3 mt-3 flex items-center gap-2">
-      <div class="w-8 h-8 rounded-full bg-[#6FA8FF] flex items-center justify-center text-white">📍</div>
-      <div class="flex-1"><p class="font-bold text-sm">Klik kota untuk lihat</p><p class="text-xs text-muted">komunitas & tanaman populer</p></div>
-      <span class="pill pill-blue text-xs">Verse</span>
-    </div>
-  </div>
-</section>
-
-<!-- Trending Discussion -->
-<section class="community-trending max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-  <div class="fv-card white p-6">
-    <div class="flex items-center justify-between">
-      <h3 class="font-black">🔥 Trending Discussion</h3>
-      <span class="pill pill-yellow text-xs">Hari ini</span>
-    </div>
-    <div class="grid sm:grid-cols-3 gap-3 mt-4">
-      <div class="bg-[#EFF6FF] border border-[#BFDBFE] rounded-2xl p-4"><p class="font-black text-sm">#cabai layu</p><p class="text-xs text-muted">42 diskusi • 124 suka</p><p class="text-xs mt-1">“Daun keriting, apa kurang kalsium?”</p></div>
-      <div class="bg-[#FFF7ED] border border-[#FFD5BF] rounded-2xl p-4"><p class="font-black text-sm">#hidroponik gagal</p><p class="text-xs text-muted">31 diskusi • 89 suka</p><p class="text-xs mt-1">“AB Mix berapa ppm untuk selada?”</p></div>
-      <div class="bg-[#F0FDF4] border border-green-200 rounded-2xl p-4"><p class="font-black text-sm">#panen pertama</p><p class="text-xs text-muted">28 diskusi • 76 suka</p><p class="text-xs mt-1">“Cabai 70 hari akhirnya merah!”</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- Feed area -->
-<section class="community-feed-shell max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid lg:grid-cols-12 gap-6 pb-10">
-  <!-- Feed -->
-  <div class="lg:col-span-8">
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-      <h2 class="text-xl font-black">💬 Feed Komunitas</h2>
-      <div class="flex gap-1 bg-white border rounded-full p-1 overflow-auto no-scrollbar max-w-full">
-        <button data-tab="semua" class="feedTab active px-4 py-1.5 rounded-full bg-charcoal text-white font-bold text-sm whitespace-nowrap">Semua</button>
-        <button data-tab="populer" class="feedTab px-4 py-1.5 rounded-full font-bold text-sm whitespace-nowrap">Populer</button>
-        <button data-tab="terbaru" class="feedTab px-4 py-1.5 rounded-full font-bold text-sm whitespace-nowrap">Terbaru</button>
-        <button data-tab="mengikuti" class="feedTab px-4 py-1.5 rounded-full font-bold text-sm whitespace-nowrap">Mengikuti</button>
+      <div class="fv-card white p-4 mt-4 flex gap-3 items-center">
+        <span class="w-9 h-9 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span>
+        <button onclick="$('#createPostModal').addClass('open')" class="flex-1 text-left px-4 py-2.5 rounded-full bg-gray-50 border text-sm text-muted hover:bg-white transition">Bagikan progress tanamanmu, Izra... 🌱</button>
+        <button onclick="$('#createPostModal').addClass('open')" class="btn btn-primary text-sm px-5">Posting</button>
       </div>
+      <div id="feedList" class="space-y-4 mt-4"></div>
     </div>
 
-    <!-- Composer -->
-    <div class="fv-card white p-4 mt-4 flex gap-3 items-center">
-      <span class="w-9 h-9 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span>
-      <button onclick="$('#createPostModal').addClass('open')" class="flex-1 text-left px-4 py-2.5 rounded-full bg-gray-50 border text-sm text-muted hover:bg-white transition">Bagikan progress tanamanmu, Izra... 🌱</button>
-      <button onclick="$('#createPostModal').addClass('open')" class="btn btn-primary text-sm px-5">Posting</button>
-    </div>
+  </main>
 
-    <div id="feedList" class="space-y-4 mt-4"></div>
-  </div>
+  <!-- RIGHT: Sidebar -->
+  <aside class="community-sidebar lg:col-span-4 space-y-4 lg:sticky lg:top-[76px] lg:self-start lg:max-h-[calc(100vh-76px)] lg:overflow-y-auto lg:sidebar-scroll">
 
-  <!-- Right sidebar -->
-  <div class="community-sidebar lg:col-span-4 space-y-4">
+    <!-- Komunitas Anda -->
     <div class="fv-card white p-5">
-      <p class="font-black">🌱 Bagikan Plant Journey</p>
-      <p class="text-sm text-muted mt-1">Progress Kebunku bisa langsung dibagikan ke komunitas.</p>
-      <div class="bg-[#EFF6FF] border border-[#BFDBFE] rounded-2xl p-3 mt-3 flex gap-3 items-center">
-        <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center">🌶️</div>
-        <div class="flex-1"><p class="font-bold text-sm">Cabai Rawit - Day 28</p><p class="text-xs text-muted">Growing • 45%</p></div>
-        <span class="pill bg-[#6FA8FF] text-white text-xs">Share</span>
-      </div>
-      <button onclick="toast('Plant Journey dibagikan ke Pecinta Cabai','🎉')" class="btn btn-primary w-full mt-3 text-sm">Bagikan ke Komunitas </button>
-    </div>
-
-    <div class="fv-card yellow p-5">
-      <p class="font-black">🏆 Aturan Komunitas</p>
-      <ul class="text-sm mt-2 space-y-1.5 list-disc pl-5 opacity-80">
-        <li>Saling support, no judge untuk pemula</li>
-        <li>Foto tanaman wajib pakai caption jelas</li>
-        <li>Dilarang jualan di feed (pakai FloraShop)</li>
-        <li>Gunakan tag #cabai #hidroponik biar mudah dicari</li>
-      </ul>
-    </div>
-
-    <div class="fv-card white p-5">
-      <p class="font-black">✨ Anggota Aktif</p>
+      <p class="font-black">🏠 Komunitas Anda</p>
       <div class="space-y-2 mt-3">
-        <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-[#FFD45C] flex items-center justify-center font-black text-xs">IZ</span><div class="flex-1"><p class="font-bold text-sm">Izra</p><p class="text-xs text-muted">6 tanaman • 4 komunitas</p></div><span class="pill pill-yellow text-xs">Lv 8</span></div>
-        <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-[#FF718D] flex items-center justify-center font-black text-xs text-white">FA</span><div class="flex-1"><p class="font-bold text-sm">Fairuz</p><p class="text-xs text-muted">Hidroponik enthusiast</p></div><span class="pill pill-pink text-xs">Lv 6</span></div>
-        <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] flex items-center justify-center font-black text-xs text-white">TA</span><div class="flex-1"><p class="font-bold text-sm">Tafayad</p><p class="text-xs text-muted">Compost hero</p></div><span class="pill pill-green text-xs">Lv 7</span></div>
+        <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#FF718D18"><span class="text-base">🌶️</span></div>
+          <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Pecinta Cabai</p><p class="text-[11px] text-muted">1.2K anggota</p></div>
+          <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
+        </div>
+        <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#6FA8FF18"><span class="text-base">💧</span></div>
+          <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Hidroponik Indonesia</p><p class="text-[11px] text-muted">2.1K anggota</p></div>
+          <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
+        </div>
+        <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#6FA8FF18"><span class="text-base">🏡</span></div>
+          <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Home Gardening Pemula</p><p class="text-[11px] text-muted">2.6K anggota</p></div>
+          <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
+        </div>
+        <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#8BCB8A18"><span class="text-base">🌵</span></div>
+          <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Cactus & Succulent ID</p><p class="text-[11px] text-muted">3.2K anggota</p></div>
+          <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
+        </div>
       </div>
     </div>
-  </div>
+
+    <!-- Semua Komunitas (compact list) -->
+    <div class="fv-card white p-5">
+      <div class="flex items-center justify-between">
+        <p class="font-black">🌱 Rekomendasi Komunitas</p>
+        <span class="text-xs font-bold text-[#6FA8FF]">Lihat semua →</span>
+      </div>
+      <div id="commSidebar" class="mt-3"></div>
+    </div>
+
+  </aside>
+
 </section>
 
 <!-- Create Post Modal -->
 <div id="createPostModal" class="modal-backdrop">
   <div class="modal p-6">
-    <div class="flex items-center justify-between"><p class="font-black text-lg">✏️ Buat Postingan</p><button onclick="$('#createPostModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div>
+    <div class="flex items-center justify-between"><p class="font-black text-lg">✏️ Buat Postingan</p><button onclick="$('#createPostModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button></div>
     <div class="flex gap-2 mt-4">
       <select id="newPostComm" class="flex-1 py-2.5 px-3 rounded-full border bg-white font-bold text-sm"></select>
       <span class="pill pill-yellow">Izra • Lv 8</span>
@@ -182,27 +140,35 @@
     <div class="flex gap-2 mt-3">
       <button class="pill pill-white">📷 Foto</button><button class="pill pill-white">🌱 Tag Tanaman</button><button class="pill pill-white"># Tag</button>
     </div>
-    <button id="submitPost" class="btn btn-primary w-full mt-4">Posting ke Komunitas </button>
+    <button id="submitPost" class="btn btn-primary w-full mt-4">Posting ke Komunitas</button>
   </div>
 </div>
 
-<!-- Comment Modal -->
-<div id="commentModal" class="modal-backdrop"><div class="modal p-6"><div id="commentContent"></div></div></div>
-
-<!-- FloraMap Modal -->
-<div id="floraMapModal" class="modal-backdrop">
+<!-- Rules Modal (page-load onboarding) -->
+<div id="rulesModal" class="modal-backdrop">
   <div class="modal p-6">
-    <div class="flex items-center justify-between"><p id="floraMapTitle" class="font-black text-lg">🗺️ FloraMap</p><button onclick="$('#floraMapModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div>
-    <div id="floraMapContent" class="mt-4"></div>
+    <div class="flex items-center justify-between"><p class="font-black text-lg">💡 Aturan Komunitas</p><button onclick="closeRulesModal()" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button></div>
+    <p class="text-sm text-muted mt-3">Selamat datang di komunitas FloraVerse! Silakan baca dan setuju aturan berikut:</p>
+    <ul class="text-sm mt-3 space-y-2 list-disc pl-5">
+      <li>Saling support, no judge untuk pemula</li>
+      <li>Foto tanaman wajib pakai caption jelas</li>
+      <li>Dilarang jualan di feed (pakai FloraShop)</li>
+      <li>Gunakan tag #cabai #hidroponik biar mudah dicari</li>
+    </ul>
+    <div class="flex gap-2 mt-5">
+      <button onclick="window.location.href='index.html'" class="flex-1 py-2.5 rounded-full border border-[#252525] bg-white font-bold text-sm">Kembali</button>
+      <button onclick="closeRulesModal()" class="flex-1 py-2.5 rounded-full bg-[#252525] text-white font-bold text-sm">Setuju</button>
+    </div>
   </div>
 </div>
 
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
-<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran </button></div></div>
+<div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran</button></div></div>
 <div id="toastBox"></div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
+<script src="js/utils.js"></script>
 <script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>
@@ -215,45 +181,51 @@
 let activeCommFilter="all";
 let activeFeedTab="semua";
 let feedPosts=[...POSTS];
+const expandedComments=new Set();
+const fullyExpandedComments=new Set();
+const PREVIEW_COUNT=3;
 
-function renderComms(){
+function renderCommsSidebar(){
+  let list=COMMUNITIES.slice(0,8);
+  if(activeCommFilter!=="all") list=COMMUNITIES.filter(c=>c.kategori===activeCommFilter).slice(0,8);
   const q=($('#searchComm').val()||'').toLowerCase();
-  let list=COMMUNITIES.filter(c=>{
-    const mq=!q || c.nama.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q) || c.tags.join(' ').toLowerCase().includes(q);
-    const mf= activeCommFilter==="all" || c.kategori===activeCommFilter;
-    return mq && mf;
-  });
-  $('#commGrid').html(list.map(c=> `
-    <div class="fv-card white p-5 hover-lift">
-      <div class="flex items-start justify-between">
-        <div class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden" style="background:${c.color}18">${c.coverImg ? `<img src="${c.coverImg}" alt="${c.nama}" class="w-full h-full object-cover">` : c.plantId ? fvImg(PLANTS.find(p=>p.id===c.plantId),'w-full h-full object-cover') : c.emoji}</div>
-        <span class="pill text-[11px] font-black" style="background:${c.color};color:#fff">${c.kategori}</span>
+  if(q) list=COMMUNITIES.filter(c=> c.nama.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q) || c.tags.join(' ').toLowerCase().includes(q)).slice(0,8);
+
+  $('#commSidebar').html(list.map(c=> `
+    <div class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-gray-50 transition cursor-pointer" onclick="filterFeedByComm('${c.id}')">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden" style="background:${c.color}18">${c.coverImg ? `<img src="${c.coverImg}" alt="${c.nama}" class="w-full h-full object-cover">` : c.plantId ? fvImg(PLANTS.find(p=>p.id===c.plantId),'w-full h-full object-cover') : `<span class="text-lg">${c.emoji}</span>`}</div>
+      <div class="flex-1 min-w-0">
+        <p class="font-bold text-sm leading-tight truncate">${c.nama}</p>
+        <p class="text-[11px] text-muted">${c.kategori} • ${c.members.toLocaleString('id-ID')} members</p>
       </div>
-      <p class="font-black mt-3 leading-tight">${c.nama}</p>
-      <p class="text-xs text-muted">${c.members.toLocaleString('id-ID')} members • ${c.posts} posts</p>
-      <p class="text-sm text-muted mt-2 line-clamp-2 leading-snug">${c.desc}</p>
-      <div class="flex flex-wrap gap-1 mt-2">${c.tags.map(t=>`<span class="pill pill-white text-[11px]">${t}</span>`).join('')}</div>
-      <div class="flex gap-2 mt-4">
-        <button onclick="toggleJoin(this)" class="btn btn-dark flex-1 text-sm py-2.5">Bergabung</button>
-        <button onclick="filterFeedByComm('${c.id}')" class="btn btn-ghost text-sm px-4">Lihat</button>
-      </div>
+      <button onclick="event.stopPropagation();joinCommunity('${c.id}')" class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-[#252525] text-white hover:opacity-80 transition flex-shrink-0">Gabung</button>
     </div>
   `).join(''));
 }
 
-function renderFeed(){
+function renderFeed(animate){
   let list=[...feedPosts];
   if(activeFeedTab==="populer") list.sort((a,b)=> b.likes - a.likes);
-  else if(activeFeedTab==="terbaru") list.sort((a,b)=> 0); // keep order
+  else if(activeFeedTab==="terbaru") list.sort((a,b)=> 0);
   else if(activeFeedTab==="mengikuti") list=list.filter(p=> ["c01","c03","c05","c09"].includes(p.community));
 
-  // if filtered by community search via global
   if(window._feedCommFilter){
     list=list.filter(p=> p.community===window._feedCommFilter);
   }
 
-  $('#feedList').html(list.map(p=>{
+  const chevronBase=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="comment-chevron`;
+  const chevronTail=`"><polyline points="6 9 12 15 18 9"/></svg>`;
+
+  const $feed=$('#feedList');
+  const renderContent=()=>{
+  $feed.html(list.map(p=>{
     const comm=COMMUNITIES.find(c=>c.id===p.community);
+    const isExpanded=expandedComments.has(p.id);
+    const isFull=fullyExpandedComments.has(p.id);
+    const comments=DUMMY_COMMENTS[p.id]||[];
+    const visible=isFull?comments:comments.slice(0,PREVIEW_COUNT);
+    const hidden=comments.length-PREVIEW_COUNT;
+    const chevronSvg=chevronBase+(isFull?' open':'')+chevronTail;
     return `
     <div class="fv-card white p-4 sm:p-5">
       <div class="flex items-center gap-3">
@@ -262,100 +234,147 @@ function renderFeed(){
           <p class="font-black text-sm leading-none">${p.user} <span class="font-normal text-muted">• ${p.time}</span></p>
           <p class="text-xs text-muted flex items-center gap-1"><span class="w-3 h-3 rounded-full inline-block" style="background:${comm?comm.color:'#6FA8FF'}"></span> ${comm?comm.nama:'Komunitas'} • ${comm?comm.kategori:''}</p>
         </div>
-        <span class="pill pill-white text-xs">${p.image} Post</span>
+        <span class="pill pill-white text-xs">${comm?comm.kategori:'Post'}</span>
       </div>
       <p class="mt-3 text-[15px] leading-relaxed">${p.content}</p>
       <div class="flex flex-wrap gap-1.5 mt-2">${p.tags.map(t=>`<span class="pill pill-blue text-xs">${t}</span>`).join('')}</div>
-      <div class="bg-gray-50 rounded-2xl p-3 mt-3 flex items-center gap-3">
-         <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">${p.plantId ? fvImg(PLANTS.find(x=>x.id===p.plantId),'w-full h-full object-cover') : p.image || '🌱'}</div>
-        <p class="text-sm font-bold">Foto tanaman</p>
-        <span class="ml-auto text-xs text-muted">${p.likes} suka • ${p.comments} komentar</span>
+      <div class="bg-gray-50 rounded-2xl mt-3 overflow-hidden">
+        <div class="w-full aspect-video bg-white flex items-center justify-center overflow-hidden">${p.plantId ? fvImg(PLANTS.find(x=>x.id===p.plantId),'w-full h-full object-cover') : `<span class="text-4xl">${p.image||'🌱'}</span>`}</div>
+        <div class="p-3 flex items-center gap-3">
+          <span class="text-xs text-muted">${p.likes} suka • ${comments.length} komentar</span>
+        </div>
       </div>
       <div class="flex gap-2 mt-3">
-        <button onclick="toggleLike(this)" class="flex-1 py-2 rounded-full border bg-white font-bold text-sm flex items-center justify-center gap-1.5 ${p.liked?'liked bg-[#FF718D] text-white border-[#FF718D]':''}"><span>♥</span> <span class="cnt">${p.likes}</span> Suka</button>
-        <button onclick="openComments('${p.id}')" class="flex-1 py-2 rounded-full border bg-white font-bold text-sm">💬 ${p.comments} Komentar</button>
-        <button onclick="toggleSave(this)" class="px-4 py-2 rounded-full border bg-white font-bold text-sm ${p.saved?'saved bg-[#FFD45C]':''}">🔖 Simpan</button>
-        <button onclick="toast('Link disalin','🔗')" class="px-4 py-2 rounded-full border bg-white font-bold text-sm">↗ Bagikan</button>
+        <button onclick="toggleLike(this)" class="flex-1 py-2 rounded-full border border-[#252525] bg-white font-bold text-sm flex items-center justify-center gap-1.5 ${p.liked?'liked bg-[#FF718D] text-white border-[#FF718D]':''}"><span class="${p.liked?'text-red-600':'text-[#FF718D]'}">♥</span> <span class="cnt">${p.likes}</span> Suka</button>
+        <button onclick="toggleComments('${p.id}')" class="comment-btn flex-1 py-2 rounded-full border bg-white font-bold text-sm flex items-center justify-center gap-1.5 ${isExpanded?'active':''}">💬 ${comments.length} Komentar</button>
+        <button onclick="toggleSave(this)" class="px-4 py-2 rounded-full border border-[#252525] bg-white font-bold text-sm ${p.saved?'saved bg-[#8BCB8A] text-white border-[#8BCB8A]':''}"><svg class="w-4 h-4 inline-block -mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg> Simpan</button>
+        <button onclick="sharePost(this)" class="px-4 py-2 rounded-full border bg-white font-bold text-sm">↗ Bagikan</button>
+      </div>
+      <div class="comment-section${isExpanded?' open':''}" data-comments="${p.id}"${isExpanded?' style="max-height:none"':''}>
+        <div class="comment-section-inner">
+          <div class="border-t border-gray-100 mt-3 pt-3">
+            <div class="flex gap-2 mb-3">
+              <span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs flex-shrink-0">IZ</span>
+              <input id="ci-${p.id}" placeholder="Tulis komentar..." class="flex-1 px-4 py-2.5 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#6FA8FF] outline-none text-sm">
+              <button onclick="submitInlineComment('${p.id}')" class="btn btn-primary px-4 py-2 text-sm flex-shrink-0">Kirim</button>
+            </div>
+            <div class="space-y-2.5">
+              ${visible.map(c=>`
+                <div class="flex gap-2">
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center font-black text-xs text-white flex-shrink-0" style="background:${c.color}">${c.avatar}</span>
+                  <div class="bg-gray-50 rounded-2xl px-3 py-2 flex-1 min-w-0">
+                    <p class="font-bold text-xs">${c.user}</p>
+                    <p class="text-sm break-words">${c.text}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+            ${hidden>0?`
+            <button onclick="toggleShowMore('${p.id}')" class="w-full text-center text-xs font-bold text-[#6FA8FF] mt-2 py-1.5 hover:bg-gray-50 rounded-lg transition flex items-center justify-center gap-1.5">
+              ${chevronSvg} <span>${isFull?'Lihat lebih sedikit':'Lihat '+hidden+' komentar lainnya'}</span>
+            </button>
+            `:''}
+          </div>
+        </div>
       </div>
     </div>
     `;
   }).join(''));
+
+  requestAnimationFrame(()=>{
+    document.querySelectorAll('.comment-section.open').forEach(s=>{ s.style.maxHeight='none'; });
+  });
+  };
+  if(animate && $feed.children().length){
+    $feed.css({opacity:'0', transform:'translateY(4px)', transition:'opacity 120ms ease, transform 120ms ease'});
+    setTimeout(()=>{
+      renderContent();
+      $feed.css({opacity:'1', transform:'translateY(0)', transition:'opacity 250ms ease 30ms, transform 250ms ease 30ms'});
+    }, 130);
+  } else {
+    renderContent();
+  }
 }
 
 window.filterFeedByComm=function(id){
   window._feedCommFilter=id;
   const comm=COMMUNITIES.find(c=>c.id===id);
   toast(`Filter: ${comm.nama}`,'👥');
-  renderFeed();
+  renderFeed(true);
   $('html,body').animate({scrollTop: $('#feedList').offset().top - 80}, 300);
 }
-window.openComments=function(id){
-  const p=feedPosts.find(x=>x.id===id);
-  const comm=COMMUNITIES.find(c=>c.id===p.community);
-  $('#commentContent').html(`
-    <div class="flex items-center justify-between"><p class="font-black text-lg">💬 Komentar</p><button onclick="$('#commentModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div>
-    <div class="fv-card white p-4 mt-4">
-      <div class="flex gap-2"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">${p.avatar}</span><div><p class="font-bold text-sm">${p.user}</p><p class="text-sm">${p.content}</p></div></div>
-    </div>
-    <div class="space-y-3 mt-4 max-h-[32vh] overflow-auto pr-1">
-      <div class="flex gap-2"><span class="w-8 h-8 rounded-full bg-[#FFD45C] flex items-center justify-center font-black text-xs">FA</span><div class="bg-gray-50 rounded-2xl px-3 py-2 flex-1"><p class="font-bold text-xs">Fairuz</p><p class="text-sm">Keren Izra! Coba kasih pupuk K tinggi biar buah lebat 🌶️</p></div></div>
-      <div class="flex gap-2"><span class="w-8 h-8 rounded-full bg-[#8BCB8A] text-white flex items-center justify-center font-black text-xs">TA</span><div class="bg-gray-50 rounded-2xl px-3 py-2 flex-1"><p class="font-bold text-xs">Tafayad</p><p class="text-sm">Gue juga nanam cabai di polybag, 70 hari udah panen pertama.</p></div></div>
-    </div>
-    <div class="flex gap-2 mt-4">
-      <span class="w-9 h-9 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span>
-      <input id="commentInput" placeholder="Tulis komentar..." class="flex-1 px-4 py-2.5 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white outline-none">
-      <button onclick="submitComment('${id}')" class="btn btn-primary px-5">Kirim</button>
-    </div>
-  `);
-  $('#commentModal').addClass('open');
+
+window.toggleComments=function(postId){
+  const section=document.querySelector(`.comment-section[data-comments="${postId}"]`);
+  if(!section) return;
+  const inner=section.querySelector('.comment-section-inner');
+  const card=section.closest('.fv-card');
+
+  if(expandedComments.has(postId)){
+    section.style.maxHeight=inner.scrollHeight+'px';
+    void section.offsetHeight;
+    section.style.maxHeight='0';
+    section.classList.remove('open');
+    expandedComments.delete(postId);
+  } else {
+    section.classList.add('open');
+    section.style.maxHeight=inner.scrollHeight+'px';
+    expandedComments.add(postId);
+    const onEnd=()=>{
+      if(section.classList.contains('open')) section.style.maxHeight='none';
+      section.removeEventListener('transitionend',onEnd);
+    };
+    section.addEventListener('transitionend',onEnd);
+  }
+
+  if(card){
+    const btn=card.querySelector('.comment-btn');
+    if(btn) btn.classList.toggle('active',expandedComments.has(postId));
+  }
 }
-window.submitComment=function(id){
-  const v=$('#commentInput').val().trim();
-  if(!v) return;
+
+window.submitInlineComment=function(postId){
+  const input=document.getElementById('ci-'+postId);
+  if(!input) return;
+  const text=input.value.trim();
+  if(!text) return;
+  if(!DUMMY_COMMENTS[postId]) DUMMY_COMMENTS[postId]=[];
+  DUMMY_COMMENTS[postId].push({user:'Izra',avatar:'IZ',color:'#6FA8FF',text:text});
+  const post=feedPosts.find(p=>p.id===postId);
+  if(post) post.comments++;
+  expandedComments.add(postId);
+  fullyExpandedComments.add(postId);
+  renderFeed();
   toast('Komentar ditambahkan','💬');
-  const p=feedPosts.find(x=>x.id===id);
-  p.comments++;
-  $('#commentModal').removeClass('open');
+}
+
+window.toggleShowMore=function(postId){
+  if(fullyExpandedComments.has(postId)) fullyExpandedComments.delete(postId);
+  else fullyExpandedComments.add(postId);
   renderFeed();
 }
-window.openFloraMap=function(city){
-  const data={
-    pekanbaru:{title:"Pekanbaru - 324 gardeners", desc:"6 komunitas aktif, tanaman populer: Cabai, Kangkung", comms:["Pecinta Cabai","Urban Gardening"], plants:["Cabai Rawit","Kangkung"]},
-    jakarta:{title:"Jakarta - 1.2K gardeners", desc:"14 komunitas, urban farming paling aktif", comms:["Hidroponik Indonesia","Urban Gardening Jakarta"], plants:["Selada","Tomat"]},
-    bandung:{title:"Bandung - 840 gardeners", desc:"10 komunitas, sejuk cocok herbal & bunga", comms:["Flower Garden","Herb & Rempah"], plants:["Lavender","Mawar"]}
-  };
-  const d=data[city];
-  $('#floraMapTitle').text("🗺️ "+d.title);
-  $('#floraMapContent').html(`
-    <p class="text-sm text-muted">${d.desc}</p>
-    <div class="grid sm:grid-cols-2 gap-3 mt-4">
-      <div class="fv-card pink p-4 text-white"><p class="font-black">Komunitas Unggulan</p><div class="mt-2 space-y-2">${d.comms.map(n=>`<div class="bg-white/15 rounded-xl px-3 py-2 font-bold text-sm">${n}</div>`).join('')}</div><button onclick="toast('Bergabung','🎉')" class="btn bg-white text-charcoal w-full mt-3 text-sm">Join Komunitas</button></div>
-      <div class="fv-card yellow p-4"><p class="font-black">Tanaman Populer</p><div class="mt-2 flex flex-wrap gap-1.5">${d.plants.map(p=>`<span class="pill bg-white text-charcoal">${p}</span>`).join('')}</div><a href="plants.html" class="btn btn-dark w-full mt-3 text-sm text-center">Lihat Tanaman </a></div>
-    </div>
-  `);
-  $('#floraMapModal').addClass('open');
-  $('#floraMapModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
+
+window.closeRulesModal=function(){
+  $('#rulesModal').removeClass('open');
 }
-window.joinChallenge=function(){ toast('Berhasil join 30 Hari Menanam Cabai! +40 XP','🔥'); }
 
 $(function(){
-  renderComms();
+  renderCommsSidebar();
   renderFeed();
-  // populate new post select
   $('#newPostComm').html(COMMUNITIES.map(c=>`<option value="${c.id}">${c.emoji} ${c.nama}</option>`).join(''));
-  $('#searchComm').on('input', renderComms);
+  $('#searchComm').on('input', function(){ renderCommsSidebar(); });
   $('.commFilter').on('click', function(){
     $('.commFilter').removeClass('active bg-charcoal text-white').addClass('bg-white border text-charcoal');
     $(this).addClass('active bg-charcoal text-white').removeClass('bg-white border text-charcoal');
     activeCommFilter=$(this).data('f');
-    renderComms();
+    renderCommsSidebar();
   });
   $('.feedTab').on('click', function(){
     $('.feedTab').removeClass('active bg-charcoal text-white').addClass('bg-white');
     $(this).addClass('active bg-charcoal text-white').removeClass('bg-white');
     activeFeedTab=$(this).data('tab');
     window._feedCommFilter=null;
-    renderFeed();
+    renderFeed(true);
   });
   $('#submitPost').on('click', function(){
     const text=$('#newPostText').val().trim();
@@ -367,7 +386,18 @@ $(function(){
     toast('Postingan berhasil dibuat','🎉');
     renderFeed();
   });
-  $('#createPostModal, #commentModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
+  $('#createPostModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
+  $('#rulesModal').on('click', function(e){ if(e.target===this) closeRulesModal(); });
+  // Auto-open rules modal on page load
+  $('#rulesModal').addClass('open');
+  // Reset sidebar scroll to top on page load
+  document.querySelector('.community-sidebar')?.scrollTo(0,0);
+  $(document).on('keydown','[id^="ci-"]',function(e){
+    if(e.key==='Enter'){
+      e.preventDefault();
+      submitInlineComment(this.id.replace('ci-',''));
+    }
+  });
 });
 </script>
 </body>
