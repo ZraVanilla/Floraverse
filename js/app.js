@@ -139,6 +139,14 @@ $(function(){
     document.body.classList.add('is-leaving');
     window.setTimeout(()=>{ window.location.href=destination.href; }, 190);
   });
+  // Glass navbar: stronger blur after slight scroll
+  const glassNav = document.querySelector('.navbar');
+  if(glassNav){
+    const syncNav = function(){ glassNav.classList.toggle('is-scrolled', window.scrollY > 24); };
+    syncNav();
+    window.addEventListener('scroll', syncNav, {passive:true});
+  }
+
   // Active nav
   const path = location.pathname.split('/').pop() || 'index.html';
   $('.nav-link').each(function(){

@@ -5,7 +5,6 @@
   Purple is NOT used.
   Custom illustration created for FloraVerse - Open License
 */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap');
 
 :root{
   --blue:#6FA8FF;
@@ -201,17 +200,37 @@ select {
 .cat-sukulen,.pill[data-cat="Sukulen"]{background:rgba(255,212,92,.18); color:#9A7400; border-color:rgba(255,212,92,.3)}
 .cat-kaktus,.pill[data-cat="Kaktus"]{background:rgba(139,203,138,.15); color:#2F7A2E; border-color:rgba(139,203,138,.25)}
 
-/* Navbar */
+/* Navbar — light glass */
 .navbar{
   position:sticky; top:0; z-index:40;
-  backdrop-filter: blur(12px);
-  background:rgba(255,255,255,.92);
-  border-bottom:1.5px solid #F0F0F0;
+  background:linear-gradient(180deg, rgba(255,255,255,.58) 0%, rgba(255,255,255,.42) 100%);
+  backdrop-filter:blur(14px) saturate(1.05);
+  -webkit-backdrop-filter:blur(14px) saturate(1.05);
+  border-bottom:1px solid rgba(255,255,255,.38);
+  transition:background .28s ease, backdrop-filter .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+.navbar.is-scrolled{
+  background:linear-gradient(180deg, rgba(255,255,255,.9) 0%, rgba(255,255,255,.78) 100%);
+  backdrop-filter:blur(18px) saturate(1.08);
+  -webkit-backdrop-filter:blur(18px) saturate(1.08);
+  border-bottom-color:rgba(240,240,240,.92);
+  box-shadow:0 8px 28px rgba(37,37,37,.06);
+}
+.navbar #cartBtn{
+  background:rgba(255,255,255,.62);
+  border:1px solid rgba(255,255,255,.55);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.navbar #cartBtn:hover{
+  background:rgba(255,255,255,.88);
+  border-color:rgba(255,255,255,.75);
 }
 .nav-link{
-  font-weight:600; font-size:.92rem; color:#6B7280; padding:.5rem .85rem; border-radius:12px; transition:.2s;
+  font-weight:600; font-size:.92rem; color:#4B5563; padding:.5rem .85rem; border-radius:12px; transition:.2s;
 }
-.nav-link:hover{color:var(--charcoal); background:#F3F4F6}
+.nav-link:hover{color:var(--charcoal); background:rgba(255,255,255,.72)}
 .nav-link.active{background:var(--charcoal); color:#fff;}
 
 .menu-toggle{
@@ -297,10 +316,16 @@ html{scrollbar-width:thin; scrollbar-color:#D1D5DB transparent}
 }
 .drawer{
   position:fixed; top:0; right:0; height:100%; width:420px; max-width:92vw; background:#fff;
-  transform:translateX(100%); transition:transform .35s cubic-bezier(.2,.8,.2,1);
+  transform:translateX(100%); visibility:hidden;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), visibility 0s linear .35s;
   z-index:61; box-shadow:-16px 0 48px rgba(0,0,0,.12); display:flex; flex-direction:column;
 }
-.drawer.open{transform:translateX(0)}
+.drawer.open{
+  transform:translateX(0);
+  visibility:visible;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), visibility 0s linear 0s;
+}
+html,body{overflow-x:hidden}
 .drawer-backdrop{position:fixed; inset:0; background:rgba(37,37,37,.35); backdrop-filter:blur(4px); display:none; z-index:60}
 .drawer-backdrop.open{display:block}
 
