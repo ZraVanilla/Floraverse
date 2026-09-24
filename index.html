@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -20,10 +20,11 @@ tailwind.config={
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="css/style.css?v=7">
+<link rel="stylesheet" href="css/style.css?v=8">
 <link rel="stylesheet" href="css/animations.css?v=5">
 <link rel="stylesheet" href="css/responsive.css?v=5">
-<link rel="stylesheet" href="css/home.css?v=25">
+<link rel="stylesheet" href="css/editorial.css?v=2">
+<link rel="stylesheet" href="css/home.css?v=40">
 </head>
 <body>
 <!-- NAVBAR -->
@@ -31,45 +32,75 @@ tailwind.config={
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between">
     <a href="index.html" class="wordmark text-[22px]">Flora<span>Verse</span></a>
     <div class="hidden lg:flex items-center gap-1">
-      <a href="index.html" class="nav-link active">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
+      <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
     </div>
-    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
+    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="landing-hero" aria-labelledby="heroTitle">
   <div class="landing-hero-bg" aria-hidden="true">
-    <video class="landing-hero-video" autoplay muted loop playsinline preload="auto" poster="asset/bg.jpeg">
-      <source src="asset/mp4.mp4?v=3" type="video/mp4">
-    </video>
+    <img class="landing-hero-media" src="asset/mpp.png" alt="" fetchpriority="high">
   </div>
   <div class="landing-hero-shade" aria-hidden="true"></div>
-  <div class="landing-hero-atmosphere" aria-hidden="true">
-    <span class="hero-haze hero-haze-a"></span>
-    <span class="hero-haze hero-haze-b"></span>
-    <svg class="hero-leaf hero-leaf-1" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-      <path d="M52 8C28 10 12 24 10 48c14 2 34-6 42-24 2-6 2-12 0-16Z" fill="rgba(255,255,255,.14)"/>
-      <path d="M14 46c10-14 24-24 36-30" stroke="rgba(255,255,255,.22)" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-    <svg class="hero-leaf hero-leaf-2" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-      <path d="M12 10c24 2 40 16 42 40-14 2-34-6-42-24-2-6-2-12 0-16Z" fill="rgba(232,248,236,.12)"/>
-      <path d="M50 46C40 32 26 22 14 16" stroke="rgba(232,248,236,.2)" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-    <span class="hero-bloom hero-bloom-1"></span>
-    <span class="hero-bloom hero-bloom-2"></span>
-  </div>
   <div class="landing-hero-content">
-    <p class="hero-eyebrow">Ekosistem berkebun digital</p>
-    <h1 id="heroTitle" class="hero-title">Tumbuhkan kebunmu,<br>tanpa ribet.</h1>
-    <p class="hero-sub">Temukan tanaman yang tepat, ikuti panduan praktis, dan belajar bersama komunitas — semua dalam satu ekosistem FloraVerse.</p>
+    <p class="hero-eyebrow">FloraVerse · Digital Gardening Ecosystem</p>
+    <h1 id="heroTitle" class="hero-title">Temukan dunia yang tumbuh bersamamu.</h1>
+    <p class="hero-sub">Temukan tanaman, pelajari cara merawatnya, berbagi dengan sesama, dan bangun kebunmu sendiri.</p>
     <div class="hero-actions">
       <a href="plants.html" class="hero-cta">
-        <span>Mulai Menjelajah</span>
+        <span>Jelajahi FloraVerse</span>
         <span class="hero-cta-arrow" aria-hidden="true">→</span>
       </a>
-      <button type="button" class="hero-ghost" onclick="openPlantMatch()">Coba Plant Match</button>
+      <button type="button" class="hero-ghost" onclick="openPlantMatch()">
+        <svg class="hero-ghost-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.6 4.2L14 7l-4.4 1.8L8 13l-1.6-4.2L2 7l4.4-1.8L8 1z" fill="#FFD45C"/></svg>
+        <span>Temukan Tanamanmu</span>
+      </button>
     </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="home-ecosystem" aria-labelledby="ecoTitle">
+  <div class="ecosystem-inner">
+    <header class="ecosystem-head reveal">
+      <p class="section-eyebrow">Ekosistem FloraVerse</p>
+      <h2 id="ecoTitle">Satu dunia,<br>banyak cara untuk tumbuh.</h2>
+      <p class="ecosystem-lead">Dari mengenal tanaman hingga merawat kebun sendiri, semua terhubung di satu tempat.</p>
+    </header>
+    <nav class="ecosystem-strip reveal" aria-label="Area FloraVerse">
+      <a href="plants.html" class="eco-cell" data-eco="tanaman">
+        <span class="eco-num">01</span>
+        <span class="eco-name">Tanaman</span>
+        <span class="eco-desc">Kenali tanaman dan temukan cara merawatnya.</span>
+        <span class="eco-go" aria-hidden="true">Jelajahi →</span>
+      </a>
+      <a href="learn.html" class="eco-cell" data-eco="belajar">
+        <span class="eco-num">02</span>
+        <span class="eco-name">Belajar</span>
+        <span class="eco-desc">Pelajari berkebun dengan panduan yang mudah dipahami.</span>
+        <span class="eco-go" aria-hidden="true">Jelajahi →</span>
+      </a>
+      <a href="community.html" class="eco-cell" data-eco="komunitas">
+        <span class="eco-num">03</span>
+        <span class="eco-name">Komunitas</span>
+        <span class="eco-desc">Berbagi pengalaman, bertanya, dan tumbuh bersama.</span>
+        <span class="eco-go" aria-hidden="true">Jelajahi →</span>
+      </a>
+      <a href="shop.html" class="eco-cell" data-eco="belanja">
+        <span class="eco-num">04</span>
+        <span class="eco-name">Belanja</span>
+        <span class="eco-desc">Temukan perlengkapan untuk membuat kebunmu berkembang.</span>
+        <span class="eco-go" aria-hidden="true">Jelajahi →</span>
+      </a>
+      <a href="garden.html" class="eco-cell" data-eco="kebunku">
+        <span class="eco-num">05</span>
+        <span class="eco-name">Kebunku</span>
+        <span class="eco-desc">Catat, pantau, dan rawat perjalanan kebunmu.</span>
+        <span class="eco-go" aria-hidden="true">Jelajahi →</span>
+      </a>
+    </nav>
   </div>
 </section>
 

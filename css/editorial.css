@@ -1,0 +1,185 @@
+/* FloraVerse editorial design system — "Editorial World + Functional UI"
+   Layer di atas style.css/responsive.css. Khusus komposisi, hierarki, rhythm.
+   Card tetap untuk objek (katalog/post/task); section informasi jadi editorial. */
+
+:root{
+  --ed-ink:#15281d;
+  --ed-muted:#5d6b61;
+  --ed-line:#e2e9e1;
+  --ed-accent:#4e8a54;
+  --ed-paper:#f4f9f2;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.ed-eyebrow{
+  display:flex; align-items:center; gap:.65rem;
+  font-size:.72rem; font-weight:800; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--ed-accent);
+}
+.ed-eyebrow::after{content:""; height:1px; width:2.4rem; background:var(--ed-accent); opacity:.5}
+.ed-title{
+  font-family:'Nunito','Outfit',sans-serif;
+  font-weight:800; font-size:clamp(1.9rem,3.6vw,3rem);
+  line-height:1.06; letter-spacing:-.032em; color:var(--ed-ink);
+  margin:.75rem 0 0; text-wrap:balance;
+}
+.ed-title--sm{font-size:clamp(1.5rem,2.6vw,2.1rem)}
+.ed-lead{margin:.9rem 0 0; font-size:1.02rem; line-height:1.65; color:var(--ed-muted); max-width:36rem}
+.ed-desc{font-size:.92rem; line-height:1.6; color:var(--ed-muted)}
+.ed-meta{font-size:.8rem; font-weight:600; color:var(--ed-muted); letter-spacing:.02em}
+.ed-link{
+  display:inline-flex; align-items:center; gap:.4rem;
+  font-weight:700; font-size:.92rem; color:var(--ed-accent);
+  text-decoration:none; transition:gap .2s ease;
+}
+.ed-link:hover{gap:.65rem; color:#3f7a4a}
+
+/* ===== SECTION RHYTHM ===== */
+.ed-section{padding:clamp(3rem,6vw,5.5rem) 0}
+.ed-section--tight{padding:clamp(2rem,4vw,3.25rem) 0}
+.ed-rule{border:0; border-top:1px solid var(--ed-line); margin:0}
+.ed-head{max-width:44rem}
+.ed-head .ed-title{margin-top:.7rem}
+
+/* ===== SPLIT / ASYMMETRIC ===== */
+.ed-split{
+  display:grid; grid-template-columns:repeat(12,1fr);
+  gap:clamp(1.5rem,4vw,3.5rem); align-items:center;
+}
+.ed-split > .ed-copy{grid-column:1 / span 5}
+.ed-split > .ed-media{grid-column:6 / -1}
+.ed-split--flip > .ed-copy{grid-column:8 / -1}
+.ed-split--flip > .ed-media{grid-column:1 / span 6; grid-row:1}
+.ed-media{
+  position:relative; overflow:hidden; border-radius:18px;
+  aspect-ratio:16/10; background:#dfe9dd;
+}
+.ed-media img,.ed-media video{width:100%; height:100%; object-fit:cover; display:block}
+.ed-media--tall{aspect-ratio:4/5; max-height:30rem}
+.ed-num{
+  font-family:'Nunito',sans-serif; font-weight:800;
+  font-size:clamp(2.6rem,5vw,4rem); line-height:1;
+  color:var(--ed-ink); opacity:.1; letter-spacing:-.04em;
+  margin-bottom:.5rem; user-select:none;
+}
+
+/* ===== EDITORIAL LIST ROWS (bukan kartu) ===== */
+.ed-rows{list-style:none; margin:1.1rem 0 0; padding:0}
+.ed-rows li{
+  display:grid; grid-template-columns:2.2rem 1fr; gap:1rem;
+  padding:.95rem 0; border-top:1px solid var(--ed-line);
+  align-items:baseline;
+}
+.ed-rows li:last-child{border-bottom:1px solid var(--ed-line)}
+.ed-rows .n{
+  font-size:.78rem; font-weight:800; letter-spacing:.06em;
+  color:var(--ed-accent);
+}
+.ed-rows .t{font-weight:700; color:var(--ed-ink); font-size:.98rem}
+.ed-rows .d{grid-column:2; font-size:.86rem; color:var(--ed-muted); margin-top:.15rem}
+
+/* ===== TOOLBAR (pengganti card filter) ===== */
+.ed-toolbar{
+  display:flex; flex-wrap:wrap; align-items:center;
+  gap:.75rem 1rem; padding:1rem 0;
+  border-top:1px solid var(--ed-line);
+  border-bottom:1px solid var(--ed-line);
+}
+.ed-toolbar input[type="search"],.ed-toolbar input[type="text"]{
+  min-width:14rem; flex:1 1 16rem;
+}
+.ed-toolbar .ed-count{margin-left:auto; font-size:.85rem; font-weight:700; color:var(--ed-muted); white-space:nowrap}
+
+/* ===== HERO (inner page) — de-card, immersive ===== */
+.ed-hero{border:none !important; box-shadow:none !important; border-radius:22px}
+.ed-hero h1{
+  font-size:clamp(2rem,4.2vw,3.35rem) !important;
+  line-height:1.05 !important; letter-spacing:-.03em !important;
+  font-weight:800 !important;
+}
+.ed-hero .ed-hero-meta{
+  display:flex; flex-wrap:wrap; gap:.5rem 1.1rem;
+  align-items:center; margin-top:1rem;
+  font-size:.8rem; font-weight:700; color:rgba(255,255,255,.85);
+}
+
+/* ===== PANEL DATAR (widget tanpa bayangan) ===== */
+.ed-flat{background:transparent; border:0; box-shadow:none; border-radius:0; padding:0 !important}
+.ed-widget{
+  padding:1.15rem 0; border-top:1px solid var(--ed-line);
+}
+.ed-widget:first-child{border-top:0; padding-top:0}
+.ed-widget h3,.ed-widget .h{
+  font-family:'Nunito',sans-serif; font-weight:800;
+  font-size:.95rem; color:var(--ed-ink); margin:0 0 .6rem;
+}
+
+/* ===== CLOSING STRIP ===== */
+.ed-closing{
+  background:var(--ed-paper); border:1px solid var(--ed-line);
+  border-radius:20px; padding:clamp(1.6rem,4vw,2.75rem);
+}
+
+/* ===== FEED (community) — subtle container ===== */
+#feedList .fv-card{
+  box-shadow:none !important;
+  border:1px solid var(--ed-line) !important;
+  border-radius:14px !important;
+  background:#fff;
+}
+#feedList .fv-card:hover{box-shadow:none !important; transform:none !important}
+
+/* ===== SECTION-LABEL di atas grid katalog ===== */
+.ed-gridlabel{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:1rem; flex-wrap:wrap; margin:2.25rem 0 .9rem;
+}
+.ed-gridlabel h2{
+  font-family:'Nunito',sans-serif; font-weight:800;
+  font-size:1.15rem; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--ed-ink); margin:0;
+}
+
+/* ===== GARDEN: journey = fokus, sidebar = flat ===== */
+.garden-side .fv-card{box-shadow:none !important; border-color:var(--ed-line) !important}
+.garden-main.fv-card,.garden-main .fv-card{border-color:var(--ed-line) !important; box-shadow:0 10px 34px rgba(21,40,29,.07) !important}
+
+/* ===== PROFILE: kurangi nesting ===== */
+.profile-section{margin-bottom:clamp(2rem,4vw,3rem)}
+.profile-section > .ed-eyebrow{margin-bottom:.4rem}
+.profile-section .fv-card{border-color:var(--ed-line) !important; box-shadow:none !important}
+
+/* ===== XP / LEVEL rows sebagai tabel, bukan kartu ===== */
+.xp-row,.level-row{
+  display:flex; align-items:center; gap:.85rem;
+  padding:.7rem 0; border-top:1px solid var(--ed-line);
+  font-size:.9rem;
+}
+.xp-row:last-child,.level-row:last-child{border-bottom:1px solid var(--ed-line)}
+.xp-row .k{font-weight:700; color:var(--ed-ink)}
+.xp-row .v{margin-left:auto; font-weight:800; color:var(--ed-accent); white-space:nowrap}
+.level-row .lv{
+  font-weight:800; font-size:.78rem; color:var(--ed-accent);
+  min-width:3.2rem;
+}
+.level-row .bar{flex:1; max-width:11rem}
+
+/* ===== HAPUS RASA DASHBOARD: netralkan card section ===== */
+.fv-card.ed-nocard{
+  background:transparent !important; border:0 !important;
+  box-shadow:none !important; padding-left:0 !important; padding-right:0 !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:1023px){
+  .ed-split{grid-template-columns:1fr; gap:1.4rem}
+  .ed-split > .ed-copy,.ed-split > .ed-media,
+  .ed-split--flip > .ed-copy,.ed-split--flip > .ed-media{grid-column:1 / -1; grid-row:auto}
+  .ed-media--tall{aspect-ratio:16/10; max-height:none}
+}
+@media (max-width:767px){
+  .ed-toolbar{padding:.85rem 0}
+  .ed-toolbar .ed-count{margin-left:0}
+  .ed-hero h1{font-size:clamp(1.8rem,8vw,2.4rem) !important}
+  .profile-page header .ed-eyebrow{display:none}
+}

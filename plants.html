@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -9,13 +9,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="css/style.css?v=7">
+<link rel="stylesheet" href="css/style.css?v=8">
 <link rel="stylesheet" href="css/animations.css?v=4">
 <link rel="stylesheet" href="css/responsive.css?v=4">
 <!--
   Image source: Custom illustration created for FloraVerse - Open License
   Plant Lab illustration: Custom FloraVerse - Open License
 -->
+  <link rel="stylesheet" href="css/editorial.css?v=2">
 </head>
 <body class="bg-[#FCFCFC]">
 <nav class="navbar">
@@ -39,52 +40,51 @@
 </nav>
 
 <header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-  <div class="fv-card p-6 sm:p-8 flex flex-col lg:flex-row gap-6 relative overflow-hidden" style="border-color:rgba(255,255,255,0.6);">
+  <div class="ed-hero relative overflow-hidden">
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
       <source src="asset/plant.mp4" type="video/mp4">
     </video>
-    <div class="flex-1 relative z-10">
+    <div class="absolute inset-0" style="background:linear-gradient(100deg,rgba(10,24,14,.72) 0%,rgba(10,24,14,.35) 55%,rgba(10,24,14,.15) 100%)"></div>
+    <div class="relative z-10 p-6 sm:p-10 lg:p-14 max-w-[46rem]">
       <span class="pill bg-white text-[#3B82F6] font-black">🌱 Ensiklopedia • 41 Tanaman</span>
-      <h1 class="text-[30px] sm:text-[36px] font-black leading-tight mt-2 text-white" style="text-shadow:2px 2px 12px rgba(0,0,0,0.5)">Temukan tanaman yang<br>paling cocok untukmu.</h1>
-      <p class="text-white/90 text-sm mt-2 max-w-[560px]" style="text-shadow:1px 1px 8px rgba(0,0,0,0.4)">Filter berdasarkan kategori, cahaya, dan tingkat kesulitan. Klik kartu untuk detail lengkap + cara menanam.</p>
-      <div class="flex flex-wrap gap-2 mt-4">
+      <h1 class="mt-3 text-white" style="text-shadow:2px 2px 12px rgba(0,0,0,0.45)">Temukan tanaman yang<br>paling cocok untukmu.</h1>
+      <p class="text-white/90 text-base mt-3 max-w-[560px] leading-relaxed" style="text-shadow:1px 1px 8px rgba(0,0,0,0.4)">Filter berdasarkan kategori, cahaya, dan tingkat kesulitan. Klik kartu untuk detail lengkap + cara menanam.</p>
+      <div class="ed-hero-meta">
         <button onclick="openPlantMatch()" class="btn bg-white text-charcoal font-black px-5 cursor-pointer">✨ Plant Match</button>
-        <span class="pill bg-white/80 text-charcoal">41 tanaman terkurasi</span>
+        <span>41 tanaman terkurasi</span>
       </div>
-    </div>
-    <div class="relative z-10 bg-white rounded-3xl p-5 w-full lg:w-[420px]">
-      <div class="relative z-20">
-        <div class="relative">
-          <input id="searchInput" type="search" placeholder="🔍 Cari cabai, tomat, sukulen..." class="w-full pl-4 pr-4 py-3.5 rounded-full border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-[#6FA8FF] outline-none font-medium text-sm cursor-text">
-        </div>
-      </div>
-      <div class="grid grid-cols-2 gap-2 mt-3 relative z-20">
-        <select id="filterKategori" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
-          <option value="">Kategori</option>
-          <option>Sayuran</option><option>Buah</option><option>Bunga</option><option>Herbal</option><option>Hias</option><option>Pohon buah</option><option>Pangan</option><option>Sukulen</option><option>Kaktus</option>
-        </select>
-        <select id="filterKesulitan" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
-          <option value="">Level</option>
-          <option>Sangat Mudah</option><option>Mudah</option><option>Sedang</option><option>Sulit</option>
-        </select>
-        <select id="filterCahaya" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
-          <option value="">Cahaya</option>
-          <option>Full Sun</option><option>Partial Sun</option><option>Bright Indirect</option>
-        </select>
-        <select id="sortBy" class="min-w-0 w-full py-2 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
-          <option value="popular">Populer</option>
-          <option value="cepat">Panen Cepat</option>
-          <option value="mudah">Termudah</option>
-          <option value="az">A–Z</option>
-        </select>
-      </div>
-      <p id="resultCount" class="text-xs text-muted mt-2.5 font-semibold relative z-20"></p>
     </div>
   </div>
 </header>
 
+<!-- TOOLBAR: cari + filter (di luar hero) -->
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="ed-toolbar">
+    <input id="searchInput" type="search" placeholder="🔍 Cari cabai, tomat, sukulen..." class="min-w-[14rem] flex-1 py-2.5 px-4 rounded-full border bg-white focus:border-charcoal outline-none font-medium text-sm cursor-text">
+    <select id="filterKategori" class="py-2.5 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
+      <option value="">Kategori</option>
+      <option>Sayuran</option><option>Buah</option><option>Bunga</option><option>Herbal</option><option>Hias</option><option>Pohon buah</option><option>Pangan</option><option>Sukulen</option><option>Kaktus</option>
+    </select>
+    <select id="filterKesulitan" class="py-2.5 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
+      <option value="">Level</option>
+      <option>Sangat Mudah</option><option>Mudah</option><option>Sedang</option><option>Sulit</option>
+    </select>
+    <select id="filterCahaya" class="py-2.5 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
+      <option value="">Cahaya</option>
+      <option>Full Sun</option><option>Partial Sun</option><option>Bright Indirect</option>
+    </select>
+    <select id="sortBy" class="py-2.5 px-3 rounded-full border bg-white text-xs font-semibold truncate cursor-pointer">
+      <option value="popular">Populer</option>
+      <option value="cepat">Panen Cepat</option>
+      <option value="mudah">Termudah</option>
+      <option value="az">A–Z</option>
+    </select>
+    <span id="resultCount" class="ed-count"></span>
+  </div>
+</div>
+
 <!-- Category pills -->
-<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-4">
   <div class="flex gap-2 overflow-auto no-scrollbar pb-2" id="catPills">
     <button data-cat="" class="cat-pill active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm flex items-center justify-center cursor-pointer">Semua</button>
     <button data-cat="Sayuran" class="cat-pill whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm hover:bg-gray-50 flex items-center justify-center cursor-pointer">🥬<span class="hidden sm:inline"> Sayuran</span></button>
@@ -98,40 +98,54 @@
   </div>
 </div>
 
-<main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+<!-- Editorial intro sebelum grid -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+  <div class="ed-head reveal">
+    <p class="ed-eyebrow">01 — Discover Flora</p>
+    <h2 class="ed-title ed-title--sm">Katalog tanaman terkurasi</h2>
+    <p class="ed-lead">Dari sayur cepat panen sampai sukulen tanpa ribet — buka kartu untuk kebutuhan cahaya, air, media, dan langkah menanam lengkapnya.</p>
+  </div>
+</section>
+
+<main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
   <div id="plantsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
   <button id="plantsLoadMore" class="btn btn-ghost w-full max-w-md mx-auto mt-5 hidden cursor-pointer">Muat lebih banyak</button>
   <div id="emptyState" class="hidden text-center py-16"><div class="text-5xl">🔍</div><p class="font-black mt-3">Tidak ada tanaman ditemukan</p><p class="text-sm text-muted">Coba ubah filter atau kata kunci.</p><button id="resetPlantFilters" class="btn btn-ghost mt-4 text-sm cursor-pointer">Reset filter</button></div>
 </main>
 
-<!-- PLANT LAB (#24) - Interactive simulation -->
+<!-- PLANT LAB (#24) - panel fungsional, header editorial -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 pb-10">
+  <div class="ed-head reveal" style="margin-bottom:1.25rem">
+    <p class="ed-eyebrow">02 — Plant Lab</p>
+    <h2 class="ed-title ed-title--sm">Coba eksperimen tanpa takut gagal.</h2>
+    <p class="ed-lead">Atur air, cahaya, pupuk &amp; media. Tanaman bereaksi secara simulasi — edukasi, bukan diagnosis ilmiah.</p>
+  </div>
   <div class="fv-card white p-6 sm:p-7">
-    <div class="flex flex-wrap items-start justify-between gap-3">
-      <div>
-        <span class="pill pill-yellow font-black">🔬 Plant Lab - Simulasi Edukasi</span>
-        <h2 class="text-xl sm:text-2xl font-black leading-tight mt-2">Coba eksperimen tanpa takut gagal.</h2>
-        <p class="text-sm text-muted mt-1 max-w-[560px]">Atur air, cahaya, pupuk & media. Tanaman bereaksi secara simulasi - edukasi, bukan diagnosis ilmiah.</p>
-      </div>
-      <div class="flex gap-2">
-    <label for="labPlantSelect" class="sr-only">Pilih tanaman untuk Plant Lab</label><select id="labPlantSelect" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm cursor-pointer"></select>
-        <button onclick="toast('Plant Lab direset','🔬')" class="btn btn-ghost text-sm hidden sm:flex cursor-pointer">Info</button>
-      </div>
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <span class="pill pill-yellow font-black">🔬 Simulasi Edukasi</span>
+      <label for="labPlantSelect" class="sr-only">Pilih tanaman untuk Plant Lab</label><select id="labPlantSelect" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm cursor-pointer"></select>
     </div>
     <div id="plantLabRoot" class="mt-6"></div>
-    <div class="grid sm:grid-cols-3 gap-3 mt-6 text-center text-sm">
-      <div class="bg-[#EFF6FF] rounded-2xl p-3"><p class="font-black">Eksperimen Aman</p><p class="text-xs text-muted">Tanpa risiko tanaman mati</p></div>
-      <div class="bg-[#F0FDF4] rounded-2xl p-3"><p class="font-black">Feedback Instan</p><p class="text-xs text-muted">Tanaman bereaksi langsung</p></div>
-      <div class="bg-[#FFF7ED] rounded-2xl p-3"><p class="font-black">Hubungkan ke Kebunku</p><p class="text-xs text-muted">Terapkan hasil simulasi</p></div>
+    <div class="ed-rows mt-6">
+      <li><span class="n">A</span><span class="t">Eksperimen aman</span><span class="d">Tanpa risiko tanaman mati</span></li>
+      <li><span class="n">B</span><span class="t">Feedback instan</span><span class="d">Tanaman bereaksi langsung</span></li>
+      <li><span class="n">C</span><span class="t">Hubungkan ke Kebunku</span><span class="d">Terapkan hasil simulasi di kebun nyata</span></li>
     </div>
   </div>
 </section>
 
-<!-- Ecosystem cross-link (#32) -->
+<!-- Ecosystem cross-link (#32) — editorial closing -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-  <div class="fv-card yellow p-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
-    <div><p class="font-black">🌱 Contoh Alur Ekosistem</p><p class="text-sm opacity-70">Cabai  Pelajari  Coba Lab  Mulai Journey  Smart Basket  Kebunku  Share Community</p></div>
-    <a href="garden.html" class="btn btn-dark whitespace-nowrap cursor-pointer">Mulai Journey </a>
+  <div class="ed-closing reveal">
+    <p class="ed-eyebrow">Alur ekosistem</p>
+    <h2 class="ed-title ed-title--sm">Satu tanaman, satu perjalanan</h2>
+    <ol class="ed-rows" style="max-width:44rem">
+      <li><span class="n">01</span><span class="t">Pelajari</span><span class="d">Baca panduan dasar di Belajar</span></li>
+      <li><span class="n">02</span><span class="t">Coba di Lab</span><span class="d">Simulasi air, cahaya, dan pupuk</span></li>
+      <li><span class="n">03</span><span class="t">Mulai journey</span><span class="d">Tanam day 1 di Kebunku, kerjakan task harian</span></li>
+      <li><span class="n">04</span><span class="t">Bagikan</span><span class="d">Share panen &amp; tips ke Community</span></li>
+    </ol>
+    <a href="garden.html" class="btn btn-dark mt-6 cursor-pointer">Mulai Journey </a>
   </div>
 </section>
 
