@@ -82,7 +82,7 @@ section.landing-hero{
   inset:0;
   background:
     linear-gradient(180deg, rgba(84,128,164,.22) 0%, rgba(96,136,166,.12) 22%, rgba(6,26,36,.05) 42%, rgba(6,26,36,0) 60%),
-    linear-gradient(180deg, rgba(238,247,233,0) 74%, rgba(238,247,233,.4) 87%, rgba(238,247,233,.88) 96%, #eef7e9 100%);
+    linear-gradient(180deg, rgba(238,247,233,0) 68%, rgba(238,247,233,.12) 80%, rgba(238,247,233,.3) 90%, rgba(238,247,233,.58) 96%, rgba(238,247,233,.84) 99%, #eef7e9 100%);
   pointer-events:none;
 }
 
@@ -104,29 +104,29 @@ section.landing-hero{
   position:absolute;
   inset:-14% -24%;
   z-index:-1;
-  background:radial-gradient(ellipse 80% 70% at 50% 46%, rgba(4,26,34,.1) 0%, rgba(4,26,34,.05) 50%, rgba(4,26,34,0) 72%);
+  background:radial-gradient(ellipse 80% 70% at 50% 46%, rgba(247,252,244,.2) 0%, rgba(247,252,244,.09) 50%, rgba(247,252,244,0) 72%);
   pointer-events:none;
 }
 .hero-eyebrow{
   margin:0 0 .65rem;
-  color:rgba(255,255,255,.82);
+  color:#46665A;
   font-family:'Outfit',sans-serif;
   font-size:clamp(.68rem,1vw,.75rem);
-  font-weight:700;
-  letter-spacing:.17em;
+  font-weight:600;
+  letter-spacing:.13em;
   text-transform:uppercase;
-  text-shadow:0 1px 2px rgba(6,40,50,.26);
+  text-shadow:0 1px 2px rgba(255,255,255,.4);
   animation:heroTitleIn .75s cubic-bezier(.2,.8,.2,1) both;
 }
 .hero-title{
-  font-family:'Nunito','Outfit',sans-serif;
-  color:#fff;
+  font-family:'Outfit','Nunito',sans-serif;
+  color:#18352A;
   font-size:clamp(2.55rem,5.7vw,4.15rem);
-  font-weight:800;
-  line-height:1.03;
-  letter-spacing:-.03em;
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-.028em;
   text-wrap:balance;
-  text-shadow:0 1px 2px rgba(3,20,26,.34), 0 1px 4px rgba(3,20,26,.1);
+  text-shadow:0 1px 2px rgba(247,252,244,.28);
   opacity:1 !important;
   transform:none !important;
   animation:heroTitleIn .85s .08s cubic-bezier(.2,.8,.2,1) both;
@@ -134,14 +134,14 @@ section.landing-hero{
 .hero-sub{
   max-width:30rem;
   margin-top:1.15rem;
-  color:rgba(255,255,255,.95);
+  color:#355344;
   font-family:'Outfit',sans-serif;
   font-size:clamp(.94rem,1.3vw,1.05rem);
   font-weight:500;
   line-height:1.6;
   letter-spacing:.01em;
   text-wrap:pretty;
-  text-shadow:0 1px 2px rgba(3,20,26,.3), 0 1px 4px rgba(3,20,26,.1);
+  text-shadow:0 1px 2px rgba(247,252,244,.22);
   opacity:1 !important;
   transform:none !important;
   animation:heroTitleIn .85s .16s cubic-bezier(.2,.8,.2,1) both;
@@ -162,70 +162,58 @@ section.landing-hero{
   to{opacity:1; transform:translateY(0)}
 }
 
+/* Primary CTA — typographic invitation with a quiet expanding rule */
 .hero-cta{
+  position:relative;
   display:inline-flex;
-  align-items:center;
-  gap:.75rem;
-  min-height:52px;
-  padding:.5rem .5rem .5rem 1.45rem;
-  border-radius:999px;
-  background:#fff;
-  color:var(--landing-ink);
-  font-family:'Outfit',sans-serif;
-  font-weight:700;
-  font-size:.98rem;
-  letter-spacing:-.01em;
-  box-shadow:0 12px 32px rgba(8,40,48,.22);
-  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-}
-.hero-cta:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 40px rgba(8,40,48,.28);
-  background:#f7fffa;
-  color:var(--landing-ink);
-}
-.hero-cta:active{transform:translateY(0) scale(.98)}
-.hero-cta-arrow{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  background:var(--landing-ink);
-  color:#fff;
-  font-size:1.05rem;
-  line-height:1;
-  transition:transform .2s ease;
-}
-.hero-cta:hover .hero-cta-arrow{transform:translateX(3px)}
-
-/* Secondary CTA: translucent green earth tone — primary pill stays dominant */
-.hero-ghost{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
+  align-items:baseline;
   gap:.55rem;
-  min-height:48px;
-  padding:.65rem 1.25rem;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.48);
-  background:rgba(24,56,38,.38);
+  padding-bottom:.55rem;
+  background:none;
+  border:0;
   color:#fff;
   font-family:'Outfit',sans-serif;
-  font-weight:700;
-  font-size:.92rem;
-  letter-spacing:-.005em;
-  transition:background .2s ease, transform .2s ease, border-color .2s ease;
+  font-weight:600;
+  font-size:1rem;
+  letter-spacing:.01em;
+  text-decoration:none;
+  text-shadow:0 1px 3px rgba(3,20,26,.35);
+  cursor:pointer;
+  transition:transform .24s cubic-bezier(.2,.8,.2,1),
+             color .24s cubic-bezier(.2,.8,.2,1);
 }
-.hero-ghost:hover{
-  background:rgba(24,56,38,.55);
-  border-color:rgba(255,255,255,.7);
+.hero-cta::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:rgba(255,255,255,.55);
+  transform:scaleX(.72);
+  transform-origin:left center;
+  transition:transform .26s cubic-bezier(.2,.8,.2,1), background-color .26s cubic-bezier(.2,.8,.2,1);
+}
+.hero-cta:hover,
+.hero-cta:focus-visible{
   transform:translateY(-2px);
   color:#fff;
 }
-.hero-ghost:active{transform:translateY(0) scale(.985); transition-duration:.08s}
-.hero-ghost-icon{width:15px; height:15px; flex-shrink:0}
+.hero-cta:hover::after,
+.hero-cta:focus-visible::after{
+  transform:scaleX(1);
+  background:rgba(255,255,255,.95);
+}
+.hero-cta:focus-visible{outline:none}
+.hero-cta:focus-visible::after{background:#fff}
+.hero-cta:active{transform:translateY(0); transition-duration:.1s}
+.hero-cta-arrow{
+  font-size:1.02rem;
+  line-height:1;
+  transition:transform .26s cubic-bezier(.2,.8,.2,1);
+}
+.hero-cta:hover .hero-cta-arrow,
+.hero-cta:focus-visible .hero-cta-arrow{transform:translateX(6px)}
 
 /* ===== SECTION SHARED ===== */
 .section-eyebrow{
@@ -356,8 +344,7 @@ section.landing-hero{
   }
   .hero-sub{margin-top:.95rem; font-size:.9rem; max-width:340px; line-height:1.55}
   .hero-actions{margin-top:1.35rem; width:100%; flex-direction:column; gap:.65rem}
-  .hero-cta{width:100%; max-width:320px; justify-content:space-between; min-height:50px}
-  .hero-ghost{width:100%; max-width:320px; min-height:50px}
+  .hero-cta{font-size:.95rem}
 
   .home-ecosystem{padding:2.5rem 1.1rem 3rem}
   .eco-cell{

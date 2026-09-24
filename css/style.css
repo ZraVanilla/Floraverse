@@ -325,7 +325,9 @@ html{scrollbar-width:thin; scrollbar-color:#D1D5DB transparent}
   visibility:visible;
   transition:transform .35s cubic-bezier(.2,.8,.2,1), visibility 0s linear 0s;
 }
+/* overflow-x:clip mem-blockir scroll horizontal tanpa memutus position:sticky (hidden mengubah body jadi scroll container) */
 html,body{overflow-x:hidden}
+@supports (overflow-x:clip){html,body{overflow-x:clip}}
 .drawer-backdrop{position:fixed; inset:0; background:rgba(37,37,37,.35); backdrop-filter:blur(4px); display:none; z-index:60}
 .drawer-backdrop.open{display:block}
 

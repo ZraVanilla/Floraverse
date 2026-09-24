@@ -87,45 +87,43 @@
 
   </main>
 
-  <!-- RIGHT: Sidebar — widget datar, dipisah divider -->
+  <!-- RIGHT: Sidebar — kartu mandiri, sticky mengikuti scroll -->
   <aside class="community-sidebar lg:col-span-4 space-y-5 lg:sticky lg:top-[76px] lg:self-start lg:max-h-[calc(100vh-76px)] lg:overflow-y-auto lg:sidebar-scroll">
 
     <!-- Komunitas Anda -->
-    <div>
-      <div class="ed-widget">
-        <h3>🏠 Komunitas Anda</h3>
-        <div class="space-y-1">
-          <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#FF718D18"><span class="text-base">🌶️</span></div>
-            <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Pecinta Cabai</p><p class="text-[11px] text-muted">1.2K anggota</p></div>
-            <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
-          </div>
-          <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#6FA8FF18"><span class="text-base">💧</span></div>
-            <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Hidroponik Indonesia</p><p class="text-[11px] text-muted">2.1K anggota</p></div>
-            <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
-          </div>
-          <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#6FA8FF18"><span class="text-base">🏡</span></div>
-            <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Home Gardening Pemula</p><p class="text-[11px] text-muted">2.6K anggota</p></div>
-            <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
-          </div>
-          <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#8BCB8A18"><span class="text-base">🌵</span></div>
-            <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Cactus & Succulent ID</p><p class="text-[11px] text-muted">3.2K anggota</p></div>
-            <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
-          </div>
+    <div class="ed-widget">
+      <h3>🏠 Komunitas Anda</h3>
+      <div class="space-y-1">
+        <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#FF718D18"><span class="text-base">🌶️</span></div>
+          <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Pecinta Cabai</p><p class="text-[11px] text-muted">1.2K anggota</p></div>
+          <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
+        </div>
+        <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#6FA8FF18"><span class="text-base">💧</span></div>
+          <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Hidroponik Indonesia</p><p class="text-[11px] text-muted">2.1K anggota</p></div>
+          <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
+        </div>
+        <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#6FA8FF18"><span class="text-base">🏡</span></div>
+          <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Home Gardening Pemula</p><p class="text-[11px] text-muted">2.6K anggota</p></div>
+          <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
+        </div>
+        <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#8BCB8A18"><span class="text-base">🌵</span></div>
+          <div class="flex-1 min-w-0"><p class="font-bold text-sm truncate">Cactus & Succulent ID</p><p class="text-[11px] text-muted">3.2K anggota</p></div>
+          <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
         </div>
       </div>
+    </div>
 
-      <!-- Rekomendasi -->
-      <div class="ed-widget">
-        <div class="flex items-center justify-between">
-          <h3 style="margin:0">🌱 Rekomendasi Komunitas</h3>
-          <span class="text-xs font-bold text-[#6FA8FF]">Lihat semua →</span>
-        </div>
-        <div id="commSidebar" class="mt-2"></div>
+    <!-- Rekomendasi -->
+    <div class="ed-widget">
+      <div class="flex items-center justify-between">
+        <h3 style="margin:0">🌱 Rekomendasi Komunitas</h3>
+        <span class="text-xs font-bold text-[#6FA8FF]">Lihat semua →</span>
       </div>
+      <div id="commSidebar" class="mt-2"></div>
     </div>
 
   </aside>
@@ -241,7 +239,7 @@ function renderFeed(){
       <p class="mt-3 text-[15px] leading-relaxed">${p.content}</p>
       <div class="flex flex-wrap gap-1.5 mt-2">${p.tags.map(t=>`<span class="pill pill-blue text-xs">${t}</span>`).join('')}</div>
       <div class="bg-gray-50 rounded-2xl mt-3 overflow-hidden">
-        <div class="w-full aspect-video bg-white flex items-center justify-center overflow-hidden">${p.plantId ? fvImg(PLANTS.find(x=>x.id===p.plantId),'w-full h-full object-cover') : `<span class="text-4xl">${p.image||'🌱'}</span>`}</div>
+        <div class="w-full bg-white flex items-center justify-center overflow-hidden" style="aspect-ratio:1500/500">${p.plantId ? fvImg(PLANTS.find(x=>x.id===p.plantId),'w-full h-full object-cover') : `<span class="text-4xl">${p.image||'🌱'}</span>`}</div>
         <div class="p-3 flex items-center gap-3">
           <span class="text-xs text-muted">${p.likes} suka • ${comments.length} komentar</span>
         </div>

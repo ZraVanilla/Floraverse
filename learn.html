@@ -48,38 +48,6 @@
   </div>
 </header>
 
-<!-- TOOLBAR: cari + filter + level -->
-<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-  <div class="ed-toolbar">
-    <div class="relative flex-1 min-w-[14rem]">
-      <input id="searchGuide" type="search" placeholder="Cari kompos, hidroponik, hama..." class="w-full pl-10 pr-4 py-2.5 rounded-full border bg-white focus:border-charcoal outline-none font-medium text-sm">
-      <span class="absolute left-3.5 top-2.5 text-muted">⌕</span>
-    </div>
-    <select id="filterGuideKat" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm truncate max-w-[13rem]"><option value="">Semua Kategori</option><option>Dasar berkebun</option><option>Media tanam</option><option>Penyiraman</option><option>Cahaya</option><option>Pemupukan</option><option>Hama & penyakit</option><option>Hidroponik</option><option>Urban farming</option><option>Composting</option></select>
-    <div class="flex gap-2">
-      <button data-level="" class="levelBtn active px-4 py-1.5 rounded-full bg-[#6FA8FF] text-white font-bold text-sm">Semua Level</button>
-      <button data-level="Pemula" class="levelBtn px-4 py-1.5 rounded-full bg-white border font-bold text-sm">Pemula</button>
-      <button data-level="Menengah" class="levelBtn px-4 py-1.5 rounded-full bg-white border font-bold text-sm">Menengah</button>
-    </div>
-  </div>
-</div>
-
-<!-- Kategori -->
-<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-  <div class="flex gap-2 overflow-auto no-scrollbar pb-2" id="guideCats">
-    <button data-cat="" class="gcat active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm">Semua</button>
-    <button data-cat="Dasar berkebun" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🌱 Dasar</button>
-    <button data-cat="Media tanam" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🌿 Media</button>
-    <button data-cat="Penyiraman" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">💧 Siram</button>
-    <button data-cat="Cahaya" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">☀️ Cahaya</button>
-    <button data-cat="Pemupukan" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🧪 Pupuk</button>
-    <button data-cat="Hama & penyakit" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🐛 Hama</button>
-    <button data-cat="Hidroponik" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">💧 Hidroponik</button>
-    <button data-cat="Urban farming" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🏙️ Urban</button>
-    <button data-cat="Composting" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">♻️ Kompos</button>
-  </div>
-</div>
-
 <!-- 01–03: fitur editorial bernomor -->
 <section class="ed-section max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
   <div class="ed-head reveal">
@@ -137,8 +105,40 @@
   </div>
 </section>
 
+<!-- TOOLBAR: cari + filter + level -->
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+  <div class="ed-toolbar">
+    <div class="relative flex-1 min-w-[14rem]">
+      <input id="searchGuide" type="search" placeholder="Cari kompos, hidroponik, hama..." class="w-full pl-10 pr-4 py-2.5 rounded-full border bg-white focus:border-charcoal outline-none font-medium text-sm">
+      <span class="absolute left-3.5 top-2.5 text-muted">⌕</span>
+    </div>
+    <select id="filterGuideKat" class="py-2.5 px-4 rounded-full border bg-white font-bold text-sm truncate max-w-[13rem]"><option value="">Semua Kategori</option><option>Dasar berkebun</option><option>Media tanam</option><option>Penyiraman</option><option>Cahaya</option><option>Pemupukan</option><option>Hama & penyakit</option><option>Hidroponik</option><option>Urban farming</option><option>Composting</option></select>
+    <div class="flex gap-2">
+      <button data-level="" class="levelBtn active px-4 py-1.5 rounded-full bg-[#6FA8FF] text-white font-bold text-sm">Semua Level</button>
+      <button data-level="Pemula" class="levelBtn px-4 py-1.5 rounded-full bg-white border font-bold text-sm">Pemula</button>
+      <button data-level="Menengah" class="levelBtn px-4 py-1.5 rounded-full bg-white border font-bold text-sm">Menengah</button>
+    </div>
+  </div>
+</div>
+
+<!-- Kategori -->
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+  <div class="flex gap-2 overflow-auto no-scrollbar pb-2" id="guideCats">
+    <button data-cat="" class="gcat active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm">Semua</button>
+    <button data-cat="Dasar berkebun" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🌱 Dasar</button>
+    <button data-cat="Media tanam" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🌿 Media</button>
+    <button data-cat="Penyiraman" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">💧 Siram</button>
+    <button data-cat="Cahaya" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">☀️ Cahaya</button>
+    <button data-cat="Pemupukan" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🧪 Pupuk</button>
+    <button data-cat="Hama & penyakit" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🐛 Hama</button>
+    <button data-cat="Hidroponik" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">💧 Hidroponik</button>
+    <button data-cat="Urban farming" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">🏙️ Urban</button>
+    <button data-cat="Composting" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm">♻️ Kompos</button>
+  </div>
+</div>
+
 <!-- GRID panduan (objek fungsional — card tetap) -->
-<main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+<main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-8 mt-6">
   <div class="ed-gridlabel">
     <h2>Semua Panduan</h2>
     <span id="guideCount" class="ed-meta">18 panduan</span>
