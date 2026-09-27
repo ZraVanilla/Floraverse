@@ -12,7 +12,6 @@
   --pv-blue-deep:#2E6FD8;
   --pv-blue-light:#EAF3FF;
   --pv-blue-faint:#F5F9FF;
-  --pv-navy:#16233B;
   --pv-ink:#1F2937;
   --pv-muted:#64748B;
   --pv-faint:#94A3B8;
@@ -50,145 +49,15 @@
 }
 
 /* ============ NAVBAR ============ */
-.pv-page .navbar{
-  background:#fff;
-  border-bottom:1px solid var(--pv-line);
-  backdrop-filter:none;
-  -webkit-backdrop-filter:none;
-}
-.pv-page .navbar.is-scrolled{
-  background:#fff;
-  backdrop-filter:none;
-  -webkit-backdrop-filter:none;
-  border-bottom-color:var(--pv-line);
-  box-shadow:0 6px 20px rgba(16,24,40,.06);
-}
-.pv-nav-inner{
-  height:68px;
-  min-height:68px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:24px;
-}
-/* style.css forces a 60px navbar globally — keep the profile navbar in spec. */
-.pv-page .navbar > .pv-nav-inner{height:68px !important; min-height:68px}
-.pv-brand{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  flex-shrink:0;
-}
-.pv-brand-icon{
-  width:34px;
-  height:34px;
-  border-radius:11px;
-  display:grid;
-  place-items:center;
-  background:var(--pv-blue-light);
-  color:var(--pv-blue);
-}
-.pv-brand-icon svg{width:18px; height:18px; stroke-width:2.1}
-.pv-wordmark{
-  font-size:21px;
-  font-weight:800;
-  letter-spacing:-.035em;
-  color:var(--pv-ink);
-}
-.pv-wordmark b{color:var(--pv-blue); font-weight:800}
-
-.pv-links{
-  display:flex;
-  align-items:center;
-  gap:4px;
-  margin-inline:auto;
-}
-.pv-links .nav-link{
-  font-size:14px;
-  font-weight:600;
-  color:#5A6884;
-  padding:9px 15px;
-  border-radius:999px;
-  transition:background .18s ease, color .18s ease;
-}
-.pv-links .nav-link:hover{background:var(--pv-blue-faint); color:var(--pv-ink)}
-.pv-links .nav-link.active{
-  background:var(--pv-navy);
-  color:#fff;
-  box-shadow:0 6px 14px rgba(22,35,59,.18);
-}
-
-.pv-nav-actions{display:flex; align-items:center; gap:10px; flex-shrink:0}
-.pv-icon-btn{
-  position:relative;
-  width:40px;
-  height:40px;
-  border-radius:12px;
-  display:grid;
-  place-items:center;
-  background:#fff;
-  border:1px solid var(--pv-line);
-  color:#4A5878;
-  transition:background .18s ease, border-color .18s ease, color .18s ease;
-}
-.pv-icon-btn:hover{background:var(--pv-blue-faint); border-color:#D6E4FA; color:var(--pv-blue)}
-.pv-icon-btn svg{width:18px; height:18px; stroke-width:2}
-.pv-page .navbar #cartBtn{
-  background:#fff;
-  border:1px solid var(--pv-line);
-  backdrop-filter:none;
-  -webkit-backdrop-filter:none;
-}
-.pv-page .navbar #cartBtn:hover{background:var(--pv-blue-faint); border-color:#D6E4FA}
-
-.pv-user{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:5px 11px 5px 5px;
-  border:1px solid var(--pv-line);
-  border-radius:999px;
-  background:#fff;
-  transition:border-color .18s ease, box-shadow .18s ease;
-}
-.pv-user:hover{border-color:#D6E4FA; box-shadow:0 4px 12px rgba(16,24,40,.06)}
-.pv-avatar{
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(135deg,#5A97F7,#3B7BE0);
-  color:#fff;
-  font-size:11.5px;
-  font-weight:800;
-  letter-spacing:.02em;
-}
-.pv-user-name{font-size:13.5px; font-weight:700; color:var(--pv-ink)}
-.pv-lvl{
-  font-size:10.5px;
-  font-weight:800;
-  letter-spacing:.03em;
-  color:var(--pv-yellow-ink);
-  background:#FFF3D2;
-  border:1px solid #FFE7AE;
-  padding:3px 7px;
-  border-radius:999px;
-}
-.pv-user-caret{width:15px; height:15px; color:var(--pv-faint); stroke-width:2.2}
-.pv-menu-btn{
-  display:none;
-  position:relative;
-  width:40px;
-  height:40px;
-  border-radius:12px;
-  place-items:center;
-  background:var(--pv-navy);
-  color:#fff;
-  box-shadow:0 6px 14px rgba(22,35,59,.2);
-}
-.pv-menu-btn:hover{background:#0F1A2E}
-.pv-page .mobile-nav-panel .nav-link.active{background:var(--pv-navy)}
+/* Navbar memakai markup bersama semua halaman lain; reset .pv-page di atas
+   tidak boleh mengubah tampilannya. */
+.pv-page .navbar,
+.pv-page .navbar *{font-family:'Outfit', system-ui, -apple-system, Segoe UI, Roboto, sans-serif}
+.pv-page .navbar .wordmark{font-family:'Nunito', sans-serif; color:var(--charcoal)}
+.pv-page .navbar .nav-link{color:#4B5563}
+.pv-page .navbar .nav-link:hover{color:var(--charcoal); background:rgba(255,255,255,.72)}
+.pv-page .navbar .nav-link.active{background:var(--charcoal); color:#fff}
+.pv-page .navbar #menuBtn{background:var(--charcoal); color:#fff; border:0; padding:0}
 
 /* ============ MAIN ============ */
 .pv-main{
@@ -936,8 +805,6 @@
 }
 
 @media (max-width:1079px){
-  .pv-links{display:none}
-  .pv-menu-btn{display:grid}
   .pv-grid{grid-template-columns:minmax(0,1fr)}
   .pv-hero-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
@@ -951,11 +818,6 @@
 @media (max-width:767px){
   .pv-shell{padding-inline:16px}
   .pv-main{gap:16px; padding-block:18px 32px}
-  .pv-nav-inner{height:60px; gap:10px}
-  .pv-page .navbar > .pv-nav-inner{height:60px !important; min-height:60px}
-  .pv-wordmark{font-size:19px}
-  .pv-user-name,.pv-user-caret{display:none}
-  .pv-user{padding:4px; border:0; background:transparent}
   .pv-hero{padding:20px 18px; border-radius:18px}
   .pv-hero-id{flex-direction:column; gap:14px; align-items:flex-start}
   .pv-hero-avatar{width:76px; height:76px}
