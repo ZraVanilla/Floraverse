@@ -58,8 +58,27 @@
 ========================================
  PAGE: PROFILE (profile.html)
 ========================================
- -- Menggunakan gambar dari PLANT_IMAGES --
- -- Tidak ada gambar hardcoded, semua via fvImg() --
+ --- Kebun Ku & Tanaman Tersimpan (Wikimedia Commons, Special:FilePath) ---
+ 1. Calathea          = https://commons.wikimedia.org/wiki/Special:FilePath/Calathea_ornata_cc3.jpg?width=640
+ 2. Monstera Deliciosa= https://commons.wikimedia.org/wiki/Special:FilePath/New_Monstera_Deliciosa_Leaf.jpg?width=640
+ 3. Snake Plant       = https://commons.wikimedia.org/wiki/Special:FilePath/Sansevieria_in_pot.jpg?width=640
+ 4. Philodendron      = https://commons.wikimedia.org/wiki/Special:FilePath/Philodendron_hederaceum_kz01.jpg?width=640
+ 5. Peace Lily        = https://commons.wikimedia.org/wiki/Special:FilePath/Peace_lily_-_1.jpg?width=640
+ 6. Aglaonema         = https://commons.wikimedia.org/wiki/Special:FilePath/Aglaonema_costatum_001.JPG?width=640
+ 7. Alocasia Polly    = https://commons.wikimedia.org/wiki/Special:FilePath/Alocasia_x_amazonica_%27Polly%27.jpg?width=640
+ 8. Jade Plant        = https://commons.wikimedia.org/wiki/Special:FilePath/Crassula_ovata_2012.jpg?width=640
+ 9. Bird of Paradise  = https://commons.wikimedia.org/wiki/Special:FilePath/Strelitzia_reginae_MHNT.BOT.2009.13.52.jpg?width=640
+ 10. String of Hearts = https://commons.wikimedia.org/wiki/Special:FilePath/Ceropegia_woodii-1-bsi-yercaud-salem-India.jpg?width=640
+
+ --- Komunitas & saved thumbnails (dari PLANT_IMAGES) ---
+ sukulen  = https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyKx6T_Ltu49caRJKsluFOwS3Rcja0jEyBjGIVyv99o28tIWkyrT-s3is&s=10
+ anggrek  = https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?auto=format&fit=crop&w=640&q=80
+ selada   = https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?auto=format&fit=crop&w=640&q=80
+ lavender = https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=640&q=80
+
+ --- Icons ---
+ Semua ikon profil memakai Lucide Icons (https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js),
+ di-inline sebagai <svg> oleh lucide.createIcons() - tanpa emoji sebagai ikon UI.
 
 ========================================
  PLANT IMAGES (js/plant-images.js)
