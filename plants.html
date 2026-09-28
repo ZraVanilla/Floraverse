@@ -216,7 +216,7 @@ function renderPlants(){
         ${fvImg(p,'w-full h-full object-cover group-hover:scale-105 transition duration-300')}
         <span class="absolute top-3 left-3 pill pill-white text-[11px] font-black">${p.kategori}</span>
         <span class="absolute top-3 right-3 pill text-xs font-black" style="background:${p.color};color:#fff">★ ${p.rating}</span>
-        <span class="absolute bottom-3 left-3 pill pill-green text-[11px]">${p.kesulitan} • ${p.panen}</span>
+        <span class="absolute bottom-3 left-3 pill text-[11px] font-semibold" style="background:rgba(255,255,255,.68);border-color:rgba(255,255,255,.85);color:#252525;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)">${p.kesulitan} • ${p.panen}</span>
       </div>
       <div class="p-4">
         <p class="font-black leading-none">${p.nama}</p>

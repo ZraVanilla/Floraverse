@@ -247,7 +247,7 @@ function renderGuides(){
         ${g.img ? `<img src="${g.img}" alt="${g.judul}" class="w-full h-full object-cover">` : PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())) ? fvImg(PLANTS.find(p=>g.judul.toLowerCase().includes(p.nama.split(' ')[0].toLowerCase())),'w-full h-full object-cover') : g.emoji}
         <span class="absolute top-3 left-3 pill text-[11px] font-black" style="background:${g.color};color:${g.color==='#FFD45C'?'#252525':'#fff'}">${g.kategori}</span>
         <span class="absolute top-3 right-3 pill pill-white text-[11px]">${g.level}</span>
-        ${g.populer?'<span class="absolute bottom-3 right-3 pill pill-yellow text-[11px] font-black">🔥 Populer</span>':''}
+        ${g.populer?'<span class="absolute bottom-3 left-1/2 -translate-x-1/2 pill text-[11px] font-black" style="background:#FFD45C;color:#252525;border-color:#FFC93D;box-shadow:0 4px 12px rgba(0,0,0,.28)">🔥 Populer</span>':''}
       </div>
       <div class="p-4">
         <p class="font-black leading-tight line-clamp-2 min-h-[44px]">${g.judul}</p>
