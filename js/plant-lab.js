@@ -5,28 +5,27 @@ function plantLabEvaluate(params){
   // params: 0-100
   let health = 100;
   let messages = [];
-  let emoji = "🌿";
   let status = "Sehat";
   let color = "#8BCB8A";
 
-  if(params.water < 20){ health -= 30; messages.push("Air terlalu sedikit  tanaman layu, daun menguning."); status="Layu"; color="#FF9B70"; emoji="🥀"; }
-  else if(params.water > 85){ health -= 25; messages.push("Air terlalu banyak  risiko busuk akar. Kurangi penyiraman."); status="Overwater"; color="#6FA8FF"; emoji="💧"; }
+  if(params.water < 20){ health -= 30; messages.push("Air terlalu sedikit  tanaman layu, daun menguning."); status="Layu"; color="#FF9B70"; }
+  else if(params.water > 85){ health -= 25; messages.push("Air terlalu banyak  risiko busuk akar. Kurangi penyiraman."); status="Overwater"; color="#6FA8FF"; }
 
-  if(params.sun < 15){ health -= 30; messages.push("Cahaya terlalu rendah  pertumbuhan melambat."); status="Kurang Cahaya"; color="#FFD45C"; emoji="🌑"; }
+  if(params.sun < 15){ health -= 30; messages.push("Cahaya terlalu rendah  pertumbuhan melambat."); status="Kurang Cahaya"; color="#FFD45C"; }
   else if(params.sun > 90){ health -= 15; messages.push("Cahaya sangat terik  daun bisa terbakar."); }
 
   if(params.fert < 15){ health -= 10; messages.push("Pupuk rendah  pertumbuhan tidak optimal, tapi masih aman."); }
-  else if(params.fert > 85){ health -= 20; messages.push("Pupuk berlebih  risiko burn. Siram untuk bilas."); status="Over Fertilized"; color="#FF718D"; emoji="🧪"; }
+  else if(params.fert > 85){ health -= 20; messages.push("Pupuk berlebih  risiko burn. Siram untuk bilas."); status="Over Fertilized"; color="#FF718D"; }
 
   if(params.soil < 25){ health -= 25; messages.push("Media buruk  drainase buruk, akar sesak."); }
 
-  if(health >= 85){ status="Sehat"; color="#8BCB8A"; emoji="🌿"; }
-  else if(health >= 60){ status="Perlu Perhatian"; color="#FFD45C"; emoji="🌱"; }
-  else if(health >= 35){ status="Stressed"; color="#FF9B70"; emoji="🍂"; }
-  else { status="Kritis"; color="#FF718D"; emoji="🥀"; }
+  if(health >= 85){ status="Sehat"; color="#8BCB8A"; }
+  else if(health >= 60){ status="Perlu Perhatian"; color="#FFD45C"; }
+  else if(health >= 35){ status="Stressed"; color="#FF9B70"; }
+  else { status="Kritis"; color="#FF718D"; }
 
   if(messages.length===0) messages.push("Kondisi ideal! Pertahankan perawatan ini.");
-  return { health: Math.max(0, Math.min(100, health)), messages, status, color, emoji };
+  return { health: Math.max(0, Math.min(100, health)), messages, status, color };
 }
 
 function renderPlantLab(containerId, initialPlantId){
@@ -41,7 +40,7 @@ function renderPlantLab(containerId, initialPlantId){
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-5">
         <div class="lg:col-span-2 fv-card white p-5 text-center relative overflow-hidden">
           <div class="absolute -top-6 -right-6 w-24 h-24 rounded-full opacity-10" style="background:${plant.color}"></div>
-          <p class="font-black text-sm flex items-center justify-center gap-2">🔬 Plant Lab <span class="pill pill-yellow text-xs">Simulasi Edukasi</span></p>
+          <p class="font-black text-sm flex items-center justify-center gap-2"><i data-lucide="microscope"></i> Plant Lab <span class="pill pill-yellow text-xs">Simulasi Edukasi</span></p>
           <div class="w-32 h-32 mx-auto mt-4 rounded-[28px] flex items-center justify-center text-6xl relative" style="background:${res.color}18; border:3px solid ${res.color}30; filter: ${res.health<50?'saturate(.7)':''}">
              ${fvImg(plant,'w-full h-full object-cover rounded-[24px]')}
             <span class="absolute -top-2 -right-2 pill text-xs font-black" style="background:${res.color}; color:#fff">${res.status}</span>
@@ -57,10 +56,10 @@ function renderPlantLab(containerId, initialPlantId){
         </div>
         <div class="lg:col-span-3 space-y-4">
           ${[
-            {key:'water', label:'💧 Air', min:'Kering', max:'Becek', val:params.water},
-            {key:'sun', label:'☀️ Cahaya', min:'Redup', max:'Terik', val:params.sun},
-            {key:'fert', label:'🧪 Pupuk', min:'Rendah', max:'Tinggi', val:params.fert},
-            {key:'soil', label:'🌿 Media', min:'Buruk', max:'Ideal', val:params.soil}
+            {key:'water', label:'<i data-lucide="droplet"></i> Air', min:'Kering', max:'Becek', val:params.water},
+            {key:'sun', label:'<i data-lucide="sun"></i> Cahaya', min:'Redup', max:'Terik', val:params.sun},
+            {key:'fert', label:'<i data-lucide="flask-conical"></i> Pupuk', min:'Rendah', max:'Tinggi', val:params.fert},
+            {key:'soil', label:'<i data-lucide="leaf"></i> Media', min:'Buruk', max:'Ideal', val:params.soil}
           ].map(s=>`
             <div class="fv-card white p-4">
               <div class="flex justify-between text-sm font-black"><span>${s.label}</span><span class="pill pill-white text-xs lab-val-${s.key}">${s.val}</span></div>
@@ -69,7 +68,7 @@ function renderPlantLab(containerId, initialPlantId){
             </div>
           `).join('')}
           <div class="fv-card yellow p-4">
-            <p class="font-black text-sm">💡 Feedback Edukasi</p>
+            <p class="font-black text-sm"><i data-lucide="lightbulb"></i> Feedback Edukasi</p>
             <ul class="text-sm mt-2 space-y-1 list-disc pl-5">
               ${res.messages.map(m=>`<li>${m}</li>`).join('')}
             </ul>
@@ -93,8 +92,8 @@ function renderPlantLab(containerId, initialPlantId){
     // Drag cursor: persist grabbing even when cursor leaves track
     $c.find('.lab-range').on('mousedown', function(){ $(this).addClass('dragging'); });
     $(document).on('mouseup.labdrag', function(){ $c.find('.lab-range').removeClass('dragging'); });
-    $c.find('.lab-reset').on('click', ()=>{ params={...PLANT_LAB_DEFAULT}; draw(); toast('Reset ke kondisi ideal','🔬'); });
-    $c.find('.lab-apply').on('click', ()=> toast('Simulasi diterapkan - cek Garden Pulse','✨'));
+    $c.find('.lab-reset').on('click', ()=>{ params={...PLANT_LAB_DEFAULT}; draw(); toast('Reset ke kondisi ideal','microscope'); });
+    $c.find('.lab-apply').on('click', ()=> toast('Simulasi diterapkan - cek Garden Pulse','sparkles'));
   }
   draw();
 

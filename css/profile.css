@@ -860,6 +860,14 @@
   .pv-ach-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .pv-challenge{padding:16px}
   .pv-footer-inner{justify-content:center; text-align:center}
+  .pv-page .pv-link-btn{min-height:44px}
+  .pv-page .pv-heart{width:40px; height:40px; min-height:0; top:6px; right:6px}
+  .pv-page .pv-heart svg{width:16px; height:16px}
+  .pv-comm-name,.pv-saved-name{
+    white-space:normal; overflow:visible; text-overflow:clip;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+    overflow-wrap:anywhere;
+  }
 }
 
 @media (max-width:390px){

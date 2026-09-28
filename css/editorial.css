@@ -92,6 +92,8 @@
 
 /* ===== HERO (inner page) — de-card, immersive ===== */
 .ed-hero{border:none !important; box-shadow:none !important; border-radius:22px}
+/* Flex heroes stretch the pill into a full-width bar; keep it hugging its label. */
+.ed-hero .pill{align-self:flex-start; max-width:100%}
 .ed-hero h1{
   font-size:clamp(2rem,4.2vw,3.35rem) !important;
   line-height:1.05 !important; letter-spacing:-.03em !important;
@@ -130,6 +132,42 @@
   background:var(--ed-paper); border:1px solid var(--ed-line);
   border-radius:20px; padding:clamp(1.6rem,4vw,2.75rem);
 }
+
+/* ===== PLANT LAB sebagai aksi pada tanaman, bukan banner ===== */
+/* Pill "Eksperimen" di kartu katalog — muncul saat hover, tidak menambah tombol statis. */
+.card-lab{
+  position:absolute; right:12px; bottom:12px;
+  display:inline-flex; align-items:center; gap:5px;
+  padding:6px 11px; border-radius:999px;
+  background:rgba(255,255,255,.86); border:1px solid rgba(255,255,255,.95);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  font-size:11px; font-weight:800; color:#252525; cursor:pointer;
+  opacity:0; visibility:hidden; transform:translateY(4px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+.card-lab svg{width:13px; height:13px}
+@media (hover:hover){
+  #plantsGrid .fv-card:hover .card-lab,
+  #plantsGrid .card-lab:focus-visible{opacity:1; visibility:visible; transform:none}
+}
+#plantsGrid .card-lab:hover{background:#FFD45C; border-color:#FFD45C}
+
+/* Baris undangan di detail tanaman — datar, menempel pada kartu data kondisi. */
+.lab-inline{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:.5rem .75rem;
+  margin-top:1rem; padding-top:.9rem; border-top:1px solid var(--ed-line);
+  font-size:.9rem; line-height:1.55; color:var(--ed-muted);
+}
+.lab-inline > svg{width:16px; height:16px; flex:0 0 auto; color:var(--ed-accent); transform:translateY(2px)}
+.lab-inline span{flex:1 1 18rem}
+.lab-inline b{color:var(--ed-ink)}
+.lab-inline-cta{
+  display:inline-flex; align-items:center; gap:.3rem; cursor:pointer;
+  font-weight:800; font-size:.87rem; color:#252525;
+  background:#FFD45C; border-radius:999px; padding:.5rem .95rem; min-height:44px;
+}
+.lab-inline-cta svg{width:14px; height:14px}
+.lab-inline-cta:hover{filter:brightness(.96)}
 
 /* ===== FEED (community) — subtle container ===== */
 #feedList .fv-card{
@@ -189,8 +227,62 @@
   .ed-media--tall{aspect-ratio:16/10; max-height:none}
 }
 @media (max-width:767px){
-  .ed-toolbar{padding:.85rem 0}
-  .ed-toolbar .ed-count{margin-left:0}
-  .ed-hero h1{font-size:clamp(1.8rem,8vw,2.4rem) !important}
   .profile-page header .ed-eyebrow{display:none}
+
+  /* Hero: same content, less chrome before the page body. */
+  .ed-hero > div.relative.z-10{padding:18px 16px}
+  .ed-hero h1{font-size:clamp(1.65rem,7.2vw,2.15rem) !important; line-height:1.08 !important}
+  .ed-hero h1 + p{
+    font-size:.9rem; line-height:1.5; margin-top:.6rem; max-width:none;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .ed-hero .ed-hero-meta{margin-top:.7rem; gap:.45rem .9rem; font-size:.76rem}
+  .ed-hero .btn{padding:9px 14px; font-size:.85rem}
+  /* CTA stays, decorative meta rows drop out (pill already carries the count). */
+  .ed-hero .ed-hero-meta > span{display:none}
+  .ed-hero .ed-hero-meta:not(:has(> *:not(span))){display:none}
+
+  /* Toolbar: search owns its row, filters share one tight row, count drops below. */
+  .ed-toolbar{padding:.55rem 0; gap:.45rem .5rem}
+  .ed-toolbar > input[type="search"],
+  .ed-toolbar > div:has(> input[type="search"]){flex:1 1 100%; min-width:0; max-width:100%}
+  .ed-toolbar select{min-width:0; padding:.4rem .45rem; font-size:.78rem !important; flex:0 1 auto}
+  .ed-toolbar .fv-select{flex:0 1 auto; padding:0 !important; border:0 !important}
+  .ed-toolbar .fv-select-btn{padding:.35rem .55rem; font-size:.76rem; gap:.3rem; border-radius:999px}
+  .ed-toolbar .fv-select-chevron svg{width:14px; height:14px}
+  .ed-toolbar > div:not(:has(> input)):not(.fv-select){flex:1 1 auto; justify-content:flex-end; gap:.4rem}
+  .ed-toolbar .ed-count{flex:1 1 100%; margin-left:0; font-size:.7rem; line-height:1.3; white-space:normal}
+
+  /* Section rhythm: same order, tighter breath on a short screen. */
+  .ed-title{margin-top:.6rem}
+  .ed-lead{font-size:.93rem; line-height:1.55; margin-top:.7rem}
+  .ed-section{padding:2.5rem 0}
+  .ed-section--tight{padding:1.5rem 0}
+  .ed-gridlabel{margin:.9rem 0 .5rem; gap:.5rem}
+  .ed-gridlabel h2{font-size:.95rem}
+  .ed-split{gap:1.15rem}
+  .ed-media{aspect-ratio:16/9}
+  .ed-closing{padding:1.25rem}
+  .ed-rows li{padding:.8rem 0; gap:.8rem}
+  .ed-rows .t{font-size:.94rem}
+  .ed-rows .d{font-size:.82rem}
+  .ed-widget{padding:.9rem 0}
+  .ed-link{min-height:40px}
+
+  /* Section heads: title + two lines, then straight to the content. */
+  .ed-head .ed-eyebrow{display:none}
+  .ed-head .ed-title{margin-top:0}
+  .ed-head .ed-lead{
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+    font-size:.9rem; line-height:1.5; margin-top:.55rem;
+  }
+
+  /* Community: composer tighter so the first post lands inside the fold. */
+  .community-main > div > .fv-card{padding:10px 12px}
+  .community-main #feedList{margin-top:12px}
+
+  /* Plant Lab: baris undangan di modal tetap ringkas. */
+  .lab-inline{font-size:.82rem; gap:.4rem .6rem; margin-top:.8rem; padding-top:.7rem}
+  .lab-inline-cta{font-size:.8rem; padding:.5rem .8rem; min-height:44px}
 }
+

@@ -22,9 +22,9 @@ tailwind.config={
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="css/style.css?v=8">
 <link rel="stylesheet" href="css/animations.css?v=5">
-<link rel="stylesheet" href="css/responsive.css?v=5">
-<link rel="stylesheet" href="css/editorial.css?v=2">
-<link rel="stylesheet" href="css/home.css?v=40">
+<link rel="stylesheet" href="css/responsive.css?v=6">
+<link rel="stylesheet" href="css/editorial.css?v=13">
+<link rel="stylesheet" href="css/home.css?v=41">
 </head>
 <body>
 <!-- NAVBAR -->
@@ -34,7 +34,7 @@ tailwind.config={
     <div class="hidden lg:flex items-center gap-1">
       <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
     </div>
-    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
+    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center"><i data-lucide="shopping-cart"></i><span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center"><i data-lucide="menu"></i></button></div>
   </div>
 </nav>
 
@@ -105,7 +105,7 @@ tailwind.config={
   <div class="modal p-6 sm:p-7 relative" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
     <button onclick="closePlantMatch()" aria-label="Tutup Plant Match" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200">✕</button>
     <div class="plant-match-header flex items-center gap-3">
-      <div class="w-10 h-10 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black">🌱</div>
+      <div class="w-10 h-10 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black"><i data-lucide="sprout"></i></div>
       <div>
        <p id="pmTitle" class="font-black leading-none">Plant Match</p>
         <p class="text-xs text-muted">Temukan tanaman idealmu dalam 30 detik</p>
@@ -129,7 +129,7 @@ tailwind.config={
     </div>
 
     <div id="pmResult" class="hidden mt-6">
-      <h3 class="font-black text-lg">✨ Your Plant Match</h3>
+      <h3 class="font-black text-lg"><i data-lucide="sparkles"></i> Your Plant Match</h3>
        <p id="pmResultIntro" class="text-sm text-muted">Berdasarkan jawabanmu, ini 5 tanaman paling cocok:</p>
       <div id="pmResultList" class="space-y-3 mt-4"></div>
       <div class="flex gap-2 mt-5">
@@ -159,7 +159,8 @@ tailwind.config={
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
-<script src="js/utils.js"></script>
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
+  <script src="js/utils.js"></script>
 <script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>

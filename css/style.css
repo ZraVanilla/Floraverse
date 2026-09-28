@@ -1247,3 +1247,6 @@ body > .home-gateway{margin-top:0 !important;}
 .world-fact-value{color:var(--world-accent-strong);font-size:1rem;font-weight:800;line-height:1.1;}
 .world-fact-label{margin-top:.22rem;color:var(--muted);font-size:.62rem;font-weight:600;line-height:1.25;}
 .world-trigger-number,.world-trigger-arrow{transition:color .2s ease,transform .2s ease;}
+
+/* Lucide icons inherit the surrounding font size (emoji replacement). */
+i[data-lucide],svg[data-lucide]{display:inline-block;width:1em;height:1em;flex:0 0 auto;vertical-align:-.15em;}

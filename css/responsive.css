@@ -206,8 +206,25 @@ input,select,textarea{max-width:100%}
 
   .space-y-6 > :not([hidden]) ~ :not([hidden]){margin-top:16px !important}
   .space-y-4 > :not([hidden]) ~ :not([hidden]){margin-top:12px !important}
+  .space-y-14 > :not([hidden]) ~ :not([hidden]){margin-top:2.25rem !important}
   .mt-8{margin-top:24px !important}
   .pb-10{padding-bottom:24px !important}
+
+  /* Reachable targets: logo and inline links keep their look, gain height. */
+  .navbar .wordmark{padding:10px 0}
+  .mobile-nav-panel .wordmark{padding:8px 0}
+  a.text-\[11px\]{display:inline-flex; align-items:center; min-height:36px}
+
+  /* Shop cards: CTA big enough to hit, product line allowed to wrap. */
+  #productsGrid .fv-card .btn{padding:9px 10px !important; font-size:11px !important; min-height:40px !important}
+  #productsGrid .fv-card .truncate{white-space:normal !important; overflow:visible !important; text-overflow:clip !important}
+
+  /* Checkbox chips read as one target. */
+  label:has(#filterBest),label:has(#filterBeginner){min-height:44px; align-items:center; padding-block:8px}
+
+  /* Garden care stats: values must not break mid-word in a 3-col strip. */
+  .garden-page .grid.grid-cols-3 > div{padding:10px 5px !important}
+  .garden-page #detailWater,.garden-page #detailLight,.garden-page #detailFert{font-size:12.5px !important; overflow-wrap:normal}
 }
 
 @media (max-width:359px){
@@ -412,4 +429,29 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .world-scene{min-height:232px;}
   .world-stage-copy{padding-inline:.55rem;}
   .world-title{font-size:2.55rem;}
+}
+
+/* ===== Mobile rhythm: stack gaps shrink so main content arrives sooner ===== */
+@media (max-width:767px){
+  /* Category pills keep their words on phones: icon-only rows repeat glyphs. */
+  .cat-pill > span,.pcat > span,.gcat > span{display:inline}
+
+  body > header:first-of-type,body > section:first-of-type{margin-top:12px !important}
+  body > nav + header,body > nav + section{margin-top:12px !important}
+  body > header,body > section,body > main,body > div.max-w-\[1280px\]{margin-top:12px !important}
+  body > section + section{margin-top:14px !important}
+  body > .max-w-\[1280px\].pt-4{padding-top:8px !important}
+  body > .max-w-\[1280px\].pt-6{padding-top:12px !important}
+  body > main.mt-6,body > main + section,body > div.max-w-\[1280px\] + main{margin-top:14px !important}
+}
+
+/* ===== Learn: guides come before the curriculum section on phones ===== */
+@media (max-width:767px){
+  body:has(#guidesGrid){display:flex; flex-direction:column}
+  body:has(#guidesGrid) > *{order:20}
+  body:has(#guidesGrid) > nav{order:1}
+  body:has(#guidesGrid) > header{order:10}
+  body:has(#guidesGrid) > div:has(> .ed-toolbar){order:11}
+  body:has(#guidesGrid) > div:has(#guideCats){order:12}
+  body:has(#guidesGrid) > main{order:13}
 }

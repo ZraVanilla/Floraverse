@@ -10,12 +10,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="css/style.css?v=8">
 <link rel="stylesheet" href="css/animations.css?v=4">
-<link rel="stylesheet" href="css/responsive.css?v=4">
+<link rel="stylesheet" href="css/responsive.css?v=6">
 <!--
   Image source: Custom illustration created for FloraVerse - Open License
   Storytelling illustration: Custom FloraVerse - Open License
 -->
-  <link rel="stylesheet" href="css/editorial.css?v=2">
+  <link rel="stylesheet" href="css/editorial.css?v=13">
 </head>
 <body class="bg-[#FCFCFC] garden-page">
 <nav class="navbar">
@@ -24,7 +24,7 @@
     <div class="hidden lg:flex items-center gap-1">
       <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
     </div>
-    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center">☰</button></div>
+    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center"><i data-lucide="shopping-cart"></i><span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center"><i data-lucide="menu"></i></button></div>
   </div>
 </nav>
 
@@ -35,7 +35,7 @@
     </video>
     <div class="absolute inset-0" style="background:linear-gradient(100deg,rgba(10,24,14,.72) 0%,rgba(10,24,14,.35) 55%,rgba(10,24,14,.15) 100%)"></div>
     <div class="relative z-10 p-6 sm:p-10 lg:p-14 max-w-[46rem]">
-      <span class="pill bg-white text-[#2F7A2E] font-black">🌿 Kebunku • 6 Tanaman</span>
+      <span class="pill bg-white text-[#2F7A2E] font-black"><i data-lucide="leaf"></i> Kebunku • 6 Tanaman</span>
       <h1 class="mt-3 text-white" style="text-shadow:2px 2px 12px rgba(0,0,0,0.45)">Kebun digitalmu,<br>terpantau setiap hari.</h1>
       <p class="text-white/90 text-base mt-3 max-w-[520px] leading-relaxed" style="text-shadow:1px 1px 8px rgba(0,0,0,0.4)">Plant Journey mengubah proses berkebun jadi perjalanan visual: task harian, progress, dan jurnal.</p>
       <div class="ed-hero-meta">
@@ -49,7 +49,7 @@
 <!-- My Plants grid -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
   <div class="ed-gridlabel" style="margin-top:0">
-    <h2 class="cursor-pointer select-none flex items-center gap-2" onclick="toggleMyPlants()">🌱 Tanaman Ku
+    <h2 class="cursor-pointer select-none flex items-center gap-2" onclick="toggleMyPlants()"><i data-lucide="sprout"></i> Tanaman Ku
       <svg id="myPlantsArrow" class="w-5 h-5 text-charcoal transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
     </h2>
   </div>
@@ -92,7 +92,7 @@
 
     <!-- Tasks -->
     <div class="mt-6">
-      <p class="font-black">✅ Task Hari Ini</p>
+      <p class="font-black"><i data-lucide="circle-check"></i> Task Hari Ini</p>
       <div id="taskList" class="space-y-2 mt-2"></div>
       <div class="flex gap-2 mt-3">
         <input id="newTaskInput" placeholder="Tambah task custom..." class="flex-1 px-4 py-2.5 rounded-full border bg-gray-50 focus:bg-white outline-none text-sm">
@@ -109,7 +109,7 @@
 
     <div class="flex gap-2 mt-4">
       <button onclick="shareJourney()" class="btn btn-primary flex-1">↗ Bagikan ke Komunitas</button>
-      <button onclick="toast('Jurnal disimpan','📝')" class="btn btn-ghost flex-1">📝 Tulis Jurnal</button>
+      <button onclick="toast('Jurnal disimpan','notebook-pen')" class="btn btn-ghost flex-1"><i data-lucide="notebook-pen"></i> Tulis Jurnal</button>
     </div>
   </div>
 
@@ -117,13 +117,13 @@
   <div class="lg:col-span-5 garden-side space-y-4">
     <!-- Plant Lab shortcut -->
     <div class="fv-card white p-4 border-2 border-dashed border-[#6FA8FF]/30">
-      <p class="font-black flex items-center gap-2">🔬 Plant Lab <span class="pill pill-blue text-xs">Coba simulasi</span></p>
+      <p class="font-black flex items-center gap-2"><i data-lucide="microscope"></i> Plant Lab <span class="pill pill-blue text-xs">Coba simulasi</span></p>
       <p class="text-sm text-muted">Eksperimen air & cahaya untuk tanaman ini tanpa risiko.</p>
       <button onclick="$('#plantLabModal').addClass('open'); renderPlantLab('labInGarden', MY_GARDEN.find(x=>x.id===selectedGardenId).plantId)" class="btn btn-primary w-full mt-3 text-sm">Buka Plant Lab </button>
     </div>
 
     <div class="fv-card white p-5">
-      <p class="font-black">📝 Plant Journal</p>
+      <p class="font-black"><i data-lucide="notebook-pen"></i> Plant Journal</p>
       <p class="text-xs text-muted">Dokumentasikan perkembangan - seperti story kebun.</p>
       <div id="journalList" class="space-y-3 mt-3 max-h-[320px] overflow-auto pr-1"></div>
       <div class="flex gap-2 mt-3">
@@ -133,29 +133,16 @@
     </div>
 
     <div class="fv-card yellow p-5">
-      <p class="font-black">💡 Tips untuk <span id="tipsPlantName">Cabai Rawit</span></p>
+      <p class="font-black"><i data-lucide="lightbulb"></i> Tips untuk <span id="tipsPlantName">Cabai Rawit</span></p>
       <ul id="tipsList" class="text-sm mt-2 space-y-1.5 list-disc pl-5 opacity-80"></ul>
       <a href="learn.html" class="btn bg-white border w-full mt-4 text-sm">Baca Panduan Lengkap </a>
     </div>
 
     <div class="fv-card white p-5">
-      <p class="font-black">🛒 Butuh sesuatu?</p>
+      <p class="font-black"><i data-lucide="shopping-cart"></i> Butuh sesuatu?</p>
       <p class="text-sm text-muted">Smart Basket untuk tanaman ini:</p>
       <div id="gardenShop" class="space-y-2 mt-3"></div>
       <button onclick="addToCart('chili-starter-kit-bundling')" class="btn btn-orange w-full mt-3 text-sm">Tambahkan Starter Kit </button>
-    </div>
-  </div>
-</section>
-
-<!-- Ecosystem cross-link (#32) — editorial -->
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-6">
-  <div class="ed-closing reveal">
-    <p class="ed-eyebrow">Alur ekosistem</p>
-    <h2 class="ed-title ed-title--sm">Dari journey ke komunitas</h2>
-    <p class="ed-lead">Task harian → jurnal → Plant Lab → FloraShare — satu alur dari kebunmu ke cerita orang lain.</p>
-    <div class="flex gap-2 mt-5 flex-wrap">
-      <a href="plants.html" class="btn btn-primary">Lab Tanaman →</a>
-      <a href="community.html" class="btn btn-ghost">Share →</a>
     </div>
   </div>
 </section>
@@ -171,7 +158,7 @@
 </div>
 
 <!-- Plant Lab Modal (shortcut) -->
-<div id="plantLabModal" class="modal-backdrop"><div class="modal max-w-[820px]"><div class="p-6"><div class="flex items-center justify-between"><p class="font-black text-lg">🔬 Plant Lab</p><button onclick="$('#plantLabModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="labInGarden" class="mt-4"></div></div></div></div>
+<div id="plantLabModal" class="modal-backdrop"><div class="modal max-w-[820px]"><div class="p-6"><div class="flex items-center justify-between"><p class="font-black text-lg"><i data-lucide="microscope"></i> Plant Lab</p><button onclick="$('#plantLabModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="labInGarden" class="mt-4"></div></div></div></div>
 
 <div id="drawerBackdrop" class="drawer-backdrop"></div>
 <div id="cartDrawer" class="drawer"><div class="p-5 border-b flex items-center justify-between"><div><p class="font-black text-lg">Keranjang</p><p class="text-xs text-muted">Smart Garden Basket</p></div><button id="closeDrawer" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div><div id="drawerList" class="flex-1 overflow-auto p-4 space-y-3"></div><div class="p-4 border-t bg-gray-50"><div class="flex justify-between font-black text-lg"><span>Total</span><span id="drawerTotal">Rp0</span></div><button onclick="openCheckout()" class="btn btn-dark w-full mt-3">Lanjut ke Pembayaran </button></div></div>
@@ -179,7 +166,8 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/plants.js"></script>
-<script src="js/utils.js"></script>
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
+  <script src="js/utils.js"></script>
 <script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>
@@ -202,7 +190,7 @@ function renderPulse(){
     <div class="flex items-center gap-3 p-2.5 rounded-2xl border" style="background:${p.color}12; border-color:${p.color}30">
       <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center overflow-hidden">${fvImg(PLANTS.find(x=>x.id===p.plantId),'w-full h-full object-cover')}</div>
       <div class="flex-1"><p class="font-bold text-sm leading-none">${p.plant}</p><p class="text-xs text-muted">${p.status}</p></div>
-      <span class="pill text-xs font-black" style="background:${p.color};color:#fff">${p.icon} ${p.action}</span>
+      <span class="pill text-xs font-black" style="background:${p.color};color:#fff"><i data-lucide="${p.icon}"></i> ${p.action}</span>
     </div>
   `).join(''));
 }
@@ -308,7 +296,7 @@ window.toggleTask=function(tid, checked){
   const g=MY_GARDEN.find(x=>x.id===selectedGardenId);
   const t=g.tasks.find(x=>x.id===tid);
   t.done=checked;
-  if(checked) toast('Task selesai! +10 XP','✨');
+  if(checked) toast('Task selesai! +10 XP','sparkles');
   // update progress lightly
   const done=g.tasks.filter(x=>x.done).length;
   g.progress = Math.min(95, 45 + done*5 + g.stageIndex*10);
@@ -324,7 +312,7 @@ window.addTask=function(){
   $('#newTaskInput').val('');
   persistGarden();
   renderDetail();
-  toast('Task ditambahkan','✅');
+  toast('Task ditambahkan','circle-check');
 }
 window.addJournal=function(){
   const v=$('#journalInput').val().trim();
@@ -334,7 +322,7 @@ window.addJournal=function(){
   $('#journalInput').val('');
   persistGarden();
   renderDetail();
-  toast('Jurnal ditambahkan','📝');
+  toast('Jurnal ditambahkan','notebook-pen');
 }
 window.completeStage=function(){
   const g=MY_GARDEN.find(x=>x.id===selectedGardenId);
@@ -345,14 +333,14 @@ window.completeStage=function(){
     g.progress=Math.min(100, g.progress+15);
     g.journal.push({date:'Hari '+g.day, note:`Masuk fase ${g.stage} 🌱`});
     persistGarden();
-    toast(`Selamat! Masuk fase ${g.stage} 🎉`,'🌱');
+    toast(`Selamat! Masuk fase ${g.stage}`,'sprout');
     renderMyPlants(); renderDetail();
   } else {
-    toast('Sudah panen! 🎉','🥳');
+    toast('Sudah panen!','party-popper');
   }
 }
 window.shareJourney=function(){
-  toast('Plant Journey dibagikan ke komunitas Pecinta Cabai','🎉');
+  toast('Plant Journey dibagikan ke komunitas Pecinta Cabai','party-popper');
 }
 function renderAddPlantList(filter=""){
   const list=PLANTS.filter(p=> !filter || p.nama.toLowerCase().includes(filter.toLowerCase()));
@@ -371,7 +359,7 @@ window.addPlantToGarden=function(plantId){
   $('#addPlantModal').removeClass('open');
   persistGarden();
   selectGarden(newId);
-  toast(`${p.nama} ditambahkan ke Kebunku!`,'🌱');
+  toast(`${p.nama} ditambahkan ke Kebunku!`,'sprout');
 }
 
 $(function(){
