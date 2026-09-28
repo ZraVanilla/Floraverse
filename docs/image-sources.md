@@ -49,6 +49,23 @@
 6. c09-home-gardening-pemula = https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSScA82wbWZ6D6K_0I-4ZTX41UyLUIP6BX3VozuvXtS1CMsA1rYbbhnaa_k&s=10
 7. c11-composting-crew = https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROIQHk8FU9NZO668ab81SmNS_xT6rYhbiVZA-Xsz9j6ufVdBXdl_kvIwA&s=10
 
+--- Feed Post Images (communities.js, dirender di community.html) ---
+1. post-balkon (thumbnail hero) = https://i.pinimg.com/originals/10/6a/74/106a748bfae81416f678dc33bf40f4a1.jpg
+   sumber/referensi = https://id.pinterest.com/pin/866168940852431615/
+   alt = Balkon kecil berhias meja tanaman kayu dan pot di bawah sinar matahari
+2. post-kompos (thumbnail hero) = https://scontent.fcgk54-1.fna.fbcdn.net/v/t39.30808-6/504075405_10236869302062541_787881975929377335_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x2048&ctp=s600x600&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6376bf&_nc_ohc=VkICiUhnv50Q7kNvwE1tlWn&_nc_oc=AdpUvF7LGKb05jdUvB4qUzSVGKJkRcsGOG_rp0kpKHFUTPBSAI2aubJUNYOMVOGgsks&_nc_zt=23&_nc_ht=scontent.fcgk54-1.fna&_nc_gid=-AWk-nqNWz9EFz1gfgVTSw&_nc_ss=7f100&oh=00_AQP3KajgvzlF-nHyY6GUJuFzKrE5Mx-yVM3bqLQdsZHZKQ&oe=6ABFE868
+   sumber/referensi = https://www.facebook.com/groups/520291265993619/posts/974576693898405/
+   alt = Kompos matang berwarna hitam dan lembab hasil olahan sampah dapur 30 hari
+   catatan = URL fbcdn bertanda tangan & kedaluwarsa (oe=6ABFE868, ~Okt 2026).
+             Bila gagal dimuat, card otomatis fallback ke emoji (postImgFallback),
+             kotak media tetap aspect-ratio 16/9 sehingga layout tidak bergeser.
+
+ --- Catatan render (community.html) ---
+ - Gambar ditampilkan sebagai thumbnail pada kotak media `aspect-ratio:16/9`
+   (tanpa perubahan layout/typography), dengan `loading="lazy"` + `alt` relevan.
+ - Link referensi hanya tautan kecil "Sumber gambar ↗" di baris meta,
+   memakai target="_blank" rel="noopener noreferrer" - bukan link navigasi card.
+
 ========================================
  PAGE: GARDEN (garden.html)
 ========================================
@@ -169,4 +186,5 @@
 - PRODUCT_IMAGES: 29 gambar (1 default + 28 produk)
 - GUIDE_IMAGES: 10 gambar (g01-g08, g17, g18)
 - COMMUNITY_IMAGES: 7 gambar (c03-c06, c08-c09, c11)
-- TOTAL: 87 gambar
+- POST_IMAGES: 2 gambar (post-balkon, post-kompos)
+- TOTAL: 89 gambar
