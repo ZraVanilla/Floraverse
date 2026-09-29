@@ -55,7 +55,6 @@
   aspect-ratio:16/10; background:#dfe9dd;
 }
 .ed-media img,.ed-media video{width:100%; height:100%; object-fit:cover; display:block}
-.ed-media--tall{aspect-ratio:4/5; max-height:30rem}
 .ed-num{
   font-family:'Nunito',sans-serif; font-weight:800;
   font-size:clamp(2.6rem,5vw,4rem); line-height:1;
@@ -104,9 +103,6 @@
   align-items:center; margin-top:1rem;
   font-size:.8rem; font-weight:700; color:rgba(255,255,255,.85);
 }
-
-/* ===== PANEL DATAR (widget tanpa bayangan) ===== */
-.ed-flat{background:transparent; border:0; box-shadow:none; border-radius:0; padding:0 !important}
 .ed-widget{
   padding:1.15rem 0; border-top:1px solid var(--ed-line);
 }
@@ -193,41 +189,13 @@
 .garden-side .fv-card{box-shadow:none !important; border-color:var(--ed-line) !important}
 .garden-main.fv-card,.garden-main .fv-card{border-color:var(--ed-line) !important; box-shadow:0 10px 34px rgba(21,40,29,.07) !important}
 
-/* ===== PROFILE: kurangi nesting ===== */
-.profile-section{margin-bottom:clamp(2rem,4vw,3rem)}
-.profile-section > .ed-eyebrow{margin-bottom:.4rem}
-.profile-section .fv-card{border-color:var(--ed-line) !important; box-shadow:none !important}
-
-/* ===== XP / LEVEL rows sebagai tabel, bukan kartu ===== */
-.xp-row,.level-row{
-  display:flex; align-items:center; gap:.85rem;
-  padding:.7rem 0; border-top:1px solid var(--ed-line);
-  font-size:.9rem;
-}
-.xp-row:last-child,.level-row:last-child{border-bottom:1px solid var(--ed-line)}
-.xp-row .k{font-weight:700; color:var(--ed-ink)}
-.xp-row .v{margin-left:auto; font-weight:800; color:var(--ed-accent); white-space:nowrap}
-.level-row .lv{
-  font-weight:800; font-size:.78rem; color:var(--ed-accent);
-  min-width:3.2rem;
-}
-.level-row .bar{flex:1; max-width:11rem}
-
-/* ===== HAPUS RASA DASHBOARD: netralkan card section ===== */
-.fv-card.ed-nocard{
-  background:transparent !important; border:0 !important;
-  box-shadow:none !important; padding-left:0 !important; padding-right:0 !important;
-}
-
 /* ===== RESPONSIVE ===== */
 @media (max-width:1023px){
   .ed-split{grid-template-columns:1fr; gap:1.4rem}
   .ed-split > .ed-copy,.ed-split > .ed-media,
   .ed-split--flip > .ed-copy,.ed-split--flip > .ed-media{grid-column:1 / -1; grid-row:auto}
-  .ed-media--tall{aspect-ratio:16/10; max-height:none}
 }
 @media (max-width:767px){
-  .profile-page header .ed-eyebrow{display:none}
 
   /* Hero: same content, less chrome before the page body. */
   .ed-hero > div.relative.z-10{padding:18px 16px}

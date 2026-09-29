@@ -8,9 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/style.css?v=11">
 <link rel="stylesheet" href="css/animations.css?v=4">
-<link rel="stylesheet" href="css/responsive.css?v=6">
+<link rel="stylesheet" href="css/responsive.css?v=8">
   <link rel="stylesheet" href="css/editorial.css?v=13">
 </head>
 <body class="bg-[#FCFCFC]">
@@ -131,6 +131,38 @@
 </section>
 
 <!-- Create Post Modal -->
+<!-- GROUND FOOTER: dunia FloraVerse berakhir di kebun -->
+<footer class="fv-ground reveal">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="fv-row">
+      <div class="fv-brand">
+        <a href="index.html" class="fv-mark">Flora<span>Verse</span></a>
+        <p class="fv-tag">Satu dunia, berjuta cara untuk tumbuh.</p>
+      </div>
+
+      <nav class="fv-nav" aria-label="Navigasi footer">
+        <a href="plants.html">Tanaman</a>
+        <a href="learn.html">Belajar</a>
+        <a href="community.html">Komunitas</a>
+        <a href="shop.html">Shop</a>
+        <a href="garden.html">Kebunku</a>
+      </nav>
+
+      <p class="fv-status"><span class="fv-dot" aria-hidden="true"></span><b>FloraVerse is growing</b><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">22 tanaman ditemukan</span><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">18 panduan</span><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">12 komunitas</span></p>
+
+      <div class="fv-social">
+        <a href="https://github.com/ZraVanilla/Floraverse" target="_blank" rel="noopener"><i data-lucide="github"></i>GitHub</a>
+        <a href="community.html"><i data-lucide="mail"></i>Kontak</a>
+      </div>
+    </div>
+
+    <div class="fv-base">
+      <span>&copy; 2026 FloraVerse</span>
+      <span>Project by Izra, Fairuz, Tafayad</span>
+    </div>
+  </div>
+  <div class="fv-edge" aria-hidden="true"></div>
+</footer>
 <div id="createPostModal" class="modal-backdrop">
   <div class="modal p-6">
     <div class="flex items-center justify-between"><p class="font-black text-lg"><i data-lucide="pencil"></i> Buat Postingan</p><button onclick="$('#createPostModal').removeClass('open')" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">✕</button></div>
@@ -176,9 +208,6 @@
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>
 <script src="js/communities.js"></script>
-<script src="js/guides.js"></script>
-<script src="js/journey.js"></script>
-<script src="js/plant-lab.js"></script>
 <script src="js/app.js?v=4"></script>
 <script>
 let activeCommFilter="all";

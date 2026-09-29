@@ -20,9 +20,9 @@ tailwind.config={
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/style.css?v=11">
 <link rel="stylesheet" href="css/animations.css?v=5">
-<link rel="stylesheet" href="css/responsive.css?v=6">
+<link rel="stylesheet" href="css/responsive.css?v=8">
 <link rel="stylesheet" href="css/editorial.css?v=13">
 <link rel="stylesheet" href="css/home.css?v=41">
 </head>
@@ -41,7 +41,7 @@ tailwind.config={
 <!-- HERO -->
 <section class="landing-hero" aria-labelledby="heroTitle">
   <div class="landing-hero-bg" aria-hidden="true">
-    <img class="landing-hero-media" src="asset/mpp.png" alt="" fetchpriority="high">
+    <img class="landing-hero-media" src="asset/main.png" alt="" fetchpriority="high">
   </div>
   <div class="landing-hero-shade" aria-hidden="true"></div>
   <div class="landing-hero-content">
@@ -100,6 +100,38 @@ tailwind.config={
   </div>
 </section>
 
+<!-- GROUND FOOTER: dunia FloraVerse berakhir di kebun -->
+<footer class="fv-ground reveal">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="fv-row">
+      <div class="fv-brand">
+        <a href="index.html" class="fv-mark">Flora<span>Verse</span></a>
+        <p class="fv-tag">Satu dunia, berjuta cara untuk tumbuh.</p>
+      </div>
+
+      <nav class="fv-nav" aria-label="Navigasi footer">
+        <a href="plants.html">Tanaman</a>
+        <a href="learn.html">Belajar</a>
+        <a href="community.html">Komunitas</a>
+        <a href="shop.html">Shop</a>
+        <a href="garden.html">Kebunku</a>
+      </nav>
+
+      <p class="fv-status"><span class="fv-dot" aria-hidden="true"></span><b>FloraVerse is growing</b><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">22 tanaman ditemukan</span><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">18 panduan</span><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">12 komunitas</span></p>
+
+      <div class="fv-social">
+        <a href="https://github.com/ZraVanilla/Floraverse" target="_blank" rel="noopener"><i data-lucide="github"></i>GitHub</a>
+        <a href="community.html"><i data-lucide="mail"></i>Kontak</a>
+      </div>
+    </div>
+
+    <div class="fv-base">
+      <span>&copy; 2026 FloraVerse</span>
+      <span>Project by Izra, Fairuz, Tafayad</span>
+    </div>
+  </div>
+  <div class="fv-edge" aria-hidden="true"></div>
+</footer>
 <!-- Plant Match Modal -->
 <div id="plantMatchModal" class="modal-backdrop">
   <div class="modal p-6 sm:p-7 relative" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
@@ -164,12 +196,6 @@ tailwind.config={
 <script src="js/plant-images.js"></script>
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>
-<script src="js/communities.js"></script>
-<script src="js/guides.js"></script>
-<script src="js/users.js"></script>
-<script src="js/garden.js"></script>
-<script src="js/journey.js"></script>
-<script src="js/plant-lab.js"></script>
 <script src="js/plant-match.js"></script>
 <script src="js/app.js?v=5"></script>
 </body>
