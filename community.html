@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/animations.css?v=4">
 <link rel="stylesheet" href="css/responsive.css?v=8">
   <link rel="stylesheet" href="css/editorial.css?v=13">
+  <link rel="stylesheet" href="css/motion.css?v=2">
 </head>
 <body class="bg-[#FCFCFC]">
 <nav class="navbar">
@@ -27,7 +28,7 @@
 <!-- Hero immersive + toolbar -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8">
 
-  <div class="ed-hero relative overflow-hidden">
+  <div class="ed-hero reveal relative overflow-hidden">
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
       <source src="asset/community.mp4" type="video/mp4">
     </video>
@@ -47,7 +48,7 @@
   </div>
 
   <!-- Search & Filter -->
-  <div class="ed-toolbar mt-4">
+  <div class="ed-toolbar mt-4 reveal">
     <input id="searchComm" type="search" placeholder="Cari pecinta cabai, hidroponik..." class="min-w-[14rem] flex-1 py-2.5 px-4 rounded-full border bg-white focus:border-charcoal outline-none font-medium text-sm">
     <div class="flex gap-1.5 flex-wrap">
       <button data-f="all" class="commFilter active px-3 py-1.5 rounded-full bg-charcoal text-white font-bold text-xs">Semua</button>
@@ -208,7 +209,7 @@
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>
 <script src="js/communities.js"></script>
-<script src="js/app.js?v=4"></script>
+<script src="js/app.js?v=7"></script>
 <script>
 let activeCommFilter="all";
 let activeFeedTab="semua";
@@ -427,5 +428,6 @@ $(function(){
   });
 });
 </script>
+<script src="js/motion.js?v=2"></script>
 </body>
 </html>

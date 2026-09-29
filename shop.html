@@ -32,6 +32,7 @@
   Shop illustration: Custom FloraVerse - Open License
 -->
     <link rel="stylesheet" href="css/editorial.css?v=13">
+    <link rel="stylesheet" href="css/motion.css?v=2">
 </head>
   <body class="bg-[#FCFCFC]">
     <nav class="navbar">
@@ -84,7 +85,7 @@
     </nav>
 
     <header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-  <div class="ed-hero relative overflow-hidden min-h-[220px] sm:min-h-[260px]">
+  <div class="ed-hero reveal relative overflow-hidden min-h-[220px] sm:min-h-[260px]">
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
       <source src="asset/shop.mp4" type="video/mp4" />
     </video>
@@ -108,7 +109,7 @@
 
 <!-- TOOLBAR: cari + filter sort -->
 <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="ed-toolbar">
+  <div class="ed-toolbar reveal">
     <div class="relative flex-1 min-w-[14rem]">
       <input
         id="searchProd"
@@ -155,7 +156,7 @@
 
 <!-- Category pills -->
 <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-      <div class="flex gap-2 overflow-auto no-scrollbar pb-2" id="prodCats">
+      <div class="flex gap-2 overflow-auto no-scrollbar pb-2 reveal" id="prodCats">
         <button
           data-cat=""
           class="pcat active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm"
@@ -501,7 +502,7 @@
     <script src="js/plant-images.js"></script>
     <script src="js/products.js"></script>
     <script src="js/gambar-produk.js"></script>
-    <script src="js/app.js?v=4"></script>
+    <script src="js/app.js?v=7"></script>
     <script>
       // Override cart functions for shop.html - use modal instead of drawer
       window.openDrawer = function () {
@@ -708,5 +709,6 @@
         });
       });
     </script>
+    <script src="js/motion.js?v=2"></script>
   </body>
 </html>

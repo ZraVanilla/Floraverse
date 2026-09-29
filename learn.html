@@ -16,6 +16,7 @@
   Interactive cards: Custom FloraVerse - Open License
 -->
   <link rel="stylesheet" href="css/editorial.css?v=13">
+  <link rel="stylesheet" href="css/motion.css?v=2">
 </head>
 <body class="bg-[#FCFCFC]">
 <nav class="navbar">
@@ -30,7 +31,7 @@
 
 <!-- HERO: immersive, de-card -->
 <header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-  <div class="ed-hero relative overflow-hidden">
+  <div class="ed-hero reveal relative overflow-hidden">
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
       <source src="asset/learn.mp4" type="video/mp4">
     </video>
@@ -109,7 +110,7 @@
 
 <!-- TOOLBAR: cari + filter + level -->
 <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-  <div class="ed-toolbar">
+  <div class="ed-toolbar reveal">
     <div class="relative flex-1 min-w-[14rem]">
       <input id="searchGuide" type="search" placeholder="Cari kompos, hidroponik, hama..." class="w-full pl-10 pr-4 py-2.5 rounded-full border bg-white focus:border-charcoal outline-none font-medium text-sm">
       <span class="absolute left-3.5 top-2.5 text-muted">⌕</span>
@@ -125,7 +126,7 @@
 
 <!-- Kategori -->
 <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-  <div class="flex gap-2 overflow-auto no-scrollbar pb-2" id="guideCats">
+  <div class="flex gap-2 overflow-auto no-scrollbar pb-2 reveal" id="guideCats">
     <button data-cat="" class="gcat active whitespace-nowrap px-4 py-2 rounded-full bg-charcoal text-white font-bold text-sm">Semua</button>
     <button data-cat="Dasar berkebun" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm"><i data-lucide="sprout"></i> Dasar</button>
     <button data-cat="Media tanam" class="gcat whitespace-nowrap px-4 py-2 rounded-full bg-white border font-bold text-sm"><i data-lucide="leaf"></i> Media</button>
@@ -260,7 +261,7 @@
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>
 <script src="js/guides.js"></script>
-<script src="js/app.js?v=4"></script>
+<script src="js/app.js?v=7"></script>
 <script>
 let activeGcat="", activeLevel="";
 function renderGuides(){
@@ -379,5 +380,6 @@ $(function(){
   $('#guideModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
 });
 </script>
+<script src="js/motion.js?v=2"></script>
 </body>
 </html>
