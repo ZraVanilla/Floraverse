@@ -24,14 +24,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap" />
-    <link rel="stylesheet" href="css/style.css?v=8" />
+    <link rel="stylesheet" href="css/style.css?v=11" />
     <link rel="stylesheet" href="css/animations.css?v=4" />
-    <link rel="stylesheet" href="css/responsive.css?v=4" />
+    <link rel="stylesheet" href="css/responsive.css?v=8" />
     <!--
   Image source: Custom illustration created for FloraVerse - Open License
   Shop illustration: Custom FloraVerse - Open License
 -->
-    <link rel="stylesheet" href="css/editorial.css?v=2">
+    <link rel="stylesheet" href="css/editorial.css?v=13">
 </head>
   <body class="bg-[#FCFCFC]">
     <nav class="navbar">
@@ -58,7 +58,7 @@
             aria-label="Buka keranjang"
             class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center"
           >
-            🛒<span
+            <i data-lucide="shopping-cart"></i><span
               class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center"
               >0</span
             ></button
@@ -77,7 +77,7 @@
             id="menuBtn"
             class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center"
           >
-            ☰
+            <i data-lucide="menu"></i>
           </button>
         </div>
       </div>
@@ -90,7 +90,7 @@
     </video>
     <div class="absolute inset-0" style="background:linear-gradient(100deg,rgba(10,24,14,.72) 0%,rgba(10,24,14,.35) 55%,rgba(10,24,14,.15) 100%)"></div>
     <div class="relative z-10 p-6 sm:p-10 lg:p-14 max-w-[46rem] flex flex-col justify-center h-full">
-      <span class="pill bg-white text-[#E56A2E] font-black">🛒 FloraShop • 28 Produk</span>
+      <span class="pill bg-white text-[#E56A2E] font-black"><i data-lucide="shopping-cart"></i> FloraShop • 28 Produk</span>
       <h1 class="mt-3 text-white" style="text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.45)">
         Semua kebutuhan<br />berkebun, satu tempat.
       </h1>
@@ -113,7 +113,7 @@
       <input
         id="searchProd"
         type="search"
-        placeholder="🔍 Cari benih cabai, pot, AB Mix..."
+        placeholder="Cari benih cabai, pot, AB Mix..."
         class="w-full pl-10 pr-4 py-2.5 rounded-full border bg-white focus:border-charcoal outline-none font-medium text-sm"
       /><span class="absolute left-3.5 top-2.5 text-muted">⌕</span>
     </div>
@@ -166,55 +166,55 @@
           data-cat="Benih"
           class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm"
         >
-          🌱 Benih
+          <i data-lucide="sprout"></i> Benih
         </button>
         <button
           data-cat="Bibit"
           class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm"
         >
-          🌿 Bibit
+          <i data-lucide="leaf"></i> Bibit
         </button>
         <button
           data-cat="Pot"
           class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm"
         >
-          🪴 Pot
+          <i data-lucide="package"></i> Pot
         </button>
         <button
           data-cat="Media Tanam"
           class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm"
         >
-          🌿 Media
+          <i data-lucide="leaf"></i> Media
         </button>
         <button
           data-cat="Pupuk"
           class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm"
         >
-          🧪 Pupuk
+          <i data-lucide="flask-conical"></i> Pupuk
         </button>
         <button
           data-cat="Tools"
           class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm"
         >
-          🪓 Tools
+          <i data-lucide="axe"></i> Tools
         </button>
         <button
           data-cat="Hydroponics"
           class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm"
         >
-          💧 Hydro
+          <i data-lucide="droplet"></i> Hydro
         </button>
         <button
           data-cat="Plant care"
           class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm"
         >
-          🩺 Care
+          <i data-lucide="stethoscope"></i> Care
         </button>
         <button
           data-cat="Bundling"
           class="pcat whitespace-nowrap px-4 py-2 rounded-full bg-white border text-charcoal font-bold text-sm"
         >
-          🎁 Bundling
+          <i data-lucide="gift"></i> Bundling
         </button>
       </div>
       <div class="flex gap-2 mt-3 flex-wrap">
@@ -229,22 +229,13 @@
       </div>
     </div>
 
-    <!-- Editorial intro sebelum grid produk -->
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-  <div class="ed-head reveal">
-    <p class="ed-eyebrow">01 — FloraShop</p>
-    <h2 class="ed-title ed-title--sm">Katalog perlengkapan kebun</h2>
-    <p class="ed-lead">Dari benih sampai alat siram — semua kurasi, lengkap dengan stok, rating, dan rekomendasi pemakaian.</p>
-  </div>
-</section>
-
 <main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 pb-10">
       <div
         id="productsGrid"
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
       ></div>
       <div id="prodEmpty" class="hidden text-center py-16">
-        <div class="text-5xl">🛒</div>
+        <div class="text-5xl"><i data-lucide="shopping-cart"></i></div>
         <p class="font-black mt-2">Produk tidak ditemukan</p>
         <p class="text-sm text-muted mt-1">Coba ubah kata kunci atau filter.</p>
         <button id="resetProductFilters" class="btn btn-ghost mt-4 text-sm">
@@ -254,7 +245,39 @@
     </main>
 
     <!-- Product Modal -->
-    <div id="productModal" class="modal-backdrop">
+    <!-- GROUND FOOTER: dunia FloraVerse berakhir di kebun -->
+<footer class="fv-ground reveal">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="fv-row">
+      <div class="fv-brand">
+        <a href="index.html" class="fv-mark">Flora<span>Verse</span></a>
+        <p class="fv-tag">Satu dunia, berjuta cara untuk tumbuh.</p>
+      </div>
+
+      <nav class="fv-nav" aria-label="Navigasi footer">
+        <a href="plants.html">Tanaman</a>
+        <a href="learn.html">Belajar</a>
+        <a href="community.html">Komunitas</a>
+        <a href="shop.html">Shop</a>
+        <a href="garden.html">Kebunku</a>
+      </nav>
+
+      <p class="fv-status"><span class="fv-dot" aria-hidden="true"></span><b>FloraVerse is growing</b><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">22 tanaman ditemukan</span><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">18 panduan</span><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">12 komunitas</span></p>
+
+      <div class="fv-social">
+        <a href="https://github.com/ZraVanilla/Floraverse" target="_blank" rel="noopener"><i data-lucide="github"></i>GitHub</a>
+        <a href="community.html"><i data-lucide="mail"></i>Kontak</a>
+      </div>
+    </div>
+
+    <div class="fv-base">
+      <span>&copy; 2026 FloraVerse</span>
+      <span>Project by Izra, Fairuz, Tafayad</span>
+    </div>
+  </div>
+  <div class="fv-edge" aria-hidden="true"></div>
+</footer>
+<div id="productModal" class="modal-backdrop">
       <div class="modal max-w-[720px]">
         <div id="productModalContent" class="p-6 sm:p-7"></div>
       </div>
@@ -267,7 +290,7 @@
           class="p-5 border-b flex items-center justify-between flex-shrink-0"
         >
           <div>
-            <p class="font-black text-lg">🛒 Keranjang</p>
+            <p class="font-black text-lg"><i data-lucide="shopping-cart"></i> Keranjang</p>
             <p class="text-xs text-muted">Smart Garden Basket</p>
           </div>
           <button
@@ -310,7 +333,7 @@
         <form id="checkoutForm" class="p-5 sm:p-7" onsubmit="placeOrder(event)">
           <div class="flex items-start justify-between gap-4">
             <div>
-              <p class="pill pill-orange font-black">🛍️ Checkout</p>
+              <p class="pill pill-orange font-black"><i data-lucide="shopping-bag"></i> Checkout</p>
               <h2 class="text-2xl font-black mt-2">Selesaikan pesananmu</h2>
               <p class="text-sm text-muted mt-1">
                 Lengkapi alamat dan pilih cara pembayaran.
@@ -473,11 +496,11 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="js/plants.js"></script>
-    <script src="js/utils.js"></script>
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
+  <script src="js/utils.js"></script>
     <script src="js/plant-images.js"></script>
     <script src="js/products.js"></script>
     <script src="js/gambar-produk.js"></script>
-    <script src="js/journey.js"></script>
     <script src="js/app.js?v=4"></script>
     <script>
       // Override cart functions for shop.html - use modal instead of drawer
@@ -487,7 +510,7 @@
         if (!$list.length) return;
         if (cart.length === 0) {
           $list.html(
-            `<div class="text-center py-12"><div class="text-5xl mb-3">🛒</div><p class="text-muted font-bold">Keranjang masih kosong</p><p class="text-sm text-muted mt-1">Tambahkan produk dari katalog di bawah</p></div>`,
+            `<div class="text-center py-12"><div class="text-5xl mb-3"><i data-lucide="shopping-cart"></i></div><p class="text-muted font-bold">Keranjang masih kosong</p><p class="text-sm text-muted mt-1">Tambahkan produk dari katalog di bawah</p></div>`,
           );
           $("#cartModalTotal").text("Rp0");
         } else {
@@ -535,7 +558,7 @@
         setCart(c);
         updateCartBadge();
         openDrawer();
-        toast("Dihapus dari keranjang", "🗑️");
+        toast("Dihapus dari keranjang", "trash-2");
       };
       window.checkoutSim = function () {
         openCheckout();
@@ -583,7 +606,7 @@
       <div class="h-36 bg-gray-50 flex items-center justify-center text-5xl relative cursor-pointer" onclick="openProduct('${p.id}')">
         ${fvImg(p, "w-full h-full object-cover")}
         ${p.badge ? `<span class="absolute top-3 left-3 pill text-[11px] font-black ${p.badge === "Best Seller" ? "bg-[#FF9B70] text-white" : p.badge === "Beginner Pick" ? "bg-[#FFD45C] text-charcoal" : p.badge === "Popular" ? "bg-[#FF718D] text-white" : "bg-charcoal text-white"}">${p.badge}</span>` : ""}
-         <button onclick="event.stopPropagation(); toggleWish('${p.id}'); $(this).toggleClass('bg-[#FF718D] text-white')" aria-label="Simpan ${p.nama}" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border flex items-center justify-center text-sm">♡</button>
+         <button onclick="event.stopPropagation(); toggleWish('${p.id}'); $(this).toggleClass('bg-[#FF718D] text-white')" aria-label="Simpan ${p.nama}" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border flex items-center justify-center text-sm"><i data-lucide="heart"></i></button>
         <span class="absolute bottom-3 right-3 pill pill-white text-xs">★ ${p.rating} • ${p.ulas}</span>
       </div>
       <div class="p-4 flex flex-col flex-1">
@@ -622,10 +645,10 @@
         <p class="text-sm text-muted mt-1"><b>Cocok untuk:</b> ${p.cocokUntuk || "Beragam tanaman"}</p>
         <div class="flex gap-2 mt-3">
           <button onclick="addToCart('${p.id}')" class="btn btn-dark flex-1">+ Keranjang</button>
-          <button onclick="toggleWish('${p.id}')" class="btn btn-ghost">♡ Wishlist</button>
+          <button onclick="toggleWish('${p.id}')" class="btn btn-ghost"><i data-lucide="heart"></i> Wishlist</button>
         </div>
         <div class="bg-[#FFF7ED] border border-[#FFD5BF] rounded-2xl p-3 mt-4">
-          <p class="font-bold text-sm">🌱 Cocok untuk</p>
+          <p class="font-bold text-sm"><i data-lucide="sprout"></i> Cocok untuk</p>
           ${plant ? `<div class="flex items-center gap-2 mt-1"><span class="text-xl">${plant.emoji}</span><div><p class="font-bold text-sm">${plant.nama}</p><p class="text-xs text-muted">${plant.ilmiah}</p></div><a href="plants.html" class="ml-auto text-xs font-bold text-[#FF9B70]">Lihat tanaman </a></div>` : '<p class="text-sm text-muted">Semua tanaman</p>'}
         </div>
         <ul class="text-sm text-muted mt-3 space-y-1 list-disc pl-5">

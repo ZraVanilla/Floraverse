@@ -46,10 +46,9 @@ input,select,textarea{max-width:100%}
   p{overflow-wrap:anywhere}
 
   .fv-card{width:100%; max-width:100%; border-radius:18px; overflow:hidden}
-  .fv-card.p-8,.fv-card.p-7,.fv-card.p-6{padding:18px !important}
+  .fv-card.p-7,.fv-card.p-6{padding:18px !important}
   .fv-card.p-5{padding:16px !important}
   .fv-card .fv-card{border-radius:14px}
-  .blob{opacity:.2; transform:scale(.7)}
 
   .btn{min-width:44px; min-height:44px; width:auto; max-width:100%; padding:10px 16px; white-space:normal; line-height:1.2; text-align:center}
   .btn.w-full{width:100%}
@@ -60,19 +59,17 @@ input,select,textarea{max-width:100%}
   input[type="checkbox"],input[type="radio"]{min-height:0}
 
   /* Hero content reflows on mobile. */
-  header > .fv-card,header .fv-card > .flex-col,body > section:first-of-type > .grid{gap:18px !important}
-  header .lg\:w-\[420px\],header .lg\:w-\[380px\],header .community-search-panel{width:100% !important}
-  header .bg-white.rounded-\[24px\],header .bg-white.rounded-3xl{padding:16px !important; border-radius:16px}
+  header > .fv-card,header .fv-card > .flex-col,body > section:first-of-type > .grid{gap:18px !important}header .lg\:w-\[420px\],header .lg\:w-\[380px\]{width:100% !important}
+  header .bg-white.rounded-\[24px\]{padding:16px !important; border-radius:16px}
   header .flex-wrap{gap:8px !important}
   header .flex-wrap > .btn{flex:1 1 140px}
 
   /* Search and filter controls stack naturally. */
   header select,header input[type="search"]{width:100%}
   header .grid.grid-cols-2{gap:8px}
-  #catPills,#prodCats,#smartChoices,#guideCats,#stagePills{flex-wrap:nowrap; overflow-x:auto; max-width:100%; padding-bottom:6px; scrollbar-width:none}
-  #catPills::-webkit-scrollbar,#prodCats::-webkit-scrollbar,#smartChoices::-webkit-scrollbar,#guideCats::-webkit-scrollbar,#stagePills::-webkit-scrollbar{display:none}
-  #catPills > *,#prodCats > *,#smartChoices > *,#guideCats > *,#stagePills > *{flex:0 0 auto}
-  .cat-pill,.pcat,.smartBtn,.gcat,.commFilter,.feedTab,.levelBtn,.ptab{min-height:42px}
+  #catPills,#prodCats,#guideCats,#stagePills{flex-wrap:nowrap; overflow-x:auto; max-width:100%; padding-bottom:6px; scrollbar-width:none}
+  #catPills::-webkit-scrollbar,#prodCats::-webkit-scrollbar,#guideCats::-webkit-scrollbar,#stagePills::-webkit-scrollbar{display:none}
+  #catPills > *,#prodCats > *,#guideCats > *,#stagePills > *{flex:0 0 auto}.cat-pill,.pcat,.gcat,.commFilter,.feedTab,.levelBtn{min-height:42px}
 
   /* Product and content catalogues: 2-col compact grid on mobile. */
   #plantsGrid,#productsGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; align-items:stretch !important}
@@ -98,7 +95,6 @@ input,select,textarea{max-width:100%}
   .display ~ .flex.justify-center.items-end{gap:8px !important; height:80px !important}
 
   /* Shop and checkout. */
-  #homeProducts{grid-template-columns:1fr !important; gap:10px !important;}
   .checkout-panel,.checkout-summary{padding:14px}
   .checkout-option{min-height:56px}
   #cartModalList > .flex{display:grid; grid-template-columns:48px minmax(0,1fr) 44px; gap:8px 10px; align-items:center}
@@ -107,13 +103,6 @@ input,select,textarea{max-width:100%}
   #cartModalList > .flex > :nth-child(3){grid-column:2 / 4; grid-row:2; justify-self:start}
   #cartModalList > .flex > :nth-child(4){grid-column:3; grid-row:1; width:44px !important; height:44px !important}
   #cartModalList > .flex > :nth-child(3) button{width:40px !important; height:40px !important}
-
-  /* Community actions use a stable two-column action grid. */
-  .community-panel,.community-feed-shell{grid-template-columns:1fr !important; gap:16px !important}
-  .community-hero,.community-challenge,.community-map{padding:18px !important}
-  .community-search-panel{padding:16px !important}
-  .community-trending .grid.sm\:grid-cols-3{grid-template-columns:1fr !important}
-  #commGrid{grid-template-columns:1fr !important}
   #feedList .fv-card > .flex.gap-2.mt-3{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px}
   #feedList .fv-card > .flex.gap-2.mt-3 > button{width:100%; min-height:44px; padding:8px}
   #feedList .pill{white-space:normal}
@@ -128,36 +117,10 @@ input,select,textarea{max-width:100%}
   #taskList label{min-height:48px}
   #newTaskInput + .btn,#journalInput + .btn{flex:0 0 auto}
   #stagePills{padding-bottom:6px}
-
-  /* Profile: clear summary first, secondary data below. */
-  .profile-page header .fv-card > .flex.gap-5{display:grid; grid-template-columns:72px minmax(0,1fr); gap:14px}
-  .profile-page header .w-24.h-24{width:72px !important; height:72px !important; border-radius:20px; font-size:1.75rem}
-  .profile-page header .flex.gap-2.mt-4{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px}
-  .profile-page header .flex.gap-2.mt-4 .btn{width:100%; padding-inline:10px}
-  .profile-stat-grid{width:100% !important; gap:8px !important}
-  .profile-page header .fv-card > .flex.gap-5{grid-template-columns:72px minmax(0,1fr); gap:14px; align-items:start}
-  .profile-page header .w-24.h-24{justify-self:start}
-  .profile-page header .fv-card > .flex.gap-5 > div:nth-child(2){display:contents}
-  .profile-page header .profile-identity{display:contents}
-  .profile-page header .profile-identity > h1{grid-column:2; grid-row:1; align-self:center}
-  .profile-page header .profile-badges{grid-column:1 / -1; grid-row:2; display:flex; flex-direction:row; flex-wrap:wrap; align-items:center; gap:6px}
-  .profile-page header .fv-card > .flex.gap-5 > div:nth-child(2) > p{grid-column:1 / -1; grid-row:3}
-  .profile-page header .fv-card > .flex.gap-5 > div:nth-child(2) > .mt-3{grid-column:1 / -1; grid-row:4}
-  .profile-page header .fv-card > .flex.gap-5 > div:nth-child(2) > .flex.gap-2.mt-4{grid-column:1 / -1; grid-row:5}
-  .profile-page header .flex-wrap{align-items:flex-start}
-  .profile-page header .pill{white-space:normal; line-height:1.2}
-  .profile-stat-grid > div{padding:12px 6px !important; min-width:0}
-  .profile-stat-grid > div p{line-height:1.2}
-  .profile-stat-grid > div.col-span-3{flex-wrap:wrap; text-align:center; padding:12px !important}
-  .profile-page .ptab{flex:0 0 auto; white-space:nowrap; min-width:max-content}
   .plant-match-header{display:grid; grid-template-columns:40px minmax(0,1fr); align-items:start; column-gap:12px; row-gap:8px}
   .plant-match-header > div:first-child{grid-column:1; grid-row:1}
   .plant-match-header > div:nth-child(2){grid-column:2; grid-row:1; min-width:0}
   .plant-match-header #pmStepNum{grid-column:2; grid-row:2; justify-self:start; margin-left:0 !important}
-  .profile-page > section.grid{grid-template-columns:1fr !important; gap:16px !important}
-  #profileGarden{grid-template-columns:1fr !important}
-  #profileComms{grid-template-columns:1fr !important}
-  #achieveList{grid-template-columns:repeat(2,minmax(0,1fr))}
 
   /* Garden cards should stack their secondary labels instead of squeezing them. */
   .garden-page header .fv-card.green > .flex-1{justify-content:flex-start; align-items:flex-start}
@@ -182,7 +145,6 @@ input,select,textarea{max-width:100%}
   .garden-page #addPlantList > .fv-card > div:nth-child(2) p{overflow-wrap:anywhere; line-height:1.25}
   .garden-page #addPlantList > .fv-card > .pill{max-width:76px; white-space:normal; text-align:center; line-height:1.15}
   .garden-page #storyTitle{overflow-wrap:anywhere; line-height:1.3}
-  .garden-page .story-stages > .pill{flex:0 0 auto; white-space:nowrap}
   .garden-page #plantLabRoot{margin-top:16px !important}
   .garden-page section > .fv-card .flex.flex-wrap > select{width:100%; min-width:0}
   .garden-page section > .fv-card .flex.flex-wrap:has(> select){align-items:stretch}
@@ -191,10 +153,6 @@ input,select,textarea{max-width:100%}
   .garden-page section > .fv-card.blue > .flex > a{flex:1 1 120px}
 
   /* Level cards need a full row on phones so names and status badges do not collide. */
-  #levelContent > .grid{grid-template-columns:1fr !important; gap:8px !important}
-  #levelContent > .grid > div{min-height:52px}
-  #levelContent > .grid > div > div{min-width:0}
-  #levelContent .pill{white-space:normal; text-align:center; line-height:1.15}
 
   /* Dialogs and cart always remain attached to the viewport. */
   .modal-backdrop{padding:12px; align-items:center; width:100%; height:100dvh}
@@ -203,11 +161,26 @@ input,select,textarea{max-width:100%}
   .drawer{width:min(100%,420px); max-width:100%; height:100dvh}
   #toastBox{bottom:12px; width:calc(100% - 24px)}
   .toast{width:fit-content; max-width:100%; margin-inline:auto; white-space:normal; border-radius:14px}
-
-  .space-y-6 > :not([hidden]) ~ :not([hidden]){margin-top:16px !important}
   .space-y-4 > :not([hidden]) ~ :not([hidden]){margin-top:12px !important}
+  .space-y-14 > :not([hidden]) ~ :not([hidden]){margin-top:2.25rem !important}
   .mt-8{margin-top:24px !important}
   .pb-10{padding-bottom:24px !important}
+
+  /* Reachable targets: logo and inline links keep their look, gain height. */
+  .navbar .wordmark{padding:10px 0}
+  .mobile-nav-panel .wordmark{padding:8px 0}
+  a.text-\[11px\]{display:inline-flex; align-items:center; min-height:36px}
+
+  /* Shop cards: CTA big enough to hit, product line allowed to wrap. */
+  #productsGrid .fv-card .btn{padding:9px 10px !important; font-size:11px !important; min-height:40px !important}
+  #productsGrid .fv-card .truncate{white-space:normal !important; overflow:visible !important; text-overflow:clip !important}
+
+  /* Checkbox chips read as one target. */
+  label:has(#filterBest),label:has(#filterBeginner){min-height:44px; align-items:center; padding-block:8px}
+
+  /* Garden care stats: values must not break mid-word in a 3-col strip. */
+  .garden-page .grid.grid-cols-3 > div{padding:10px 5px !important}
+  .garden-page #detailWater,.garden-page #detailLight,.garden-page #detailFert{font-size:12.5px !important; overflow-wrap:normal}
 }
 
 @media (max-width:359px){
@@ -215,8 +188,6 @@ input,select,textarea{max-width:100%}
   .navbar .wordmark{font-size:1.22rem !important}
   .display{font-size:2.2rem !important}
   header .grid.grid-cols-2{grid-template-columns:1fr}
-  .profile-page header .fv-card > .flex.gap-5{grid-template-columns:64px minmax(0,1fr)}
-  .profile-page header .w-24.h-24{width:64px !important; height:64px !important}
   #feedList .fv-card > .flex.gap-2.mt-3{grid-template-columns:1fr}
 }
 
@@ -226,12 +197,9 @@ input,select,textarea{max-width:100%}
   .navbar .w-10.h-10,.menu-toggle{width:44px !important; height:44px !important}
   .btn{min-width:44px; min-height:44px}
   button:not(.btn){min-height:44px; touch-action:manipulation}
-  button.w-8.h-8,button.w-9.h-9{width:44px !important; height:44px !important; min-width:44px; min-height:44px}
-  .cat-pill,.pcat,.commFilter,.feedTab,.gcat,.levelBtn,.smartBtn,.ptab{min-height:42px}
-  body > header,body > section,body > main,body > div.max-w-\[1280px\]{margin-top:24px !important}
-  header .lg\:w-\[420px\],header .lg\:w-\[380px\],header .community-search-panel{width:100% !important}
-  #plantsGrid,#productsGrid,#guidesGrid,#myPlantsGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
-  .community-panel,.community-feed-shell,.community-layout,.profile-page > section.grid{grid-template-columns:1fr !important}
+  button.w-8.h-8,button.w-9.h-9{width:44px !important; height:44px !important; min-width:44px; min-height:44px}.cat-pill,.pcat,.commFilter,.feedTab,.gcat,.levelBtn{min-height:42px}
+  body > header,body > section,body > main,body > div.max-w-\[1280px\]{margin-top:24px !important}header .lg\:w-\[420px\],header .lg\:w-\[380px\]{width:100% !important}
+  #plantsGrid,#productsGrid,#guidesGrid,#myPlantsGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}.community-layout{grid-template-columns:1fr !important}
   .modal{max-width:calc(100vw - 40px) !important; max-height:calc(100dvh - 40px)}
 }
 
@@ -243,173 +211,46 @@ input,select,textarea{max-width:100%}
 
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(111,168,255,.65); outline-offset:2px}
 
-/* Homepage Interactive Gateway */
+/* ===== Mobile rhythm: stack gaps shrink so main content arrives sooner ===== */
 @media (max-width:767px){
-  body > .home-gateway{margin-top:0 !important;}
-  .home-gateway{padding-top:16px !important;padding-bottom:4px !important;}
-  .world-stage{
-    min-height:0;
-    display:flex;
-    align-items:stretch;
-    flex-direction:column;
-    gap:18px;
-    padding:18px;
-    padding-bottom:64px;
-    border-radius:18px;
-  }
-  .world-stage-copy{max-width:none;padding-bottom:0;}
-  .world-kicker-row{align-items:flex-start;flex-direction:column;gap:8px;}
-  .world-kicker{font-size:.64rem;letter-spacing:.1em;}
-  .world-title{margin-top:12px;font-size:clamp(2.35rem,12vw,3.35rem);line-height:.96;}
-  .world-description{margin-top:14px;font-size:.9rem;line-height:1.55;}
-  .world-actions{align-items:stretch;flex-direction:column;gap:8px;margin-top:16px;}
-  .world-cta,.world-back{width:100%;}
-  .world-stage-visual{width:100%;}
-  .world-scene{min-height:270px;border-radius:22px;}
-  .world-scene-sun{top:22px;right:24px;width:56px;height:56px;}
-  .world-core{width:min(166px,58%);min-height:150px;padding:14px;border-radius:24px;}
-  .world-core-icon{font-size:3rem;}
-  .world-core-title{margin-top:10px;font-size:.76rem;}
-  .world-object{padding:7px 9px;border-radius:12px;}
-  .world-object-icon{font-size:1.1rem;}
-  .world-object-label{font-size:.58rem;}
-  .world-object--1{top:12%;left:3%;}
-  .world-object--2{top:9%;right:3%;}
-  .world-object--3{bottom:20%;left:3%;}
-  .world-object--4{bottom:9%;right:3%;}
-  .world-object--5{top:45%;right:1%;}
-  .world-stage-footer{left:18px;right:18px;bottom:18px;font-size:.64rem;}
-  .world-stage-note{max-width:80%;line-height:1.25;}
-  .world-picker{padding:20px 0 8px;}
-  .world-picker-heading{display:block;margin-bottom:12px;}
-  .world-picker-heading h2{font-size:1.35rem !important;}
-  .world-picker-instruction{margin-top:6px;max-width:none;font-size:.78rem;text-align:left;}
-  .world-picker-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
-  .world-trigger{min-height:132px;padding:13px;border-radius:16px;}
-  .world-trigger-icon{width:38px;height:38px;font-size:1.45rem;border-radius:12px;}
-  .world-trigger-label{margin-top:10px;font-size:.86rem;}
-  .world-trigger-description{font-size:.64rem;}
-  .plant-match-prompt{padding-bottom:24px !important;}
+  /* Category pills keep their words on phones: icon-only rows repeat glyphs. */
+  .cat-pill > span,.pcat > span,.gcat > span{display:inline}
+
+  body > header:first-of-type,body > section:first-of-type{margin-top:12px !important}
+  body > nav + header,body > nav + section{margin-top:12px !important}
+  body > header,body > section,body > main,body > div.max-w-\[1280px\]{margin-top:12px !important}
+  body > section + section{margin-top:14px !important}
+  body > .max-w-\[1280px\].pt-4{padding-top:8px !important}
+  body > main.mt-6,body > main + section,body > div.max-w-\[1280px\] + main{margin-top:14px !important}
 }
 
-@media (max-width:359px){
-  .world-stage{padding:16px;padding-bottom:64px;}
-  .world-scene{min-height:248px;}
-  .world-object-label{display:none;}
-  .world-picker-grid{gap:8px;}
-  .world-trigger{min-height:124px;padding:11px;}
-  .world-trigger-label{font-size:.8rem;}
-}
-
-/* Editorial gateway mobile layout. */
+/* ===== Learn: guides come before the curriculum section on phones ===== */
 @media (max-width:767px){
-  .home-gateway{padding-top:16px !important;padding-bottom:4px !important;}
-  .world-stage{display:flex;min-height:0;flex-direction:column;gap:20px;padding:20px;padding-bottom:68px;border-radius:14px;}
-  .world-stage-copy{max-width:none;padding-bottom:0;}
-  .world-kicker-row{align-items:flex-start;flex-direction:column;gap:8px;}
-  .world-status{padding:.15rem 0 .15rem .65rem;font-size:.6rem;}
-  .world-title{margin-top:12px;font-size:clamp(2.7rem,13vw,3.65rem);line-height:.92;}
-  .world-description{margin-top:15px;font-size:.88rem;line-height:1.55;}
-  .world-actions{align-items:flex-start;flex-direction:column;gap:8px;margin-top:18px;}
-  .world-cta{width:auto;max-width:100%;}
-  .world-back{min-height:40px;padding:6px 0;}
-  .world-stage-visual{width:100%;padding:4px 0 2px;}
-  .world-scene{min-height:270px;aspect-ratio:4 / 3;border-radius:10px;transform:rotate(.6deg);box-shadow:5px 5px 0 rgba(37,37,37,.07);}
-  .world-scene-header{top:14px;left:15px;right:15px;font-size:.54rem;letter-spacing:.1em;}
-  .world-scene-corner-tl{top:16px;right:16px;}
-  .world-scene-corner-br{right:16px;bottom:16px;}
-  .world-core{left:15px;bottom:17px;max-width:calc(100% - 30px);padding:10px 11px;gap:9px;border-radius:0 7px 7px 0;}
-  .world-core-icon{font-size:1.4rem;}
-  .world-core-title{font-size:.66rem;}
-  .world-core-caption{font-size:.58rem;}
-  .world-object{padding-bottom:4px;}
-  .world-object--1{top:25%;left:4%;}
-  .world-object--2{top:21%;right:7%;}
-  .world-object--3{bottom:31%;left:6%;}
-  .world-object--4{bottom:21%;right:7%;}
-  .world-object--5{top:54%;right:3%;}
-  .world-stage-footer{left:20px;right:20px;bottom:19px;font-size:.59rem;}
-  .world-stage-note{max-width:75%;}
-  .world-stage-index{font-size:.62rem;}
-  .world-picker{padding:28px 0 12px;}
-  .world-picker-heading{display:block;margin-bottom:12px;padding-bottom:12px;}
-  .world-picker-heading h2{font-size:1.45rem !important;}
-  .world-picker-instruction{margin-top:8px;max-width:none;font-size:.74rem;text-align:left;}
-  .world-picker-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0;}
-  .world-trigger{min-height:118px;padding:14px 12px;border-radius:0;}
-  .world-trigger:first-child{border-radius:10px 0 0 0;}
-  .world-trigger:nth-child(2){border-radius:0 10px 0 0;}
-  .world-trigger:last-child{grid-column:1 / -1;border-radius:0 0 10px 10px;}
-  .world-trigger-number{font-size:.62rem;}
-  .world-trigger-label{font-size:.84rem;}
-  .world-trigger-description{margin-top:5px;font-size:.62rem;}
-  .plant-match-prompt{grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:18px 0 28px;}
-  .plant-match-index{grid-column:1 / -1;padding-top:0;font-size:.58rem;}
-  .plant-match-copy h2{font-size:.9rem;}
-  .plant-match-copy p{font-size:.7rem;}
-  .plant-match-prompt .btn{min-height:44px;padding:10px 12px;font-size:.72rem;}
+  body:has(#guidesGrid){display:flex; flex-direction:column}
+  body:has(#guidesGrid) > *{order:20}
+  body:has(#guidesGrid) > nav{order:1}
+  body:has(#guidesGrid) > header{order:10}
+  body:has(#guidesGrid) > div:has(> .ed-toolbar){order:11}
+  body:has(#guidesGrid) > div:has(#guideCats){order:12}
+  body:has(#guidesGrid) > main{order:13}
 }
 
-@media (max-width:359px){
-  .world-stage{padding:16px;padding-bottom:68px;}
-  .world-scene{min-height:248px;}
-  .world-object-label{display:none;}
-  .world-trigger{min-height:112px;padding:12px 10px;}
-  .plant-match-prompt{grid-template-columns:1fr;}
-  .plant-match-prompt .btn{width:100%;}
-}
 
-/* Homepage product layout responsive rules. */
-@media (min-width:768px) and (max-width:1023px){
-  .world-stage{grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:0;min-height:390px;}
-  .world-stage-visual{padding:0;}
-  .world-scene{min-height:368px;}
-  .world-stage-copy{padding:2rem 1.5rem 1.5rem 1.75rem;}
-  .world-title{font-size:clamp(2.7rem,5vw,3.6rem);}
-  .world-picker-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;}
-}
-
+/* ===== Ground footer: vertical flow, target sentuh lega, tanpa overflow ===== */
 @media (max-width:767px){
-  .home-gateway{padding-top:16px !important;padding-bottom:4px !important;}
-  .world-stage{display:flex;min-height:0;flex-direction:column;gap:0;padding:10px;border-radius:16px;}
-  .world-stage-visual{order:1;padding:0;}
-  .world-scene{height:auto;min-height:250px;aspect-ratio:4 / 3;border-radius:11px;}
-  .world-scene-header{top:14px;left:15px;right:15px;font-size:.58rem;}
-  .world-core{left:15px;bottom:15px;width:auto;min-height:0;max-width:calc(100% - 30px);padding:.55rem .65rem;align-items:center;flex-direction:row;gap:.55rem;border-radius:8px;}
-  .world-core-icon{width:28px;height:28px;font-size:1.1rem;}
-  .world-core-title{margin:0;font-size:.68rem;}
-  .world-core-caption{margin:.14rem 0 0;font-size:.58rem;}
-  .world-stage-copy{order:2;max-width:none;padding:1.5rem .75rem .75rem;}
-  .world-kicker{font-size:.75rem;}
-  .world-status{font-size:.67rem;}
-  .world-title{margin-top:.9rem;font-size:clamp(2.65rem,12vw,3.45rem);line-height:.95;}
-  .world-description{margin-top:1rem;font-size:.87rem;line-height:1.55;}
-  .world-actions{align-items:flex-start;flex-direction:column;gap:.4rem;margin-top:1.25rem;}
-  .world-cta{width:auto;max-width:100%;}
-  .world-back{min-height:40px;padding:.45rem .15rem;}
-  .world-stage-footer{margin-top:1.75rem;padding-top:1rem;font-size:.59rem;}
-  .world-stage-note{max-width:75%;}
-  .world-stage-index{font-size:.61rem;}
-  .world-picker{padding:2.25rem 0 1rem;}
-  .world-picker-heading{display:block;margin-bottom:.9rem;padding-bottom:.75rem;}
-  .world-picker-heading h2{font-size:1.45rem !important;}
-  .world-picker-instruction{max-width:none;margin-top:.45rem;font-size:.75rem;text-align:left;}
-  .world-picker-grid{grid-template-columns:1fr;gap:.55rem;}
-  .world-trigger{min-height:78px;padding:.85rem .9rem;border-radius:12px;}
-  .world-trigger:first-child,.world-trigger:last-child{border-radius:12px;}
-  .world-trigger::before{border-radius:12px 0 0 12px;}
-  .world-trigger-label{font-size:.85rem;}
-  .world-trigger-description{font-size:.64rem;}
-  .plant-match-prompt{grid-template-columns:1fr;gap:.75rem;margin-bottom:.25rem;padding:1rem;}
-  .plant-match-index{padding-top:0;font-size:.7rem;}
-  .plant-match-copy h2{font-size:.95rem;}
-  .plant-match-copy p{font-size:.72rem;}
-  .plant-match-prompt .btn{width:100%;}
+  .fv-ground{margin-top:40px; padding-top:32px}
+  .fv-ground .fv-row{display:flex; flex-direction:column; align-items:stretch; gap:14px}
+  .fv-ground .fv-nav,.fv-ground .fv-social{align-self:auto; justify-self:auto}
+  .fv-ground .fv-nav{display:grid; grid-template-columns:repeat(3,1fr); gap:0 8px; justify-items:start}
+  .fv-ground .fv-nav a{min-height:44px; font-size:.98rem}
+  .fv-ground .fv-status{gap:6px; font-size:.74rem}
+  .fv-ground .fv-sep{display:none}
+  .fv-ground .fv-status b{letter-spacing:.04em}
+  .fv-ground .fv-social a{min-height:44px}
+  .fv-ground .fv-base{margin-top:14px; padding-top:12px; gap:2px}
+  .fv-ground .fv-edge{height:38px; margin-top:10px; background-size:auto 38px,auto 38px}
 }
-
-@media (max-width:359px){
-  .world-stage{padding:8px;}
-  .world-scene{min-height:232px;}
-  .world-stage-copy{padding-inline:.55rem;}
-  .world-title{font-size:2.55rem;}
+@media (min-width:768px) and (max-width:1439px){
+  .fv-ground .fv-status{grid-area:3/1/4/4}
+  .fv-ground .fv-sep{display:none}
 }

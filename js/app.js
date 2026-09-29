@@ -221,11 +221,13 @@ $(function(){
   });
   $('#closeMobileNav, #mobileNavBackdrop').on('click', closeMobileNav);
 
-  window.toast = function(msg, icon="✨"){
+  window.toast = function(msg, icon="sparkles"){
     const $box = $('#toastBox');
     if($box.children().length >= 3) $box.children().first().remove();
-    const $t = $(`<div class="toast">${icon}<span>${msg}</span></div>`);
+    const glyph = /^[a-z0-9-]+$/.test(icon) ? `<i data-lucide="${icon}"></i>` : icon;
+    const $t = $(`<div class="toast">${glyph}<span>${msg}</span></div>`);
     $box.append($t);
+    renderIcons();
     setTimeout(()=> { $t.addClass('is-leaving'); setTimeout(()=> $t.remove(), 200); }, 2600);
   };
 
@@ -284,7 +286,7 @@ $(function(){
     let cart=getCart();
     const f=cart.find(x=>x.id===id);
     if(f) f.qty+=qty; else cart.push({id, qty, harga:prod.harga, nama:prod.nama, image:window.getProductImage(id)});
-    setCart(cart); updateCartBadge(); toast(`${prod.nama} ditambahkan ke keranjang`,'🛒');
+    setCart(cart); updateCartBadge(); toast(`${prod.nama} ditambahkan ke keranjang`,'shopping-cart');
     renderDrawerCart();
   };
   window.addPlantToGarden = window.addPlantToGarden || function(plantId){
@@ -293,7 +295,7 @@ $(function(){
     const id=`g${Date.now()}`;
     MY_GARDEN.push({id,plantId:plant.id,nama:plant.nama,emoji:plant.emoji,color:plant.color,day:1,stage:'Seed',stageIndex:0,stages:['Seed','Seedling','Growing','Flowering','Fruiting','Harvest'],health:'Healthy',water:plant.air,light:plant.cahaya,fert:'Belum',progress:5,tasks:[{id:`${id}-task`,text:'Siram pertama',done:false}],journal:[{date:'Hari 1',note:`Mulai menanam ${plant.nama} 🌱`}]});
     if(typeof persistGarden==='function') persistGarden();
-    toast(`${plant.nama} ditambahkan ke Kebunku!`,'🌱');
+    toast(`${plant.nama} ditambahkan ke Kebunku!`,'sprout');
   };
   // NOTE: addBundle di-override di shop.html dengan versi yang pakai hardcoded
   // bundle pricing (getSmartBundle) + qty per item. Versi ini hanya fallback.
@@ -303,12 +305,12 @@ $(function(){
     const compost=PRODUCTS.find(product=>product.id==='kompos-kascing-2kg');
     if(compost) items.push(compost);
     items.forEach(product=>addToCart(product.id));
-    if(items.length) toast(`${plant?.nama||'Tanaman'} starter kit ditambahkan!`,'🎁');
+    if(items.length) toast(`${plant?.nama||'Tanaman'} starter kit ditambahkan!`,'gift');
   };
   window.toggleWish = function(id){
     let w=getWish();
     if(w.includes(id)) w=w.filter(x=>x!==id); else w.push(id);
-    setWish(w); toast(w.includes(id)?'Disimpan ke wishlist':'Dihapus dari wishlist', w.includes(id)?'💖':'🤍');
+    setWish(w); toast(w.includes(id)?'Disimpan ke wishlist':'Dihapus dari wishlist', 'heart');
   };
 
   // NOTE: openDrawer, removeFromCart, clearCart, addBundle di-override sepenuhnya
@@ -343,7 +345,7 @@ $(function(){
   window.renderDrawerCart = function(){
     const cart=getCart();
     const $list=$('#drawerList'); if(!$list.length) return;
-    if(cart.length===0){ $list.html(`<div class="text-center py-16"><div class="text-5xl mb-3">🛒</div><p class="text-muted">Keranjang masih kosong</p><a href="shop.html" class="btn btn-primary mt-4">Belanja sekarang</a></div>`); $('#drawerTotal').text('Rp0'); return; }
+    if(cart.length===0){ $list.html(`<div class="text-center py-16"><div class="text-5xl mb-3"><i data-lucide="shopping-cart"></i></div><p class="text-muted">Keranjang masih kosong</p><a href="shop.html" class="btn btn-primary mt-4">Belanja sekarang</a></div>`); $('#drawerTotal').text('Rp0'); return; }
     let total=0;
     $list.html(cart.map(item=>{
       const p=PRODUCTS.find(x=>x.id===item.id);
@@ -360,16 +362,16 @@ $(function(){
   // NOTE: removeFromCart di-override di shop.html — versi shop memanggil openDrawer()
   // (modal) alih-alih renderDrawerCart(). Lihat catatan di atas.
   window.removeFromCart = typeof window.removeFromCart === 'function' ? window.removeFromCart : function(id){
-    let c=getCart().filter(x=>x.id!==id); setCart(c); updateCartBadge(); renderDrawerCart(); toast('Dihapus dari keranjang','🗑️');
+    let c=getCart().filter(x=>x.id!==id); setCart(c); updateCartBadge(); renderDrawerCart(); toast('Dihapus dari keranjang','trash-2');
   };
   window.clearCart = typeof window.clearCart === 'function' ? window.clearCart : function(){
-    setCart([]); updateCartBadge(); renderDrawerCart(); toast('Keranjang dikosongkan','🧹');
+    setCart([]); updateCartBadge(); renderDrawerCart();     toast('Keranjang dikosongkan','trash-2');
   };
   window.checkoutSim = typeof window.checkoutSim === 'function' ? window.checkoutSim : function(){
     window.openCheckout();
   };
   window.openCheckout = typeof window.openCheckout === 'function' ? window.openCheckout : function(){
-    if(getCart().length===0) return toast('Keranjang kosong','🛒');
+    if(getCart().length===0) return toast('Keranjang kosong','shopping-cart');
     if(!$('#checkoutModal').length) return window.location.href='shop.html?checkout=1';
     updateCheckoutSummary();
     if(typeof window.closeCartModal==='function') window.closeCartModal();
@@ -393,7 +395,7 @@ $(function(){
     const form=event.currentTarget;
     if(!form.checkValidity()){ form.reportValidity(); return; }
     const order={id:'FV-'+Date.now().toString().slice(-6), createdAt:new Date().toISOString(), items:getCart(), recipient:new FormData(form).get('recipient'), payment:new FormData(form).get('payment'), delivery:new FormData(form).get('delivery')};
-    localStorage.setItem('fv_last_order',JSON.stringify(order)); setCart([]); updateCartBadge(); closeCheckout(); if(typeof closeCartModal==='function') closeCartModal(); toast(`Pesanan ${order.id} berhasil dibuat`,'✅');
+    localStorage.setItem('fv_last_order',JSON.stringify(order)); setCart([]); updateCartBadge(); closeCheckout(); if(typeof closeCartModal==='function') closeCartModal(); toast(`Pesanan ${order.id} berhasil dibuat`,'check');
   };
   $(document).on('change','input[name="delivery"]', updateCheckoutSummary);
 
@@ -506,7 +508,7 @@ $(function(){
     void $b[0].offsetWidth; // force reflow
     $b.addClass('anim-heart');
     if(liked){ $b.removeClass('liked bg-[#FF718D] text-white border-[#FF718D]').addClass('bg-white border-[#252525]'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())-1); }
-    else { $b.addClass('liked bg-[#FF718D] text-white border-[#FF718D]').removeClass('bg-white border-[#252525]'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())+1); toast('Kamu menyukai postingan','💖'); }
+    else { $b.addClass('liked bg-[#FF718D] text-white border-[#FF718D]').removeClass('bg-white border-[#252525]'); $b.find('.cnt').text(parseInt($b.find('.cnt').text())+1); toast('Kamu menyukai postingan','heart'); }
   };
   window.toggleSave = function(el){
     const $b=$(el); $b.toggleClass('saved');
@@ -514,14 +516,14 @@ $(function(){
     $b.removeClass('anim-save');
     void $b[0].offsetWidth;
     $b.addClass('anim-save');
-    if($b.hasClass('saved')){ $b.addClass('bg-[#8BCB8A] text-white border-[#8BCB8A]').removeClass('bg-white border-[#252525]'); toast('Disimpan','🔖'); } else { $b.removeClass('bg-[#8BCB8A] text-white border-[#8BCB8A]').addClass('bg-white border-[#252525]'); toast('Dihapus dari simpanan',''); }
+    if($b.hasClass('saved')){ $b.addClass('bg-[#8BCB8A] text-white border-[#8BCB8A]').removeClass('bg-white border-[#252525]'); toast('Disimpan','bookmark'); } else { $b.removeClass('bg-[#8BCB8A] text-white border-[#8BCB8A]').addClass('bg-white border-[#252525]'); toast('Dihapus dari simpanan',''); }
   };
   window.sharePost = function(el){
     const $b=$(el);
     $b.removeClass('anim-icon');
     void $b[0].offsetWidth;
     $b.addClass('anim-icon');
-    toast('Link disalin','🔗');
+    toast('Link disalin','link');
   };
   window.toggleJoin = function(el){
     const $b=$(el);
@@ -529,8 +531,8 @@ $(function(){
     $b.removeClass('anim-icon');
     void $b[0].offsetWidth;
     $b.addClass('anim-icon');
-    if($b.text().includes('Bergabung')){ $b.text('✓ Bergabung').removeClass('bg-[#252525] text-white').addClass('bg-[#8BCB8A] text-white'); toast('Bergabung ke komunitas','🎉'); }
-    else { $b.text('Bergabung').removeClass('bg-[#8BCB8A]').addClass('bg-[#252525] text-white'); toast('Keluar dari komunitas','👋'); }
+    if($b.text().includes('Bergabung')){ $b.text('✓ Bergabung').removeClass('bg-[#252525] text-white').addClass('bg-[#8BCB8A] text-white'); toast('Bergabung ke komunitas','party-popper'); }
+    else { $b.text('Bergabung').removeClass('bg-[#8BCB8A]').addClass('bg-[#252525] text-white'); toast('Keluar dari komunitas','hand'); }
   };
 
   // Reveal on scroll

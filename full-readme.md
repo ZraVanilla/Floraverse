@@ -79,7 +79,6 @@ FloraVerse/
 │   ├── communities.js      # Data: 12 komunitas + dummy posts & komentar
 │   ├── guides.js           # Data: 18 panduan belajar (GUIDES[])
 │   ├── garden.js           # Data: kebun aktif pengguna (MY_GARDEN[])
-│   ├── users.js            # Data: profil pengguna simulasi (USERS{})
 │   ├── journey.js          # Logika: storytelling Plant Journey per fase
 │   ├── plant-lab.js        # Logika: simulasi Plant Lab (air/cahaya/pupuk)
 │   ├── plant-match.js      # Logika: personality mapping dari Plant Match
@@ -89,17 +88,12 @@ FloraVerse/
 │   └── app.js              # Core: cart, toast, nav, Plant Match quiz, modal
 │
 └── asset/
-    ├── plant.mp4           # Video background: halaman Tanaman & Beranda
-    ├── plant_page.gif      # GIF preview Tanaman
-    ├── learnpage.mp4       # Video background: halaman Belajar
-    ├── learn_page.mp4      # Video alternatif Belajar
     ├── community.mp4       # Video background: halaman Komunitas
-    ├── community_page.gif  # GIF preview Komunitas
-    ├── garden.mp4          # Video background: halaman Kebunku
-    ├── garden_page.mp4     # Video alternatif Kebunku
-    ├── shop.mp4            # Video background: FloraShop
-    ├── shop_page.mp4       # Video alternatif FloraShop
-    └── source.txt          # Catatan sumber aset
+    ├── garden.mp4          # Video background: halaman Kebunku & Belajar
+    ├── learn.mp4           # Video background: halaman Belajar
+    ├── main.png            # Gambar: halaman Beranda
+    ├── plant.mp4           # Video background: halaman Tanaman & Belajar
+    └── shop.mp4            # Video background: FloraShop
 ```
 
 ---
@@ -286,16 +280,10 @@ Array `GUIDES` (18 panduan) dengan struktur lengkap per panduan:
 
 ---
 
-### `js/users.js`
-Objek `USERS` berisi tiga profil simulasi: Izra (Lv 8, 340 XP), Fairuz (Lv 6, 280 XP), Tafayad (Lv 7, 310 XP). Konstanta `CURRENT_USER` menunjuk ke `USERS.izra`.
-
----
-
 ### `js/journey.js`
 - Objek `JOURNEY_STORY` berisi narasi bertahap per hari untuk beberapa tanaman (terutama cabai rawit dan tomat).
 - Fungsi `buildPlantJourney(plant)` membuat storyline generik dari data ensiklopedia untuk tanaman yang belum punya narasi khusus.
-- Fungsi `getStory(plantId, day)` mencari narasi paling relevan untuk hari tertentu.
-- Fungsi `xpForAction(action)` mendefinisikan tabel XP per aksi (addPlant: 10, guide: 20, dll) — saat ini masih sebatas referensi, belum terintegrasi ke runtime dinamis.
+- Fungsi `getStory(plantId, day)` mencari narasi paling relevan untuk hari tertentu. Hanya dipakai di `garden.html`.
 
 ---
 
@@ -402,13 +390,12 @@ Semua file video disimpan di folder `asset/` dan digunakan sebagai background vi
 
 | File | Digunakan di |
 |---|---|
-| `plant.mp4` | `index.html` (dunia Tanaman & Home), `plants.html` |
-| `learnpage.mp4` | `learn.html` |
-| `community.mp4` | `community.html`, `index.html` (dunia Komunitas) |
-| `garden.mp4` | `garden.html`, `index.html` (dunia Kebunku) |
-| `shop.mp4` | `shop.html`, `index.html` (dunia FloraShop) |
-| `plant_page.gif` | Preview aset alternatif |
-| `community_page.gif` | Preview aset alternatif |
+| `main.png` | `index.html` |
+| `plant.mp4` | `learn.html`, `plants.html` |
+| `learn.mp4` | `learn.html` |
+| `garden.mp4` | `garden.html`, `learn.html` |
+| `community.mp4` | `community.html` |
+| `shop.mp4` | `shop.html` |
 
 ---
 
@@ -500,7 +487,7 @@ Halaman pembuka yang berfungsi sebagai portal interaktif ke lima ruang FloraVers
 - **World Picker Grid** (`#worldPicker`): 5 tombol grid yang masing-masing merepresentasikan satu ruang. Setiap tombol berisi nomor (01–05), nama ruang, deskripsi singkat, dan panah navigasi.
 - **Journey Steps** (`.home-journey`): Visualisasi 4 langkah berkebun: Temukan → Pelajari → Rawat → Bagikan, dengan deskripsi masing-masing.
 - **Plant Match Prompt** (`.plant-match-prompt`): CTA section untuk mengundang pengunjung mencoba fitur Plant Match.
-- **Footer**: Copyright FloraVerse 2026.
+- **Footer** (`.fv-ground`): footer bersama "Garden Ground" di semua 7 halaman — transisi garis rumput SVG + gelombang rumput, wordmark & tagline, navigasi 5 link, status data nyata (22 tanaman · 18 panduan · 12 komunitas), sosial (GitHub, Kontak), dan baris copyright.
 - **Plant Match Modal** (`#plantMatchModal`): Modal overlay untuk quiz Plant Match 7 pertanyaan (inline di halaman ini).
 - **Cart Drawer** (`#cartDrawer`): Drawer samping kanan untuk keranjang belanja lintas halaman.
 - **Toast Box** (`#toastBox`): Container notifikasi toast.
@@ -512,12 +499,6 @@ Halaman pembuka yang berfungsi sebagai portal interaktif ke lima ruang FloraVers
 - **`js/plant-images.js`**: Mapping URL gambar tanaman → digunakan oleh `fvImg()`.
 - **`js/products.js`**: Data array `PRODUCTS[]` (28 produk) — untuk keranjang.
 - **`js/gambar-produk.js`**: Mapping URL gambar produk.
-- **`js/communities.js`**: Data komunitas & post — tidak aktif di halaman ini.
-- **`js/guides.js`**: Data panduan belajar — tidak aktif di halaman ini.
-- **`js/users.js`**: Data profil pengguna simulasi.
-- **`js/garden.js`**: Data kebun aktif `MY_GARDEN[]`.
-- **`js/journey.js`**: Narasi Plant Journey per fase.
-- **`js/plant-lab.js`**: Logika simulasi Plant Lab (tidak dirender di halaman ini).
 - **`js/plant-match.js`**: Fungsi `plantMatchToPersonality()` — memetakan jawaban quiz ke tipe kepribadian berkebun.
 - **`js/app.js`**: Core application — berisi:
   - `fvImg()`: Renderer gambar tanaman/produk dengan fallback huruf pertama.
@@ -584,7 +565,7 @@ Katalog 41 tanaman yang bisa dicari, difilter, diurutkan, dan dibuka detailnya. 
 
 **Struktur HTML:**
 - **Navbar**: Sama.
-- **Header Hero**: Video background `asset/learnpage.mp4`, judul "Belajar berkebun tanpa ribet", info waktu baca (4–12 menit), panel pencarian + filter kategori, dan sidebar "Paling Populer" (3 panduan terpopuler).
+- **Header Hero**: Video background `asset/learn.mp4`, judul "Belajar berkebun tanpa ribet", info waktu baca (4–12 menit), panel pencarian + filter kategori, dan sidebar "Paling Populer" (3 panduan terpopuler).
 - **Category Tabs** (`#guideCats`): 10 pill tabs scrollable — Semua, Dasar, Media, Siram, Cahaya, Pupuk, Hama, Hidroponik, Urban, Kompos.
 - **Level Filter**: 3 tombol — Semua Level, Pemula, Menengah.
 - **Guide Grid** (`#guidesGrid`): Grid 1–4 kolom. Setiap kartu: gambar/emoji, badge kategori, badge level, label "Populer" (jika applicable), judul, waktu + level, deskripsi singkat, tombol "Baca" dan simpan.
@@ -595,7 +576,7 @@ Katalog 41 tanaman yang bisa dicari, difilter, diurutkan, dan dibuka detailnya. 
 - **Cart Drawer**.
 
 **JavaScript yang digunakan:**
-- File JS: jQuery, `plants.js`, `utils.js`, `plant-images.js`, `products.js`, `gambar-produk.js`, `guides.js`, `journey.js`, `app.js`.
+- File JS: jQuery, `plants.js`, `utils.js`, `plant-images.js`, `products.js`, `gambar-produk.js`, `guides.js`, `app.js`.
 - **Script inline**: Fungsi `renderGuides()` — filtering + rendering grid. Fungsi `openGuide(id)` — membuka modal panduan dengan langkah, checklist, dan integrasi data tanaman dari ensiklopedia. Rendering sidebar "Populer". Event handler untuk search, category tabs, level filter.
 
 **CSS yang digunakan:**
@@ -627,7 +608,7 @@ Feed komunitas bertopik dengan 12 grup, sistem postingan, komentar inline, dan f
 - **Cart Drawer**.
 
 **JavaScript yang digunakan:**
-- File JS: jQuery, `plants.js`, `utils.js`, `plant-images.js`, `products.js`, `gambar-produk.js`, `communities.js`, `guides.js`, `journey.js`, `plant-lab.js`, `app.js`.
+- File JS: jQuery, `plants.js`, `utils.js`, `plant-images.js`, `products.js`, `gambar-produk.js`, `communities.js`, `app.js`.
 - **Script inline**: Fungsi `renderCommsSidebar()` — rendering sidebar komunitas dengan filter. Fungsi `renderFeed()` — rendering feed postingan dengan filter tab (semua/populer/terbaru/mengikuti) + filter per komunitas. Fungsi `toggleComments(postId)` — expand/collapse komentar dengan animasi max-height. Fungsi `submitInlineComment(postId)` — menambahkan komentar baru ke `DUMMY_COMMENTS`. Fungsi `toggleShowMore(postId)` — toggle show/hide semua komentar. Fungsi `closeRulesModal()`. Event handler untuk search, filter komunitas, filter feed, submit postingan, rules modal. Auto-open rules modal on page load.
 
 **CSS yang digunakan:**
@@ -656,7 +637,7 @@ Toko perlengkapan berkebun dengan 28 produk, keranjang belanja (modal, bukan dra
   - **Ringkasan Pesanan** (sidebar): Daftar item + subtotal + ongkir + total + tombol "Buat Pesanan".
 
 **JavaScript yang digunakan:**
-- File JS: jQuery, `plants.js`, `utils.js`, `plant-images.js`, `products.js`, `gambar-produk.js`, `journey.js`, `app.js`.
+- File JS: jQuery, `plants.js`, `utils.js`, `plant-images.js`, `products.js`, `gambar-produk.js`, `app.js`.
 - **Script inline (blok 1)**: Override fungsi cart untuk shop.html — `openDrawer()` diubah menjadi `openCartModal()` (modal), `closeCartModal()`, `updateCartQty(id, delta)`, `removeFromCart(id)`, `checkoutSim()`. Menangani klik backdrop modal.
 - **Script inline (blok 2)**: Fungsi `renderProducts()` — filtering, sorting, rendering grid + badge + harga + tombol keranjang. Fungsi `openProduct(id)` — membuka modal detail produk. Event handler untuk search, category pills, filter, sort, reset filter, product modal click-outside-to-close.
 - Dari `app.js`: Fungsi `openCheckout()`, `closeCheckout()`, `updateCheckoutSummary()`, `placeOrder()` — menghandle form checkout, kalkulasi subtotal + ongkir real-time, generate order ID, simpan ke `localStorage`.
@@ -695,7 +676,7 @@ Manajemen kebun digital pribadi dengan task harian, plant journal, timeline fase
 - **Cart Drawer**.
 
 **JavaScript yang digunakan:**
-- File JS: jQuery, `plants.js`, `utils.js`, `plant-images.js`, `products.js`, `gambar-produk.js`, `garden.js`, `journey.js`, `plant-lab.js`, `plant-match.js`, `app.js`.
+- File JS: jQuery, `plants.js`, `utils.js`, `plant-images.js`, `products.js`, `gambar-produk.js`, `garden.js`, `journey.js`, `plant-lab.js`, `app.js`.
 - **Script inline**: Fungsi `renderMyPlants()` — rendering grid kebun dengan filter. Fungsi `renderDetail()` — rendering panel detail: stage pills, journey timeline, task list, journal, tips, smart basket, storytelling. Fungsi `selectGarden(id)` — memilih tanaman aktif. `toggleTask(tid, checked)` — toggle task + update progress + toast XP. `addTask()` — tambah task custom. `addJournal()` — tambah jurnal. `completeStage()` — maju ke fase berikutnya + update progress + toast. `shareJourney()` — toast berbagi. `renderAddPlantList(filter)` — render daftar tanaman untuk ditambahkan. `addPlantToGarden(plantId)` — membuat entri baru di `MY_GARDEN[]` dengan task awal + jurnal hari pertama + persist ke `localStorage`.
 
 **CSS yang digunakan:**
@@ -727,13 +708,13 @@ Halaman profil gamifikasi untuk pengguna simulasi "Izra". Menampilkan statistik,
   - **Statistik**: Tanaman aktif (6), Task selesai (42), Jurnal (18 entri), Postingan (7), Pesanan (3 simulasi).
   - **Tantangan Mingguan**: Challenge "Selesaikan 5 task" dengan progress bar 3/5 + tombol "Lihat Task".
 - **Edit Profil Modal** (`#editProfileModal`): Form edit nama, bio, lokasi + tombol Simpan/Batal.
-- **Footer**: Copyright.
+- **Footer**: footer bersama `.fv-ground` (Garden Ground) sama seperti halaman lain.
 - **Cart Drawer**.
 
 **JavaScript yang digunakan:**
-- File JS: jQuery, `plants.js`, `utils.js`, `plant-images.js`, `communities.js`, `guides.js`, `garden.js`, `products.js`, `gambar-produk.js`, `users.js`, `journey.js`, `plant-lab.js`, `plant-match.js`, `app.js`.
-- **Script inline (blok 1)**: `openEditProfile()`, `closeEditProfile()`, `saveEditProfile()` — menghandle modal edit profil. Event handler backdrop modal.
-- **Script inline (blok 2)**: `toggleLevel()`, `toggleXP()` — accordion toggle dengan animasi max-height + rotasi panah. `$(function(){})` — rendering: garden summary dari `MY_GARDEN[]`, komunitas diikuti dari `CURRENT_USER.joined`, saved plants dari `CURRENT_USER.savedPlants`, saved guides (dummy 4), activity timeline (dummy 6 aktivitas), achievements (8 lencana, 4 terbuka). Event handler tab switching (savedPlants/savedGuides/activity).
+- File JS: jQuery, `plants.js`, `utils.js`, `plant-images.js`, `products.js`, `gambar-produk.js`, `app.js`.
+- **Script inline (blok 1)**: konfigurasi Tailwind CDN (palet warna & font).
+- **Script inline (blok 2)**: accordion kartu quick stats (`[data-expandable]`, open/close via animasi max-height), filter tab `#savedList` (semua/tanaman/artikel/komunitas), tombol wishlist `.pv-heart`, render ikon Lucide.
 
 **CSS yang digunakan:**
 - `css/style.css`: `.profile-stat-grid`, `.profile-page > section` spacing, `.accordion` styling, `.sidebar-scroll`.
@@ -757,13 +738,13 @@ Halaman profil gamifikasi untuk pengguna simulasi "Izra". Menampilkan statistik,
 
 | Halaman | Semua data JS | app.js | plant-lab.js | Script inline halaman |
 |---|---|---|---|---|
-| index.html | ✅ | ✅ | ✅ | HOME_WORLDS, World Gateway |
+| index.html | ✅ | ✅ | ❌ | konfigurasi Tailwind |
 | plants.html | ✅ | ✅ | ✅ | renderPlants, openPlant, Plant Lab init |
 | learn.html | ✅ | ✅ | ❌ | renderGuides, openGuide |
-| community.html | ✅ | ✅ | ✅ | renderFeed, renderCommsSidebar, comments |
+| community.html | ✅ | ✅ | ❌ | renderFeed, renderCommsSidebar, comments |
 | shop.html | ✅ (sebagian) | ✅ | ❌ | renderProducts, openProduct, cart override |
 | garden.html | ✅ | ✅ | ✅ | renderDetail, renderMyPlants, tasks, journal |
-| profile.html | ✅ | ✅ | ✅ | renderProfile, tabs, accordion |
+| profile.html | ✅ | ✅ | ❌ | accordion, filter tab, wishlist |
 
 ---
 
