@@ -48,7 +48,7 @@ Lima "ruang" utama yang membentuk ekosistem:
 | Interaktivitas | Vanilla JavaScript + [jQuery 3.7.1 (CDN)](https://jquery.com) |
 | Font | Google Fonts: Outfit (400–800) & Nunito (600–800) |
 | Penyimpanan | `localStorage` + `BroadcastChannel` untuk sinkronisasi keranjang antar tab |
-| Media | Video MP4 lokal + gambar eksternal (URL publik) |
+| Media | Video MP4 lokal + gambar lokal (diunduh dari URL di `docs/sources`) |
 | Build / Bundler | Tidak ada — file statis langsung |
 
 Tidak ada framework (React, Vue, dll), tidak ada Node.js build step, tidak ada database.
@@ -88,12 +88,18 @@ FloraVerse/
 │   └── app.js              # Core: cart, toast, nav, Plant Match quiz, modal
 │
 └── asset/
-    ├── community.mp4       # Video background: halaman Komunitas
-    ├── garden.mp4          # Video background: halaman Kebunku & Belajar
-    ├── learn.mp4           # Video background: halaman Belajar
+    ├── banner/community.mp4 # Video background: halaman Komunitas
+    ├── banner/garden.mp4   # Video background: halaman Kebunku & Belajar
+    ├── banner/learn.mp4    # Video background: halaman Belajar
+    ├── banner/plant.mp4    # Video background: halaman Tanaman & Belajar
+    ├── banner/shop.mp4     # Video background: FloraShop
     ├── main.png            # Gambar: halaman Beranda
-    ├── plant.mp4           # Video background: halaman Tanaman & Belajar
-    └── shop.mp4            # Video background: FloraShop
+    └-- img/                # Gambar diunduh dari URL di docs/sources
+        ├-- plants/         # 47 file: PLANT_IMAGES + foto tanaman profil
+        ├-- produk/         # 26 file: PRODUCT_IMAGES
+        ├-- postingan/      # 13 file: cover komunitas, POSTS, thumbnail diikuti
+        ├-- panduan/        # 10 file: GUIDES
+        └-- icons/          # 53 file: SVG Lucide (lucide-static@0.469.0)
 ```
 
 ---
@@ -386,16 +392,16 @@ File terbesar, dimuat terakhir di setiap halaman, berisi semua logika shared:
 
 ## Aset Media
 
-Semua file video disimpan di folder `asset/` dan digunakan sebagai background video (autoplay, loop, muted, playsinline) di header setiap halaman.
+Semua file video disimpan di folder `asset/banner/` dan digunakan sebagai background video (autoplay, loop, muted, playsinline) di header setiap halaman.
 
 | File | Digunakan di |
 |---|---|
-| `main.png` | `index.html` |
-| `plant.mp4` | `learn.html`, `plants.html` |
-| `learn.mp4` | `learn.html` |
-| `garden.mp4` | `garden.html`, `learn.html` |
-| `community.mp4` | `community.html` |
-| `shop.mp4` | `shop.html` |
+| `asset/main.png` | `index.html` |
+| `asset/banner/plant.mp4` | `learn.html`, `plants.html` |
+| `asset/banner/learn.mp4` | `learn.html` |
+| `asset/banner/garden.mp4` | `garden.html`, `learn.html` |
+| `asset/banner/community.mp4` | `community.html` |
+| `asset/banner/shop.mp4` | `shop.html` |
 
 ---
 
@@ -483,7 +489,7 @@ Halaman pembuka yang berfungsi sebagai portal interaktif ke lima ruang FloraVers
 - **Navbar** (`.navbar`): Navigasi sticky dengan logo `FloraVerse`, link ke 7 halaman, ikon keranjang belanja (🛒) dengan badge jumlah item, avatar pengguna "Izra" (Lv 8), dan tombol hamburger untuk mobile.
 - **World Stage** (`#worldStage`): Hero section utama dengan dua kolom:
   - Kiri (`world-stage-copy`): Judul dinamis (`#heroTitle`), deskripsi, statistik (facts), tombol CTA, dan tombol "Coba Plant Match".
-  - Kanan (`world-stage-visual`): Video background (`asset/plant.mp4`) yang berubah sesuai dunia yang dipilih, overlay gradien, dan kartu "world core" (icon + nama ruang).
+  - Kanan (`world-stage-visual`): Video background (`asset/banner/plant.mp4`) yang berubah sesuai dunia yang dipilih, overlay gradien, dan kartu "world core" (icon + nama ruang).
 - **World Picker Grid** (`#worldPicker`): 5 tombol grid yang masing-masing merepresentasikan satu ruang. Setiap tombol berisi nomor (01–05), nama ruang, deskripsi singkat, dan panah navigasi.
 - **Journey Steps** (`.home-journey`): Visualisasi 4 langkah berkebun: Temukan → Pelajari → Rawat → Bagikan, dengan deskripsi masing-masing.
 - **Plant Match Prompt** (`.plant-match-prompt`): CTA section untuk mengundang pengunjung mencoba fitur Plant Match.
@@ -530,7 +536,7 @@ Katalog 41 tanaman yang bisa dicari, difilter, diurutkan, dan dibuka detailnya. 
 
 **Struktur HTML:**
 - **Navbar**: Sama seperti halaman lain.
-- **Header Hero** (`.fv-card`): Video background `asset/plant.mp4`, judul "Temukan tanaman yang paling cocok untukmu", tombol Plant Match, dan panel pencarian/filter di sebelah kanan:
+- **Header Hero** (`.fv-card`): Video background `asset/banner/plant.mp4`, judul "Temukan tanaman yang paling cocok untukmu", tombol Plant Match, dan panel pencarian/filter di sebelah kanan:
   - Input pencarian (`#searchInput`): Real-time search berdasarkan nama, nama ilmiah, atau kategori.
   - 4 `<select>` filter: Kategori (9 opsi), Level kesulitan (4 opsi), Cahaya (3 opsi), Sorting (4 opsi).
   - Counter hasil (`#resultCount`).
@@ -565,7 +571,7 @@ Katalog 41 tanaman yang bisa dicari, difilter, diurutkan, dan dibuka detailnya. 
 
 **Struktur HTML:**
 - **Navbar**: Sama.
-- **Header Hero**: Video background `asset/learn.mp4`, judul "Belajar berkebun tanpa ribet", info waktu baca (4–12 menit), panel pencarian + filter kategori, dan sidebar "Paling Populer" (3 panduan terpopuler).
+- **Header Hero**: Video background `asset/banner/learn.mp4`, judul "Belajar berkebun tanpa ribet", info waktu baca (4–12 menit), panel pencarian + filter kategori, dan sidebar "Paling Populer" (3 panduan terpopuler).
 - **Category Tabs** (`#guideCats`): 10 pill tabs scrollable — Semua, Dasar, Media, Siram, Cahaya, Pupuk, Hama, Hidroponik, Urban, Kompos.
 - **Level Filter**: 3 tombol — Semua Level, Pemula, Menengah.
 - **Guide Grid** (`#guidesGrid`): Grid 1–4 kolom. Setiap kartu: gambar/emoji, badge kategori, badge level, label "Populer" (jika applicable), judul, waktu + level, deskripsi singkat, tombol "Baca" dan simpan.
@@ -592,7 +598,7 @@ Feed komunitas bertopik dengan 12 grup, sistem postingan, komentar inline, dan f
 
 **Struktur HTML:**
 - **Navbar**: Sama.
-- **Hero**: Video background `asset/community.mp4`, judul "Bertumbuh bareng yang sepemikiran", statistik (12 grup, 14K+ anggota, 4K+ post), tombol "Buat Postingan".
+- **Hero**: Video background `asset/banner/community.mp4`, judul "Bertumbuh bareng yang sepemikiran", statistik (12 grup, 14K+ anggota, 4K+ post), tombol "Buat Postingan".
 - **Search & Filter Komunitas**: Input pencarian + filter pill (Semua, Tanaman, Metode, Hobi). Info "Bergabung sebagai Izra • 4 komunitas diikuti".
 - **2-Column Layout** (`.community-layout`):
   - **Left — Feed Komunitas** (`#feedList`):
@@ -624,7 +630,7 @@ Toko perlengkapan berkebun dengan 28 produk, keranjang belanja (modal, bukan dra
 
 **Struktur HTML:**
 - **Navbar**: Sama, tapi tombol keranjang memanggil `openDrawer()` yang di-override ke modal.
-- **Header Hero**: Video background `asset/shop.mp4`, judul "Semua kebutuhan berkebun, satu tempat", panel pencarian + filter kategori + sorting.
+- **Header Hero**: Video background `asset/banner/shop.mp4`, judul "Semua kebutuhan berkebun, satu tempat", panel pencarian + filter kategori + sorting.
 - **Category Pills** (`#prodCats`): 10 pill — Semua, Benih, Bibit, Pot, Media, Pupuk, Tools, Hydro, Care, Bundling.
 - **Filter Tambahan**: Checkbox "Best Seller saja" dan "Beginner Pick".
 - **Product Grid** (`#productsGrid`): Grid 1–4 kolom. Setiap kartu: gambar produk, badge (Best Seller/Beginner Pick/Popular), tombol wishlist (♡), rating + jumlah ulasan, nama produk, kategori + stok, harga (Rp), info tanaman terkait, tombol "+ Keranjang".
@@ -655,7 +661,7 @@ Manajemen kebun digital pribadi dengan task harian, plant journal, timeline fase
 
 **Struktur HTML:**
 - **Navbar**: Sama.
-- **Header Hero**: Video background `asset/garden.mp4`, judul "Kebun digitalmu, terpantau setiap hari", tombol "Tambah Tanaman".
+- **Header Hero**: Video background `asset/banner/garden.mp4`, judul "Kebun digitalmu, terpantau setiap hari", tombol "Tambah Tanaman".
 - **My Plants Grid** (`#myPlantsGrid`): Section collapsible (bisa dibuka/ditutup via toggle). Berisi filter status kesehatan (Healthy/Needs Water/Needs Fertilizer) dan tombol "+ Tambah". Grid kartu tanaman: gambar, nama, hari ke-berapa + fase, health badge (warna), progress bar, stage pills.
 - **Journey Detail Panel** (kiri, 7 kolom):
   - Header: gambar tanaman, nama + hari, nama ilmiah + fase +%, health badge.

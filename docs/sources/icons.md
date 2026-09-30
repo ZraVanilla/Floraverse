@@ -4,6 +4,8 @@ Seluruh ikon UI FloraVerse memakai **Lucide Icons** v0.469.0, dimuat dari CDN la
 
 CDN: `https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js` - Situs resmi: https://lucide.dev
 
+Salinan lokal seluruh ikon: `asset/img/icons/` (53 file SVG, diunduh dari paket resmi `lucide-static@0.469.0`). Dipakai sebagai aset offline/referensi; halaman tetap me-render ikon dari bundle CDN.
+
 ## Lucide Icons
 
 | Icon | Provider / Library | Digunakan Pada | Source |
@@ -76,3 +78,5 @@ CDN: `https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js` - Situs resmi: https:
 - Emoji (mis. `🌱`, `📊`) dipakai sebagai teks/notifikasi toast, bukan icon library.
 - Icon yang muncul di banyak/semua halaman (mis. `bookmark`, `link`, `hand`, `party-popper`, `trash-2`) dipicu oleh toast di `js/app.js`, script yang dimuat setiap halaman.
 - Ikon tidak didokumentasikan ulang di file per halaman; cukup referensi ke file ini.
+- Status lokal semua ikon: `LOCAL ASSET AVAILABLE - asset/img/icons/<nama>.svg`.
+- Dua ikon tidak ada di Lucide 0.469.0: `bar-chart-3` (profile.html) dan `home` (community.html). Sumber terdokumentasi di-redirect permanen (308) ke `chart-column` dan `house`, jadi salinan lokal memakai nama di kode berisi isi ikon hasil redirect. Bundle CDN tidak mengenal nama lama, sehingga kedua ikon itu tidak ter-render di halaman.

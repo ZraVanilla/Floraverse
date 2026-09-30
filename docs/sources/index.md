@@ -2,9 +2,9 @@
 
 ## Image / Visual Sources
 
-| Asset | Penggunaan | Source |
-|---|---|---|
-| asset/main.png | Hero landing (`.landing-hero-media`) | Unknown / source URL not found in project |
+| Asset | Penggunaan | Source | Status Lokal |
+|---|---|---|---|
+| asset/main.png | Hero landing (`.landing-hero-media`) | Unknown / source URL not found in project | EXISTING LOCAL ASSET - asset/main.png |
 
 Tidak ada `<video>` pada halaman ini; thumbnail produk di drawer keranjang memakai `PRODUCT_IMAGES` (lihat `shop.md`).
 

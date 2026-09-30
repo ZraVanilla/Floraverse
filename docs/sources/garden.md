@@ -2,15 +2,15 @@
 
 ## Image / Visual Sources
 
-| Asset | Penggunaan | Source |
-|---|---|---|
-| asset/garden.mp4 | Video background header hero | Unknown / source URL not found in project |
-| PLANT_IMAGES["cabai-rawit"] | Kartu “Tanaman Ku”: Cabai Rawit | https://images.unsplash.com/photo-1588252303782-cb80119abd6d?auto=format&fit=crop&w=640&q=80 |
-| PLANT_IMAGES["tomat"] | Kartu “Tanaman Ku”: Tomat Cherry | https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=640&q=80 |
-| PLANT_IMAGES["selada"] | Kartu “Tanaman Ku”: Selada Romaine | https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?auto=format&fit=crop&w=640&q=80 |
-| PLANT_IMAGES["basil"] | Kartu “Tanaman Ku”: Basil | https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=640&q=80 |
-| PLANT_IMAGES["matahari"] | Kartu “Tanaman Ku”: Bunga Matahari | https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=640&q=80 |
-| PLANT_IMAGES.default | Kartu “Tanaman Ku”: Kaktus Mini | https://commons.wikimedia.org/wiki/Special:FilePath/Plant.jpg?width=640 |
+| Asset | Penggunaan | Source | Status Lokal |
+|---|---|---|---|
+| asset/banner/garden.mp4 | Video background header hero | Unknown / source URL not found in project | EXISTING LOCAL ASSET |
+| PLANT_IMAGES["cabai-rawit"] | Kartu “Tanaman Ku”: Cabai Rawit | https://images.unsplash.com/photo-1588252303782-cb80119abd6d?auto=format&fit=crop&w=640&q=80 | LOCAL ASSET AVAILABLE - asset/img/plants/photo-1588252303782-cb80119abd6d-5dd8e0.avif |
+| PLANT_IMAGES["tomat"] | Kartu “Tanaman Ku”: Tomat Cherry | https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=640&q=80 | LOCAL ASSET AVAILABLE - asset/img/plants/photo-1592924357228-91a4daadcfea-6d3516.avif |
+| PLANT_IMAGES["selada"] | Kartu “Tanaman Ku”: Selada Romaine | https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?auto=format&fit=crop&w=640&q=80 | LOCAL ASSET AVAILABLE - asset/img/postingan/photo-1622206151226-18ca2c9ab4a1-409e8e.avif |
+| PLANT_IMAGES["basil"] | Kartu “Tanaman Ku”: Basil | https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=640&q=80 | LOCAL ASSET AVAILABLE - asset/img/plants/photo-1618375569909-3c8616cf7733-d20b2d.avif |
+| PLANT_IMAGES["matahari"] | Kartu “Tanaman Ku”: Bunga Matahari | https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=640&q=80 | LOCAL ASSET AVAILABLE - asset/img/plants/photo-1470509037663-253afd7f0f51-02f662.avif |
+| PLANT_IMAGES.default | Kartu “Tanaman Ku”: Kaktus Mini | https://commons.wikimedia.org/wiki/Special:FilePath/Plant.jpg?width=640 | LOCAL ASSET AVAILABLE - asset/img/plants/plant-e0e2d1.jpg |
 
 Plant Lab, tips, dan modal terkait memakai thumbnail dari `PLANT_IMAGES` - daftar lengkap di `plants.md`.
 
