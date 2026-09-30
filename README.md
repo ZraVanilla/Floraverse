@@ -1,267 +1,847 @@
-# FloraVerse
+# 🌱 FloraVerse
 
-**Satu Dunia, Berjuta Cara untuk Tumbuh.**
+> **Satu Dunia, Berjuta Cara untuk Tumbuh.**
 
-FloraVerse adalah ekosistem digital berkebun berbasis web yang menyatukan pencarian tanaman, panduan belajar, komunitas, kebutuhan berkebun, dan pemantauan kebun pribadi dalam satu pengalaman yang ramah pemula.
+FloraVerse adalah ekosistem berkebun digital berbasis web yang menggabungkan **ensiklopedia tanaman, pembelajaran, komunitas, marketplace, dan kebun digital pribadi** dalam satu pengalaman yang saling terhubung.
 
-Proyek ini berupa static website interaktif. Seluruh fitur berjalan di browser menggunakan HTML, CSS, JavaScript, jQuery, dan data lokal tanpa backend.
+FloraVerse dirancang untuk membantu pengguna, khususnya pemula dan urban gardener, melalui perjalanan:
 
-## Daftar Isi
+**Temukan → Pelajari → Coba → Rawat → Lengkapi → Bagikan**
 
-- [Tentang FloraVerse](#tentang-floraverse)
-- [Fitur Utama](#fitur-utama)
-- [Struktur Halaman](#struktur-halaman)
-- [Cara Menjalankan](#cara-menjalankan)
-- [Teknologi](#teknologi)
-- [Arsitektur Proyek](#arsitektur-proyek)
-- [Penyimpanan Data](#penyimpanan-data)
-- [Responsive dan Accessibility](#responsive-dan-accessibility)
-- [Asset dan Lisensi](#asset-dan-lisensi)
-- [Catatan Pengembangan](#catatan-pengembangan)
+Dibangun sebagai proyek **front-end statis** menggunakan HTML5, Tailwind CSS, Vanilla JavaScript, dan jQuery tanpa framework, backend, maupun database.
 
-## Tentang FloraVerse
+> **Project oleh:** Izra, Fairuz, Tafayad  
+> **© 2026 FloraVerse**
 
-Informasi dan aktivitas berkebun biasanya tersebar di banyak tempat. Pengguna mencari informasi tanaman di satu situs, belajar dari platform lain, membeli perlengkapan di marketplace, lalu mencatat perkembangan tanaman secara manual.
+---
 
-FloraVerse menyatukan alur tersebut:
+## 🌿 Tentang FloraVerse
+
+Berkebun bukan hanya tentang memilih tanaman.
+
+Pengguna juga perlu mengetahui cara menanam, merawat, memahami kondisi tanaman, mendapatkan perlengkapan, mencatat perkembangan, dan berbagi pengalaman dengan pekebun lainnya.
+
+FloraVerse menyatukan seluruh proses tersebut ke dalam satu ekosistem digital.
 
 ```text
-Temukan tanaman
-      ↓
-Pelajari cara merawat
-      ↓
-Siapkan kebutuhan berkebun
-      ↓
-Pantau perjalanan tanaman
-      ↓
-Berbagi dengan komunitas
+                    🌱 TEMUKAN
+                        │
+                        ▼
+                    📚 PELAJARI
+                        │
+                        ▼
+                     🧪 COBA
+                        │
+                        ▼
+                    🌳 RAWAT
+                        │
+                        ▼
+                   🛒 LENGKAPI
+                        │
+                        ▼
+                   💬 BAGIKAN
+                        │
+                        ▼
+                  👤 BERKEMBANG
 ```
 
-Target utama FloraVerse adalah pemula, urban gardener, dan penghobi tanaman yang membutuhkan pengalaman berkebun yang jelas, terarah, dan menyenangkan.
+---
 
-## Fitur Utama
+# ✨ Fitur Utama
 
-### Plant Match
+## 🌱 Plant Encyclopedia
 
-Rekomendasi tanaman berdasarkan kondisi pengguna:
+Ensiklopedia tanaman yang membantu pengguna menemukan dan memahami berbagai tanaman.
 
-- Intensitas cahaya
-- Lokasi penanaman
-- Waktu yang tersedia untuk merawat
+Fitur:
+
+- Pencarian tanaman secara real-time
+- Filter berdasarkan kategori
+- Filter tingkat kesulitan
+- Filter kebutuhan cahaya
+- Sorting tanaman
+- Detail lengkap tanaman
+- Informasi air, cahaya, suhu, pH, dan media tanam
+- Informasi hama dan penyakit
+- Produk terkait
+- Panduan terkait
+- Komunitas terkait
+- Tambahkan tanaman ke Kebunku
+
+Saat ini tersedia **41 tanaman** dalam data simulasi.
+
+---
+
+## 🧪 Plant Lab
+
+Simulasi edukasi interaktif untuk memahami pengaruh kondisi lingkungan terhadap tanaman.
+
+Pengguna dapat mengatur:
+
+- 💧 Air
+- ☀️ Cahaya
+- 🧪 Pupuk
+- 🌿 Media tanam
+
+Perubahan parameter menghasilkan feedback kesehatan tanaman secara real-time.
+
+> Plant Lab merupakan simulasi edukasi dan bukan alat diagnosis tanaman secara ilmiah.
+
+---
+
+## 🧭 Plant Match
+
+Quiz interaktif untuk membantu pengguna menemukan tanaman yang sesuai dengan kondisi dan preferensi mereka.
+
+Quiz terdiri dari **7 pertanyaan** mengenai:
+
+- Kondisi cahaya
+- Lokasi
+- Frekuensi perawatan
+- Frekuensi penyiraman
+- Luas ruang
+- Pengalaman berkebun
 - Tujuan berkebun
 
-### Ensiklopedia Tanaman
+Hasil quiz menghasilkan rekomendasi tanaman berdasarkan skor kesesuaian.
 
-Katalog tanaman dengan pencarian dan filter berdasarkan kategori, tingkat kesulitan, serta kebutuhan cahaya. Setiap detail tanaman memuat informasi media tanam, kebutuhan air, suhu, pH, perawatan, hama, dan tips.
+---
 
-### Plant Lab
+## 📚 Learning Hub
 
-Media belajar interaktif untuk mencoba kombinasi air, cahaya, pupuk, dan media tanam tanpa memengaruhi tanaman pengguna.
+Ruang belajar yang berisi **18 panduan berkebun** untuk pengguna tingkat Pemula hingga Menengah.
 
-### Kebunku dan Plant Journey
+Topik yang tersedia:
 
-Dashboard kebun pribadi yang menyediakan:
+- Dasar berkebun
+- Media tanam
+- Penyiraman
+- Cahaya
+- Pemupukan
+- Hama & penyakit
+- Hidroponik
+- Urban farming
+- Composting
 
-- Garden Pulse
-- Status kesehatan tanaman
-- Fase pertumbuhan
-- Task perawatan
-- Progress tanaman
-- Jurnal perkembangan
-- Plant storytelling
+Setiap panduan memiliki:
 
-### Komunitas
+- Ringkasan
+- Langkah praktik
+- Checklist
+- Tanaman terkait
+- Estimasi waktu baca
+- Tingkat kesulitan
 
-Pengguna dapat menemukan komunitas berdasarkan tanaman, metode, atau hobi. Halaman ini mendukung feed, filter, posting, komentar, suka, simpan, tantangan, dan FloraMap.
+---
 
-### FloraShop
+## 💬 Community
 
-Katalog kebutuhan berkebun dengan pencarian, kategori, sorting, wishlist, keranjang, dan Smart Garden Basket.
+Ruang komunitas untuk berbagi pengalaman, bertanya, dan berdiskusi mengenai berkebun.
 
-### Smart Garden Basket
+Fitur:
 
-Rekomendasi starter kit berdasarkan tanaman pilihan. Seluruh item kit dapat ditambahkan sekaligus ke keranjang dengan quantity yang tetap tergabung.
+- Community feed
+- Filter postingan
+- Komunitas berdasarkan topik
+- Like
+- Save
+- Share
+- Inline comments
+- Membuat postingan
+- Rekomendasi komunitas
+- Bergabung dengan komunitas
 
-### Checkout
+Tersedia **12 komunitas simulasi** dengan berbagai topik berkebun.
 
-Alur checkout mencakup:
+---
 
-- Data penerima
-- Alamat lengkap Indonesia
-- Kota atau kabupaten dan kode pos
-- Pengiriman reguler, same day, atau ambil sendiri
-- Transfer bank, QRIS, e-wallet, atau COD
-- Ringkasan subtotal, ongkir, dan total
+## 🛒 FloraShop
 
-Checkout merupakan demonstrasi frontend dan tidak memproses pembayaran nyata.
+Marketplace simulasi untuk kebutuhan berkebun.
 
-## Struktur Halaman
+Tersedia **28 produk** dalam beberapa kategori:
 
-| Halaman | File | Fokus |
-| --- | --- | --- |
-| Beranda | `index.html` | Pengenalan ekosistem dan akses fitur utama |
-| Tanaman | `plants.html` | Ensiklopedia, Plant Match, dan Plant Lab |
-| Belajar | `learn.html` | Panduan, artikel, dan roadmap belajar |
-| Komunitas | `community.html` | Komunitas, feed, challenge, dan FloraMap |
-| Belanja | `shop.html` | Produk, Smart Garden Basket, cart, dan checkout |
-| Kebunku | `garden.html` | Garden Pulse, Plant Journey, task, dan jurnal |
-| Profil | `profile.html` | Ringkasan pengguna, XP, achievement, dan pengaturan |
+- Benih
+- Bibit
+- Pot
+- Media Tanam
+- Pupuk
+- Tools
+- Hydroponics
+- Plant Care
+- Bundling
 
-## Cara Menjalankan
+Fitur:
 
-Tidak ada dependency yang perlu diinstal.
+- Search produk
+- Filter kategori
+- Sorting harga dan rating
+- Best Seller
+- Beginner Pick
+- Wishlist
+- Detail produk
+- Shopping cart
+- Checkout
+- Pilihan pengiriman
+- Pilihan pembayaran
+- Order ID
 
-### Opsi 1: Local Server
+> Checkout merupakan simulasi front-end dan tidak melakukan transaksi nyata.
 
-Metode ini direkomendasikan agar perpindahan halaman dan resource eksternal berjalan konsisten.
+---
 
-```bash
-python3 -m http.server 8000
-```
+## 🌳 Kebunku — Plant Journey
 
-Buka:
+Ruang pribadi untuk mengikuti perjalanan pertumbuhan tanaman.
 
-```text
-http://localhost:8000
-```
-
-Alternatif menggunakan Node.js:
-
-```bash
-npx serve .
-```
-
-### Opsi 2: Buka Langsung
-
-Buka `index.html` melalui browser. FloraVerse memiliki fallback persistence untuk membantu sinkronisasi cart saat dijalankan melalui protokol `file://`.
-
-Koneksi internet tetap dibutuhkan untuk memuat CDN, font, dan foto eksternal.
-
-## Teknologi
-
-- HTML5
-- CSS3
-- Tailwind CSS melalui CDN
-- JavaScript
-- jQuery 3.7.1 melalui CDN
-- Local browser storage
-- Unsplash image URLs
-
-Tidak menggunakan React, Vue, Angular, atau backend server.
-
-## Arsitektur Proyek
+Setiap tanaman memiliki enam fase:
 
 ```text
-Floraverse/
-├── assets/
-│   ├── icons/
-│   └── photos/
+Seed
+  ↓
+Seedling
+  ↓
+Growing
+  ↓
+Flowering
+  ↓
+Fruiting
+  ↓
+Harvest
+```
+
+Pengguna dapat:
+
+- Menambahkan tanaman
+- Melihat progress tanaman
+- Menyelesaikan task harian
+- Mendapatkan XP simulasi
+- Menulis jurnal
+- Melihat tips tanaman
+- Menggunakan Plant Lab
+- Menemukan produk terkait
+- Membagikan progress ke komunitas
+
+Data kebun disimpan menggunakan `localStorage`.
+
+---
+
+## 👤 Profile & Gamification
+
+Profil pengguna menggabungkan aktivitas pengguna dalam satu dashboard.
+
+Menampilkan:
+
+- Level
+- XP
+- Statistik kebun
+- Komunitas
+- Panduan
+- Achievements
+- Aktivitas
+- Tanaman tersimpan
+- Panduan tersimpan
+- Weekly challenge
+
+Sistem XP saat ini masih merupakan **simulasi front-end**.
+
+---
+
+# 🗺️ Ekosistem FloraVerse
+
+FloraVerse menggunakan konsep **Interactive World Gateway** sebagai pintu masuk ke seluruh ekosistem.
+
+Lima ruang utama FloraVerse:
+
+| # | Ruang | Fungsi | Halaman |
+|---|---|---|---|
+| 01 | 🌱 Tanaman | Ensiklopedia & Plant Lab | `plants.html` |
+| 02 | 📚 Belajar | Panduan berkebun | `learn.html` |
+| 03 | 💬 Komunitas | Diskusi & sharing | `community.html` |
+| 04 | 🛒 FloraShop | Perlengkapan berkebun | `shop.html` |
+| 05 | 🌳 Kebunku | Plant Journey | `garden.html` |
+
+Halaman pendukung:
+
+| Halaman | Fungsi |
+|---|---|
+| `index.html` | Interactive World Gateway |
+| `profile.html` | Profil & gamifikasi |
+
+---
+
+# 🖥️ Pages
+
+## `index.html` — Interactive World Gateway
+
+Beranda FloraVerse yang menjadi pintu masuk menuju seluruh ruang utama.
+
+Fitur:
+
+- Dynamic World Stage
+- World Picker
+- Dynamic video background
+- World-specific content
+- Plant Match CTA
+- Ecosystem Journey
+- Page transition animation
+
+Pengguna dapat mengeksplorasi lima ruang utama dari satu halaman sebelum melanjutkan ke halaman terkait.
+
+---
+
+## `plants.html` — Plant Encyclopedia
+
+Katalog tanaman yang dapat dicari, difilter, diurutkan, dan dibuka dalam detail.
+
+Fitur:
+
+- Search
+- Category filter
+- Difficulty filter
+- Sunlight filter
+- Sorting
+- Plant detail modal
+- Plant Match
+- Plant Lab
+- Ecosystem cross-link
+
+---
+
+## `learn.html` — Learning Hub
+
+Ruang pembelajaran dengan 18 panduan berkebun.
+
+Fitur:
+
+- Search
+- Category filter
+- Level filter
+- Guide modal
+- Checklist
+- Interactive learning cards
+- Beginner roadmap
+- Plant Journey integration
+
+---
+
+## `community.html` — Community
+
+Ruang komunitas dengan sistem feed dan diskusi.
+
+Fitur:
+
+- Community feed
+- Post filtering
+- Inline comments
+- Create post
+- Community discovery
+- Join community
+- Like
+- Save
+- Share
+
+---
+
+## `shop.html` — FloraShop
+
+Marketplace simulasi untuk kebutuhan berkebun.
+
+Fitur:
+
+- Product catalog
+- Search
+- Category filter
+- Sorting
+- Product detail
+- Wishlist
+- Shopping cart
+- Checkout simulation
+
+---
+
+## `garden.html` — Kebunku
+
+Ruang Plant Journey untuk mengelola tanaman pribadi.
+
+Fitur:
+
+- My Plants
+- Plant progress
+- Growth stages
+- Daily tasks
+- Plant journal
+- Plant Lab
+- Smart Basket
+- Plant tips
+- Community sharing
+
+---
+
+## `profile.html` — Profile
+
+Dashboard pengguna yang menampilkan perkembangan dan aktivitas dalam FloraVerse.
+
+Fitur:
+
+- Profile overview
+- XP & level
+- Garden summary
+- Joined communities
+- Saved content
+- Activity timeline
+- Achievements
+- Weekly challenge
+
+---
+
+# 🛠️ Tech Stack
+
+| Komponen | Teknologi |
+|---|---|
+| Markup | HTML5 |
+| Styling | Tailwind CSS v3 + Custom CSS |
+| JavaScript | Vanilla JavaScript |
+| DOM Utility | jQuery 3.7.1 |
+| Font | Google Fonts |
+| Storage | `localStorage` |
+| Cross-tab Sync | `BroadcastChannel` |
+| Media | MP4, PNG, JPG, SVG |
+| Build Tool | Tidak ada |
+| Framework | Tidak ada |
+| Backend | Tidak ada |
+| Database | Tidak ada |
+
+FloraVerse menggunakan arsitektur static website sehingga dapat dijalankan tanpa server backend maupun proses build.
+
+---
+
+# 📁 Project Structure
+
+```text
+FloraVerse/
+│
+├── index.html
+├── plants.html
+├── learn.html
+├── community.html
+├── shop.html
+├── garden.html
+├── profile.html
+│
 ├── css/
+│   ├── style.css
+│   ├── home.css
 │   ├── animations.css
-│   ├── responsive.css
-│   └── style.css
+│   └── responsive.css
+│
 ├── js/
 │   ├── app.js
+│   ├── plants.js
+│   ├── products.js
 │   ├── communities.js
-│   ├── garden.js
 │   ├── guides.js
+│   ├── garden.js
 │   ├── journey.js
 │   ├── plant-lab.js
 │   ├── plant-match.js
-│   ├── plants.js
-│   ├── products.js
+│   ├── plant-images.js
+│   ├── gambar-produk.js
 │   └── utils.js
-├── community.html
-├── garden.html
-├── index.html
-├── learn.html
-├── plants.html
-├── profile.html
-├── shop.html
-├── PRODUCT_SPEC.md
-└── README.md
+│
+├── asset/
+│   ├── main.png
+│   │
+│   ├── banner/
+│   │   ├── community.mp4
+│   │   ├── garden.mp4
+│   │   ├── learn.mp4
+│   │   ├── plant.mp4
+│   │   └── shop.mp4
+│   │
+│   └── img/
+│       ├── plants/
+│       ├── produk/
+│       ├── postingan/
+│       ├── panduan/
+│       └── icons/
+│
+└── docs/
+    └── sources/
+        └── ...
 ```
 
-### Pembagian Tanggung Jawab
+---
 
-| Lokasi | Tanggung jawab |
-| --- | --- |
-| `css/style.css` | Design system, komponen, modal, drawer, dan desktop layout |
-| `css/responsive.css` | Penyesuaian mobile, tablet, dan breakpoint |
-| `css/animations.css` | Animasi interaksi dan visual |
-| `js/app.js` | Navigasi, cart, checkout, toast, modal, dan interaksi bersama |
-| `js/plants.js` | Dataset tanaman dan URL foto |
-| `js/products.js` | Dataset produk dan URL foto |
-| `js/communities.js` | Dataset komunitas dan postingan |
-| `js/garden.js` | Data kebun dan Garden Pulse |
-| `js/guides.js` | Dataset panduan belajar |
+# 📦 JavaScript Architecture
 
-## Penyimpanan Data
+Data dan logic FloraVerse dipisahkan ke dalam beberapa file agar struktur aplikasi tetap modular.
 
-FloraVerse tidak memiliki backend. State interaktif disimpan di browser.
-
-### Cart
-
-Cart menggunakan satu sumber data dengan key:
+## Data
 
 ```text
-fv_cart
+plants.js
+    └── PLANTS[]
+
+products.js
+    └── PRODUCTS[]
+
+guides.js
+    └── GUIDES[]
+
+communities.js
+    ├── COMMUNITIES[]
+    ├── POSTS[]
+    └── DUMMY_COMMENTS[]
+
+garden.js
+    ├── MY_GARDEN[]
+    └── GARDEN_PULSE[]
 ```
 
-Mekanisme sinkronisasi:
+## Feature Logic
 
-- `localStorage` untuk persistence setelah refresh
-- State sesi tab untuk perpindahan halaman melalui `file://`
-- `BroadcastChannel` untuk sinkronisasi antar-tab jika didukung browser
+```text
+plant-lab.js
+    └── Plant Lab simulation
 
-Data cart menyimpan ID produk, nama, harga, quantity, dan gambar. Produk yang sama akan menambah quantity, bukan membuat baris duplikat.
+plant-match.js
+    └── Plant Match personality mapping
 
-### Data Lain
+journey.js
+    └── Plant Journey storytelling
+```
 
-Wishlist dan hasil pesanan terakhir juga disimpan secara lokal di browser. Data tanaman, produk, komunitas, panduan, dan kebun berasal dari file JavaScript modular.
+## Shared Logic
 
-## Responsive dan Accessibility
+```text
+app.js
+```
 
-Tampilan telah disesuaikan untuk:
+`app.js` menangani berbagai fungsi yang digunakan lintas halaman, termasuk:
 
-- Smartphone kecil mulai 320px
-- Smartphone standar dan besar
-- Tablet portrait dan landscape
-- Laptop
-- Desktop hingga layar lebar
+- Image rendering
+- Cart system
+- Checkout
+- Toast notification
+- Page transition
+- Mobile navigation
+- Scroll reveal
+- Active navigation
+- Micro-interactions
+- Plant Match
+- Custom dropdown
+- Cross-tab cart synchronization
 
-Perhatian khusus diberikan pada:
+---
 
-- Navigasi mobile berbentuk drawer
-- Touch target yang nyaman
-- Grid yang menyesuaikan viewport
-- Form checkout mobile-friendly
-- Modal dan cart yang mengikuti viewport
-- Focus state untuk keyboard
-- Reduced motion melalui `prefers-reduced-motion`
-- Kontras teks dan label gambar
-- Pencegahan horizontal overflow
+# 🎨 Design System
 
-## Asset dan Lisensi
+FloraVerse menggunakan visual system yang colorful, playful, dan approachable untuk menciptakan suasana berkebun yang ringan.
 
-- Foto tanaman dan produk menggunakan URL Unsplash sesuai Unsplash License.
-- Icon lokal tersedia di `assets/icons/`.
-- Font Outfit dan Nunito dimuat melalui Google Fonts.
-- Tailwind CSS dan jQuery dimuat melalui CDN.
+## Color Palette
 
-Untuk deployment offline penuh, unduh seluruh dependency dan foto eksternal lalu ubah URL menjadi asset lokal.
+| Warna | Hex | Penggunaan |
+|---|---|---|
+| Blue | `#6FA8FF` | Primary / information |
+| Pink | `#FF718D` | Community / interaction |
+| Yellow | `#FFD45C` | XP / highlight |
+| Orange | `#FF9B70` | Shop / notification |
+| Green | `#8BCB8A` | Plant / success |
+| Charcoal | `#252525` | Text / dark UI |
 
-## Catatan Pengembangan
+## Typography
 
-- Jalankan proyek melalui local server ketika melakukan pengembangan.
-- Pertahankan ID elemen yang dipakai JavaScript saat mengubah markup.
-- Muat file data sebelum `js/app.js` dan script halaman yang menggunakannya.
-- Gunakan `fvImg()` untuk merender foto agar fallback tetap konsisten.
-- Jangan menyimpan secret atau token API di source code.
-- Verifikasi perubahan pada mobile dan desktop sebelum deployment.
+- **Outfit** — primary interface typography
+- **Nunito** — supporting typography
 
-Spesifikasi produk dan arahan desain lengkap tersedia di [`PRODUCT_SPEC.md`](PRODUCT_SPEC.md).
+---
 
-## Status
+# 🎞️ Motion & Interaction
 
-FloraVerse merupakan prototype frontend interaktif. Data pengguna, produk, komunitas, pembayaran, dan pengiriman digunakan untuk demonstrasi pengalaman produk.
+Motion digunakan sebagai bagian dari pengalaman pengguna, bukan hanya sebagai dekorasi.
+
+Sistem animasi mencakup:
+
+- Page transitions
+- World transitions
+- Hover interactions
+- Button feedback
+- Scroll reveal
+- Like animation
+- Save animation
+- Icon animation
+- Toast animation
+- Expandable content
+- Mobile navigation transition
+- Plant Lab feedback
+- Plant Journey interactions
+
+Tujuannya adalah memberikan **feedback visual yang jelas terhadap setiap interaksi pengguna**.
+
+---
+
+# 💾 Data Persistence
+
+FloraVerse tidak menggunakan database.
+
+State tertentu disimpan langsung pada browser menggunakan `localStorage`.
+
+Data yang dapat dipersist antara lain:
+
+- Shopping cart
+- Garden state
+- Simulated orders
+- Beberapa state pengguna
+
+Untuk sinkronisasi shopping cart antar tab digunakan:
+
+```text
+localStorage
+      +
+BroadcastChannel
+```
+
+Contoh alur:
+
+```text
+Tab A
+  │
+  ├── Add Product
+  │
+  ▼
+localStorage
+  │
+  ▼
+BroadcastChannel
+  │
+  ▼
+Tab B
+  │
+  └── Cart diperbarui
+```
+
+---
+
+# 🖼️ Assets & Sources
+
+Asset eksternal yang digunakan oleh FloraVerse telah diunduh dan disimpan secara lokal agar website tidak bergantung pada URL eksternal ketika dijalankan.
+
+Struktur asset:
+
+```text
+asset/
+├── main.png
+│
+├── banner/
+│   ├── community.mp4
+│   ├── garden.mp4
+│   ├── learn.mp4
+│   ├── plant.mp4
+│   └── shop.mp4
+│
+└── img/
+    ├── plants/
+    ├── produk/
+    ├── postingan/
+    ├── panduan/
+    └── icons/
+```
+
+Sumber gambar, ikon, dan media dicatat dalam:
+
+```text
+docs/sources/
+```
+
+Dokumentasi sumber digunakan untuk menjaga keterlacakan asset yang digunakan dalam project.
+
+---
+
+# 🚀 Menjalankan FloraVerse
+
+FloraVerse tidak membutuhkan proses build.
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/ZraVanilla/Floraverse.git
+cd Floraverse
+```
+
+## 2. Jalankan Local Server
+
+Contoh menggunakan Python:
+
+```bash
+python -m http.server 8765
+```
+
+Kemudian buka:
+
+```text
+http://localhost:8765
+```
+
+> Menjalankan menggunakan local server direkomendasikan agar asset, video, dan JavaScript dapat bekerja secara konsisten.
+
+---
+
+# 🌐 Browser Support
+
+FloraVerse dirancang untuk browser modern yang mendukung:
+
+- ES6 JavaScript
+- CSS Grid
+- CSS Flexbox
+- CSS Custom Properties
+- Intersection Observer
+- localStorage
+- BroadcastChannel
+- HTML5 Video
+
+Browser modern seperti **Google Chrome, Microsoft Edge, Mozilla Firefox, dan Safari** didukung.
+
+---
+
+# 📊 Project Data
+
+FloraVerse menggunakan data simulasi untuk membangun pengalaman ekosistem yang lengkap.
+
+| Data | Jumlah |
+|---|---:|
+| 🌱 Tanaman | 41 |
+| 📚 Panduan | 18 |
+| 💬 Komunitas | 12 |
+| 🛒 Produk | 28 |
+| 🌳 Tanaman Kebunku | 6 |
+| 🏆 Achievement | 8 |
+| 🧭 Plant Journey | 6 fase |
+
+---
+
+# 🔄 Alur Ekosistem
+
+FloraVerse dirancang agar setiap fitur dapat mengarahkan pengguna ke fitur lainnya.
+
+```text
+                    ┌───────────────┐
+                    │   FloraVerse  │
+                    │     Home      │
+                    └───────┬───────┘
+                            │
+          ┌─────────────────┼─────────────────┐
+          │                 │                 │
+          ▼                 ▼                 ▼
+      🌱 Tanaman         📚 Belajar       💬 Komunitas
+          │                 │                 │
+          ▼                 ▼                 │
+      🧪 Plant Lab      Panduan              │
+          │                 │                 │
+          └────────────┬────┘                 │
+                       ▼                      │
+                  🌳 Kebunku ◄───────────────┘
+                       │
+                       ▼
+                  🛒 FloraShop
+                       │
+                       ▼
+                  👤 Profile
+```
+
+Contoh perjalanan pengguna:
+
+```text
+Beranda
+   ↓
+Temukan tanaman
+   ↓
+Plant Match
+   ↓
+Pelajari cara merawat
+   ↓
+Coba Plant Lab
+   ↓
+Tambahkan ke Kebunku
+   ↓
+Kerjakan Plant Journey
+   ↓
+Lengkapi kebutuhan di FloraShop
+   ↓
+Bagikan progress ke Community
+   ↓
+Lihat perkembangan di Profile
+```
+
+---
+
+# 👤 Pengguna Simulasi
+
+FloraVerse menggunakan tiga pengguna fiksi sebagai persona dalam data simulasi.
+
+| Pengguna | Level | XP | Spesialisasi |
+|---|---:|---:|---|
+| **Izra** | 8 | 340 | Urban Gardener |
+| **Fairuz** | 6 | 280 | Hydro Enthusiast |
+| **Tafayad** | 7 | 310 | Compost Hero |
+
+Data tersebut digunakan pada postingan komunitas, komentar, ulasan produk, dan berbagai aktivitas simulasi.
+
+---
+
+# ⚠️ Project Scope
+
+FloraVerse merupakan **prototype front-end interaktif**.
+
+Beberapa fitur masih bersifat simulasi:
+
+- Tidak ada backend
+- Tidak ada database
+- Tidak ada autentikasi nyata
+- Checkout tidak melakukan pembayaran
+- Data komunitas tidak tersimpan ke server
+- XP belum terintegrasi sebagai sistem dinamis penuh
+- Interaksi komunitas masih bersifat lokal
+- Order hanya merupakan simulasi
+
+Tujuan utama project adalah membangun **pengalaman ekosistem berkebun digital yang interaktif dan terintegrasi**.
+
+---
+
+# 📚 Dokumentasi
+
+Dokumentasi tambahan tersedia di:
+
+```text
+docs/
+```
+
+Termasuk dokumentasi sumber asset yang digunakan pada website:
+
+```text
+docs/sources/
+```
+
+---
+
+# 👥 Team
+
+**FloraVerse — 2026**
+
+- Izra
+- Fairuz
+- Tafayad
+
+---
+
+<div align="center">
+
+### 🌱 FloraVerse
+
+**Tanam lebih yakin. Tumbuh lebih terarah.**
+
+*Satu Dunia, Berjuta Cara untuk Tumbuh.*
+
+© 2026 FloraVerse
+
+</div>
