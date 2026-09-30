@@ -16,6 +16,7 @@
   Storytelling illustration: Custom FloraVerse - Open License
 -->
   <link rel="stylesheet" href="css/editorial.css?v=13">
+  <link rel="stylesheet" href="css/motion.css?v=2">
 </head>
 <body class="bg-[#FCFCFC] garden-page">
 <nav class="navbar">
@@ -29,7 +30,7 @@
 </nav>
 
 <header class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-  <div class="ed-hero relative overflow-hidden">
+  <div class="ed-hero reveal relative overflow-hidden">
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
       <source src="asset/garden.mp4" type="video/mp4">
     </video>
@@ -206,7 +207,7 @@
 <script src="js/garden.js"></script>
 <script src="js/journey.js"></script>
 <script src="js/plant-lab.js"></script>
-<script src="js/app.js?v=4"></script>
+<script src="js/app.js?v=7"></script>
 <script>
 let selectedGardenId = MY_GARDEN[0].id;
 let myPlantsOpen = false;
@@ -404,5 +405,6 @@ $(function(){
   $('#plantLabModal').on('click', function(e){ if(e.target===this) $(this).removeClass('open'); });
 });
 </script>
+<script src="js/motion.js?v=2"></script>
 </body>
 </html>

@@ -15,13 +15,29 @@ window.fvSyncSelect = function(select){
   if(!wrap) return;
   const label = wrap.querySelector('.fv-select-label');
   const opt = select.options[select.selectedIndex];
-  if(label && opt) label.textContent = opt.textContent;
+  if(!label || !opt) return;
+  const text = opt.textContent;
+  if(label.textContent === text) return;
+  const first = !label.textContent;
+  label.textContent = text;
+  if(first) return;
+  label.classList.remove('fv-swap');
+  void label.offsetWidth;
+  label.classList.add('fv-swap');
 };
 window.closeAllFvSelects = function(){
-  document.querySelectorAll('.fv-select.open').forEach(w => w.classList.remove('open'));
+  document.querySelectorAll('.fv-select.open').forEach(function(w){
+    const p = w._fvPanel;
+    const btn = w.querySelector('.fv-select-btn');
+    /* Escape / click-outside leaves focus inside a panel that is about to be
+       hidden - hand it back to the trigger instead of dropping it on <body>. */
+    if(p && btn && p.contains(document.activeElement)) btn.focus({preventScroll:true});
+    w.classList.remove('open');
+  });
   document.querySelectorAll('.fv-select-panel.open').forEach(p => p.classList.remove('open'));
   document.querySelectorAll('.fv-select-btn[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded','false'));
 };
+const fvReduced = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 // Keep dropdown labels in sync when page scripts set values via .val().
 if(typeof window.jQuery === 'function'){
   (function(){
@@ -65,9 +81,26 @@ function fvEnhanceSelects(){
     panel.className = 'fv-select-panel';
     panel.setAttribute('role','listbox');
     document.body.appendChild(panel);
+    wrap._fvPanel = panel;
+
+    /* One highlight block travels between options instead of every option
+       animating its own background. Rebuilt with the options on each open. */
+    let hl = null, labelTimer = 0, changeTimer = 0;
+    function moveHl(opt, instant){
+      if(!hl || !opt) return;
+      if(instant) hl.style.transition = 'none';
+      hl.style.transform = 'translateY(' + opt.offsetTop + 'px)';
+      hl.style.height = opt.offsetHeight + 'px';
+      hl.style.opacity = '1';
+      if(instant){ void hl.offsetWidth; hl.style.transition = ''; }
+    }
 
     function renderOptions(){
       panel.innerHTML = '';
+      hl = document.createElement('span');
+      hl.className = 'fv-opt-hl';
+      hl.setAttribute('aria-hidden','true');
+      panel.appendChild(hl);
       Array.prototype.forEach.call(select.options, function(opt, i){
         const o = document.createElement('button');
         o.type = 'button';
@@ -75,16 +108,35 @@ function fvEnhanceSelects(){
         o.setAttribute('role','option');
         o.setAttribute('aria-selected', i === select.selectedIndex ? 'true' : 'false');
         o.innerHTML = `<span class="fv-opt-text">${opt.textContent}</span><span class="fv-opt-check">✓</span>`;
+        o.addEventListener('pointerenter', function(){ moveHl(o); });
+        o.addEventListener('focus', function(){ moveHl(o); });
         o.addEventListener('click', function(){
+          Array.prototype.forEach.call(panel.querySelectorAll('.fv-select-option'), function(x){
+            const on = x === o;
+            x.classList.toggle('selected', on);
+            x.setAttribute('aria-selected', on ? 'true' : 'false');
+          });
           select.selectedIndex = i;
-          select.dispatchEvent(new Event('change', {bubbles:true}));
-          window.fvSyncSelect(select);
+          /* Three beats, not one frame: the option owns the click and the panel
+             leaves; the button reports the choice; then the list reacts. */
           window.closeAllFvSelects();
           btn.focus({preventScroll:true});
+          clearTimeout(labelTimer);
+          labelTimer = setTimeout(function(){ window.fvSyncSelect(select); }, fvReduced() ? 0 : 90);
+          clearTimeout(changeTimer);
+          changeTimer = setTimeout(function(){
+            changeTimer = 0;
+            select.dispatchEvent(new Event('change', {bubbles:true}));
+          }, fvReduced() ? 0 : 170);
         });
         panel.appendChild(o);
       });
     }
+    /* Leaving the list parks the highlight back on the chosen option, so it
+       never sits on a stale hover when the panel is left open. */
+    panel.addEventListener('pointerleave', function(){
+      moveHl(panel.querySelector('.fv-select-option.selected'));
+    });
     function openPanel(){
       if(wrap.classList.contains('open')){ window.closeAllFvSelects(); return; }
       window.closeAllFvSelects();
@@ -96,14 +148,17 @@ function fvEnhanceSelects(){
       panel.style.width = width + 'px';
       panel.style.left = Math.max(8, Math.min(r.left, vw - width - 8)) + 'px';
       panel.style.top = (r.bottom + 6) + 'px';
+      panel.style.transformOrigin = 'top center';
       wrap.classList.add('open');
       panel.classList.add('open');
       btn.setAttribute('aria-expanded','true');
       const h = panel.offsetHeight;
       if(window.innerHeight - r.bottom < h + 10 && r.top > h + 10){
         panel.style.top = (r.top - h - 6) + 'px';
+        panel.style.transformOrigin = 'bottom center';
       }
-      const firstSel = panel.querySelector('.fv-select-option.selected') || panel.firstElementChild;
+      const firstSel = panel.querySelector('.fv-select-option.selected') || panel.querySelector('.fv-select-option');
+      moveHl(firstSel, true);
       if(firstSel) firstSel.focus({preventScroll:true});
     }
     btn.addEventListener('click', function(e){ e.stopPropagation(); openPanel(); });
@@ -136,6 +191,7 @@ $(function(){
     if(destination.origin!==window.location.origin || destination.pathname===window.location.pathname && destination.search===window.location.search) return;
     event.preventDefault();
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ window.location.href=destination.href; return; }
+    if(window.FV_Motion && window.FV_Motion.navigate(destination.href)) return;
     document.body.classList.add('is-leaving');
     window.setTimeout(()=>{ window.location.href=destination.href; }, 190);
   });
@@ -269,7 +325,10 @@ $(function(){
   window.setWish = (w)=> localStorage.setItem(WISH_KEY, JSON.stringify(w));
   window.updateCartBadge = function(){
     const c=getCart(); const n=c.reduce((a,b)=>a+b.qty,0);
+    const badge=$('.cart-badge')[0];
+    const prev=parseInt(badge?.textContent||'0',10);
     $('.cart-badge').text(n).toggle(n>0);
+    if(badge && n>prev){ badge.classList.remove('is-bump'); void badge.offsetWidth; badge.classList.add('is-bump'); }
   }
   updateCartBadge();
   if(cartChannel) cartChannel.onmessage=function(event){
