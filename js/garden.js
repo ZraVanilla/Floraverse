@@ -95,9 +95,9 @@ const MY_GARDEN = [
 ];
 
 const GARDEN_PULSE = [
-  {plant:"Cabai Rawit", plantId:"cabai-rawit", status:"Perlu disiram", icon:"💧", color:"#6FA8FF", action:"Siram sekarang"},
-  {plant:"Tomat Cherry", plantId:"tomat", status:"Waktunya pemupukan", icon:"🧪", color:"#FF9B70", action:"Beri pupuk"},
-  {plant:"Kemangi", plantId:"kemangi", status:"Sehat", icon:"🟢", color:"#8BCB8A", action:"Lihat"},
+  {plant:"Cabai Rawit", plantId:"cabai-rawit", status:"Perlu disiram", icon:"droplet", color:"#6FA8FF", action:"Siram sekarang"},
+  {plant:"Tomat Cherry", plantId:"tomat", status:"Waktunya pemupukan", icon:"flask-conical", color:"#FF9B70", action:"Beri pupuk"},
+  {plant:"Kemangi", plantId:"kemangi", status:"Sehat", icon:"circle-check", color:"#8BCB8A", action:"Lihat"},
 ];
 
 function persistGarden(){

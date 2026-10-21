@@ -8,7 +8,6 @@
 
 .pv-page{
   --pv-blue:#4F8FF7;
-  --pv-blue-dark:#3B7BE0;
   --pv-blue-deep:#2E6FD8;
   --pv-blue-light:#EAF3FF;
   --pv-blue-faint:#F5F9FF;
@@ -18,7 +17,6 @@
   --pv-line:#E5EAF2;
   --pv-line-soft:#EEF2F8;
   --pv-bg:#F8FAFD;
-  --pv-white:#FFFFFF;
   --pv-yellow:#FFD76A;
   --pv-yellow-ink:#8A6405;
   --pv-pink:#FF7B9C;
@@ -189,7 +187,6 @@
 }
 .pv-bar-fill--green{background:linear-gradient(90deg,#5CC489,#3E9C68)}
 .pv-bar-fill--pink{background:linear-gradient(90deg,#FF8FAC,#F8688D)}
-.pv-bar-track-white{background:#EDF3FE}
 
 .pv-hero-stats{
   display:grid;
@@ -366,7 +363,6 @@
 .pv-section-icon svg{width:17px; height:17px; stroke-width:2.1}
 .pv-section-icon--green{background:#E9F7EF; color:var(--pv-green)}
 .pv-section-icon--yellow{background:#FFF6DE; color:#DFA80F}
-.pv-section-icon--pink{background:#FFEDF2; color:var(--pv-pink)}
 .pv-card-title{
   font-size:16.5px;
   font-weight:800;
@@ -777,23 +773,6 @@
 .pv-challenge-btn:hover{background:#F8607F; transform:translateY(-1px)}
 .pv-challenge-btn svg{width:14px; height:14px; stroke-width:2.5}
 
-/* ============ FOOTER ============ */
-.pv-page .pv-footer{
-  border-top:1px solid var(--pv-line);
-  background:#fff;
-  padding-block:22px;
-}
-.pv-footer-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
-  font-size:12.5px;
-  color:var(--pv-muted);
-  font-weight:500;
-}
-.pv-footer-inner b{color:var(--pv-ink); font-weight:700}
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:1279px){
@@ -859,7 +838,14 @@
   .pv-tab{white-space:nowrap}
   .pv-ach-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .pv-challenge{padding:16px}
-  .pv-footer-inner{justify-content:center; text-align:center}
+  .pv-page .pv-link-btn{min-height:44px}
+  .pv-page .pv-heart{width:40px; height:40px; min-height:0; top:6px; right:6px}
+  .pv-page .pv-heart svg{width:16px; height:16px}
+  .pv-comm-name,.pv-saved-name{
+    white-space:normal; overflow:visible; text-overflow:clip;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+    overflow-wrap:anywhere;
+  }
 }
 
 @media (max-width:390px){

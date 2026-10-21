@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,9 +9,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="css/style.css?v=9">
-<link rel="stylesheet" href="css/responsive.css?v=5">
-<link rel="stylesheet" href="css/profile.css?v=3">
+<link rel="stylesheet" href="css/style.css?v=11">
+<link rel="stylesheet" href="css/responsive.css?v=8">
+<link rel="stylesheet" href="css/profile.css?v=4">
+<link rel="stylesheet" href="css/motion.css?v=2">
 <!--
   Image sources: Wikimedia Commons (plant photography) + FloraVerse PLANT_IMAGES (community thumbs).
   Icons: Lucide (unpkg CDN).
@@ -21,28 +22,19 @@
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between gap-4">
-    <a href="index.html" class="wordmark text-[22px] cursor-pointer">Flora<span>Verse</span></a>
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between">
+    <a href="index.html" class="wordmark text-[22px]">Flora<span>Verse</span></a>
     <div class="hidden lg:flex items-center gap-1">
-      <a href="index.html" class="nav-link cursor-pointer">Beranda</a>
-      <a href="plants.html" class="nav-link cursor-pointer">Tanaman</a>
-      <a href="learn.html" class="nav-link cursor-pointer">Belajar</a>
-      <a href="community.html" class="nav-link cursor-pointer">Komunitas</a>
-      <a href="shop.html" class="nav-link cursor-pointer">Belanja</a>
-      <a href="garden.html" class="nav-link cursor-pointer">Kebunku</a>
-      <a href="profile.html" class="nav-link active cursor-pointer">Profil</a>
+      <a href="index.html" class="nav-link">Beranda</a><a href="plants.html" class="nav-link">Tanaman</a><a href="learn.html" class="nav-link">Belajar</a><a href="community.html" class="nav-link">Komunitas</a><a href="shop.html" class="nav-link">Belanja</a><a href="garden.html" class="nav-link">Kebunku</a><a href="profile.html" class="nav-link">Profil</a>
     </div>
-    <div class="flex items-center gap-2">
-      <button id="cartBtn" type="button" aria-label="Buka keranjang" class="relative w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center cursor-pointer">🛒<span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button>
-      <button id="menuBtn" type="button" aria-label="Buka menu" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center cursor-pointer">☰</button>
-    </div>
+    <div class="flex items-center gap-2"><button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border flex items-center justify-center"><i data-lucide="shopping-cart"></i><span class="cart-badge hidden absolute -top-1 -right-1 bg-[#FF718D] text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span></button><a href="profile.html" class="hidden sm:flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border bg-white"><span class="w-8 h-8 rounded-full bg-[#6FA8FF] text-white flex items-center justify-center font-black text-xs">IZ</span><span class="text-sm font-bold">Izra</span><span class="text-xs bg-[#FFD45C] px-1.5 py-0.5 rounded-full font-black">Lv 8</span></a><button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center"><i data-lucide="menu"></i></button></div>
   </div>
 </nav>
 
 <main class="pv-main pv-shell">
 
   <!-- PROFILE HERO -->
-  <section class="pv-hero" aria-label="Ringkasan profil Izra">
+  <section class="pv-hero reveal" aria-label="Ringkasan profil Izra">
     <svg class="pv-hero-pattern" viewBox="0 0 1200 340" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
       <defs>
         <g id="pvLeaf">
@@ -104,7 +96,7 @@
   </section>
 
   <!-- QUICK ACTIONS -->
-  <section class="pv-quick" aria-label="Akses cepat">
+  <section class="pv-quick reveal" aria-label="Akses cepat">
     <div class="pv-quick-card" data-expandable>
       <button class="pv-quick-head" type="button" aria-expanded="false">
         <span class="pv-quick-icon"><i data-lucide="sprout"></i></span>
@@ -159,7 +151,7 @@
     <div class="pv-col">
 
       <!-- KEBUN KU -->
-      <section class="pv-card" aria-labelledby="kebunTitle">
+      <section class="pv-card reveal" aria-labelledby="kebunTitle">
         <header class="pv-card-head">
           <div class="pv-card-head-left">
             <span class="pv-section-icon pv-section-icon--green"><i data-lucide="leaf"></i></span>
@@ -173,7 +165,7 @@
 
         <div class="pv-plants">
           <article class="pv-plant">
-            <div class="pv-plant-media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Calathea_ornata_cc3.jpg?width=640" alt="Calathea" loading="lazy"></div>
+            <div class="pv-plant-media"><img src="asset/img/plants/calathea-ornata-cc3-f95fc9.jpg" alt="Calathea" loading="lazy"></div>
             <div class="pv-plant-body">
               <h3 class="pv-plant-name">Calathea</h3>
               <span class="pv-rarity pv-rarity--umum">Umum</span>
@@ -181,7 +173,7 @@
             </div>
           </article>
           <article class="pv-plant">
-            <div class="pv-plant-media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/New_Monstera_Deliciosa_Leaf.jpg?width=640" alt="Monstera Deliciosa" loading="lazy"></div>
+            <div class="pv-plant-media"><img src="asset/img/plants/new-monstera-deliciosa-leaf-a9992f.jpg" alt="Monstera Deliciosa" loading="lazy"></div>
             <div class="pv-plant-body">
               <h3 class="pv-plant-name">Monstera Deliciosa</h3>
               <span class="pv-rarity pv-rarity--langka">Langka</span>
@@ -189,7 +181,7 @@
             </div>
           </article>
           <article class="pv-plant">
-            <div class="pv-plant-media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sansevieria_in_pot.jpg?width=640" alt="Snake Plant" loading="lazy"></div>
+            <div class="pv-plant-media"><img src="asset/img/plants/sansevieria-in-pot-640fca.jpg" alt="Snake Plant" loading="lazy"></div>
             <div class="pv-plant-body">
               <h3 class="pv-plant-name">Snake Plant</h3>
               <span class="pv-rarity pv-rarity--umum">Umum</span>
@@ -197,7 +189,7 @@
             </div>
           </article>
           <article class="pv-plant">
-            <div class="pv-plant-media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Philodendron_hederaceum_kz01.jpg?width=640" alt="Philodendron" loading="lazy"></div>
+            <div class="pv-plant-media"><img src="asset/img/plants/philodendron-hederaceum-kz01-90704c.jpg" alt="Philodendron" loading="lazy"></div>
             <div class="pv-plant-body">
               <h3 class="pv-plant-name">Philodendron</h3>
               <span class="pv-rarity pv-rarity--langka">Langka</span>
@@ -205,7 +197,7 @@
             </div>
           </article>
           <article class="pv-plant">
-            <div class="pv-plant-media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Peace_lily_-_1.jpg?width=640" alt="Peace Lily" loading="lazy"></div>
+            <div class="pv-plant-media"><img src="asset/img/plants/peace-lily-1-d1f8e5.jpg" alt="Peace Lily" loading="lazy"></div>
             <div class="pv-plant-body">
               <h3 class="pv-plant-name">Peace Lily</h3>
               <span class="pv-rarity pv-rarity--epik">Epik</span>
@@ -213,7 +205,7 @@
             </div>
           </article>
           <article class="pv-plant">
-            <div class="pv-plant-media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Aglaonema_costatum_001.JPG?width=640" alt="Aglaonema" loading="lazy"></div>
+            <div class="pv-plant-media"><img src="asset/img/plants/aglaonema-costatum-001-c18256.jpg" alt="Aglaonema" loading="lazy"></div>
             <div class="pv-plant-body">
               <h3 class="pv-plant-name">Aglaonema</h3>
               <span class="pv-rarity pv-rarity--umum">Umum</span>
@@ -224,7 +216,7 @@
       </section>
 
       <!-- KOMUNITAS DIIKUTI -->
-      <section class="pv-card" aria-labelledby="komTitle">
+      <section class="pv-card reveal" aria-labelledby="komTitle">
         <header class="pv-card-head">
           <div class="pv-card-head-left">
             <span class="pv-section-icon"><i data-lucide="users"></i></span>
@@ -238,7 +230,7 @@
 
         <div class="pv-communities">
           <div class="pv-comm">
-            <span class="pv-comm-thumb"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyKx6T_Ltu49caRJKsluFOwS3Rcja0jEyBjGIVyv99o28tIWkyrT-s3is&s=10" alt="" loading="lazy"></span>
+            <span class="pv-comm-thumb"><img src="asset/img/postingan/images-0790a6.jpg" alt="" loading="lazy"></span>
             <div class="pv-comm-info">
               <p class="pv-comm-name">Pecinta Kaktus</p>
               <p class="pv-comm-meta">12,4k anggota · 342 diskusi</p>
@@ -246,7 +238,7 @@
             <button class="pv-soft-btn" type="button" data-join>Gabung</button>
           </div>
           <div class="pv-comm">
-            <span class="pv-comm-thumb"><img src="https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?auto=format&fit=crop&w=640&q=80" alt="" loading="lazy"></span>
+            <span class="pv-comm-thumb"><img src="asset/img/postingan/photo-1567225557594-88d73e55f2cb-154b95.avif" alt="" loading="lazy"></span>
             <div class="pv-comm-info">
               <p class="pv-comm-name">Tanaman Hias Indoor</p>
               <p class="pv-comm-meta">24,8k anggota · 621 diskusi</p>
@@ -254,7 +246,7 @@
             <button class="pv-soft-btn" type="button" data-join>Gabung</button>
           </div>
           <div class="pv-comm">
-            <span class="pv-comm-thumb"><img src="https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?auto=format&fit=crop&w=640&q=80" alt="" loading="lazy"></span>
+            <span class="pv-comm-thumb"><img src="asset/img/postingan/photo-1622206151226-18ca2c9ab4a1-409e8e.avif" alt="" loading="lazy"></span>
             <div class="pv-comm-info">
               <p class="pv-comm-name">Tips Berkebun Organik</p>
               <p class="pv-comm-meta">8,7k anggota · 198 diskusi</p>
@@ -262,7 +254,7 @@
             <button class="pv-soft-btn" type="button" data-join>Gabung</button>
           </div>
           <div class="pv-comm">
-            <span class="pv-comm-thumb"><img src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=640&q=80" alt="" loading="lazy"></span>
+            <span class="pv-comm-thumb"><img src="asset/img/postingan/photo-1499002238440-d264edd596ec-7f376d.avif" alt="" loading="lazy"></span>
             <div class="pv-comm-info">
               <p class="pv-comm-name">Taman Minimalis</p>
               <p class="pv-comm-meta">15,3k anggota · 276 diskusi</p>
@@ -273,7 +265,7 @@
       </section>
 
       <!-- TANAMAN TERSIMPAN -->
-      <section class="pv-card" aria-labelledby="savedTitle">
+      <section class="pv-card reveal" aria-labelledby="savedTitle">
         <header class="pv-card-head">
           <div class="pv-card-head-left">
             <span class="pv-section-icon"><i data-lucide="bookmark"></i></span>
@@ -296,7 +288,7 @@
           <article class="pv-saved" data-type="tanaman">
             <button class="pv-heart is-saved" type="button" aria-label="Hapus dari tersimpan"><i data-lucide="heart"></i></button>
             <div class="pv-saved-top">
-              <span class="pv-saved-thumb"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Alocasia_x_amazonica_%27Polly%27.jpg?width=640" alt="Alocasia Polly" loading="lazy"></span>
+              <span class="pv-saved-thumb"><img src="asset/img/plants/alocasia-x-amazonica-27polly-27-e09a95.jpg" alt="Alocasia Polly" loading="lazy"></span>
               <div>
                 <p class="pv-saved-name">Alocasia Polly</p>
                 <span class="pv-rarity pv-rarity--langka">Langka</span>
@@ -307,7 +299,7 @@
           <article class="pv-saved" data-type="tanaman">
             <button class="pv-heart is-saved" type="button" aria-label="Hapus dari tersimpan"><i data-lucide="heart"></i></button>
             <div class="pv-saved-top">
-              <span class="pv-saved-thumb"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Crassula_ovata_2012.jpg?width=640" alt="Jade Plant" loading="lazy"></span>
+              <span class="pv-saved-thumb"><img src="asset/img/plants/crassula-ovata-2012-cb4a3e.jpg" alt="Jade Plant" loading="lazy"></span>
               <div>
                 <p class="pv-saved-name">Jade Plant</p>
                 <span class="pv-rarity pv-rarity--umum">Umum</span>
@@ -318,7 +310,7 @@
           <article class="pv-saved" data-type="tanaman">
             <button class="pv-heart is-saved" type="button" aria-label="Hapus dari tersimpan"><i data-lucide="heart"></i></button>
             <div class="pv-saved-top">
-              <span class="pv-saved-thumb"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Strelitzia_reginae_MHNT.BOT.2009.13.52.jpg?width=640" alt="Bird of Paradise" loading="lazy"></span>
+              <span class="pv-saved-thumb"><img src="asset/img/plants/strelitzia-reginae-mhnt-bot-2009-13-52-318224.jpg" alt="Bird of Paradise" loading="lazy"></span>
               <div>
                 <p class="pv-saved-name">Bird of Paradise</p>
                 <span class="pv-rarity pv-rarity--epik">Epik</span>
@@ -329,7 +321,7 @@
           <article class="pv-saved" data-type="tanaman">
             <button class="pv-heart is-saved" type="button" aria-label="Hapus dari tersimpan"><i data-lucide="heart"></i></button>
             <div class="pv-saved-top">
-              <span class="pv-saved-thumb"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ceropegia_woodii-1-bsi-yercaud-salem-India.jpg?width=640" alt="String of Hearts" loading="lazy"></span>
+              <span class="pv-saved-thumb"><img src="asset/img/plants/ceropegia-woodii-1-bsi-yercaud-salem-india-c4ed49.jpg" alt="String of Hearts" loading="lazy"></span>
               <div>
                 <p class="pv-saved-name">String of Hearts</p>
                 <span class="pv-rarity pv-rarity--langka">Langka</span>
@@ -362,7 +354,7 @@
           <article class="pv-saved" data-type="komunitas">
             <button class="pv-heart is-saved" type="button" aria-label="Hapus dari tersimpan"><i data-lucide="heart"></i></button>
             <div class="pv-saved-top">
-              <span class="pv-saved-thumb"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyKx6T_Ltu49caRJKsluFOwS3Rcja0jEyBjGIVyv99o28tIWkyrT-s3is&s=10" alt="" loading="lazy"></span>
+              <span class="pv-saved-thumb"><img src="asset/img/postingan/images-0790a6.jpg" alt="" loading="lazy"></span>
               <div>
                 <p class="pv-saved-name">Pecinta Kaktus</p>
                 <span class="pv-rarity pv-rarity--type">Komunitas</span>
@@ -373,7 +365,7 @@
           <article class="pv-saved" data-type="komunitas">
             <button class="pv-heart is-saved" type="button" aria-label="Hapus dari tersimpan"><i data-lucide="heart"></i></button>
             <div class="pv-saved-top">
-              <span class="pv-saved-thumb"><img src="https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?auto=format&fit=crop&w=640&q=80" alt="" loading="lazy"></span>
+              <span class="pv-saved-thumb"><img src="asset/img/postingan/photo-1622206151226-18ca2c9ab4a1-409e8e.avif" alt="" loading="lazy"></span>
               <div>
                 <p class="pv-saved-name">Tips Berkebun Organik</p>
                 <span class="pv-rarity pv-rarity--type">Komunitas</span>
@@ -388,7 +380,7 @@
     <div class="pv-col">
 
       <!-- ACHIEVEMENTS -->
-      <section class="pv-card" aria-labelledby="achTitle">
+      <section class="pv-card reveal" aria-labelledby="achTitle">
         <header class="pv-card-head">
           <div class="pv-card-head-left">
             <span class="pv-section-icon pv-section-icon--yellow"><i data-lucide="trophy"></i></span>
@@ -444,7 +436,7 @@
       </section>
 
       <!-- LEVEL PROGRESSION -->
-      <section class="pv-level-card" aria-label="Level progression">
+      <section class="pv-level-card reveal" aria-label="Level progression">
         <span class="pv-level-emblem"><i data-lucide="leaf"></i></span>
         <div class="pv-level-card-body">
           <p class="pv-level-card-title">Level 8 - Nafas Hijau</p>
@@ -457,7 +449,7 @@
       </section>
 
       <!-- STATISTIK -->
-      <section class="pv-card" aria-labelledby="statTitle">
+      <section class="pv-card reveal" aria-labelledby="statTitle">
         <header class="pv-card-head">
           <div class="pv-card-head-left">
             <span class="pv-section-icon"><i data-lucide="bar-chart-3"></i></span>
@@ -479,7 +471,7 @@
       </section>
 
       <!-- TANTANGAN MINGGUAN -->
-      <section class="pv-challenge" aria-label="Tantangan mingguan">
+      <section class="pv-challenge reveal" aria-label="Tantangan mingguan">
         <div class="pv-challenge-top">
           <span class="pv-challenge-icon"><i data-lucide="list-checks"></i></span>
           <div>
@@ -501,11 +493,37 @@
   </div>
 </main>
 
-<footer class="pv-footer">
-  <div class="pv-shell pv-footer-inner">
-    <span><b>FloraVerse</b> - Satu Dunia, Berjuta Cara untuk Tumbuh.</span>
-    <span>Project By : Izra, Fairuz, Tafayad • © 2026</span>
+<!-- GROUND FOOTER: dunia FloraVerse berakhir di kebun -->
+<footer class="fv-ground reveal">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="fv-row">
+      <div class="fv-brand">
+        <a href="index.html" class="fv-mark">Flora<span>Verse</span></a>
+        <p class="fv-tag">Satu dunia, berjuta cara untuk tumbuh.</p>
+      </div>
+
+      <nav class="fv-nav" aria-label="Navigasi footer">
+        <a href="plants.html">Tanaman</a>
+        <a href="learn.html">Belajar</a>
+        <a href="community.html">Komunitas</a>
+        <a href="shop.html">Shop</a>
+        <a href="garden.html">Kebunku</a>
+      </nav>
+
+      <p class="fv-status"><span class="fv-dot" aria-hidden="true"></span><b>FloraVerse is growing</b><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">22 tanaman ditemukan</span><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">18 panduan</span><span class="fv-sep" aria-hidden="true">&middot;</span><span class="fv-stat">12 komunitas</span></p>
+
+      <div class="fv-social">
+        <a href="https://github.com/ZraVanilla/Floraverse" target="_blank" rel="noopener"><i data-lucide="github"></i>GitHub</a>
+        <a href="community.html"><i data-lucide="mail"></i>Kontak</a>
+      </div>
+    </div>
+
+    <div class="fv-base">
+      <span>&copy; 2026 FloraVerse</span>
+      <span>Project by Izra, Fairuz, Tafayad</span>
+    </div>
   </div>
+  <div class="fv-edge" aria-hidden="true"></div>
 </footer>
 
 <!-- CART DRAWER -->
@@ -529,16 +547,9 @@
 <script src="js/plants.js"></script>
 <script src="js/utils.js"></script>
 <script src="js/plant-images.js"></script>
-<script src="js/communities.js"></script>
-<script src="js/guides.js"></script>
-<script src="js/garden.js"></script>
 <script src="js/products.js"></script>
 <script src="js/gambar-produk.js"></script>
-<script src="js/users.js"></script>
-<script src="js/journey.js"></script>
-<script src="js/plant-lab.js"></script>
-<script src="js/plant-match.js"></script>
-<script src="js/app.js?v=5"></script>
+<script src="js/app.js?v=7"></script>
 <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
 <script>
 (function(){
@@ -617,6 +628,7 @@
   renderIcons();
 })();
 </script>
+<script src="js/motion.js?v=2"></script>
 </body>
 </html>
 

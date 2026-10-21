@@ -1,0 +1,247 @@
+/*
+  FloraVerse - motion.css
+  Single motion layer: tokens, page transitions, scroll reveal, sliding
+  indicators, micro feedback. Linked LAST so it wins ties against
+  style / animations / editorial / home / profile.
+  Palette, layout and stack are unchanged.
+*/
+
+/* ===== TOKENS ===== */
+:root{
+  --motion-fast:150ms;      /* hover, press, focus */
+  --motion-normal:280ms;    /* panels, cards, indicators */
+  --motion-slow:480ms;      /* page + reveal */
+  --ease-playful:cubic-bezier(.2,.8,.2,1);
+  --ease-smooth:cubic-bezier(.4,0,.2,1);
+}
+
+/* ===== 1. PAGE TRANSITIONS =====
+   Cross-document View Transitions carry the swap; the fallback below only
+   runs when the browser has no View Transitions (JS checks before adding
+   .is-leaving). Keyframes also live here so profile.html, which does not
+   load animations.css, gets the same page enter/leave. */
+@view-transition{navigation:auto}
+
+@keyframes pageEnter{
+  from{opacity:0; transform:translateY(8px)}
+  to{opacity:1; transform:none}
+}
+@keyframes pageLeave{
+  from{opacity:1; transform:none}
+  to{opacity:0; transform:translateY(-6px)}
+}
+body{animation:pageEnter var(--motion-normal) var(--ease-playful) both}
+body.is-leaving{animation:pageLeave var(--motion-fast) ease-in forwards !important; pointer-events:none}
+
+@keyframes fv-vt-out{ to{opacity:0; transform:scale(.985)} }
+@keyframes fv-vt-in{ from{opacity:0; transform:translateY(14px)} }
+::view-transition-old(root){animation:fv-vt-out var(--motion-normal) var(--ease-smooth) both}
+::view-transition-new(root){animation:fv-vt-in var(--motion-normal) var(--ease-playful) both}
+
+/* The navbar is the anchor: it morphs between pages while content swaps. */
+.navbar{view-transition-name:fv-nav}
+::view-transition-group(fv-nav){
+  animation-duration:var(--motion-slow);
+  animation-timing-function:var(--ease-playful);
+}
+
+/* ===== 2. SCROLL REVEAL =====
+   --rv-i is set by motion.js so siblings cascade instead of popping together. */
+.reveal:not(.in){opacity:0; transform:translateY(16px)}
+.reveal{
+  transition:
+    opacity var(--motion-slow) var(--ease-smooth) calc(var(--rv-i,0) * 70ms),
+    transform var(--motion-slow) var(--ease-playful) calc(var(--rv-i,0) * 70ms);
+}
+.reveal.in{opacity:1; transform:none}
+
+/* ===== 3. SLIDING NAV / FILTER INDICATOR =====
+   motion.js adds .fv-ind-group + a .fv-ind span per row and positions the block
+   over whichever item is active. */
+.fv-ind-group{position:relative}
+.fv-ind-group > :not(.fv-ind){position:relative; z-index:1}
+.fv-ind{
+  position:absolute; top:0; left:0; z-index:0;
+  width:0; height:0; border-radius:11px;
+  background:var(--charcoal); opacity:0; pointer-events:none;
+  transition:
+    transform var(--motion-normal) var(--ease-playful),
+    width var(--motion-normal) var(--ease-playful),
+    height var(--motion-normal) var(--ease-playful),
+    opacity var(--motion-fast) linear;
+}
+.fv-ind.is-on{opacity:1}
+.fv-ind-group[data-fv-ind="blue"] .fv-ind{
+  background:var(--pv-blue,#4F8FF7);
+  box-shadow:0 6px 14px rgba(79,143,247,.28);
+}
+/* Active pill is painted by the sliding block so the resting look is identical.
+   :has() makes this self-healing: if the block is not actually there, the pill
+   keeps its own background instead of going invisible. */
+.fv-ind-group:has(> .fv-ind.is-on) .nav-link.active,
+.fv-ind-group:has(> .fv-ind.is-on) .cat-pill.active,
+.fv-ind-group:has(> .fv-ind.is-on) .pcat.active,
+.fv-ind-group:has(> .fv-ind.is-on) .gcat.active,
+.fv-ind-group:has(> .fv-ind.is-on) .commFilter.active,
+.fv-ind-group:has(> .fv-ind.is-on) .feedTab.active,
+.fv-ind-group:has(> .fv-ind.is-on) .levelBtn.active{
+  background:transparent; border-color:var(--charcoal); color:#fff; box-shadow:none;
+}
+.fv-ind-group:has(> .fv-ind.is-on) .pv-tab.is-active{
+  background:transparent; border-color:transparent; color:#fff; box-shadow:none;
+}
+
+/* ===== 4. MICRO FEEDBACK ===== */
+/* Filter pills toggle Tailwind's `border` class on activation; pin the width so
+   the pill never changes size. */
+.cat-pill,.pcat,.gcat,.commFilter,.feedTab,.levelBtn{border-style:solid; border-width:1px}
+
+/* Press feedback for rows that have no own :active state. */
+.nav-link:active,
+.cat-pill:active,.pcat:active,.gcat:active,
+.commFilter:active,.feedTab:active,.levelBtn:active,.pv-tab:active{
+  transform:scale(.97);
+  transition-duration:var(--motion-fast);
+}
+
+/* Toolbar fields ease into focus instead of snapping. */
+.ed-toolbar input,.ed-toolbar select{
+  transition:
+    border-color var(--motion-fast) var(--ease-smooth),
+    box-shadow var(--motion-fast) var(--ease-smooth),
+    background-color var(--motion-fast) linear;
+}
+.ed-toolbar input:focus,.ed-toolbar input:focus-visible{
+  box-shadow:0 0 0 3px rgba(111,168,255,.16);
+}
+.ed-toolbar select:focus{
+  box-shadow:0 0 0 3px rgba(111,168,255,.14);
+}
+
+/* Every filter pill eases its own state; the sliding block in section 3 does
+   the travelling. Hover only exists on pills that are not the chosen one. */
+.cat-pill:not(.active):hover,.pcat:not(.active):hover,.gcat:not(.active):hover,
+.levelBtn:not(.active):hover,.commFilter:not(.active):hover,.feedTab:not(.active):hover{
+  background:#F9FAFB; border-color:#D8DEE8;
+}
+
+/* Cards: explicit properties instead of `all`, so nothing teleports. */
+.fv-card{
+  transition:
+    transform var(--motion-normal) var(--ease-playful),
+    box-shadow var(--motion-normal) var(--ease-smooth),
+    border-color var(--motion-fast) linear,
+    background-color var(--motion-fast) linear,
+    opacity var(--motion-fast) linear;
+}
+/* editorial.css flattens the feed; keep the flat look, just let the card lift. */
+#feedList .fv-card:hover{transform:translateY(-2px) !important}
+
+/* ===== 5. LIST RE-RENDER =====
+   motion.js sets --i on new children and .fv-stagger on the container.
+   backwards (not both) so the card's own :hover transform still works once
+   the enter animation is over. */
+[data-fv-list].fv-stagger > *{
+  animation:fv-item-in var(--motion-normal) var(--ease-playful) backwards;
+  animation-delay:calc(var(--i,0) * 45ms);
+}
+@keyframes fv-item-in{
+  from{opacity:0; transform:translateY(12px)}
+}
+
+/* A filter change dips the list that is on its way out (motion.js adds
+   .fv-list-out for one beat, then settles with the stagger above) so the swap
+   reads as old-leave / new-arrive instead of a hard cut. */
+[data-fv-list]{
+  transition:opacity 200ms var(--ease-playful), transform 200ms var(--ease-playful);
+}
+[data-fv-list].fv-list-out{
+  opacity:.25;
+  transform:translateY(6px);
+  transition-duration:var(--motion-fast);
+}
+
+/* ===== 6. DROPDOWN / SELECT =====
+   One engine drives every dropdown in FloraVerse (app.js fvEnhanceSelects).
+   The panel stays laid out and is hidden with visibility rather than display,
+   which is what buys it a real exit: no display swap means no reflow on open
+   and no jump on close. Everything below rides on the tokens from the top. */
+
+.fv-select-panel{
+  display:block;
+  opacity:0;
+  transform:translateY(-6px) scale(.98);
+  visibility:hidden;
+  pointer-events:none;
+  transform-origin:top center;
+  transition:
+    opacity var(--motion-fast) var(--ease-playful),
+    transform 220ms var(--ease-playful),
+    visibility 0s linear 220ms;
+}
+.fv-select-panel.open{
+  opacity:1;
+  transform:none;
+  visibility:visible;
+  pointer-events:auto;
+  transition-delay:0s,0s,0s;
+}
+
+/* Chevron turns with the panel instead of snapping. */
+.fv-select-chevron{
+  transform-origin:center;
+  transition:transform var(--motion-normal) var(--ease-playful);
+}
+
+/* Trigger: border + shadow only, so pressing never changes its size. */
+.fv-select-btn{
+  transition:
+    border-color var(--motion-fast) var(--ease-smooth),
+    box-shadow var(--motion-fast) var(--ease-smooth),
+    transform var(--motion-fast) var(--ease-playful);
+}
+.fv-select-btn:active{transform:translateY(1px)}
+.fv-select-btn:focus-visible{box-shadow:0 0 0 3px rgba(111,168,255,.16)}
+
+/* The button reports the new choice a beat after the option lands. */
+@keyframes fv-label-swap{from{opacity:0; transform:translateY(3px)}}
+.fv-select-label.fv-swap{animation:fv-label-swap var(--motion-fast) var(--ease-playful)}
+
+/* ONE block that slides between options. Options paint nothing of their own
+   on hover, so the moving block is the thing the eye follows. Selected keeps
+   its blue fill and simply sits above it. */
+.fv-opt-hl{
+  position:absolute; left:.35rem; right:.35rem; top:0;
+  height:0; border-radius:9px; background:#F3F4F6;
+  opacity:0; pointer-events:none; z-index:0;
+  transition:
+    transform 160ms var(--ease-playful),
+    height 160ms var(--ease-playful),
+    opacity var(--motion-fast) linear;
+}
+.fv-select-option{
+  position:relative; z-index:1;
+  transition:
+    background-color var(--motion-fast) linear,
+    transform var(--motion-fast) var(--ease-playful);
+}
+.fv-select-option:not(.selected):hover{background:transparent}
+.fv-select-option:active{transform:scale(.985)}
+
+/* Cart line controls: same press language as everything else. */
+#cartModalList button,#drawerList button{
+  transition:
+    transform var(--motion-fast) var(--ease-playful),
+    background-color var(--motion-fast) linear;
+}
+#cartModalList button:active,#drawerList button:active{transform:scale(.92)}
+
+/* ===== 7. CART BADGE ===== */
+@keyframes fv-bump{0%{transform:scale(1)}35%{transform:scale(1.4)}100%{transform:scale(1)}}
+.cart-badge.is-bump{animation:fv-bump .4s var(--ease-playful)}
+
+/* ===== 8. REDUCED MOTION ===== */
+@media (prefers-reduced-motion:reduce){
+  @view-transition{navigation:none}
+  *,*::before,*::after{animation-delay:0ms !important; transition-delay:0ms !important}
+}
