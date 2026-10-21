@@ -222,7 +222,7 @@
 /* ============ QUICK ACTIONS ============ */
 .pv-quick{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-columns:1fr;
   gap:16px;
 }
 .pv-quick-card{
@@ -296,7 +296,6 @@
 
 .pv-quick-content{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start}
 .pv-quick-column+.pv-quick-column{margin-left:8px; padding-left:8px; border-left:1px solid var(--pv-line)}
-.pv-quick-inner{margin-top:12px}
 
 .pv-level-row{
   display:flex;
@@ -793,7 +792,7 @@
 }
 
 @media (max-width:860px){
-  .pv-quick{grid-template-columns:minmax(0,1fr)}
+  .pv-quick{grid-template-columns:1fr}
   .pv-quick-content{grid-template-columns:minmax(0,1fr)}
   .pv-quick-column+.pv-quick-column{margin:0; padding:0; border-left:0; border-top:1px solid var(--pv-line);}
   .pv-quick-column+.pv-quick-column .pv-quick-inner{margin-top:12px}
