@@ -224,7 +224,7 @@ function renderPlants(){
       <div class="h-40 flex items-center justify-center relative overflow-hidden" style="background:${p.color}14">
         ${fvImg(p,'w-full h-full object-cover group-hover:scale-105 transition duration-300')}
         <span class="absolute top-3 left-3 pill pill-white text-[11px] font-black">${p.kategori}</span>
-        <span class="absolute top-3 right-3 pill text-xs font-black" style="background:${p.color};color:#fff">★ ${p.rating}</span>
+        <span class="absolute top-3 right-3 pill text-xs font-black" style="background:${p.color};color:#fff">★ ${Number(p.rating).toFixed(1)}</span>
         <span class="absolute bottom-3 left-3 pill text-[11px] font-semibold" style="background:rgba(255,255,255,.68);border-color:rgba(255,255,255,.85);color:#252525;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)">${p.kesulitan} • ${p.panen}</span>
         <button type="button" class="card-lab" aria-label="Eksperimen ${p.nama} di Plant Lab" onclick="event.stopPropagation(); tryInLab('${p.id}')"><i data-lucide="flask-conical"></i> Eksperimen</button>
       </div>
@@ -278,7 +278,7 @@ function openPlant(id){
             </div>
           </div>
           <div class="text-right">
-            <p class="text-sm font-black">★ ${p.rating} • ${p.buyers.toLocaleString('id-ID')} penanam</p>
+            <p class="text-sm font-black">★ ${Number(p.rating).toFixed(1)} • ${p.buyers.toLocaleString('id-ID')} penanam</p>
             <div class="flex gap-2 mt-2 justify-end">
                <button onclick="addPlantToGarden('${p.id}')" class="btn btn-primary text-sm">+ Tambah ke Kebunku</button>
               <button onclick="toast('Disimpan','bookmark')" class="btn btn-ghost text-sm"><i data-lucide="bookmark"></i> Simpan</button>
