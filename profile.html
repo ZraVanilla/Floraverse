@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="css/style.css?v=11">
 <link rel="stylesheet" href="css/responsive.css?v=8">
-<link rel="stylesheet" href="css/profile.css?v=8">
+<link rel="stylesheet" href="css/profile.css?v=4">
 <link rel="stylesheet" href="css/motion.css?v=2">
 <!--
   Image sources: Wikimedia Commons (plant photography) + FloraVerse PLANT_IMAGES (community thumbs).
@@ -99,6 +99,27 @@
   <section class="pv-quick reveal" aria-label="Akses cepat">
     <div class="pv-quick-card" data-expandable>
       <button class="pv-quick-head" type="button" aria-expanded="false">
+        <span class="pv-quick-icon"><i data-lucide="sprout"></i></span>
+        <span class="pv-quick-text">
+          <span class="pv-quick-title">Cara Dapat XP</span>
+          <span class="pv-quick-sub">Selesaikan aktivitas harian untuk mendapatkan XP</span>
+        </span>
+        <span class="pv-chevron"><i data-lucide="chevron-down"></i></span>
+      </button>
+      <div class="pv-quick-body">
+        <div class="pv-quick-inner">
+          <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Tambah tanaman baru</span><span class="v">+10 XP</span></div>
+          <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Selesaikan panduan belajar</span><span class="v">+20 XP</span></div>
+          <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Update jurnal kebun</span><span class="v">+10 XP</span></div>
+          <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Bantu teman di komunitas</span><span class="v">+15 XP</span></div>
+          <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Selesaikan plant journey</span><span class="v">+50 XP</span></div>
+          <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Selesaikan tantangan mingguan</span><span class="v">+40 XP</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pv-quick-card" data-expandable>
+      <button class="pv-quick-head" type="button" aria-expanded="false">
         <span class="pv-quick-icon pv-quick-icon--blue"><i data-lucide="trending-up"></i></span>
         <span class="pv-quick-text">
           <span class="pv-quick-title">Level Progression</span>
@@ -107,27 +128,17 @@
         <span class="pv-chevron"><i data-lucide="chevron-down"></i></span>
       </button>
       <div class="pv-quick-body">
-        <div class="pv-quick-content">
-          <div class="pv-quick-column">
-            <div class="pv-quick-inner">
-              <div class="pv-level-row is-done"><span class="pv-level-num">01</span><div class="pv-level-info"><p class="pv-level-name">Seed Starter</p><p class="pv-level-xp">0 XP</p></div><span class="pv-level-state">Selesai</span></div>
-              <div class="pv-level-row is-done"><span class="pv-level-num">02</span><div class="pv-level-info"><p class="pv-level-name">First Sprout</p><p class="pv-level-xp">150 XP</p></div><span class="pv-level-state">Selesai</span></div>
-              <div class="pv-level-row is-done"><span class="pv-level-num">03</span><div class="pv-level-info"><p class="pv-level-name">Plant Friend</p><p class="pv-level-xp">300 XP</p></div><span class="pv-level-state">Selesai</span></div>
-              <div class="pv-level-row is-done"><span class="pv-level-num">04</span><div class="pv-level-info"><p class="pv-level-name">Leaf Lover</p><p class="pv-level-xp">450 XP</p></div><span class="pv-level-state">Selesai</span></div>
-              <div class="pv-level-row is-done"><span class="pv-level-num">05</span><div class="pv-level-info"><p class="pv-level-name">Garden Explorer</p><p class="pv-level-xp">600 XP</p></div><span class="pv-level-state">Selesai</span></div>
-            </div>
-          </div>
-          <div class="pv-quick-column pv-quick-column--xp">
-            <p class="pv-xp-col-title">Cara Dapat XP</p>
-            <div class="pv-quick-inner">
-              <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Tambah tanaman baru</span><span class="v">+10 XP</span></div>
-              <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Selesaikan panduan belajar</span><span class="v">+20 XP</span></div>
-              <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Update jurnal kebun</span><span class="v">+10 XP</span></div>
-              <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Bantu teman di komunitas</span><span class="v">+15 XP</span></div>
-              <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Selesaikan plant journey</span><span class="v">+50 XP</span></div>
-              <div class="pv-xp-row"><span class="k"><i data-lucide="circle-plus"></i> Selesaikan tantangan mingguan</span><span class="v">+40 XP</span></div>
-            </div>
-          </div>
+        <div class="pv-quick-inner">
+          <div class="pv-level-row is-done"><span class="pv-level-num">01</span><div class="pv-level-info"><p class="pv-level-name">Seed Starter</p><p class="pv-level-xp">0 XP</p></div><span class="pv-level-state">Selesai</span></div>
+          <div class="pv-level-row is-done"><span class="pv-level-num">02</span><div class="pv-level-info"><p class="pv-level-name">First Sprout</p><p class="pv-level-xp">150 XP</p></div><span class="pv-level-state">Selesai</span></div>
+          <div class="pv-level-row is-done"><span class="pv-level-num">03</span><div class="pv-level-info"><p class="pv-level-name">Plant Friend</p><p class="pv-level-xp">300 XP</p></div><span class="pv-level-state">Selesai</span></div>
+          <div class="pv-level-row is-done"><span class="pv-level-num">04</span><div class="pv-level-info"><p class="pv-level-name">Leaf Lover</p><p class="pv-level-xp">450 XP</p></div><span class="pv-level-state">Selesai</span></div>
+          <div class="pv-level-row is-done"><span class="pv-level-num">05</span><div class="pv-level-info"><p class="pv-level-name">Garden Explorer</p><p class="pv-level-xp">600 XP</p></div><span class="pv-level-state">Selesai</span></div>
+          <div class="pv-level-row is-done"><span class="pv-level-num">06</span><div class="pv-level-info"><p class="pv-level-name">Bloom Buddy</p><p class="pv-level-xp">750 XP</p></div><span class="pv-level-state">Selesai</span></div>
+          <div class="pv-level-row is-done"><span class="pv-level-num">07</span><div class="pv-level-info"><p class="pv-level-name">Garden Guardian</p><p class="pv-level-xp">1.000 XP</p></div><span class="pv-level-state">Selesai</span></div>
+          <div class="pv-level-row is-current"><span class="pv-level-num">08</span><div class="pv-level-info"><p class="pv-level-name">Nafas Hijau</p><p class="pv-level-xp">1.260 / 2.000 XP</p></div><span class="pv-level-state">Kamu di sini</span></div>
+          <div class="pv-level-row is-locked"><span class="pv-level-num">09</span><div class="pv-level-info"><p class="pv-level-name">Flora Ranger</p><p class="pv-level-xp">2.000 XP</p></div><span class="pv-level-state">Terkunci</span></div>
+          <div class="pv-level-row is-locked"><span class="pv-level-num">10</span><div class="pv-level-info"><p class="pv-level-name">Flora Master</p><p class="pv-level-xp">3.000 XP</p></div><span class="pv-level-state">Terkunci</span></div>
         </div>
       </div>
     </div>
